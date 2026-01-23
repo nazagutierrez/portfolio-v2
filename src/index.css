@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --main-black: #000000f1;
+}
+
+@theme {
+  --color-main-black: var(--main-black);
+}
