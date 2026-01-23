@@ -2,9 +2,20 @@
 @import "tw-animate-css";
 
 :root {
-  --main-black: #000000f1;
+  --main-black: #0c0c0c;
+  --main-white: #e9e9d5;
 }
 
 @theme {
   --color-main-black: var(--main-black);
+  --color-main-white: var(--main-white);
+}
+
+* {
+  font-family: "Zalando Sans SemiExpanded", sans-serif;
+  font-optical-sizing: auto;
+}
+
+html {
+  background-color: var(--main-black);
 }

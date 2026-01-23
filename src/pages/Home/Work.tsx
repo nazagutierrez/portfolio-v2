@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Work = () => {
   return (
     <div className='h-screen bg-main-black'>
