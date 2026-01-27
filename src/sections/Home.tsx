@@ -66,7 +66,7 @@ const Home = () => {
           </h2>
 
           <h3 className="ms-5 font-thin max-w-[500px] text-pretty">
-            Buscás un desarrollador con Semi-Senior experto en React, Next.js y Typescript,
+            Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript,
             con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de
             trabajar? ¡Hablemos!
           </h3>
@@ -76,15 +76,17 @@ const Home = () => {
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           viewBox={`0 0 ${SIZE} ${SIZE}`}
+
         >
           <defs>
-            <clipPath id="clip-left" clipPathUnits="userSpaceOnUse">
+            <clipPath id="clip-left" clipPathUnits="objectBoundingBox">
               <rect
-                x={BORDER}
-                y={BORDER}
-                width={945}
-                height={903}
-                rx={RADIUS}
+                x={0.01}
+                y={0.01}
+                width={0.99}
+                height={0.98}
+                rx={0.03}
+                ry={0.03}
               />
             </clipPath>
           </defs>
@@ -92,18 +94,16 @@ const Home = () => {
       </div>
 
       {/* ===== RIGHT ===== */}
-      <div className="w-1/2 relative">
-        <div className="min-h-screen bg-main-black relative">
+      <div className="w-1/2 relative m-2">
+        <div className="relative bg-main-black rounded-[28px] overflow-hidden">
+          
           {/* Fondo */}
-          <div
-            className="absolute inset-0 z-0"
-            style={{ clipPath: "url(#clip-right)" }}
-          >
+          <div className="absolute inset-0 z-0">
             <Silk color="#4b4b4b" />
           </div>
 
+          {/* Navbar */}
           <div ref={navbarRef} className="relative h-[90px] z-50 w-full">
-            {/* Navbar real */}
             <div className="absolute top-14 left-1/2 -translate-x-1/2">
               <Navbar />
             </div>
@@ -116,23 +116,6 @@ const Home = () => {
             <section className="h-screen">More</section>
           </div>
 
-          {/* Frame */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox={`0 0 ${SIZE} ${SIZE}`}
-          >
-            <defs>
-              <clipPath id="clip-right" clipPathUnits="userSpaceOnUse">
-                <rect
-                  x={BORDER}
-                  y={BORDER}
-                  width="920"
-                  height={SIZE - BORDER * 2}
-                  rx={RADIUS}
-                />
-              </clipPath>
-            </defs>
-          </svg>
         </div>
       </div>
     </section>

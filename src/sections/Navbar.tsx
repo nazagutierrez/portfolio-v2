@@ -7,7 +7,7 @@ const Navbar = () => {
       height={70}
       borderRadius={20}
       displace={2}
-      distortionScale={-80}
+      distortionScale={-50}
       redOffset={0}
       greenOffset={10}
       blueOffset={20}
