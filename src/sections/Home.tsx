@@ -24,7 +24,7 @@ const Home = () => {
       pin: leftRef.current,
       pinSpacing: false,
     });
-
+    
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top top",
@@ -36,9 +36,13 @@ const Home = () => {
     return () => ScrollTrigger.killAll();
   }, []);
 
-  const BORDER = 12;
-  const RADIUS = 28;
   const SIZE = 1000;
+
+  const options = [
+    { name: "Enviar mail", href: "mailto:nazarenojunin@gmail.com" },
+    { name: "Ver CV", href: "https://nazareno.io/cv" },
+    { name: "Whatsapp", href: "https://api.whatsapp.com/send?phone=542364329720" },
+  ]
 
   return (
     // 🔥 ESTA ALTURA DEFINE CUÁNTO TIEMPO QUEDA PEGADO
@@ -65,11 +69,24 @@ const Home = () => {
             Frontend Developer SSR
           </h2>
 
-          <h3 className="ms-5 font-thin max-w-[500px] text-pretty">
+          <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
             Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript,
             con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de
             trabajar? ¡Hablemos!
           </h3>
+
+          <div className="w-full  flex justify-center items-center gap-x-5 mt-34">
+            {options.map(({ name, href }, index) => (
+              <a
+                key={index}
+                href={href}
+                target="_blank"
+                className="flex border-fade items-center justify-center w-40 h-14 rounded-xl bg-main-black text-main-white text-lg font-thin"
+              >
+                {name}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Frame */}
@@ -94,9 +111,8 @@ const Home = () => {
       </div>
 
       {/* ===== RIGHT ===== */}
-      <div className="w-1/2 relative m-2">
+      <div className="w-1/2  m-2">
         <div className="relative bg-main-black rounded-[28px] overflow-hidden">
-          
           {/* Fondo */}
           <div className="absolute inset-0 z-0">
             <Silk color="#4b4b4b" />
@@ -111,11 +127,10 @@ const Home = () => {
 
           {/* Contenido */}
           <div className="relative z-10 p-20 text-main-white space-y-40">
-            <About />
             <Work />
+            <About />
             <section className="h-screen">More</section>
           </div>
-
         </div>
       </div>
     </section>

@@ -4,11 +4,13 @@
 :root {
   --main-black: #0c0c0c;
   --main-white: #e9e9d5;
+  --main-yellow: #b8a52d;
 }
 
 @theme {
   --color-main-black: var(--main-black);
   --color-main-white: var(--main-white);
+  --color-main-yellow: var(--main-yellow);
 }
 
 * {
@@ -32,4 +34,33 @@ body::-webkit-scrollbar-thumb {
 body {
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,.4) transparent;
+}
+
+.hover-underline {
+    cursor: pointer;
+    position: relative;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--main-yellow);
+    transition: width .8s;
+}
+
+.hover-underline:hover::after {
+    width: 100%;
+}
+
+.border-fade {
+  border: 1px solid transparent;
+  transition: border-color 0.4s ease;
+}
+
+.border-fade:hover {
+  border-color: var(--color-main-yellow);
 }
