@@ -6,10 +6,15 @@ import Navbar from "./Navbar";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BlurText from "@/components/BlurText";
+import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const contactLineRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -36,6 +41,44 @@ const Home = () => {
     return () => ScrollTrigger.killAll();
   }, []);
 
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(subtitleRef.current, {
+        opacity: 0,
+        delay: 0.7,
+        filter: "blur(14px)",
+        duration: 1,
+        ease: "power2.out",
+      })
+      
+      gsap.from(textRef.current, {
+        opacity: 0,
+        delay: 0.8,
+        filter: "blur(14px)",
+        duration: 1,
+        ease: "power2.out",
+      })
+
+      gsap.from(contactLineRef.current, {
+        height:0,
+        delay: 0.9,
+        duration: 2,
+        ease: "power2.out",
+      })
+      
+      gsap.from(".contact-item", {
+        opacity: 0,
+        delay: 1,
+        x: -80,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.3,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const SIZE = 1000;
 
   const options = [
@@ -45,47 +88,71 @@ const Home = () => {
   ]
 
   return (
-    // 🔥 ESTA ALTURA DEFINE CUÁNTO TIEMPO QUEDA PEGADO
     <section ref={sectionRef} className="relative min-h-[300vh] flex">
-      
       {/* ===== LEFT ===== */}
-      <div ref={leftRef} className="h-screen w-1/2 overflow-hidden">
+      <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-999">
         {/* Fondo */}
         <div
           className="absolute inset-0"
           style={{ clipPath: "url(#clip-left)" }}
         >
-          <Silk color="#8b7732" />
+          <div
+            className="absolute inset-0"
+            style={{ clipPath: "url(#clip-left)" }}
+          >
+            <SilkReveal>
+              {(onReady: () => void) => (
+                <>
+                  <SilkFallback />
+                  <Silk 
+                    color="#8b7732"         
+                    onReady={onReady} 
+                  />
+                </>
+              )}
+            </SilkReveal>
+          </div>
         </div>
 
         {/* Contenido */}
         <div className="relative z-10 p-20 flex flex-col h-full text-main-white">
           <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
-            <span>Nazareno</span>
-            <span>Gutierrez</span>
+            <BlurText
+              text="Nazareno Gutierrez"
+              delay={50}
+              animateBy="letters"
+              direction="bottom"
+              className="max-w-[660px]"
+            />
           </h1>
 
-          <h2 className="text-[2rem] font-thin mb-8 italic ms-5">
+          <h2 ref={subtitleRef} className="text-[2rem] font-thin mb-8 italic ms-5">
             Frontend Developer SSR
           </h2>
 
-          <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
+          <h3 ref={textRef} className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
             Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript,
             con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de
             trabajar? ¡Hablemos!
           </h3>
 
-          <div className="w-full  flex justify-center items-center gap-x-5 mt-34">
+          <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
+            <div ref={contactLineRef} className="h-16 z-20 w-px bg-main-yellow absolute left-27"></div>
+            
+            <div
+              className="overflow-hidden flex ps-7 gap-x-5"
+            >
             {options.map(({ name, href }, index) => (
-              <a
-                key={index}
-                href={href}
-                target="_blank"
-                className="flex border-fade items-center justify-center w-40 h-14 rounded-xl bg-main-black text-main-white text-lg font-thin"
-              >
-                {name}
-              </a>
+                <a
+                  href={href}
+                  key={index}
+                  target="_blank"
+                  className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
+                >
+                  {name}
+                </a>
             ))}
+            </div>
           </div>
         </div>
 
@@ -111,16 +178,26 @@ const Home = () => {
       </div>
 
       {/* ===== RIGHT ===== */}
-      <div className="w-1/2  m-2">
+      <div className="w-1/2 m-2">
         <div className="relative bg-main-black rounded-[28px] overflow-hidden">
           {/* Fondo */}
           <div className="absolute inset-0 z-0">
-            <Silk color="#4b4b4b" />
+            <SilkReveal>
+              {(onReady: () => void) => (
+                <>
+                  <SilkFallback />
+                  <Silk 
+                    color="#4b4b4b"         
+                    onReady={onReady} 
+                  />
+                </>
+              )}
+            </SilkReveal>
           </div>
 
           {/* Navbar */}
           <div ref={navbarRef} className="relative h-[90px] z-50 w-full">
-            <div className="absolute top-14 left-1/2 -translate-x-1/2">
+            <div className="absolute top-10 left-1/2 -translate-x-1/2">
               <Navbar />
             </div>
           </div>
