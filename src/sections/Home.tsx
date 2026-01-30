@@ -180,30 +180,15 @@ const Home = () => {
       {/* ===== RIGHT ===== */}
       <div className="w-1/2 m-2">
         <div className="relative bg-main-black rounded-[28px] overflow-hidden">
-          {/* Fondo */}
-          <div className="absolute inset-0 z-0">
-            <SilkReveal>
-              {(onReady: () => void) => (
-                <>
-                  <SilkFallback />
-                  <Silk 
-                    color="#4b4b4b"         
-                    onReady={onReady} 
-                  />
-                </>
-              )}
-            </SilkReveal>
-          </div>
-
           {/* Navbar */}
-          <div ref={navbarRef} className="relative h-[90px] z-50 w-full">
+          <div ref={navbarRef} className="relative  z-50 w-full">
             <div className="absolute top-10 left-1/2 -translate-x-1/2">
               <Navbar />
             </div>
           </div>
 
           {/* Contenido */}
-          <div className="relative z-10 p-20 text-main-white space-y-40">
+          <div className="relative z-10 text-main-white space-y-5">
             <Work />
             <About />
             <section className="h-screen">More</section>

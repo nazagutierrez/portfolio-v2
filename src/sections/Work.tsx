@@ -1,6 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
+import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
+import Silk from "@/components/Silk";
 
 const experiences = [
   {
@@ -40,13 +42,20 @@ const Work = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(descriptionRef.current, {
-        opacity: 0,
-        delay: 0.7,
-        filter: "blur(14px)",
-        duration: 1,
-        ease: "power2.out",
-      })
+      gsap.fromTo(
+        descriptionRef.current,
+        {
+          opacity: 0,
+          filter: "blur(14px)",
+        },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          delay: 0.7,
+          duration: 1,
+          ease: "power2.out",
+        }
+);
 
       gsap.from(lineRef.current, {
         height:0,
@@ -69,7 +78,22 @@ const Work = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen">
+    <section ref={sectionRef} className="min-h-screen p-20 pt-38 relative">
+      {/* Fondo */}
+      <div className="absolute rounded-b-[28px] overflow-hidden inset-0 z-0">
+        <SilkReveal>
+          {(onReady: () => void) => (
+            <>
+              <SilkFallback />
+              <Silk 
+                color="#4b4b4b"         
+                onReady={onReady} 
+              />
+            </>
+          )}
+        </SilkReveal>
+      </div>
+
       <h2 className="text-7xl italic mb-6">
         <BlurText
           text="Mi trabajo"
@@ -81,7 +105,7 @@ const Work = () => {
 
       <p ref={descriptionRef} className="text-xl max-w-[700px] mb-16 text-main-white font-thin">
         Experiencia profesional y proyectos donde construí interfaces modernas,
-        funcionales y muy estéticas.
+        funcionales y estéticas.
       </p>
 
       <div className="relative pl-10 space-y-14">
