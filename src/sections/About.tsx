@@ -78,7 +78,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="#About" className="min-h-screen p-20 pt-20 relative">
+    <section id="About" className="min-h-screen p-20 pt-20 relative">
       {/* Fondo */}
       <div className="absolute rounded-[28px] overflow-hidden inset-0 z-0">
         <SilkReveal>

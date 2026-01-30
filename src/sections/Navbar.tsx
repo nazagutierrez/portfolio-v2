@@ -1,6 +1,48 @@
 import GlassSurface from "@/components/GlassSurface";
+import gsap from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
+
+// const scrollToSection = (
+//   e: React.MouseEvent<HTMLButtonElement>,
+//   element: string
+// ) => {
+//   e.preventDefault();
+
+//   const smoother = ScrollSmoother.get();
+//   if (!smoother) return;
+
+//   smoother.scrollTo(element, true, "top 1%");
+// };
+
+let scrollTween: gsap.core.Tween | null = null;
+
+const scrollToSection = (
+  e: React.MouseEvent<HTMLButtonElement>,
+  element: string
+) => {
+  e.preventDefault();
+
+  const smoother = ScrollSmoother.get();
+  if (!smoother) return;
+
+  // matar animación anterior
+  scrollTween?.kill();
+
+  const target = smoother.offset(element, "top 1%");
+
+  scrollTween = gsap.to(smoother, {
+    scrollTop: target,
+    duration: 2,
+    ease: "power2.out", // NADA de expo / elastic
+    overwrite: "auto",
+  });
+};
 
 const Navbar = () => {
+  console.log(document.querySelector("#About"))
   return (
     <GlassSurface
       width={400}
@@ -16,18 +58,26 @@ const Navbar = () => {
       mixBlendMode="screen"
     >
       <ul className="flex text-main-white gap-x-8 px-10">
-        <li className="inline-block text-lg hover:underline cursor-pointer">
+        <button   
+          onClick={(e) => {scrollToSection(e, "#Home")}}
+          className="inline-block hover-underline text-lg cursor-pointer">
           Home
-        </li>
-        <li className="inline-block text-lg hover:underline cursor-pointer">
+        </button>
+        <button   
+          onClick={(e) => {scrollToSection(e, "#About")}}
+          className="inline-block hover-underline text-lg cursor-pointer">
           About
-        </li>
-        <li className="inline-block text-lg hover:underline cursor-pointer">
+        </button>
+        <button   
+          onClick={(e) => {scrollToSection(e, "#Work")}}
+          className="inline-block hover-underline text-lg cursor-pointer">
           Work
-        </li>
-        <li className="inline-block text-lg hover:underline cursor-pointer">
+        </button>
+        <button   
+          onClick={(e) => {scrollToSection(e, "#Contact")}}
+          className="inline-block hover-underline text-lg cursor-pointer">
           Contact
-        </li>
+        </button>
       </ul>
     </GlassSurface>
   );

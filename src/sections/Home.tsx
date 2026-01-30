@@ -88,7 +88,7 @@ const Home = () => {
   ]
 
   return (
-    <section ref={sectionRef} className="relative min-h-[300vh] flex">
+    <section id="Home" ref={sectionRef} className="relative min-h-[300vh] flex">
       {/* ===== LEFT ===== */}
       <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-999">
         {/* Fondo */}
