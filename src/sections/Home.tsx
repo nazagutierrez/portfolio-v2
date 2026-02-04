@@ -19,6 +19,7 @@ const Home = () => {
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !leftRef.current || !rightRef.current) return;
@@ -33,21 +34,56 @@ const Home = () => {
 
       pin: leftRef.current,
       pinSpacing: false,
-      anticipatePin: 10,
+      anticipatePin: 1,
     });
-    
-  ScrollTrigger.create({
-    trigger: sectionRef.current,
-    start: "top top",
-    endTrigger: rightRef.current,
-    end: "bottom bottom",
-    pin: navbarRef.current,
-    pinSpacing: false,
-    anticipatePin: 10,
-  });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top top",
+      endTrigger: rightRef.current,
+      end: "bottom bottom",
+      pin: navbarRef.current,
+      pinSpacing: false,
+      anticipatePin: 1,
+    });
 
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
+
+  useLayoutEffect(() => {
+  if (!rightRef.current || !bottomRef.current) return;
+  gsap.set(bottomRef.current, {
+  yPercent: -100,
+});
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: rightRef.current,
+      start: "bottom bottom",
+      end: "+=100%",
+      scrub: true,
+      pin: false,
+      anticipatePin: 1,
+    },
+  });
+
+  tl.to(bottomRef.current, {
+    yPercent: 0,
+    ease: "none",
+  });
+
+  tl.fromTo(
+    bottomRef.current,
+    { filter: "blur(12px)" },
+    { filter: "blur(0px)" },
+    0
+  );
+
+  return () => {
+    tl.scrollTrigger?.kill();
+    tl.kill();
+  };
+}, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -97,9 +133,9 @@ const Home = () => {
 
   return (
     <>
-      <section id="Home" ref={sectionRef} className="relative min-h-[300vh] flex">
+      <section id="Home" ref={sectionRef} className="relative bg-main-black z-20 flex">
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-999">
+        <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-20">
           {/* Fondo */}
           <div
             className="absolute inset-0"
@@ -124,7 +160,7 @@ const Home = () => {
           </div>
 
           {/* Contenido */}
-          <div className="relative z-10 p-20 flex flex-col h-full text-main-white">
+          <div className="relative z-20 p-20 flex flex-col h-full text-main-white">
             <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
               <BlurText
                 text="Nazareno Gutierrez"
@@ -187,28 +223,113 @@ const Home = () => {
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="w-1/2 m-2">
+        <div ref={rightRef} className="w-1/2 h-fit m-2 pr-2.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Navbar */}
-            <div ref={navbarRef} className="relative  z-50 w-full">
+            <div ref={navbarRef} className="relative z-50 w-full">
               <div className="absolute top-10 left-1/2 -translate-x-1/2">
                 <Navbar />
               </div>
             </div>
 
             {/* Contenido */}
-            <div className="relative z-10 text-main-white space-y-5">
+            <div className="relative z-20 text-main-white space-y-5">
               <Work />
               <About />
-              <section className="h-screen">More</section>
             </div>
           </div>
         </div>
 
+        <div className="h-screen"></div>
       </section>
-        <div className="bg-neutral-300 h-screen w-full">
 
+      {/* ===== BOTTOM ===== */}
+      <div ref={bottomRef} id="Contact" className="h-screen relative w-full overflow-hidden z-0">
+        {/* Fondo */}
+        <div
+          className="absolute inset-0"
+          style={{ clipPath: "url(#clip-bottom)" }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{ clipPath: "url(#clip-bottom)" }}
+          >
+            <SilkReveal>
+              {(onReady: () => void) => (
+                <>
+                  <SilkFallback />
+                  <Silk 
+                    color="#8b7732"         
+                    onReady={onReady} 
+                  />
+                </>
+              )}
+            </SilkReveal>
+          </div>
         </div>
+
+        {/* Contenido */}
+        <div className="relative z-0 p-20 flex flex-col h-full text-main-white">
+          <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
+            <BlurText
+              text="Nazareno Gutierrez"
+              delay={50}
+              animateBy="letters"
+              direction="bottom"
+              className="max-w-[660px]"
+            />
+          </h1>
+
+          <h2 className="text-[2rem] font-thin mb-8 italic ms-5">
+            Frontend Developer SSR
+          </h2>
+
+          <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
+            Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript,
+            con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de
+            trabajar? ¡Hablemos!
+          </h3>
+
+          <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
+            <div className="h-16 z-0 w-px bg-main-yellow absolute left-27"></div>
+            
+            <div
+              className="overflow-hidden flex ps-7 gap-x-5"
+            >
+            {options.map(({ name, href }, index) => (
+                <a
+                  href={href}
+                  key={index}
+                  target="_blank"
+                  className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
+                >
+                  {name}
+                </a>
+            ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Frame */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          viewBox={`0 0 ${SIZE} ${SIZE}`}
+
+        >
+          <defs>
+            <clipPath id="clip-bottom" clipPathUnits="objectBoundingBox">
+              <rect
+                x={0.005}
+                y={0.01}
+                width={0.99}
+                height={0.98}
+                rx={0.02}
+                ry={0.03}
+              />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
     </>
   );
 };
