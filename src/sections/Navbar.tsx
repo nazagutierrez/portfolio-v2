@@ -5,23 +5,11 @@ import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-// const scrollToSection = (
-//   e: React.MouseEvent<HTMLButtonElement>,
-//   element: string
-// ) => {
-//   e.preventDefault();
-
-//   const smoother = ScrollSmoother.get();
-//   if (!smoother) return;
-
-//   smoother.scrollTo(element, true, "top 1%");
-// };
-
 let scrollTween: gsap.core.Tween | null = null;
 
 const scrollToSection = (
   e: React.MouseEvent<HTMLButtonElement>,
-  element: string
+  element: string,
 ) => {
   e.preventDefault();
 
@@ -42,44 +30,65 @@ const scrollToSection = (
 };
 
 const Navbar = () => {
-  console.log(document.querySelector("#About"))
   return (
-    <GlassSurface
-      width={400}
-      height={70}
-      borderRadius={20}
-      displace={2}
-      distortionScale={-50}
-      redOffset={0}
-      greenOffset={10}
-      blueOffset={20}
-      brightness={50}
-      opacity={0.93}
-      mixBlendMode="screen"
-    >
-      <ul className="flex text-main-white gap-x-8 px-10">
-        <button   
-          onClick={(e) => {scrollToSection(e, "#Home")}}
-          className="inline-block hover-underline text-lg cursor-pointer">
-          Home
-        </button>
-        <button   
-          onClick={(e) => {scrollToSection(e, "#About")}}
-          className="inline-block hover-underline text-lg cursor-pointer">
-          About
-        </button>
-        <button   
-          onClick={(e) => {scrollToSection(e, "#Work")}}
-          className="inline-block hover-underline text-lg cursor-pointer">
-          Work
-        </button>
-        <button   
-          onClick={(e) => {scrollToSection(e, "#Contact")}}
-          className="inline-block hover-underline text-lg cursor-pointer">
-          Contact
-        </button>
-      </ul>
-    </GlassSurface>
+    <div className="absolute top-1/2 right-5 -translate-y-1/2">
+      <GlassSurface
+        width={80}
+        height={380}
+        borderRadius={20}
+        displace={2}
+        distortionScale={-50}
+        redOffset={0}
+        greenOffset={10}
+        blueOffset={20}
+        brightness={50}
+        opacity={0.93}
+        mixBlendMode="screen"
+      >
+        <ul className="flex w-full h-full flex-col text-center items-center justify-center text-main-white gap-x-8 px-10">
+          <button
+            onClick={(e) => { scrollToSection(e, "#Home") }}
+            className="flex flex-col -space-y-2.5"
+          >
+            <span>H</span>
+            <span>O</span>
+            <span>M</span>
+            <span>E</span>
+          </button>
+          <button
+            onClick={(e) => { scrollToSection(e, "#About") }}
+            className="flex flex-col -space-y-2.5"
+          >
+            <span>A</span>
+            <span>B</span>
+            <span>O</span>
+            <span>U</span>
+            <span>T</span>
+          </button>
+          <button
+            onClick={(e) => { scrollToSection(e, "#Work") }}
+            className="flex flex-col -space-y-2.5"
+          >
+            <span>W</span>
+            <span>O</span>
+            <span>R</span>
+            <span>K</span>
+          </button>
+          <button
+            onClick={(e) => { scrollToSection(e, "#Contact") }}
+            className="flex flex-col -space-y-2.5"
+          >
+            <span>C</span>
+            <span>O</span>
+            <span>N</span>
+            <span>T</span>
+            <span>A</span>
+            <span>C</span>
+            <span>T</span>
+          </button>
+        </ul>
+      </GlassSurface>
+    </div>
   );
 };
 

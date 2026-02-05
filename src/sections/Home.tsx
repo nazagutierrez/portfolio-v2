@@ -47,43 +47,43 @@ const Home = () => {
       anticipatePin: 1,
     });
 
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, []);
 
   useLayoutEffect(() => {
-  if (!rightRef.current || !bottomRef.current) return;
-  gsap.set(bottomRef.current, {
-  yPercent: -100,
-});
+    if (!rightRef.current || !bottomRef.current) return;
+    gsap.set(bottomRef.current, {
+      yPercent: -100,
+    });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: rightRef.current,
-      start: "bottom bottom",
-      end: "+=100%",
-      scrub: true,
-      pin: false,
-      anticipatePin: 1,
-    },
-  });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: rightRef.current,
+        start: "bottom bottom",
+        end: "+=100%",
+        scrub: true,
+        pin: false,
+        anticipatePin: 1,
+      },
+    });
 
-  tl.to(bottomRef.current, {
-    yPercent: 0,
-    ease: "none",
-  });
+    tl.to(bottomRef.current, {
+      yPercent: 0,
+      ease: "none",
+    });
 
-  tl.fromTo(
-    bottomRef.current,
-    { filter: "blur(12px)" },
-    { filter: "blur(0px)" },
-    0
-  );
+    tl.fromTo(
+      bottomRef.current,
+      { filter: "blur(12px)" },
+      { filter: "blur(0px)" },
+      0,
+    );
 
-  return () => {
-    tl.scrollTrigger?.kill();
-    tl.kill();
-  };
-}, []);
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -93,23 +93,23 @@ const Home = () => {
         filter: "blur(14px)",
         duration: 1,
         ease: "power2.out",
-      })
-      
+      });
+
       gsap.from(textRef.current, {
         opacity: 0,
         delay: 0.8,
         filter: "blur(14px)",
         duration: 1,
         ease: "power2.out",
-      })
+      });
 
       gsap.from(contactLineRef.current, {
-        height:0,
+        height: 0,
         delay: 0.9,
         duration: 2,
         ease: "power2.out",
-      })
-      
+      });
+
       gsap.from(".contact-item", {
         opacity: 0,
         delay: 1,
@@ -128,12 +128,19 @@ const Home = () => {
   const options = [
     { name: "Enviar mail", href: "mailto:nazarenojunin@gmail.com" },
     { name: "Ver CV", href: "https://nazareno.io/cv" },
-    { name: "Whatsapp", href: "https://api.whatsapp.com/send?phone=542364329720" },
-  ]
+    {
+      name: "Whatsapp",
+      href: "https://api.whatsapp.com/send?phone=542364329720",
+    },
+  ];
 
   return (
     <>
-      <section id="Home" ref={sectionRef} className="relative bg-main-black z-20 flex">
+      <section
+        id="Home"
+        ref={sectionRef}
+        className="relative bg-main-black z-20 flex"
+      >
         {/* ===== LEFT ===== */}
         <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-20">
           {/* Fondo */}
@@ -149,10 +156,7 @@ const Home = () => {
                 {(onReady: () => void) => (
                   <>
                     <SilkFallback />
-                    <Silk 
-                      color="#8b7732"         
-                      onReady={onReady} 
-                    />
+                    <Silk color="#8b7732" onReady={onReady} />
                   </>
                 )}
               </SilkReveal>
@@ -160,8 +164,8 @@ const Home = () => {
           </div>
 
           {/* Contenido */}
-          <div className="relative z-20 p-20 flex flex-col h-full text-main-white">
-            <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
+          <div className="relative z-20 p-20 pt-34 flex flex-col h-full text-main-white">
+            <h1 className="flex flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
               <BlurText
                 text="Nazareno Gutierrez"
                 delay={50}
@@ -171,23 +175,36 @@ const Home = () => {
               />
             </h1>
 
-            <h2 ref={subtitleRef} className="text-[2rem] font-thin mb-8 italic ms-5">
+            <h2
+              ref={subtitleRef}
+              className="text-[2rem] font-thin mb-8 italic ms-5"
+            >
               Frontend Developer SSR
             </h2>
 
-            <h3 ref={textRef} className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
-              Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript,
-              con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de
-              trabajar? ¡Hablemos!
+            <h3
+              ref={textRef}
+              className="ms-5 text-lg font-thin max-w-[600px] text-pretty"
+            >
+              Buscás un desarrollador Semi-Senior experto en React, Next.js y
+              Typescript, con buen trabajo en equipo, buen ojo para el diseño y
+              muchas ganas de trabajar? ¡Hablemos!
+            </h3>
+            <h3
+              ref={textRef}
+              className="ms-5 mt-8 text-lg font-thin max-w-[600px] text-pretty"
+            >
+              Buscás un desarrollador Semi-Senior experto en React, Next.js y
             </h3>
 
             <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
-              <div ref={contactLineRef} className="h-16 z-20 w-px bg-main-yellow absolute left-27"></div>
-              
               <div
-                className="overflow-hidden flex ps-7 gap-x-5"
-              >
-              {options.map(({ name, href }, index) => (
+                ref={contactLineRef}
+                className="h-16 z-20 w-px bg-main-yellow absolute left-27"
+              ></div>
+
+              <div className="overflow-hidden flex ps-7 gap-x-5">
+                {options.map(({ name, href }, index) => (
                   <a
                     href={href}
                     key={index}
@@ -196,7 +213,7 @@ const Home = () => {
                   >
                     {name}
                   </a>
-              ))}
+                ))}
               </div>
             </div>
           </div>
@@ -205,7 +222,6 @@ const Home = () => {
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
             viewBox={`0 0 ${SIZE} ${SIZE}`}
-
           >
             <defs>
               <clipPath id="clip-left" clipPathUnits="objectBoundingBox">
@@ -223,13 +239,11 @@ const Home = () => {
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="w-1/2 h-fit m-2 pr-2.5">
+        <div ref={rightRef} className="w-1/2 min-h-screen m-2 pr-2.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Navbar */}
-            <div ref={navbarRef} className="relative z-50 w-full">
-              <div className="absolute top-10 left-1/2 -translate-x-1/2">
-                <Navbar />
-              </div>
+            <div ref={navbarRef} className="z-50">
+              <Navbar />
             </div>
 
             {/* Contenido */}
@@ -244,7 +258,11 @@ const Home = () => {
       </section>
 
       {/* ===== BOTTOM ===== */}
-      <div ref={bottomRef} id="Contact" className="h-screen relative w-full overflow-hidden z-0">
+      <div
+        ref={bottomRef}
+        id="Contact"
+        className="h-screen relative w-full overflow-hidden z-0"
+      >
         {/* Fondo */}
         <div
           className="absolute inset-0"
@@ -258,10 +276,7 @@ const Home = () => {
               {(onReady: () => void) => (
                 <>
                   <SilkFallback />
-                  <Silk 
-                    color="#8b7732"         
-                    onReady={onReady} 
-                  />
+                  <Silk color="#8b7732" onReady={onReady} />
                 </>
               )}
             </SilkReveal>
@@ -285,18 +300,16 @@ const Home = () => {
           </h2>
 
           <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
-            Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript,
-            con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de
-            trabajar? ¡Hablemos!
+            Buscás un desarrollador Semi-Senior experto en React, Next.js y
+            Typescript, con buen trabajo en equipo, buen ojo para el diseño y
+            muchas ganas de trabajar? ¡Hablemos!
           </h3>
 
           <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
             <div className="h-16 z-0 w-px bg-main-yellow absolute left-27"></div>
-            
-            <div
-              className="overflow-hidden flex ps-7 gap-x-5"
-            >
-            {options.map(({ name, href }, index) => (
+
+            <div className="overflow-hidden flex ps-7 gap-x-5">
+              {options.map(({ name, href }, index) => (
                 <a
                   href={href}
                   key={index}
@@ -305,7 +318,7 @@ const Home = () => {
                 >
                   {name}
                 </a>
-            ))}
+              ))}
             </div>
           </div>
         </div>
@@ -314,7 +327,6 @@ const Home = () => {
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           viewBox={`0 0 ${SIZE} ${SIZE}`}
-
         >
           <defs>
             <clipPath id="clip-bottom" clipPathUnits="objectBoundingBox">
