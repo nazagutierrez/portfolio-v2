@@ -18,21 +18,7 @@ const experiences = [
     description:
       "Construcción de vistas complejas, animaciones y componentes reutilizables en React.",
     year: "2024",
-  },
-  {
-    title: "TPEOficial",
-    role: "Frontend Developer",
-    description:
-      "Trabajo en productos SaaS, emails, herramientas con IA y colaboración directa con diseño y comunicación.",
-    year: "2023",
-  },
-  {
-    title: "Freelance",
-    role: "Frontend Developer",
-    description:
-      "Desarrollo de soluciones a medida con React, Next.js y Firebase para distintos clientes.",
-    year: "2022",
-  },
+  }
 ];
 
 const Work = () => {
@@ -78,7 +64,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="About" className="min-h-screen p-20 pt-20 relative">
+    <section id="About" className="min-h-screen mb-2 p-20 pt-20 relative">
       {/* Fondo */}
       <div className="absolute rounded-[28px] overflow-hidden inset-0 z-0">
         <SilkReveal>
@@ -96,7 +82,7 @@ const Work = () => {
 
       <h2 className="text-7xl italic mb-6">
         <BlurText
-          text="Mi trabajo"
+          text="Sobre mi"
           delay={50}
           animateBy="letters"
           direction="bottom"

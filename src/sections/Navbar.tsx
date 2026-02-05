@@ -31,21 +31,21 @@ const scrollToSection = (
 
 const Navbar = () => {
   return (
-    <div className="absolute top-1/2 right-5 -translate-y-1/2">
+    <div className="fixed top-1/2 right-10 -translate-y-1/2 z-100">
       <GlassSurface
         width={80}
-        height={380}
+        height={390}
         borderRadius={20}
-        displace={2}
-        distortionScale={-50}
-        redOffset={0}
-        greenOffset={10}
-        blueOffset={20}
-        brightness={50}
+        displace={1}
+        distortionScale={-250}
+        redOffset={20}
+        greenOffset={40}
+        blueOffset={50}
+        brightness={100}
         opacity={0.93}
         mixBlendMode="screen"
       >
-        <ul className="flex w-full h-full flex-col text-center items-center justify-center text-main-white gap-x-8 px-10">
+        <ul className="flex w-full h-full flex-col text-center items-center justify-center gap-y-1 text-main-white px-10">
           <button
             onClick={(e) => { scrollToSection(e, "#Home") }}
             className="flex flex-col -space-y-2.5"

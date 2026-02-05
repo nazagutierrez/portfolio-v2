@@ -7,10 +7,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import ScrollToTop from "./components/ScrollToTop";
+import Navbar from "./sections/Navbar";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function App() {
+
   useEffect(() => {
     ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -26,6 +28,8 @@ function App() {
       {/* ⚠️ Cursor SIEMPRE fuera del wrapper */}
       <CustomCursor />
       <ScrollToTop />
+      {/* Navbar */}
+      <Navbar />
 
       <div id="smooth-wrapper">
         <div id="smooth-content">

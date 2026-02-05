@@ -1,13 +1,13 @@
 import Silk from "@/components/Silk";
 import Work from "./Work";
 import About from "./About";
-import Navbar from "./Navbar";
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
+import HighlightedWork from "./HighlightedWork";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +18,6 @@ const Home = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
-  const navbarRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -37,16 +36,6 @@ const Home = () => {
       anticipatePin: 1,
     });
 
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      endTrigger: rightRef.current,
-      end: "bottom bottom",
-      pin: navbarRef.current,
-      pinSpacing: false,
-      anticipatePin: 1,
-    });
-
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, []);
 
@@ -60,7 +49,7 @@ const Home = () => {
       scrollTrigger: {
         trigger: rightRef.current,
         start: "bottom bottom",
-        end: "+=100%",
+        end: "+=101%",
         scrub: true,
         pin: false,
         anticipatePin: 1,
@@ -141,8 +130,10 @@ const Home = () => {
         ref={sectionRef}
         className="relative bg-main-black z-20 flex"
       >
+
         {/* ===== LEFT ===== */}
         <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-20">
+        
           {/* Fondo */}
           <div
             className="absolute inset-0"
@@ -164,7 +155,7 @@ const Home = () => {
           </div>
 
           {/* Contenido */}
-          <div className="relative z-20 p-20 pt-34 flex flex-col h-full text-main-white">
+          <div className="relative z-20 p-20 pt-26 flex flex-col h-full text-main-white">
             <h1 className="flex flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
               <BlurText
                 text="Nazareno Gutierrez"
@@ -195,6 +186,7 @@ const Home = () => {
               className="ms-5 mt-8 text-lg font-thin max-w-[600px] text-pretty"
             >
               Buscás un desarrollador Semi-Senior experto en React, Next.js y
+              Buscás un desarrollador 
             </h3>
 
             <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
@@ -241,14 +233,10 @@ const Home = () => {
         {/* ===== RIGHT ===== */}
         <div ref={rightRef} className="w-1/2 min-h-screen m-2 pr-2.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
-            {/* Navbar */}
-            <div ref={navbarRef} className="z-50">
-              <Navbar />
-            </div>
-
             {/* Contenido */}
             <div className="relative z-20 text-main-white space-y-5">
               <Work />
+              <HighlightedWork />
               <About />
             </div>
           </div>

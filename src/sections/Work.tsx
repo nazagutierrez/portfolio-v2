@@ -78,7 +78,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen p-20 pt-38 relative">
+    <section ref={sectionRef} className="min-h-screen p-20 pt-28 relative">
       {/* Fondo */}
       <div className="absolute rounded-b-[28px] overflow-hidden inset-0 z-0">
         <SilkReveal>
@@ -96,7 +96,7 @@ const Work = () => {
 
       <h2 className="text-7xl italic mb-6">
         <BlurText
-          text="Mi trabajo"
+          text="Experiencia"
           delay={50}
           animateBy="letters"
           direction="bottom"
