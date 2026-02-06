@@ -64,3 +64,22 @@ body {
 .border-fade:hover {
   border-color: var(--color-main-yellow);
 }
+
+.custom-bullet {
+  width: 12px;
+  height: 8px;
+  background: var(--main-yellow);
+  transition: all 0.3s ease;
+}
+
+.custom-bullet.swiper-pagination-bullet-active {
+  width: 30px;
+  opacity: 100% !important;
+  border-radius: 4px;
+  background: var(--main-yellow) !important;
+}
+
+.custom-bullet.swiper-pagination-bullet {
+  background-color: var(--main-white);
+  opacity: 50%;
+}

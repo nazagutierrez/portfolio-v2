@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Pagination } from 'swiper/modules';
+import { FreeMode, Pagination, A11y, Navigation } from 'swiper/modules';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { IoIosArrowBack } from "react-icons/io";
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -95,6 +96,10 @@ function MediaViewer({ item, onClose }: ViewerProps) {
 }
 
 export function Carousel() {
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+  const paginationRef = useRef<HTMLDivElement | null>(null);
+
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
 
   useEffect(() => {
@@ -108,14 +113,80 @@ export function Carousel() {
   }, [activeItem]);
 
   return (
-    <>
+    <div className='relative text-main-white'>
+      <button
+        ref={prevRef}
+        aria-label="Previous slide"
+        className="
+          absolute left-2 top-1/2 z-10 -translate-y-1/2
+          hidden md:flex text-2xl
+          h-10 w-10 items-center justify-center
+          rounded-full bg-main-yellow/40 shadow-xl
+          group cursor-pointer hover:bg-main-yellow/70
+          transition-colors duration-200
+        "
+      >
+       <IoIosArrowBack />
+      </button>
+
+      <button
+        ref={nextRef}
+        aria-label="Next slide"
+        className="
+          absolute right-2 top-1/2 z-10 -translate-y-1/2
+          hidden md:flex text-2xl
+          h-10 w-10 items-center justify-center
+          rounded-full bg-main-yellow/40 shadow-xl
+          group cursor-pointer hover:bg-main-yellow/70
+          transition-colors duration-200
+        "
+      >
+        <IoIosArrowBack className='rotate-180'/>
+      </button>
+      
+      <div
+        className="swiper-pagination absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"
+      />
+
       <Swiper
-        slidesPerView={3}
-        spaceBetween={16}
+        pagination={{
+          clickable: true,
+          el: ".swiper-pagination",
+          renderBullet: (_index, className) => {
+            return `
+              <button class="${className} custom-bullet">
+                <span></span>
+              </button>
+            `;
+          },
+        }}
+        onBeforeInit={(swiper) => {
+          // @ts-expect-error Swiper typing
+          swiper.params.navigation.prevEl = prevRef.current;
+          // @ts-expect-error Swiper typing
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
         freeMode
-        pagination={{ clickable: true }}
-        modules={[FreeMode, Pagination]}
-        className="h-40"
+        modules={[FreeMode, Pagination, Navigation, A11y]}
+        className="h-40 w-160 m-0!"
       >
         {media.map(item => (
           <SwiperSlide key={item.id}>
@@ -150,6 +221,6 @@ export function Carousel() {
       {activeItem && (
         <MediaViewer item={activeItem} onClose={() => setActiveItem(null)} />
       )}
-    </>
+    </div>
   );
 }
