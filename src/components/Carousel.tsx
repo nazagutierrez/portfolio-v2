@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Pagination, A11y, Navigation } from 'swiper/modules';
+import { FreeMode, Pagination, A11y } from 'swiper/modules';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { IoIosArrowBack } from "react-icons/io";
+import { createPortal } from 'react-dom';
+import gsap from 'gsap';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -50,10 +51,24 @@ type ViewerProps = {
   onClose: () => void;
 };
 
-import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-
 function MediaViewer({ item, onClose }: ViewerProps) {
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const closeWithAnimation = () => {
+    gsap.to(contentRef.current, {
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.2,
+      onComplete: onClose,
+    });
+
+    gsap.to(overlayRef.current, {
+      opacity: 0,
+      duration: 0.2,
+    });
+  };
+
   // ESC para cerrar
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -64,43 +79,68 @@ function MediaViewer({ item, onClose }: ViewerProps) {
     return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
+  // Animación de entrada
+  useEffect(() => {
+    if (!overlayRef.current || !contentRef.current) return;
+
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      overlayRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.25, ease: 'power1.out' }
+    ).fromTo(
+      contentRef.current,
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' },
+      '-=0.15'
+    );
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
   return createPortal(
-    <div onClick={onClose} className="fixed cursor-zoom-out inset-0 z-100 bg-black/80 flex items-center justify-center">
+    <div
+      ref={overlayRef}
+      onClick={closeWithAnimation}
+      className="fixed cursor-zoom-out inset-0 z-[9999] bg-black/80 flex items-center justify-center"
+    >
       <button
-        onClick={onClose}
+        onClick={closeWithAnimation}
         className="absolute cursor-pointer top-6 right-6 text-white text-2xl"
       >
         ✕
       </button>
 
-        <div onClick={e => e.stopPropagation()}>
-          {item.type === 'image' ? (
-            <img
-              src={item.src}
-              alt=""
-              className="max-w-[90vw] max-h-[90vh] object-contain"
-            />
-          ) : (
-            <video
-              src={item.src}
-              controls
-              autoPlay
-              className="max-w-[90vw] max-h-[90vh]"
-            />
-          )}
-        </div>
-
+      <div
+        ref={contentRef}
+        onClick={e => e.stopPropagation()}
+      >
+        {item.type === 'image' ? (
+          <img
+            src={item.src}
+            alt=""
+            className="max-w-[90vw] max-h-[90vh] object-contain"
+          />
+        ) : (
+          <video
+            src={item.src}
+            controls
+            autoPlay
+            className="max-w-[90vw] max-h-[90vh]"
+          />
+        )}
+      </div>
     </div>,
     document.body
   );
 }
 
 export function Carousel() {
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
-  const paginationRef = useRef<HTMLDivElement | null>(null);
-
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
+  const paginationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const smoother = ScrollSmoother.get();
@@ -114,44 +154,24 @@ export function Carousel() {
 
   return (
     <div className='relative text-main-white'>
-      <button
-        ref={prevRef}
-        aria-label="Previous slide"
-        className="
-          absolute left-2 top-1/2 z-10 -translate-y-1/2
-          hidden md:flex text-2xl
-          h-10 w-10 items-center justify-center
-          rounded-full bg-main-yellow/40 shadow-xl
-          group cursor-pointer hover:bg-main-yellow/70
-          transition-colors duration-200
-        "
-      >
-       <IoIosArrowBack />
-      </button>
-
-      <button
-        ref={nextRef}
-        aria-label="Next slide"
-        className="
-          absolute right-2 top-1/2 z-10 -translate-y-1/2
-          hidden md:flex text-2xl
-          h-10 w-10 items-center justify-center
-          rounded-full bg-main-yellow/40 shadow-xl
-          group cursor-pointer hover:bg-main-yellow/70
-          transition-colors duration-200
-        "
-      >
-        <IoIosArrowBack className='rotate-180'/>
-      </button>
-      
       <div
+        ref={paginationRef}
         className="swiper-pagination absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"
       />
+      
+      {/* FADE IZQUIERDO */}
+      <div className="pointer-events-none absolute shadow-[-20px_0_30px_-5px_#000] left-0 top-0 h-full w-16 z-20
+        bg-gradient-to-r from-black/70 to-transparent
+        " />
+
+      {/* FADE DERECHO */}
+      <div className="pointer-events-none absolute shadow-[20px_0px_30px_-5px_#000] right-0 top-0 h-full w-16 z-20
+        bg-gradient-to-l from-black/60 to-transparent
+        " />
 
       <Swiper
         pagination={{
           clickable: true,
-          el: ".swiper-pagination",
           renderBullet: (_index, className) => {
             return `
               <button class="${className} custom-bullet">
@@ -159,16 +179,6 @@ export function Carousel() {
               </button>
             `;
           },
-        }}
-        onBeforeInit={(swiper) => {
-          // @ts-expect-error Swiper typing
-          swiper.params.navigation.prevEl = prevRef.current;
-          // @ts-expect-error Swiper typing
-          swiper.params.navigation.nextEl = nextRef.current;
-        }}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
         }}
         breakpoints={{
           0: {
@@ -185,7 +195,13 @@ export function Carousel() {
           },
         }}
         freeMode
-        modules={[FreeMode, Pagination, Navigation, A11y]}
+        onBeforeInit={(swiper) => {
+          // aseguramos que pagination sea un objeto
+          if (typeof swiper.params.pagination === 'object') {
+            swiper.params.pagination.el = paginationRef.current;
+          }
+        }}
+        modules={[FreeMode, Pagination, A11y]}
         className="h-40 w-160 m-0!"
       >
         {media.map(item => (

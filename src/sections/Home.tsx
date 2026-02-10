@@ -128,11 +128,11 @@ const Home = () => {
       <section
         id="Home"
         ref={sectionRef}
-        className="relative bg-main-black z-20 flex"
+        className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
 
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="h-screen w-1/2 overflow-hidden z-20">
+        <div ref={leftRef} className="h-screen xl:w-1/2 overflow-hidden z-20">
         
           {/* Fondo */}
           <div
@@ -156,7 +156,7 @@ const Home = () => {
 
           {/* Contenido */}
           <div className="relative z-20 p-20 pt-26 flex flex-col h-full text-main-white">
-            <h1 className="flex flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
+            <h1 className="flex flex-col mb-10 italic text-2rem sm:text-[4rem] lg:text-[6rem] xl:text-[7rem] leading-[7.5rem]">
               <BlurText
                 text="Nazareno Gutierrez"
                 delay={50}
@@ -231,10 +231,10 @@ const Home = () => {
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="w-1/2 min-h-screen m-2 pr-2.5">
+        <div ref={rightRef} className="xl:w-1/2 w-full min-h-screen m-2 pr-2.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
-            <div className="relative z-20 text-main-white space-y-5">
+            <div className="relative w-full z-20 text-main-white space-y-5 bg-main-black">
               <Work />
               <HighlightedWork />
               <About />
@@ -242,7 +242,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="h-screen"></div>
+        <div className="xl:h-screen"></div>
       </section>
 
       {/* ===== BOTTOM ===== */}
@@ -275,7 +275,7 @@ const Home = () => {
         <div className="relative z-0 p-20 flex flex-col h-full text-main-white">
           <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
             <BlurText
-              text="Nazareno Gutierrez"
+              text="Bottom"
               delay={50}
               animateBy="letters"
               direction="bottom"

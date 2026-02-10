@@ -48,43 +48,43 @@ const Navbar = () => {
         <ul className="flex w-full h-full flex-col text-center items-center justify-center gap-y-1 text-main-white px-10">
           <button
             onClick={(e) => { scrollToSection(e, "#Home") }}
-            className="flex flex-col -space-y-2.5"
+            className="flex group flex-col -space-y-2.5 cursor-pointer"
           >
-            <span>H</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">H</span>
             <span>O</span>
-            <span>M</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">M</span>
             <span>E</span>
           </button>
           <button
-            onClick={(e) => { scrollToSection(e, "#About") }}
-            className="flex flex-col -space-y-2.5"
-          >
-            <span>A</span>
-            <span>B</span>
-            <span>O</span>
-            <span>U</span>
-            <span>T</span>
-          </button>
-          <button
             onClick={(e) => { scrollToSection(e, "#Work") }}
-            className="flex flex-col -space-y-2.5"
+            className="flex group flex-col -space-y-2.5 cursor-pointer transition-all"
           >
-            <span>W</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">W</span>
             <span>O</span>
-            <span>R</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">R</span>
             <span>K</span>
           </button>
           <button
-            onClick={(e) => { scrollToSection(e, "#Contact") }}
-            className="flex flex-col -space-y-2.5"
+            onClick={(e) => { scrollToSection(e, "#About") }}
+            className="flex group flex-col -space-y-2.5 cursor-pointer transition-all"
           >
-            <span>C</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">A</span>
+            <span>B</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">O</span>
+            <span>U</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">T</span>
+          </button>
+          <button
+            onClick={(e) => { scrollToSection(e, "#Contact") }}
+            className="flex group flex-col -space-y-2.5 cursor-pointer transition-all"
+          >
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">C</span>
             <span>O</span>
-            <span>N</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">N</span>
             <span>T</span>
-            <span>A</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">A</span>
             <span>C</span>
-            <span>T</span>
+            <span className="group-hover:text-main-yellow group-hover:brightness-125 transition-all">T</span>
           </button>
         </ul>
       </GlassSurface>

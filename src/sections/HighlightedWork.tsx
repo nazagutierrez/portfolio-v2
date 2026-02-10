@@ -5,7 +5,7 @@ import { Carousel } from "@/components/Carousel";
 
 const HighlightedWork = () => {
   return (
-    <section id="HighlightedWork" className="min-h-screen mb-2 pt-20 relative">
+    <section id="Work" className="min-h-screen mb-2 py-20 relative">
       {/* Fondo */}
       <div className="absolute rounded-[28px] overflow-hidden inset-0 -z-30">
         <SilkReveal>
@@ -35,7 +35,15 @@ const HighlightedWork = () => {
         funcionales y estéticas.
       </p>
 
-      <div>
+      <div className="flex flex-col gap-y-16">
+        <div className="ps-10 flex relative w-full justify-start items-center">
+          <img src="/logo-piso-fuerte.png" alt="piso fuerte" className=" w-32 h-32" />
+          <Carousel />
+        </div>
+        <div className="ps-10 flex relative w-full justify-start items-center">
+          <img src="/logo-piso-fuerte.png" alt="piso fuerte" className=" w-32 h-32" />
+          <Carousel />
+        </div>
         <div className="ps-10 flex relative w-full justify-start items-center">
           <img src="/logo-piso-fuerte.png" alt="piso fuerte" className=" w-32 h-32" />
           <Carousel />

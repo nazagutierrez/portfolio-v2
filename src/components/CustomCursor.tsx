@@ -31,20 +31,21 @@ export default function CustomCursor() {
     hoverables.forEach((el) => {
       el.addEventListener("mouseenter", () => {
         gsap.to(cursor, {
-          scale: 1.5,
-          backgroundColor: "rgba(255, 215, 0, 0.15)",
+          height: "30px",
+          width: "30px",
           borderColor: "#FFD700",
-          duration: 0.25,
+          duration: 0.35,
           ease: "power3.out",
         });
       });
 
       el.addEventListener("mouseleave", () => {
         gsap.to(cursor, {
-          scale: 1,
+          height: "20px",
+          width: "20px",
           backgroundColor: "transparent",
           borderColor: "#FFD700",
-          duration: 0.25,
+          duration: 0.35,
           ease: "power3.out",
         });
       });
