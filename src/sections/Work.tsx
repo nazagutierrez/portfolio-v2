@@ -3,11 +3,15 @@ import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 import Silk from "@/components/Silk";
+import LogoLoop from "@/components/LogoLoop";
+import type { LogoItem } from "@/components/LogoLoop";
 
 const experiences = [
   {
     title: "Piso Fuerte",
     role: "Frontend Developer",
+    logo: "/logo-piso-fuerte-small.png",
+    logoLoop: false,
     description:
       "Desarrollo de interfaces modernas con React y TailwindCSS, foco en performance y UX.",
     year: "2025",
@@ -15,6 +19,8 @@ const experiences = [
   {
     title: "Zergex",
     role: "Frontend Developer",
+    logo: "/zergex-logo-small.png",
+    logoLoop: false,
     description:
       "Construcción de vistas complejas, animaciones y componentes reutilizables en React.",
     year: "2024",
@@ -22,6 +28,8 @@ const experiences = [
   {
     title: "TPEOficial",
     role: "Frontend Developer",
+    logo: "/dymo-logo-small.png",
+    logoLoop: false,
     description:
       "Trabajo en productos SaaS, emails, herramientas con IA y colaboración directa con diseño y comunicación.",
     year: "2023",
@@ -29,6 +37,13 @@ const experiences = [
   {
     title: "Freelance",
     role: "Frontend Developer",
+    logo: [
+      { src: "/dymo-logo-small.png", alt: "Nordicaps", href: "https://company1.com" },
+      { src: "/dymo-logo-small.png", alt: "Cookta", href: "https://company2.com" },
+      { src: "/dymo-logo-small.png", alt: "Mens House Barber", href: "https://company3.com" },
+      { src: "/dymo-logo-small.png", alt: "Rave Dates", href: "https://company3.com" },
+    ],
+    logoLoop: true,
     description:
       "Desarrollo de soluciones a medida con React, Next.js y Firebase para distintos clientes.",
     year: "2022",
@@ -118,7 +133,26 @@ const Work = () => {
             <span className="absolute -left-[16px] top-3 w-2 h-2 rounded-full bg-main-yellow" />
 
             <div className="flex flex-col">
-              <h3 className="text-2xl italic">{exp.title}</h3>
+              <div className="text-2xl italic flex items-top">
+                {
+                  exp.logoLoop ? 
+                  <LogoLoop
+                  className="h-10! me-2"
+                    logos={exp.logo as LogoItem[]}
+                    speed={30}
+                    fadeOutColor="none"
+                    direction="up"
+                    logoHeight={20}
+                    gap={5}
+                    hoverSpeed={0}
+                    fadeOut
+                  />
+                  :
+                  <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="piso fuerte" className="w-10 h-10 p-2 pt-0 object-contain" />
+                }
+                
+                <h3>{exp.title}</h3>
+              </div>
               <span className="text-sm text-main-white/60 mb-2">
                 {exp.role} · {exp.year}
               </span>
