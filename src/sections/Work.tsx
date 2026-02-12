@@ -38,10 +38,10 @@ const experiences = [
     title: "Freelance",
     role: "Frontend Developer",
     logo: [
-      { src: "/dymo-logo-small.png", alt: "Nordicaps", href: "https://company1.com" },
-      { src: "/dymo-logo-small.png", alt: "Cookta", href: "https://company2.com" },
-      { src: "/dymo-logo-small.png", alt: "Mens House Barber", href: "https://company3.com" },
-      { src: "/dymo-logo-small.png", alt: "Rave Dates", href: "https://company3.com" },
+      { src: "/logo-rave-dates.png", alt: "Cookta", href: "https://company2.com" },
+      { src: "/nordicaps-logo.png", alt: "Mens House Barber", href: "https://company3.com" },
+      { src: "/logo-cookta.png", alt: "Rave Dates", href: "https://company3.com" },
+      { src: "/logo-menshousebarber.webp", alt: "Rave Dates", href: "https://company3.com" },
     ],
     logoLoop: true,
     description:
