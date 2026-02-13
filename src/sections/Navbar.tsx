@@ -24,7 +24,7 @@ const scrollToSection = (
   scrollTween = gsap.to(smoother, {
     scrollTop: target,
     duration: 2,
-    ease: "power2.out", // NADA de expo / elastic
+    ease: "power2.out",
     overwrite: "auto",
   });
 };

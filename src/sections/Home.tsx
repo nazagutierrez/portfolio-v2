@@ -27,7 +27,6 @@ const Home = () => {
       trigger: sectionRef.current,
       start: "top top",
 
-      // 👇 esto es CLAVE
       endTrigger: rightRef.current,
       end: "bottom bottom",
 
@@ -182,7 +181,6 @@ const Home = () => {
               muchas ganas de trabajar? ¡Hablemos!
             </h3>
             <h3
-              ref={textRef}
               className="ms-5 mt-8 text-lg font-thin max-w-[600px] text-pretty"
             >
               Buscás un desarrollador Semi-Senior experto en React, Next.js y
@@ -247,88 +245,89 @@ const Home = () => {
 
       {/* ===== BOTTOM ===== */}
       <div
-        ref={bottomRef}
         id="Contact"
         className="h-screen relative w-full overflow-hidden z-0"
       >
-        {/* Fondo */}
-        <div
-          className="absolute inset-0"
-          style={{ clipPath: "url(#clip-bottom)" }}
-        >
+        <div ref={bottomRef} className="h-full w-full">
+          {/* Fondo */}
           <div
             className="absolute inset-0"
             style={{ clipPath: "url(#clip-bottom)" }}
           >
-            <SilkReveal>
-              {(onReady: () => void) => (
-                <>
-                  <SilkFallback />
-                  <Silk color="#8b7732" onReady={onReady} />
-                </>
-              )}
-            </SilkReveal>
-          </div>
-        </div>
-
-        {/* Contenido */}
-        <div className="relative z-0 p-20 flex flex-col h-full text-main-white">
-          <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
-            <BlurText
-              text="Bottom"
-              delay={50}
-              animateBy="letters"
-              direction="bottom"
-              className="max-w-[660px]"
-            />
-          </h1>
-
-          <h2 className="text-[2rem] font-thin mb-8 italic ms-5">
-            Frontend Developer SSR
-          </h2>
-
-          <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
-            Buscás un desarrollador Semi-Senior experto en React, Next.js y
-            Typescript, con buen trabajo en equipo, buen ojo para el diseño y
-            muchas ganas de trabajar? ¡Hablemos!
-          </h3>
-
-          <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
-            <div className="h-16 z-0 w-px bg-main-yellow absolute left-27"></div>
-
-            <div className="overflow-hidden flex ps-7 gap-x-5">
-              {options.map(({ name, href }, index) => (
-                <a
-                  href={href}
-                  key={index}
-                  target="_blank"
-                  className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
-                >
-                  {name}
-                </a>
-              ))}
+            <div
+              className="absolute inset-0"
+              style={{ clipPath: "url(#clip-bottom)" }}
+            >
+              <SilkReveal>
+                {(onReady: () => void) => (
+                  <>
+                    <SilkFallback />
+                    <Silk color="#8b7732" onReady={onReady} />
+                  </>
+                )}
+              </SilkReveal>
             </div>
           </div>
-        </div>
 
-        {/* Frame */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          viewBox={`0 0 ${SIZE} ${SIZE}`}
-        >
-          <defs>
-            <clipPath id="clip-bottom" clipPathUnits="objectBoundingBox">
-              <rect
-                x={0.005}
-                y={0.01}
-                width={0.99}
-                height={0.98}
-                rx={0.02}
-                ry={0.03}
+          {/* Contenido */}
+          <div className="relative z-0 p-20 flex flex-col h-full text-main-white">
+            <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
+              <BlurText
+                text="Bottom"
+                delay={50}
+                animateBy="letters"
+                direction="bottom"
+                className="max-w-[660px]"
               />
-            </clipPath>
-          </defs>
-        </svg>
+            </h1>
+
+            <h2 className="text-[2rem] font-thin mb-8 italic ms-5">
+              Frontend Developer SSR
+            </h2>
+
+            <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
+              Buscás un desarrollador Semi-Senior experto en React, Next.js y
+              Typescript, con buen trabajo en equipo, buen ojo para el diseño y
+              muchas ganas de trabajar? ¡Hablemos!
+            </h3>
+
+            <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
+              <div className="h-16 z-0 w-px bg-main-yellow absolute left-27"></div>
+
+              <div className="overflow-hidden flex ps-7 gap-x-5">
+                {options.map(({ name, href }, index) => (
+                  <a
+                    href={href}
+                    key={index}
+                    target="_blank"
+                    className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
+                  >
+                    {name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Frame */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox={`0 0 ${SIZE} ${SIZE}`}
+          >
+            <defs>
+              <clipPath id="clip-bottom" clipPathUnits="objectBoundingBox">
+                <rect
+                  x={0.005}
+                  y={0.01}
+                  width={0.99}
+                  height={0.98}
+                  rx={0.02}
+                  ry={0.03}
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
       </div>
     </>
   );
