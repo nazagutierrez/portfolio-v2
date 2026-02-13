@@ -12,7 +12,6 @@ import Navbar from "./sections/Navbar";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function App() {
-
   useEffect(() => {
     ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -22,6 +21,25 @@ function App() {
       smoothTouch: 0.1,
     });
   }, []);
+
+  
+useEffect(() => {
+  const stopScrollTween = () => {
+    const smoother = ScrollSmoother.get();
+    if (!smoother) return;
+
+    gsap.killTweensOf(smoother);
+  };
+
+  window.addEventListener("wheel", stopScrollTween, { passive: true });
+  window.addEventListener("touchstart", stopScrollTween, { passive: true });
+
+  return () => {
+    window.removeEventListener("wheel", stopScrollTween);
+    window.removeEventListener("touchstart", stopScrollTween);
+  };
+}, []);
+
 
   return (
     <Router>
