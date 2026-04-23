@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 import HighlightedWork from "./HighlightedWork";
+import Contact from "./Contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,7 @@ const Home = () => {
       pin: leftRef.current,
       pinSpacing: false,
       anticipatePin: 1,
+      invalidateOnRefresh: true,
     });
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -46,6 +48,7 @@ const Home = () => {
 
     const tl = gsap.timeline({
       scrollTrigger: {
+        id: "contact-reveal",
         trigger: rightRef.current,
         start: "bottom bottom",
         end: "+=101%",
@@ -74,48 +77,95 @@ const Home = () => {
   }, []);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(subtitleRef.current, {
-        opacity: 0,
-        delay: 0.7,
-        filter: "blur(14px)",
-        duration: 1,
-        ease: "power2.out",
-      });
+    let mm = gsap.matchMedia();
 
-      gsap.from(textRef.current, {
-        opacity: 0,
-        delay: 0.8,
-        filter: "blur(14px)",
-        duration: 1,
-        ease: "power2.out",
-      });
+    mm.add(
+      {
+        isDesktop: "(min-width: 1280px)",
+        isMobile: "(max-width: 1279px)",
+      },
+      (context) => {
+        const { isDesktop } = context.conditions as { isDesktop: boolean };
+        const mainTl = gsap.timeline({
+          defaults: { ease: "power4.inOut" },
+        });
 
-      gsap.from(contactLineRef.current, {
-        height: 0,
-        delay: 0.9,
-        duration: 2,
-        ease: "power2.out",
-      });
+        if (isDesktop) {
+          // Intro Layout Animation (Desktop)
+          // Usamos xPercent para el solapamiento sin romper el flujo de Tailwind
+          gsap.set(leftRef.current, { zIndex: 30 });
+          gsap.set(rightRef.current, {
+            xPercent: -99,
+            zIndex: 20,
+          });
 
-      gsap.from(".contact-item", {
-        opacity: 0,
-        delay: 1,
-        x: -80,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.3,
-      });
-    }, sectionRef);
+          mainTl
+            .to(rightRef.current, {
+              xPercent: 0,
+              duration: 2.2,
+              delay: 0.5,
+              ease: "power4.inOut",
+            })
+            .set([leftRef.current, rightRef.current], {
+              clearProps: "zIndex,xPercent",
+            })
+            .call(() => ScrollTrigger.refresh());
+        }
 
-    return () => ctx.revert();
+        // Content Animations (Synced)
+        mainTl
+          .from(
+            subtitleRef.current,
+            {
+              opacity: 0,
+              filter: "blur(14px)",
+              duration: 1,
+              ease: "power2.out",
+            },
+            isDesktop ? "-=1" : 0.7,
+          )
+          .from(
+            textRef.current,
+            {
+              opacity: 0,
+              filter: "blur(14px)",
+              duration: 1,
+              ease: "power2.out",
+            },
+            "-=0.8",
+          )
+          .from(
+            contactLineRef.current,
+            {
+              height: 0,
+              duration: 1.5,
+              ease: "power2.out",
+            },
+            "-=0.5",
+          )
+          .from(
+            ".contact-item",
+            {
+              opacity: 0,
+              x: -80,
+              duration: 0.6,
+              ease: "power2.out",
+              stagger: 0.2,
+            },
+            "-=1",
+          );
+      },
+      sectionRef,
+    );
+
+    return () => mm.revert();
   }, []);
 
   const SIZE = 1000;
 
   const options = [
     { name: "Enviar mail", href: "mailto:nazarenojunin@gmail.com" },
-    { name: "Ver CV", href: "https://nazareno.io/cv" },
+    { name: "Ver CV", href: "https://docs.google.com/document/d/1EqLsHFxXghg_7N9ZkMPCujrz_Su4o-KTL7avZmoiBys/edit?usp=sharing" },
     {
       name: "Whatsapp",
       href: "https://api.whatsapp.com/send?phone=542364329720",
@@ -129,14 +179,12 @@ const Home = () => {
         ref={sectionRef}
         className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
-
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="h-screen xl:w-1/2 overflow-hidden z-20">
+        <div ref={leftRef} className="h-screen w-full xl:w-1/2 overflow-hidden z-20">
         
           {/* Fondo */}
           <div
-            className="absolute inset-0"
-            style={{ clipPath: "url(#clip-left)" }}
+            className="absolute inset-0 clip-left-responsive"
           >
             <div
               className="absolute inset-0"
@@ -214,7 +262,17 @@ const Home = () => {
             viewBox={`0 0 ${SIZE} ${SIZE}`}
           >
             <defs>
-              <clipPath id="clip-left" clipPathUnits="objectBoundingBox">
+              <clipPath id="clip-left-mobile" clipPathUnits="objectBoundingBox">
+                <rect
+                  x={0.01}
+                  y={0.01}
+                  width={0.98}
+                  height={0.98}
+                  rx={0.03}
+                  ry={0.03}
+                />
+              </clipPath>
+              <clipPath id="clip-left-desktop" clipPathUnits="objectBoundingBox">
                 <rect
                   x={0.01}
                   y={0.01}
@@ -245,89 +303,11 @@ const Home = () => {
 
       {/* ===== BOTTOM ===== */}
       <div
+        ref={bottomRef}
         id="Contact"
         className="h-screen relative w-full overflow-hidden z-0"
       >
-        <div ref={bottomRef} className="h-full w-full">
-          {/* Fondo */}
-          <div
-            className="absolute inset-0"
-            style={{ clipPath: "url(#clip-bottom)" }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{ clipPath: "url(#clip-bottom)" }}
-            >
-              <SilkReveal>
-                {(onReady: () => void) => (
-                  <>
-                    <SilkFallback />
-                    <Silk color="#8b7732" onReady={onReady} />
-                  </>
-                )}
-              </SilkReveal>
-            </div>
-          </div>
-
-          {/* Contenido */}
-          <div className="relative z-0 p-20 flex flex-col h-full text-main-white">
-            <h1 className="flex mt-16 flex-col mb-10 italic text-[8rem] leading-[7.5rem]">
-              <BlurText
-                text="Bottom"
-                delay={50}
-                animateBy="letters"
-                direction="bottom"
-                className="max-w-[660px]"
-              />
-            </h1>
-
-            <h2 className="text-[2rem] font-thin mb-8 italic ms-5">
-              Frontend Developer SSR
-            </h2>
-
-            <h3 className="ms-5 text-lg font-thin max-w-[600px] text-pretty">
-              Buscás un desarrollador Semi-Senior experto en React, Next.js y
-              Typescript, con buen trabajo en equipo, buen ojo para el diseño y
-              muchas ganas de trabajar? ¡Hablemos!
-            </h3>
-
-            <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
-              <div className="h-16 z-0 w-px bg-main-yellow absolute left-27"></div>
-
-              <div className="overflow-hidden flex ps-7 gap-x-5">
-                {options.map(({ name, href }, index) => (
-                  <a
-                    href={href}
-                    key={index}
-                    target="_blank"
-                    className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
-                  >
-                    {name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Frame */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox={`0 0 ${SIZE} ${SIZE}`}
-          >
-            <defs>
-              <clipPath id="clip-bottom" clipPathUnits="objectBoundingBox">
-                <rect
-                  x={0.005}
-                  y={0.01}
-                  width={0.99}
-                  height={0.98}
-                  rx={0.02}
-                  ry={0.03}
-                />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
+        <Contact size={SIZE}/>
       </div>
     </>
   );

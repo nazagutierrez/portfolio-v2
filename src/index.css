@@ -13,6 +13,12 @@
   --color-main-yellow: var(--main-yellow);
 }
 
+@media (hover: none) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
 * {
   font-family: "Zalando Sans SemiExpanded", sans-serif;
   font-optical-sizing: auto;
@@ -82,4 +88,14 @@ body {
 .custom-bullet.swiper-pagination-bullet {
   background-color: var(--main-white);
   opacity: 50%;
+}
+
+.clip-left-responsive {
+  clip-path: url(#clip-left-mobile);
+}
+
+@media (min-width: 1280px) {
+  .clip-left-responsive {
+    clip-path: url(#clip-left-desktop);
+  }
 }

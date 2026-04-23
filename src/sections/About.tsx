@@ -4,59 +4,41 @@ import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 import Silk from "@/components/Silk";
 
-const experiences = [
-  {
-    title: "Piso Fuerte",
-    role: "Frontend Developer",
-    description:
-      "Desarrollo de interfaces modernas con React y TailwindCSS, foco en performance y UX.",
-    year: "2025",
-  },
-  {
-    title: "Zergex",
-    role: "Frontend Developer",
-    description:
-      "Construcción de vistas complejas, animaciones y componentes reutilizables en React.",
-    year: "2024",
-  }
-];
-
-const Work = () => {
+const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const descriptionRef = useRef<HTMLHeadingElement>(null);
-  const lineRef = useRef<HTMLSpanElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        descriptionRef.current,
-        {
-          opacity: 0,
-          filter: "blur(14px)",
-        },
-        {
-          opacity: 1,
-          filter: "blur(0px)",
-          delay: 0.7,
-          duration: 1,
-          ease: "power2.out",
-        }
-);
-
-      gsap.from(lineRef.current, {
-        height:0,
-        delay: 0.9,
-        duration: 2,
-        ease: "power2.out",
-      })
-
-      gsap.from(".work-item", {
+      // Animación para el contenido de texto
+      gsap.from(contentRef.current, {
         opacity: 0,
-        y: 40,
-        duration: 0.6,
-        delay: 1.7,
-        ease: "power2.out",
-        stagger: 0.4,
+        x: -50,
+        filter: "blur(10px)",
+        duration: 1.2,
+        delay: 0.5,
+        ease: "power3.out",
+      });
+
+      // Animación para la imagen
+      gsap.from(imageRef.current, {
+        opacity: 0,
+        x: 50,
+        scale: 0.9,
+        filter: "blur(10px)",
+        duration: 1.2,
+        delay: 0.8,
+        ease: "power3.out",
+      });
+
+      // Efecto sutil de flotación para la imagen
+      gsap.to(imageRef.current, {
+        y: 15,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
       });
     }, sectionRef);
 
@@ -64,15 +46,19 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="About" className="min-h-screen mb-2 p-20 pt-20 relative">
-      {/* Fondo */}
+    <section 
+      id="About" 
+      ref={sectionRef} 
+      className="min-h-screen flex items-center p-10 md:p-20 relative overflow-hidden"
+    >
+      {/* Fondo con Silk */}
       <div className="absolute rounded-[28px] overflow-hidden inset-0 z-0">
         <SilkReveal>
           {(onReady: () => void) => (
             <>
               <SilkFallback />
               <Silk 
-                color="#4b4b4b"         
+                color="#242424"         
                 onReady={onReady} 
               />
             </>
@@ -80,43 +66,63 @@ const Work = () => {
         </SilkReveal>
       </div>
 
-      <h2 className="text-7xl italic mb-6">
-        <BlurText
-          text="Sobre mi"
-          delay={50}
-          animateBy="letters"
-          direction="bottom"
-        />
-      </h2>
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        
+        {/* Lado Izquierdo: Texto */}
+        <div ref={contentRef} className="flex-1 space-y-8">
+          <h2 className="text-6xl md:text-8xl italic font-light leading-tight">
+            <BlurText
+              text="Sobre mí"
+              delay={50}
+              animateBy="letters"
+              direction="bottom"
+            />
+          </h2>
+          
+          <div className="space-y-6 text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl">
+            <p>
+              Soy un desarrollador <span className="text-main-yellow font-normal">Frontend SSR</span> apasionado por crear experiencias digitales que no solo funcionen a la perfección, sino que también cautiven visualmente.
+            </p>
+            <p>
+              Mi enfoque se centra en la intersección del diseño y la ingeniería. Creo firmemente que la <span className="italic">performance</span> y la <span className="italic">estética</span> deben ir de la mano para lograr productos excepcionales.
+            </p>
+            <p>
+              Con años de experiencia en el ecosistema de <span className="text-main-yellow font-normal">React</span>, me especializo en construir interfaces dinámicas, animaciones fluidas y arquitecturas escalables que elevan la propuesta de valor de cada proyecto.
+            </p>
+          </div>
 
-      <p ref={descriptionRef} className="text-xl max-w-[700px] mb-16 text-main-white font-thin">
-        Experiencia profesional y proyectos donde construí interfaces modernas,
-        funcionales y estéticas.
-      </p>
-
-      <div className="relative pl-10 space-y-14">
-        {/* Línea vertical */}
-        <span ref={lineRef} className="absolute left-1 top-2 bottom-2 w-px bg-main-white/40" />
-
-        {experiences.map((exp, index) => (
-          <div key={index} className="work-item relative">
-            {/* Punto */}
-            <span className="absolute -left-[16px] top-3 w-2 h-2 rounded-full bg-main-yellow" />
-
-            <div className="flex flex-col">
-              <h3 className="text-2xl italic">{exp.title}</h3>
-              <span className="text-sm text-main-white/60 mb-2">
-                {exp.role} · {exp.year}
-              </span>
-              <p className="text-main-white max-w-[600px]">
-                {exp.description}
-              </p>
+          <div className="pt-4">
+            <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
+              Descargar CV
             </div>
           </div>
-        ))}
+        </div>
+
+        {/* Lado Derecho: Imagen */}
+        <div ref={imageRef} className="flex-1 flex will-change-transform justify-center lg:justify-end">
+          <div className="relative group">
+            {/* Decoración de fondo para la imagen */}
+            <div className="absolute -inset-4 border border-main-yellow/30 rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+            <div className="absolute -inset-4 border border-main-white/20 rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+            
+            <div className="relative w-72 h-96 md:w-80 md:h-[480px] rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500  shadow-2xl">
+              <img 
+                src="/naza.png" 
+                alt="Nazareno Gutierrez" 
+                className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105"
+              />
+            </div>
+            
+            {/* Tag flotante */}
+            <div className="absolute -bottom-6 -right-6 bg-main-yellow text-main-black px-6 py-3 rounded-2xl font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
+              Frontend Dev
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
 };
 
-export default Work;
+export default About;

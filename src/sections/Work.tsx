@@ -11,6 +11,7 @@ const experiences = [
     title: "Piso Fuerte",
     role: "Frontend Developer",
     logo: "/logo-piso-fuerte-small.png",
+    href: "https://pisofuerte.com.ar",
     logoLoop: false,
     description:
       "Desarrollo de interfaces modernas con React y TailwindCSS, foco en performance y UX.",
@@ -20,6 +21,7 @@ const experiences = [
     title: "Zergex",
     role: "Frontend Developer",
     logo: "/zergex-logo-small.png",
+    href: "https://ravedates.proxising.com",
     logoLoop: false,
     description:
       "Construcción de vistas complejas, animaciones y componentes reutilizables en React.",
@@ -29,6 +31,7 @@ const experiences = [
     title: "TPEOficial",
     role: "Frontend Developer",
     logo: "/dymo-logo-small.png",
+    href: "https://dymo.tpeoficial.com",
     logoLoop: false,
     description:
       "Trabajo en productos SaaS, emails, herramientas con IA y colaboración directa con diseño y comunicación.",
@@ -101,7 +104,7 @@ const Work = () => {
             <>
               <SilkFallback />
               <Silk 
-                color="#4b4b4b"         
+                color="#242424"         
                 onReady={onReady} 
               />
             </>
@@ -154,9 +157,13 @@ const Work = () => {
                 <h3>{exp.title}</h3>
               </div>
               <span className="text-sm text-main-white/60 mb-2">
-                {exp.role} · {exp.year}
+                {exp.role} · {exp.year} {" "}
+                <span className={exp.logoLoop ? "hidden" : ""}>· </span>
+                <a href={exp.href} className="underline hover:decoration-white/70" target="_blank" rel="noopener noreferrer">
+                    {exp.href} 
+                </a>
               </span>
-              <p className="text-main-white max-w-[600px]">
+              <p className="text-main-white/90 max-w-[600px]">
                 {exp.description}
               </p>
             </div>

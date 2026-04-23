@@ -13,7 +13,7 @@ const HighlightedWork = () => {
             <>
               <SilkFallback />
               <Silk 
-                color="#4b4b4b"         
+                color="#242424"         
                 onReady={onReady} 
               />
             </>

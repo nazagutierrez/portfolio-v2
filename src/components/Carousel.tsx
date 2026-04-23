@@ -33,13 +33,13 @@ const media: MediaItem[] = [
     src: '/a1.jpg',
   },
   {
-    id: 2,
+    id: 4,
     type: 'video',
     src: '/v1.mp4',
     thumbnail: '/a1.jpg',
   },
   {
-    id: 3,
+    id: 5,
     type: 'image',
     src: '/a2.jpg',
   },

@@ -1,9 +1,13 @@
+import { useLayoutEffect, useRef } from "react";
+import HandScrollSvg from "@/assets/svg/HandScrollSvg";
 import GlassSurface from "@/components/GlassSurface";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollToPlugin);
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 let scrollTween: gsap.core.Tween | null = null;
 
@@ -19,7 +23,16 @@ const scrollToSection = (
   // matar animación anterior
   scrollTween?.kill();
 
-  const target = smoother.offset(element, "top 1%");
+  let target: number | string = smoother.offset(element, "top 1%");
+
+  if (element === "#Contact") {
+    const st = ScrollTrigger.getById("contact-reveal");
+    if (st) {
+      target = st.end;
+    } else {
+      target = smoother.offset(element, "bottom bottom");
+    }
+  }
 
   scrollTween = gsap.to(smoother, {
     scrollTop: target,
@@ -30,8 +43,34 @@ const scrollToSection = (
 };
 
 const Navbar = () => {
+  const iconRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ repeat: -1 });
+      tl.fromTo(
+        iconRef.current,
+        { y: 0, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+      )
+        .to(
+          iconRef.current,
+          { y: -60, opacity: 0, duration: 1, ease: "power2.in" },
+        )
+        .to({}, { duration: 0.3 }); // Pausa al final
+    }, iconRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="fixed top-1/2 right-10 -translate-y-1/2 z-100">
+      <div
+        ref={iconRef}
+        className="absolute -bottom-45 left-10 -translate-x-1/2 z-50 pointer-events-none"
+      >
+        <HandScrollSvg className="w-11 h-11 text-main-white/70 rotate-320" />
+      </div>
       <GlassSurface
         width={80}
         height={390}
