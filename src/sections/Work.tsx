@@ -1,8 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
-import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
-import Silk from "@/components/Silk";
 import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 
@@ -96,22 +94,10 @@ const Work = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen p-20 pt-28 relative">
+    <section ref={sectionRef} className="min-h-screen bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden p-20 pt-28 relative">
       {/* Fondo */}
-      <div className="absolute rounded-b-[28px] overflow-hidden inset-0 z-0">
-        <SilkReveal>
-          {(onReady: () => void) => (
-            <>
-              <SilkFallback />
-              <Silk 
-                color="#242424"         
-                onReady={onReady} 
-              />
-            </>
-          )}
-        </SilkReveal>
-      </div>
-
+      <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
+      
       <h2 className="text-7xl italic mb-6">
         <BlurText
           text="Experiencia"

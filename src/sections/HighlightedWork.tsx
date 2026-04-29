@@ -1,25 +1,11 @@
 import BlurText from "@/components/BlurText";
-import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
-import Silk from "@/components/Silk";
 import { Carousel } from "@/components/Carousel";
 
 const HighlightedWork = () => {
   return (
-    <section id="Work" className="min-h-screen mb-2 py-20 relative">
+    <section id="Work" className="min-h-screen bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden mb-2 py-20 relative">
       {/* Fondo */}
-      <div className="absolute rounded-[28px] overflow-hidden inset-0 -z-30">
-        <SilkReveal>
-          {(onReady: () => void) => (
-            <>
-              <SilkFallback />
-              <Silk 
-                color="#242424"         
-                onReady={onReady} 
-              />
-            </>
-          )}
-        </SilkReveal>
-      </div>
+      <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
       <h2 className="ps-20 text-7xl italic mb-6">
         <BlurText

@@ -1,8 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
-import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
-import Silk from "@/components/Silk";
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -49,22 +47,10 @@ const About = () => {
     <section 
       id="About" 
       ref={sectionRef} 
-      className="min-h-screen flex items-center p-10 md:p-20 relative overflow-hidden"
+      className="min-h-screen flex items-center p-10 md:p-20 relative  bg-linear-0 from-[#2b2401] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden "
     >
       {/* Fondo con Silk */}
-      <div className="absolute rounded-[28px] overflow-hidden inset-0 z-0">
-        <SilkReveal>
-          {(onReady: () => void) => (
-            <>
-              <SilkFallback />
-              <Silk 
-                color="#242424"         
-                onReady={onReady} 
-              />
-            </>
-          )}
-        </SilkReveal>
-      </div>
+      <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
