@@ -11,6 +11,8 @@
   --color-main-black: var(--main-black);
   --color-main-white: var(--main-white);
   --color-main-yellow: var(--main-yellow);
+
+  --breakpoint-xxl: 96rem;
 }
 
 @media (hover: none) {

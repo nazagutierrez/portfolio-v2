@@ -15,7 +15,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
-  const contactLineRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -135,15 +134,6 @@ const Home = () => {
             "-=0.8",
           )
           .from(
-            contactLineRef.current,
-            {
-              height: 0,
-              duration: 1.5,
-              ease: "power2.out",
-            },
-            "-=0.5",
-          )
-          .from(
             ".contact-item",
             {
               opacity: 0,
@@ -202,57 +192,57 @@ const Home = () => {
           </div>
 
           {/* Contenido */}
-          <div className="relative z-20 p-20 pt-26 flex flex-col h-full text-main-white">
-            <h1 className="flex flex-col mb-10 italic text-2rem sm:text-[4rem] lg:text-[6rem] xl:text-[7rem] leading-[7.5rem]">
+          <div className="relative z-20 text-center pt-40 xl:pt-26 flex flex-col items-center h-full text-main-white">
+            <h1 className="mx-auto mb-10 italic text-2rem sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-30">
+              <BlurText
+                text="NazarenoGutierrez"
+                delay={50}
+                animateBy="letters"
+                direction="bottom"
+                className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
+              />
               <BlurText
                 text="Nazareno Gutierrez"
                 delay={50}
                 animateBy="letters"
                 direction="bottom"
-                className="max-w-[660px]"
+                className="justify-center xl:hidden block"
               />
             </h1>
 
             <h2
               ref={subtitleRef}
-              className="text-[2rem] font-thin mb-8 italic ms-5"
+              className="text-[2rem] font-thin mb-8 italic"
             >
               Frontend Developer SSR
             </h2>
 
             <h3
               ref={textRef}
-              className="ms-5 text-lg font-thin max-w-[600px] text-pretty"
+              className="xl:text-lg font-thin max-w-[600px] text-pretty px-10"
             >
               Buscás un desarrollador Semi-Senior experto en React, Next.js y
               Typescript, con buen trabajo en equipo, buen ojo para el diseño y
               muchas ganas de trabajar? ¡Hablemos!
             </h3>
             <h3
-              className="ms-5 mt-8 text-lg font-thin max-w-[600px] text-pretty"
+              className="mt-8 xl:text-lg font-thin max-w-[600px] text-pretty px-10"
             >
               Buscás un desarrollador Semi-Senior experto en React, Next.js y
               Buscás un desarrollador 
             </h3>
 
-            <div className="w-full flex justify-start items-center gap-x-5 ms-7 mt-20">
-              <div
-                ref={contactLineRef}
-                className="h-16 z-20 w-px bg-main-yellow absolute left-27"
-              ></div>
-
-              <div className="overflow-hidden flex ps-7 gap-x-5">
-                {options.map(({ name, href }, index) => (
-                  <a
-                    href={href}
-                    key={index}
-                    target="_blank"
-                    className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
-                  >
-                    {name}
-                  </a>
-                ))}
-              </div>
+            <div className="w-full flex justify-center items-center gap-x-5 mt-10 xxl:mt-20">
+              {options.map(({ name, href }, index) => (
+                <a
+                  href={href}
+                  key={index}
+                  target="_blank"
+                  className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
+                >
+                  {name}
+                </a>
+              ))}
             </div>
           </div>
 

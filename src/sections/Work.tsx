@@ -94,11 +94,11 @@ const Work = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden p-20 pt-28 relative">
+    <section ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden p-20 pt-32 relative">
       {/* Fondo */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
       
-      <h2 className="text-7xl italic mb-6">
+      <h2 className="text-7xl mx-auto w-fit italic mb-12">
         <BlurText
           text="Experiencia"
           delay={50}
@@ -112,7 +112,7 @@ const Work = () => {
         funcionales y estéticas.
       </p>
 
-      <div className="relative pl-10 space-y-14">
+      <div className="relative pl-10 text-start space-y-14">
         {/* Línea vertical */}
         <span ref={lineRef} className="absolute left-1 top-2 bottom-2 w-px bg-main-white/40" />
 

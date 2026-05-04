@@ -44,16 +44,15 @@ const About = () => {
   }, []);
 
   return (
-    <section 
-      id="About" 
-      ref={sectionRef} 
+    <section
+      id="About"
+      ref={sectionRef}
       className="min-h-screen flex items-center p-10 md:p-20 relative  bg-linear-0 from-[#2b2401] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden "
     >
       {/* Fondo con Silk */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        
         {/* Lado Izquierdo: Texto */}
         <div ref={contentRef} className="flex-1 space-y-8">
           <h2 className="text-6xl md:text-8xl italic font-light leading-tight">
@@ -64,16 +63,60 @@ const About = () => {
               direction="bottom"
             />
           </h2>
-          
+
           <div className="space-y-6 text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl">
             <p>
-              Soy un desarrollador <span className="text-main-yellow font-normal">Frontend SSR</span> apasionado por crear experiencias digitales que no solo funcionen a la perfección, sino que también cautiven visualmente.
+              Soy un desarrollador{" "}
+              <span className="text-main-yellow font-normal">Frontend SSR</span>{" "}
+              apasionado por crear experiencias digitales que no solo funcionen
+              a la perfección, sino que también cautiven visualmente.
             </p>
-            <p>
-              Mi enfoque se centra en la intersección del diseño y la ingeniería. Creo firmemente que la <span className="italic">performance</span> y la <span className="italic">estética</span> deben ir de la mano para lograr productos excepcionales.
-            </p>
-            <p>
-              Con años de experiencia en el ecosistema de <span className="text-main-yellow font-normal">React</span>, me especializo en construir interfaces dinámicas, animaciones fluidas y arquitecturas escalables que elevan la propuesta de valor de cada proyecto.
+            <div className="flex-1 gap-5 flex will-change-transform justify-center lg:justify-end">
+              <div className="flex gap-y-2 justify-center flex-col">
+                <p>
+                  Mi enfoque se centra en la intersección del diseño y la
+                  ingeniería. Creo firmemente que la{" "}
+                  <span className="italic">performance</span> y la{" "}
+                  <span className="italic">estética</span> deben ir de la mano
+                  para lograr productos excepcionales.
+                </p>
+                <p>
+                  Mi enfoque se centra en la intersección del diseño y la
+                  ingeniería. Creo firmemente que la{" "}
+                  <span className="italic">performance</span> y la{" "}
+                  <span className="italic">estética</span> deben ir de la mano
+                  para lograr productos excepcionales.
+                </p>
+              </div>
+              <div
+                ref={imageRef}
+                className="flex-1 gap-5 flex will-change-transform justify-center lg:justify-end"
+              >
+                <div className="relative group">
+                  {/* Decoración de fondo para la imagen */}
+                  <div className="absolute -inset-4 border border-main-yellow/30 rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+                  <div className="absolute -inset-4 border border-main-white/20 rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+
+                  <div className="relative w-72 h-96 md:w-80 md:h-[480px] rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500  shadow-2xl">
+                    <img
+                      src="/naza.png"
+                      alt="Nazareno Gutierrez"
+                      className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105"
+                    />
+                  </div>
+
+                  {/* Tag flotante */}
+                  <div className="absolute -bottom-6 -right-6 bg-main-yellow text-main-black px-6 py-3 rounded-2xl font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                    Frontend Dev
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-12">
+              Con años de experiencia en el ecosistema de{" "}
+              <span className="text-main-yellow font-normal">React</span>, me
+              especializo en construir interfaces dinámicas, animaciones fluidas
             </p>
           </div>
 
@@ -83,29 +126,6 @@ const About = () => {
             </div>
           </div>
         </div>
-
-        {/* Lado Derecho: Imagen */}
-        <div ref={imageRef} className="flex-1 flex will-change-transform justify-center lg:justify-end">
-          <div className="relative group">
-            {/* Decoración de fondo para la imagen */}
-            <div className="absolute -inset-4 border border-main-yellow/30 rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-            <div className="absolute -inset-4 border border-main-white/20 rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-            
-            <div className="relative w-72 h-96 md:w-80 md:h-[480px] rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500  shadow-2xl">
-              <img 
-                src="/naza.png" 
-                alt="Nazareno Gutierrez" 
-                className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105"
-              />
-            </div>
-            
-            {/* Tag flotante */}
-            <div className="absolute -bottom-6 -right-6 bg-main-yellow text-main-black px-6 py-3 rounded-2xl font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
-              Frontend Dev
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );
