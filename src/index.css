@@ -13,6 +13,8 @@
   --color-main-yellow: var(--main-yellow);
 
   --breakpoint-xxl: 96rem;
+  --breakpoint-xs: 22.25rem;
+
 }
 
 @media (hover: none) {

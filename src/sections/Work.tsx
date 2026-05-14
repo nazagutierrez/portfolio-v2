@@ -94,11 +94,11 @@ const Work = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden p-20 pt-32 relative">
+    <section ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden p-6 sm:p-10 md:p-20 pt-24 md:pt-32 relative">
       {/* Fondo */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
       
-      <h2 className="text-7xl mx-auto w-fit italic mb-12">
+      <h2 className="text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText
           text="Experiencia"
           delay={50}
@@ -107,26 +107,26 @@ const Work = () => {
         />
       </h2>
 
-      <p ref={descriptionRef} className="text-xl max-w-[700px] mb-16 text-main-white font-thin">
+      <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto">
         Experiencia profesional y proyectos donde construí interfaces modernas,
         funcionales y estéticas.
       </p>
 
-      <div className="relative pl-10 text-start space-y-14">
+      <div className="relative pl-8 sm:pl-10 text-start space-y-10 sm:space-y-14 max-w-4xl mx-auto">
         {/* Línea vertical */}
         <span ref={lineRef} className="absolute left-1 top-2 bottom-2 w-px bg-main-white/40" />
 
         {experiences.map((exp, index) => (
           <div key={index} className="work-item relative">
             {/* Punto */}
-            <span className="absolute -left-[16px] top-3 w-2 h-2 rounded-full bg-main-yellow" />
+            <span className="absolute -left-[16px] sm:-left-[20px] top-3 w-2 h-2 rounded-full bg-main-yellow" />
 
             <div className="flex flex-col">
-              <div className="text-2xl italic flex items-top">
+              <div className="text-xl sm:text-2xl italic flex items-top">
                 {
                   exp.logoLoop ? 
                   <LogoLoop
-                  className="h-10! me-2"
+                  className="h-8 sm:h-10! me-2"
                     logos={exp.logo as LogoItem[]}
                     speed={30}
                     fadeOutColor="none"
@@ -137,19 +137,19 @@ const Work = () => {
                     fadeOut
                   />
                   :
-                  <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="piso fuerte" className="w-10 h-10 p-2 pt-0 object-contain" />
+                  <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="logo" className="w-8 h-8 sm:w-10 sm:h-10 p-1 sm:p-2 pt-0 object-contain" />
                 }
                 
                 <h3>{exp.title}</h3>
               </div>
-              <span className="text-sm text-main-white/60 mb-2">
+              <span className="text-xs sm:text-sm text-main-white/60 mb-2">
                 {exp.role} · {exp.year} {" "}
                 <span className={exp.logoLoop ? "hidden" : ""}>· </span>
-                <a href={exp.href} className="underline hover:decoration-white/70" target="_blank" rel="noopener noreferrer">
+                <a href={exp.href} className="underline hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
                     {exp.href} 
                 </a>
               </span>
-              <p className="text-main-white/90 max-w-[600px]">
+              <p className="text-sm sm:text-base text-main-white/90 max-w-[600px]">
                 {exp.description}
               </p>
             </div>

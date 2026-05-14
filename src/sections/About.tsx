@@ -47,15 +47,15 @@ const About = () => {
     <section
       id="About"
       ref={sectionRef}
-      className="min-h-screen flex items-center p-10 md:p-20 relative  bg-linear-0 from-[#2b2401] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden "
+      className="min-h-screen flex items-center mb-2 p-6 sm:p-10 md:p-20 relative bg-linear-0 from-[#2b2401] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden z-90"
     >
       {/* Fondo con Silk */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         {/* Lado Izquierdo: Texto */}
-        <div ref={contentRef} className="flex-1 space-y-8">
-          <h2 className="text-6xl md:text-8xl italic font-light leading-tight">
+        <div ref={contentRef} className="flex-1 space-y-6 sm:space-y-8">
+          <h2 className="text-5xl md:text-8xl italic font-light leading-tight">
             <BlurText
               text="Sobre mí"
               delay={50}
@@ -64,15 +64,15 @@ const About = () => {
             />
           </h2>
 
-          <div className="space-y-6 text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl">
+          <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl">
             <p>
               Soy un desarrollador{" "}
               <span className="text-main-yellow font-normal">Frontend SSR</span>{" "}
               apasionado por crear experiencias digitales que no solo funcionen
               a la perfección, sino que también cautiven visualmente.
             </p>
-            <div className="flex-1 gap-5 flex will-change-transform justify-center lg:justify-end">
-              <div className="flex gap-y-2 justify-center flex-col">
+            <div className="flex-1 gap-8 sm:gap-5 flex flex-col xl:flex-row will-change-transform justify-center xl:justify-end">
+              <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
                 <p>
                   Mi enfoque se centra en la intersección del diseño y la
                   ingeniería. Creo firmemente que la{" "}
@@ -90,14 +90,14 @@ const About = () => {
               </div>
               <div
                 ref={imageRef}
-                className="flex-1 gap-5 flex will-change-transform justify-center lg:justify-end"
+                className="flex-1 gap-5 flex will-change-transform justify-center xl:justify-end mt-6 xl:mt-0"
               >
-                <div className="relative group">
+                <div className="relative group mx-auto xl:mx-0">
                   {/* Decoración de fondo para la imagen */}
-                  <div className="absolute -inset-4 border border-main-yellow/30 rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-                  <div className="absolute -inset-4 border border-main-white/20 rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+                  <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+                  <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
 
-                  <div className="relative w-72 h-96 md:w-80 md:h-[480px] rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500  shadow-2xl">
+                  <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
                     <img
                       src="/naza.png"
                       alt="Nazareno Gutierrez"
@@ -106,7 +106,7 @@ const About = () => {
                   </div>
 
                   {/* Tag flotante */}
-                  <div className="absolute -bottom-6 -right-6 bg-main-yellow text-main-black px-6 py-3 rounded-2xl font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                  <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-main-yellow text-main-black px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
                     Frontend Dev
                   </div>
                 </div>

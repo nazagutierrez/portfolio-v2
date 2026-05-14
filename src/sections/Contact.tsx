@@ -104,9 +104,9 @@ const Contact = ({
       </div>
 
       {/* Contenido Centrado */}
-      <div ref={containerRef} className="relative z-10 p-10 md:p-20 flex flex-col justify-center items-center h-full text-main-white text-center">
+      <div ref={containerRef} className="relative z-10 p-6 sm:p-10 md:p-20 flex flex-col justify-center items-center h-full text-main-white text-center">
         
-        <h1 className="text-6xl md:text-9xl italic font-light mb-6 tracking-tight">
+        <h1 className="text-5xl sm:text-6xl md:text-9xl italic font-light mb-4 sm:mb-6 tracking-tight">
           <BlurText
             text="Hablemos"
             delay={50}
@@ -115,7 +115,7 @@ const Contact = ({
           />
         </h1>
 
-        <p className="text-xl md:text-2xl font-extralight text-main-white/70 max-w-2xl mb-12 leading-relaxed">
+        <p className="text-lg sm:text-xl md:text-2xl font-extralight text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
           ¿Tienes un proyecto en mente o simplemente quieres saludar? <br />
           Estoy a un mensaje de distancia.
         </p>
@@ -125,13 +125,13 @@ const Contact = ({
           href="mailto:nazarenojunin@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-2xl will-change-transform md:text-4xl text-main-yellow font-light duration-300 mb-12 border-b border-main-yellow/20 pb-2 hover:border-main-yellow/100"
+          className="text-lg sm:text-2xl will-change-transform md:text-4xl text-main-yellow font-light duration-300 mb-8 sm:mb-12 border-b border-main-yellow/20 pb-2 hover:border-main-yellow/100 break-all sm:break-normal px-2"
         >
           nazarenojunin@gmail.com
         </a>
 
         {/* Botones de Redes Sociales (Iconos) */}
-        <div className="flex gap-6 mb-20">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-20 px-2">
           {socialLinks.map((social) => (
             <a
               key={`social-${social.name}`}

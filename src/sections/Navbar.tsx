@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-5 right-1/2 translate-x-1/2 text-main-white z-90">
       <GlassSurface
-        width={390}
+        width={""}
         height={60}
         borderRadius={20}
         displace={1}
@@ -56,7 +56,7 @@ const Navbar = () => {
         opacity={0.33}
         mixBlendMode="screen"
       >
-        <ul className="flex gap-x-3">
+        <ul className="flex gap-x-3 xs:px-2">
           <button
             className="cursor-pointer hover:text-main-yellow transition-all p-2"
             onClick={(e) => scrollToSection(e, "#Home")}

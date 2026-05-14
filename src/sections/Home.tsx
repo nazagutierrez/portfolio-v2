@@ -9,6 +9,8 @@ import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 import HighlightedWork from "./HighlightedWork";
 import Contact from "./Contact";
+import WhatsappSvg from "@/assets/svg/WhatsappSvg";
+import ResumeSvg from "@/assets/svg/ResumeSvg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -154,11 +156,20 @@ const Home = () => {
   const SIZE = 1000;
 
   const options = [
-    { name: "Enviar mail", href: "mailto:nazarenojunin@gmail.com" },
-    { name: "Ver CV", href: "https://docs.google.com/document/d/1EqLsHFxXghg_7N9ZkMPCujrz_Su4o-KTL7avZmoiBys/edit?usp=sharing" },
+    { 
+      name: "Enviar mail", 
+      href: "mailto:nazarenojunin@gmail.com",
+      icon: <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+    },
+    { 
+      name: "Ver CV", 
+      href: "https://docs.google.com/document/d/1EqLsHFxXghg_7N9ZkMPCujrz_Su4o-KTL7avZmoiBys/edit?usp=sharing",
+      icon: <ResumeSvg className="w-5 h-5 sm:w-6 sm:h-6" />
+    },
     {
       name: "Whatsapp",
       href: "https://api.whatsapp.com/send?phone=542364329720",
+      icon: <WhatsappSvg className="w-6 h-6 sm:w-7 sm:h-7" />
     },
   ];
 
@@ -170,7 +181,7 @@ const Home = () => {
         className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="h-screen w-full xl:w-1/2 overflow-hidden z-20 p-2">
+        <div ref={leftRef} className="min-h-[100svh] xl:min-h-0 xl:h-screen w-full xl:w-1/2 overflow-hidden z-20 p-2">
           <div className="relative w-full h-full rounded-[28px] overflow-hidden">
             {/* Fondo */}
             <div className="absolute inset-0">
@@ -185,66 +196,86 @@ const Home = () => {
             </div>
 
             {/* Contenido */}
-            <div className="relative z-20 text-center pt-40 xl:pt-26 flex flex-col items-center h-full text-main-white">
-              <h1 className="mx-auto mb-10 italic text-2rem sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-30">
-                <BlurText
-                  text="NazarenoGutierrez"
-                  delay={50}
-                  animateBy="letters"
-                  direction="bottom"
-                  className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
-                />
-                <BlurText
-                  text="Nazareno Gutierrez"
-                  delay={50}
-                  animateBy="letters"
-                  direction="bottom"
-                  className="justify-center xl:hidden block"
-                />
-              </h1>
-
-            <h2
-              ref={subtitleRef}
-              className="text-[2rem] font-thin mb-8 italic"
+            <div 
+              className="relative z-20 text-center flex flex-col h-full w-full text-main-white xl:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              onWheel={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
+              onTouchMove={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
             >
-              Frontend Developer SSR
-            </h2>
+              <div className="m-auto flex flex-col items-center justify-center gap-y-10 xl:gap-y-0 w-full h-full xl:h-auto py-5 xl:min-h-max">
+                <h1 className="mx-auto xl:mb-10 italic text-[3rem] xs:text-[3.5rem] sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
+                  <BlurText
+                    text="NazarenoGutierrez"
+                    delay={50}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
+                  />
+                  <BlurText
+                    text="Nazareno Gutierrez"
+                    delay={50}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="justify-center hidden sm:block xl:hidden "
+                  />
+                  <BlurText
+                    text="Nazareno Gutierrez"
+                    delay={50}
+                    animateBy="words"
+                    direction="bottom"
+                    className="ms-4 mx-auto w-[245px] xs:w-[283px] block sm:hidden"
+                  />
+                </h1>
 
-            <h3
-              ref={textRef}
-              className="xl:text-lg font-thin max-w-[600px] text-pretty px-10"
-            >
-              Buscás un desarrollador Semi-Senior experto en React, Next.js y
-              Typescript, con buen trabajo en equipo, buen ojo para el diseño y
-              muchas ganas de trabajar? ¡Hablemos!
-            </h3>
-            <h3
-              className="mt-8 xl:text-lg font-thin max-w-[600px] text-pretty px-10"
-            >
-              Mas de 3 años de experiencia trabajando en equipos multidisplinarios 
-            </h3>
-
-            <div className="w-full flex justify-center items-center gap-x-5 mt-10 xxl:mt-20">
-              {options.map(({ name, href }, index) => (
-                <a
-                  href={href}
-                  key={index}
-                  target="_blank"
-                  className="contact-item border-fade w-40 px-5 text-center py-3  h-full rounded-xl bg-main-black text-main-white text-lg font-thin"
+                <h2
+                  ref={subtitleRef}
+                  className="text-xl sm:text-[2rem] font-thin xl:mb-8 italic shrink-0"
                 >
-                  {name}
-                </a>
-              ))}
-            </div>
+                  Frontend Developer SSR
+                </h2>
+                <div>
+                  <p
+                    ref={textRef}
+                    className="mb-3 text-base xl:text-lg font-thin max-w-[600px] text-pretty px-6 sm:px-10 shrink-0"
+                  >
+                    Buscás un desarrollador Semi-Senior experto en React, Next.js y
+                    Typescript, con buen trabajo en equipo, buen ojo para el diseño y
+                    muchas ganas de trabajar? ¡Hablemos!
+                  </p>
+                  <p
+                    className="xl:mt-8 xs:block hidden text-sm sm:text-base xl:text-lg font-thin max-w-[600px] text-pretty px-6 sm:px-10 shrink-0"
+                  >
+                    Mas de 3 años de experiencia trabajando en equipos multidisplinarios 
+                  </p>
+                </div>
+
+                <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 xl:mt-10 xxl:mt-20 shrink-0">
+                  {options.map(({ name, href, icon }, index) => (
+                    <a
+                      href={href}
+                      key={index}
+                      target="_blank"
+                      className="contact-item border-fade flex items-center justify-center px-4 py-3 w-14 sm:w-40 sm:px-5 text-center h-full rounded-xl bg-main-black text-main-white text-sm sm:text-lg font-thin hover:border-main-yellow/50 transition-colors"
+                      title={name}
+                    >
+                      <span className="sm:hidden flex items-center justify-center w-full h-full">
+                        {icon}
+                      </span>
+                      <span className="hidden sm:inline">
+                        {name}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="xl:w-1/2 w-full min-h-screen m-2 pr-0.5">
+        <div ref={rightRef} className="xl:w-1/2 w-full z-40 min-h-screen m-2 pr-0.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
-            <div className="relative w-full z-20 text-main-white space-y-2.5 bg-main-black">
+            <div className="relative w-full text-main-white space-y-2.5 bg-main-black">
               <Work />
               <HighlightedWork />
               <About />
