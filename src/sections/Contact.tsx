@@ -20,12 +20,12 @@ const Contact = ({
   const socialLinks = [
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/in/nazarenojunin",
+      href: "https://linkedin.com/in/nazarenogutierrez1",
       icon: <LinkedinSvg className="w-7 h-7" />,
     },
     {
       name: "GitHub",
-      href: "https://github.com/nazarenojunin",
+      href: "https://github.com/nazagutierrez",
       icon: <GithubSvg className="w-7 h-7" />,
     },
     {
@@ -125,7 +125,7 @@ const Contact = ({
           href="mailto:nazarenojunin@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-2xl will-change-transform md:text-4xl text-main-yellow font-light hover:scale-105 transition-transform duration-300 mb-12 border-b border-main-yellow/20 pb-2 hover:border-main-yellow/100"
+          className="text-2xl will-change-transform md:text-4xl text-main-yellow font-light duration-300 mb-12 border-b border-main-yellow/20 pb-2 hover:border-main-yellow/100"
         >
           nazarenojunin@gmail.com
         </a>
@@ -151,7 +151,7 @@ const Contact = ({
 
         {/* Footer simple */}
         <div className="text-main-white/30 font-light text-sm tracking-widest uppercase">
-          © {new Date().getFullYear()} · Hecho con ❤️
+          © {new Date().getFullYear()} · Hecho con 💛
         </div>
       </div>
 

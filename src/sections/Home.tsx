@@ -170,16 +170,10 @@ const Home = () => {
         className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="h-screen w-full xl:w-1/2 overflow-hidden z-20">
-        
-          {/* Fondo */}
-          <div
-            className="absolute inset-0 clip-left-responsive"
-          >
-            <div
-              className="absolute inset-0"
-              style={{ clipPath: "url(#clip-left)" }}
-            >
+        <div ref={leftRef} className="h-screen w-full xl:w-1/2 overflow-hidden z-20 p-2">
+          <div className="relative w-full h-full rounded-[28px] overflow-hidden">
+            {/* Fondo */}
+            <div className="absolute inset-0">
               <SilkReveal>
                 {(onReady: () => void) => (
                   <>
@@ -189,26 +183,25 @@ const Home = () => {
                 )}
               </SilkReveal>
             </div>
-          </div>
 
-          {/* Contenido */}
-          <div className="relative z-20 text-center pt-40 xl:pt-26 flex flex-col items-center h-full text-main-white">
-            <h1 className="mx-auto mb-10 italic text-2rem sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-30">
-              <BlurText
-                text="NazarenoGutierrez"
-                delay={50}
-                animateBy="letters"
-                direction="bottom"
-                className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
-              />
-              <BlurText
-                text="Nazareno Gutierrez"
-                delay={50}
-                animateBy="letters"
-                direction="bottom"
-                className="justify-center xl:hidden block"
-              />
-            </h1>
+            {/* Contenido */}
+            <div className="relative z-20 text-center pt-40 xl:pt-26 flex flex-col items-center h-full text-main-white">
+              <h1 className="mx-auto mb-10 italic text-2rem sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-30">
+                <BlurText
+                  text="NazarenoGutierrez"
+                  delay={50}
+                  animateBy="letters"
+                  direction="bottom"
+                  className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
+                />
+                <BlurText
+                  text="Nazareno Gutierrez"
+                  delay={50}
+                  animateBy="letters"
+                  direction="bottom"
+                  className="justify-center xl:hidden block"
+                />
+              </h1>
 
             <h2
               ref={subtitleRef}
@@ -228,8 +221,7 @@ const Home = () => {
             <h3
               className="mt-8 xl:text-lg font-thin max-w-[600px] text-pretty px-10"
             >
-              Buscás un desarrollador Semi-Senior experto en React, Next.js y
-              Buscás un desarrollador 
+              Mas de 3 años de experiencia trabajando en equipos multidisplinarios 
             </h3>
 
             <div className="w-full flex justify-center items-center gap-x-5 mt-10 xxl:mt-20">
@@ -244,43 +236,15 @@ const Home = () => {
                 </a>
               ))}
             </div>
+            </div>
           </div>
-
-          {/* Frame */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox={`0 0 ${SIZE} ${SIZE}`}
-          >
-            <defs>
-              <clipPath id="clip-left-mobile" clipPathUnits="objectBoundingBox">
-                <rect
-                  x={0.01}
-                  y={0.01}
-                  width={0.98}
-                  height={0.98}
-                  rx={0.03}
-                  ry={0.03}
-                />
-              </clipPath>
-              <clipPath id="clip-left-desktop" clipPathUnits="objectBoundingBox">
-                <rect
-                  x={0.01}
-                  y={0.01}
-                  width={0.99}
-                  height={0.98}
-                  rx={0.03}
-                  ry={0.03}
-                />
-              </clipPath>
-            </defs>
-          </svg>
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="xl:w-1/2 w-full min-h-screen m-2 pr-2.5">
+        <div ref={rightRef} className="xl:w-1/2 w-full min-h-screen m-2 pr-0.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
-            <div className="relative w-full z-20 text-main-white space-y-5 bg-main-black">
+            <div className="relative w-full z-20 text-main-white space-y-2.5 bg-main-black">
               <Work />
               <HighlightedWork />
               <About />
