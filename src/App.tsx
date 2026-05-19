@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import Home from "./sections/Home";
-import CustomCursor from "./components/CustomCursor";
+
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Navbar from "./sections/Navbar";
-import GlassSurface from "./components/GlassSurface";
+
 import HandScrollSvg from "./assets/svg/HandScrollSvg";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);

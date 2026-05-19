@@ -21,22 +21,15 @@ const scrollToSection = (
   // matar animación anterior
   scrollTween?.kill();
 
-  let target: number | string = smoother.offset(element, "top 1%");
+  const target = smoother.offset(element, "top 1%");
 
-  if (element === "#Contact") {
-    const st = ScrollTrigger.getById("contact-reveal");
-    if (st) {
-      target = st.end;
-    } else {
-      target = smoother.offset(element, "bottom bottom");
-    }
-  }
-
-  scrollTween = gsap.to(smoother, {
-    scrollTop: target,
+  // The recommended way to scroll with ScrollSmoother is to use the ScrollToPlugin
+  // on the window object. ScrollSmoother will automatically intercept and smooth it.
+  scrollTween = gsap.to(window, {
+    scrollTo: { y: target, autoKill: true },
     duration: 2,
     ease: "power2.out",
-    overwrite: "auto",
+    overwrite: true,
   });
 };
 

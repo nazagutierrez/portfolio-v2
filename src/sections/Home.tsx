@@ -201,48 +201,52 @@ const Home = () => {
               onWheel={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
               onTouchMove={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
             >
-              <div className="m-auto flex flex-col items-center justify-center gap-y-10 xl:gap-y-0 w-full h-full xl:h-auto py-5 xl:min-h-max">
-                <h1 className="mx-auto xl:mb-10 italic text-[3rem] xs:text-[3.5rem] sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
-                  <BlurText
-                    text="NazarenoGutierrez"
-                    delay={50}
-                    animateBy="letters"
-                    direction="bottom"
-                    className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
-                  />
-                  <BlurText
-                    text="Nazareno Gutierrez"
-                    delay={50}
-                    animateBy="letters"
-                    direction="bottom"
-                    className="justify-center hidden sm:block xl:hidden "
-                  />
-                  <BlurText
-                    text="Nazareno Gutierrez"
-                    delay={50}
-                    animateBy="words"
-                    direction="bottom"
-                    className="ms-4 mx-auto w-[245px] xs:w-[283px] block sm:hidden"
-                  />
-                </h1>
+              <div className="m-auto flex flex-col items-center justify-center gap-y-10 xl:gap-y-10 w-full h-full xl:h-auto py-5 xl:min-h-max">
+                
+                <div className="flex flex-col gap-y-5">
+                  <h1 className="mx-auto italic text-[3rem] xs:text-[3.5rem] sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
+                    <BlurText
+                      text="NazarenoGutierrez"
+                      delay={50}
+                      animateBy="letters"
+                      direction="bottom"
+                      className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
+                    />
+                    <BlurText
+                      text="Nazareno Gutierrez"
+                      delay={50}
+                      animateBy="letters"
+                      direction="bottom"
+                      className="justify-center hidden sm:block xl:hidden "
+                    />
+                    <BlurText
+                      text="Nazareno Gutierrez"
+                      delay={50}
+                      animateBy="words"
+                      direction="bottom"
+                      className="ms-4 mx-auto w-[245px] xs:w-[283px] block sm:hidden"
+                    />
+                  </h1>
 
-                <h2
-                  ref={subtitleRef}
-                  className="text-xl sm:text-[2rem] font-thin xl:mb-8 italic shrink-0"
-                >
-                  Frontend Developer SSR
-                </h2>
+                  <h2
+                    ref={subtitleRef}
+                    className="text-xl sm:text-[2rem] font-thin xl:mb-8 italic shrink-0"
+                  >
+                    Frontend Developer SSR
+                  </h2>
+                </div>
+
                 <div>
                   <p
                     ref={textRef}
-                    className="mb-3 text-base xl:text-lg font-thin max-w-[600px] text-pretty px-6 sm:px-10 shrink-0"
+                    className="mb-3 text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
                   >
                     Buscás un desarrollador Semi-Senior experto en React, Next.js y
                     Typescript, con buen trabajo en equipo, buen ojo para el diseño y
                     muchas ganas de trabajar? ¡Hablemos!
                   </p>
                   <p
-                    className="xl:mt-8 xs:block hidden text-sm sm:text-base xl:text-lg font-thin max-w-[600px] text-pretty px-6 sm:px-10 shrink-0"
+                    className="xl:mt-8 xs:block hidden text-sm sm:text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
                   >
                     Mas de 3 años de experiencia trabajando en equipos multidisplinarios 
                   </p>
@@ -288,11 +292,12 @@ const Home = () => {
 
       {/* ===== BOTTOM ===== */}
       <div
-        ref={bottomRef}
         id="Contact"
         className="h-screen relative w-full overflow-hidden z-0"
       >
-        <Contact size={SIZE}/>
+        <div ref={bottomRef} className="h-full w-full">
+          <Contact size={SIZE} />
+        </div>
       </div>
     </>
   );
