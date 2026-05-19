@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import Home from "./sections/Home";
+import LanguageWrapper from "./components/LanguageWrapper";
 
 
 import gsap from "gsap";
@@ -82,7 +83,17 @@ useEffect(() => {
           <div className="min-h-screen flex flex-col">
             <main className="flex-grow">
               <Routes>
-                <Route path="/" element={<Home />} />
+                {/* Ruta principal (Raíz = Español por defecto) */}
+                <Route 
+                  path="/" 
+                  element={<LanguageWrapper defaultLang="es"><Home /></LanguageWrapper>} 
+                />
+
+                {/* Rutas para otros idiomas (/en, etc) */}
+                <Route path="/:lang" element={<LanguageWrapper />}>
+                  <Route index element={<Home />} />
+                  {/* Aquí agregarías más rutas en el futuro, ej: <Route path="portfolio" element={<Portfolio/>} /> */}
+                </Route>
               </Routes>
             </main>
           </div>

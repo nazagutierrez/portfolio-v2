@@ -3,6 +3,7 @@ import Work from "./Work";
 import About from "./About";
 
 import { useLayoutEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlurText from "@/components/BlurText";
@@ -15,6 +16,8 @@ import ResumeSvg from "@/assets/svg/ResumeSvg";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const { t } = useTranslation();
+  
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -157,12 +160,12 @@ const Home = () => {
 
   const options = [
     { 
-      name: "Enviar mail", 
+      name: t("home.btn_mail"), 
       href: "mailto:nazarenojunin@gmail.com",
       icon: <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
     },
     { 
-      name: "Ver CV", 
+      name: t("home.btn_cv"), 
       href: "https://docs.google.com/document/d/1EqLsHFxXghg_7N9ZkMPCujrz_Su4o-KTL7avZmoiBys/edit?usp=sharing",
       icon: <ResumeSvg className="w-5 h-5 sm:w-6 sm:h-6" />
     },
@@ -232,7 +235,7 @@ const Home = () => {
                     ref={subtitleRef}
                     className="text-xl sm:text-[2rem] font-thin xl:mb-8 italic shrink-0"
                   >
-                    Frontend Developer SSR
+                    {t("home.title")}
                   </h2>
                 </div>
 
@@ -241,14 +244,12 @@ const Home = () => {
                     ref={textRef}
                     className="mb-3 text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
                   >
-                    Buscás un desarrollador Semi-Senior experto en React, Next.js y
-                    Typescript, con buen trabajo en equipo, buen ojo para el diseño y
-                    muchas ganas de trabajar? ¡Hablemos!
+                    {t("home.description_1")}
                   </p>
                   <p
                     className="xl:mt-8 xs:block hidden text-sm sm:text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
                   >
-                    Mas de 3 años de experiencia trabajando en equipos multidisplinarios 
+                    {t("home.description_2")}
                   </p>
                 </div>
 

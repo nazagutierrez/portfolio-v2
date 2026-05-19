@@ -3,55 +3,54 @@ import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
-
-const experiences = [
-  {
-    title: "Piso Fuerte",
-    role: "Frontend Developer",
-    logo: "/logo-piso-fuerte-small.png",
-    href: "https://pisofuerte.com.ar",
-    logoLoop: false,
-    description:
-      "Desarrollo de interfaces modernas con React y TailwindCSS, foco en performance y UX.",
-    year: "2025",
-  },
-  {
-    title: "Zergex",
-    role: "Frontend Developer",
-    logo: "/zergex-logo-small.png",
-    href: "https://ravedates.proxising.com",
-    logoLoop: false,
-    description:
-      "Construcción de vistas complejas, animaciones y componentes reutilizables en React.",
-    year: "2024",
-  },
-  {
-    title: "TPEOficial",
-    role: "Frontend Developer",
-    logo: "/dymo-logo-small.png",
-    href: "https://dymo.tpeoficial.com",
-    logoLoop: false,
-    description:
-      "Trabajo en productos SaaS, emails, herramientas con IA y colaboración directa con diseño y comunicación.",
-    year: "2023",
-  },
-  {
-    title: "Freelance",
-    role: "Frontend Developer",
-    logo: [
-      { src: "/logo-rave-dates.png", alt: "Cookta", href: "https://company2.com" },
-      { src: "/nordicaps-logo.png", alt: "Mens House Barber", href: "https://company3.com" },
-      { src: "/logo-cookta.png", alt: "Rave Dates", href: "https://company3.com" },
-      { src: "/logo-menshousebarber.webp", alt: "Rave Dates", href: "https://company3.com" },
-    ],
-    logoLoop: true,
-    description:
-      "Desarrollo de soluciones a medida con React, Next.js y Firebase para distintos clientes.",
-    year: "2022",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Work = () => {
+  const { t } = useTranslation();
+  
+  const experiences = [
+    {
+      title: "Piso Fuerte",
+      role: "Frontend Developer",
+      logo: "/logo-piso-fuerte-small.png",
+      href: "https://pisofuerte.com.ar",
+      logoLoop: false,
+      description: t("work.exp1_desc"),
+      year: "2025",
+    },
+    {
+      title: "Zergex",
+      role: "Frontend Developer",
+      logo: "/zergex-logo-small.png",
+      href: "https://ravedates.proxising.com",
+      logoLoop: false,
+      description: t("work.exp2_desc"),
+      year: "2024",
+    },
+    {
+      title: "TPEOficial",
+      role: "Frontend Developer",
+      logo: "/dymo-logo-small.png",
+      href: "https://dymo.tpeoficial.com",
+      logoLoop: false,
+      description: t("work.exp3_desc"),
+      year: "2023",
+    },
+    {
+      title: "Freelance",
+      role: "Frontend Developer",
+      logo: [
+        { src: "/logo-rave-dates.png", alt: "Cookta", href: "https://company2.com" },
+        { src: "/nordicaps-logo.png", alt: "Mens House Barber", href: "https://company3.com" },
+        { src: "/logo-cookta.png", alt: "Rave Dates", href: "https://company3.com" },
+        { src: "/logo-menshousebarber.webp", alt: "Rave Dates", href: "https://company3.com" },
+      ],
+      logoLoop: true,
+      description: t("work.exp4_desc"),
+      year: "2022",
+    },
+  ];
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLHeadingElement>(null);
   const lineRef = useRef<HTMLSpanElement>(null);
@@ -100,7 +99,7 @@ const Work = () => {
       
       <h2 className="text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText
-          text="Experiencia"
+          text={t("work.title")}
           delay={50}
           animateBy="letters"
           direction="bottom"
@@ -108,8 +107,7 @@ const Work = () => {
       </h2>
 
       <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto">
-        Experiencia profesional y proyectos donde construí interfaces modernas,
-        funcionales y estéticas.
+        {t("work.description")}
       </p>
 
       <div className="relative pl-8 sm:pl-10 text-start space-y-10 sm:space-y-14 max-w-4xl mx-auto">

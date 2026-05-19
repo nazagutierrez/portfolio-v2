@@ -7,12 +7,14 @@ import GithubSvg from "@/assets/svg/GithubSvg";
 import LinkedinSvg from "@/assets/svg/LinkedinSvg";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
+import { useTranslation } from "react-i18next";
 
 const Contact = ({
   size,
 }: {
   size?: number;
 }) => {
+  const { t } = useTranslation();
   const SIZE = size || 1000;
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,7 +36,7 @@ const Contact = ({
       icon: <WhatsappSvg className="w-8 h-8" />,
     },
     {
-      name: "Ver CV",
+      name: t("contact.btn_cv"),
       href: "https://docs.google.com/document/d/1EqLsHFxXghg_7N9ZkMPCujrz_Su4o-KTL7avZmoiBys/edit?usp=sharing",
       icon: <ResumeSvg className="w-6.5 h-6.5" />,
     },
@@ -108,7 +110,7 @@ const Contact = ({
         
         <h1 className="text-5xl sm:text-6xl md:text-9xl italic font-light mb-4 sm:mb-6 tracking-tight">
           <BlurText
-            text="Hablemos"
+            text={t("contact.title")}
             delay={50}
             animateBy="letters"
             direction="bottom"
@@ -116,8 +118,8 @@ const Contact = ({
         </h1>
 
         <p className="text-lg sm:text-xl md:text-2xl font-extralight text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
-          ¿Tienes un proyecto en mente o simplemente quieres saludar? <br />
-          Estoy a un mensaje de distancia.
+          {t("contact.subtitle1")} <br />
+          {t("contact.subtitle2")}
         </p>
 
         {/* Email Principal */}
@@ -151,7 +153,7 @@ const Contact = ({
 
         {/* Footer simple */}
         <div className="text-main-white/30 font-light text-sm tracking-widest uppercase">
-          © {new Date().getFullYear()} · Hecho con 💛
+          © {new Date().getFullYear()} · {t("contact.footer")}
         </div>
       </div>
 

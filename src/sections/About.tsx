@@ -1,8 +1,10 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -57,7 +59,7 @@ const About = () => {
         <div ref={contentRef} className="flex-1 space-y-6 sm:space-y-8">
           <h2 className="text-5xl md:text-8xl italic font-light leading-tight">
             <BlurText
-              text="Sobre mí"
+              text={t("about.title")}
               delay={50}
               animateBy="letters"
               direction="bottom"
@@ -66,26 +68,25 @@ const About = () => {
 
           <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl">
             <p>
-              Soy un desarrollador{" "}
-              <span className="text-main-yellow font-normal">Frontend SSR</span>{" "}
-              apasionado por crear experiencias digitales que no solo funcionen
-              a la perfección, sino que también cautiven visualmente.
+              {t("about.p1")}
+              <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}
+              {t("about.p1_2")}
             </p>
             <div className="flex-1 gap-8 sm:gap-5 flex flex-col xl:flex-row will-change-transform justify-center xl:justify-end">
               <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
                 <p>
-                  Mi enfoque se centra en la intersección del diseño y la
-                  ingeniería. Creo firmemente que la{" "}
-                  <span className="italic">performance</span> y la{" "}
-                  <span className="italic">estética</span> deben ir de la mano
-                  para lograr productos excepcionales.
+                  {t("about.p2")}
+                  <span className="italic">{t("about.p2_highlight1")}</span>
+                  {t("about.p2_2")}
+                  <span className="italic">{t("about.p2_highlight2")}</span>
+                  {t("about.p2_3")}
                 </p>
                 <p>
-                  Mi enfoque se centra en la intersección del diseño y la
-                  ingeniería. Creo firmemente que la{" "}
-                  <span className="italic">performance</span> y la{" "}
-                  <span className="italic">estética</span> deben ir de la mano
-                  para lograr productos excepcionales.
+                  {t("about.p2")}
+                  <span className="italic">{t("about.p2_highlight1")}</span>
+                  {t("about.p2_2")}
+                  <span className="italic">{t("about.p2_highlight2")}</span>
+                  {t("about.p2_3")}
                 </p>
               </div>
               <div
@@ -107,22 +108,22 @@ const About = () => {
 
                   {/* Tag flotante */}
                   <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-main-yellow text-main-black px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                    Frontend Dev
+                    {t("about.tag")}
                   </div>
                 </div>
               </div>
             </div>
 
             <p className="mt-12">
-              Con años de experiencia en el ecosistema de{" "}
-              <span className="text-main-yellow font-normal">React</span>, me
-              especializo en construir interfaces dinámicas, animaciones fluidas
+              {t("about.p3")}
+              <span className="text-main-yellow font-normal">{t("about.p3_highlight")}</span>
+              {t("about.p3_2")}
             </p>
           </div>
 
           <div className="pt-4">
             <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
-              Descargar CV
+              {t("about.btn_cv")}
             </div>
           </div>
         </div>
