@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import Home from "./sections/Home";
 import LanguageWrapper from "./components/LanguageWrapper";

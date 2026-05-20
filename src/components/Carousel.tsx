@@ -158,17 +158,6 @@ export function Carousel() {
         ref={paginationRef}
         className="swiper-pagination absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"
       />
-      
-      {/* FADE IZQUIERDO */}
-      <div className="pointer-events-none absolute shadow-[-20px_0_30px_-5px_#000] left-0 top-0 h-full w-16 z-20
-        bg-gradient-to-r from-black/70 to-transparent
-        " />
-
-      {/* FADE DERECHO */}
-      <div className="pointer-events-none absolute shadow-[20px_0px_30px_-5px_#000] right-0 top-0 h-full w-16 z-20
-        bg-gradient-to-l from-black/60 to-transparent
-        " />
-
       <Swiper
         pagination={{
           clickable: true,
@@ -202,7 +191,7 @@ export function Carousel() {
           }
         }}
         modules={[FreeMode, Pagination, A11y]}
-        className="h-40 w-160 m-0!"
+        className="h-40 w-160 m-0! rounded-lg"
       >
         {media.map(item => (
           <SwiperSlide key={item.id}>

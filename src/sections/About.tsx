@@ -57,7 +57,7 @@ const About = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         {/* Lado Izquierdo: Texto */}
         <div ref={contentRef} className="flex-1 space-y-6 sm:space-y-8">
-          <h2 className="text-5xl md:text-8xl italic font-light leading-tight">
+          <h2 className="text-5xl md:text-8xl italic font-light leading-tight xl:text-center xl:w-fit xl:mx-auto">
             <BlurText
               text={t("about.title")}
               delay={50}
@@ -66,13 +66,13 @@ const About = () => {
             />
           </h2>
 
-          <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl">
+          <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-start xl:mx-auto">
             <p>
               {t("about.p1")}
               <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}
               {t("about.p1_2")}
             </p>
-            <div className="flex-1 gap-8 sm:gap-5 flex flex-col xl:flex-row will-change-transform justify-center xl:justify-end">
+            <div className="flex-1 gap-8 sm:gap-5 flex flex-col xl:flex-row will-change-transform justify-center xl:justify-center xl:items-center">
               <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
                 <p>
                   {t("about.p2")}
@@ -91,9 +91,9 @@ const About = () => {
               </div>
               <div
                 ref={imageRef}
-                className="flex-1 gap-5 flex will-change-transform justify-center xl:justify-end mt-6 xl:mt-0"
+                className="flex-1 gap-5 flex will-change-transform justify-center xl:justify-center mt-6 xl:mt-0"
               >
-                <div className="relative group mx-auto xl:mx-0">
+                <div className="relative group mx-auto">
                   {/* Decoración de fondo para la imagen */}
                   <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
                   <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
@@ -121,7 +121,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 xl:text-center">
             <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
               {t("about.btn_cv")}
             </div>
