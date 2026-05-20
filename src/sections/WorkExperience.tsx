@@ -5,7 +5,7 @@ import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 import { useTranslation } from "react-i18next";
 
-const Work = () => {
+const WorkExperience = () => {
   const { t } = useTranslation();
   
   const experiences = [
@@ -158,4 +158,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default WorkExperience;

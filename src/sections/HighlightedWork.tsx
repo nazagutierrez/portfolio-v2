@@ -10,29 +10,30 @@ const HighlightedWork = () => {
       {/* Fondo */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
-      <h2 className="px-6 sm:px-10 md:px-20 text-5xl sm:text-6xl md:text-7xl italic mb-4 sm:mb-6">
+      <h2 className="px-6 sm:px-10 md:px-20 text-center text-5xl sm:text-6xl md:text-7xl italic mb-4 sm:mb-6">
         <BlurText
+        className="justify-self-center justify-center"
           text={t("highlighted_work.title")}
           delay={50}
-          animateBy="letters"
+          animateBy="words"
           direction="bottom"
         />
       </h2>
 
-      <p className="px-6 sm:px-10 md:px-20 text-base sm:text-lg md:text-xl max-w-[900px] mb-10 sm:mb-16 text-main-white font-thin">
+      <p className="px-6 sm:px-10 md:px-20 text-base sm:text-lg md:text-xl max-w-[900px] mb-10 sm:mb-16 text-main-white font-thin text-center mx-auto">
         {t("highlighted_work.description")}
       </p>
 
       <div className="flex flex-col gap-y-10 sm:gap-y-16">
-        <div className="ps-4 sm:ps-10 flex relative w-full justify-start items-center">
+        <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
           <img src="/logo-piso-fuerte.png" alt="piso fuerte" className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain" />
           <Carousel />
         </div>
-        <div className="ps-4 sm:ps-10 flex relative w-full justify-start items-center">
+        <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
           <img src="/logo-piso-fuerte.png" alt="piso fuerte" className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain" />
           <Carousel />
         </div>
-        <div className="ps-4 sm:ps-10 flex relative w-full justify-start items-center">
+        <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
           <img src="/logo-piso-fuerte.png" alt="piso fuerte" className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain" />
           <Carousel />
         </div>

@@ -1,5 +1,5 @@
 import Silk from "@/components/Silk";
-import Work from "./Work";
+import WorkExperience from "./WorkExperience";
 import About from "./About";
 
 import { useLayoutEffect, useRef } from "react";
@@ -81,7 +81,7 @@ const Home = () => {
   }, []);
 
   useLayoutEffect(() => {
-    let mm = gsap.matchMedia();
+    const mm = gsap.matchMedia();
 
     mm.add(
       {
@@ -281,7 +281,7 @@ const Home = () => {
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
             <div className="relative w-full text-main-white space-y-2.5 bg-main-black">
-              <Work />
+              <WorkExperience />
               <HighlightedWork />
               <About />
             </div>

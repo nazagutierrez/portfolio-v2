@@ -54,77 +54,75 @@ const About = () => {
       {/* Fondo con Silk */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        {/* Lado Izquierdo: Texto */}
-        <div ref={contentRef} className="flex-1 space-y-6 sm:space-y-8">
-          <h2 className="text-5xl md:text-8xl italic font-light leading-tight xl:text-center xl:w-fit xl:mx-auto">
-            <BlurText
-              text={t("about.title")}
-              delay={50}
-              animateBy="letters"
-              direction="bottom"
-            />
-          </h2>
+      {/* Lado Izquierdo: Texto */}
+      <div ref={contentRef} className="flex-1 space-y-6 flex flex-col items-center sm:space-y-8">
+        <h2 className="text-5xl md:text-8xl italic font-light leading-tight text-center w-fit mx-auto">
+          <BlurText
+            text={t("about.title")}
+            delay={50}
+            animateBy="letters"
+            direction="bottom"
+          />
+        </h2>
 
-          <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-start xl:mx-auto">
-            <p>
-              {t("about.p1")}
-              <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}
-              {t("about.p1_2")}
-            </p>
-            <div className="flex-1 gap-8 sm:gap-5 flex flex-col xl:flex-row will-change-transform justify-center xl:justify-center xl:items-center">
-              <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
-                <p>
-                  {t("about.p2")}
-                  <span className="italic">{t("about.p2_highlight1")}</span>
-                  {t("about.p2_2")}
-                  <span className="italic">{t("about.p2_highlight2")}</span>
-                  {t("about.p2_3")}
-                </p>
-                <p>
-                  {t("about.p2")}
-                  <span className="italic">{t("about.p2_highlight1")}</span>
-                  {t("about.p2_2")}
-                  <span className="italic">{t("about.p2_highlight2")}</span>
-                  {t("about.p2_3")}
-                </p>
-              </div>
-              <div
-                ref={imageRef}
-                className="flex-1 gap-5 flex will-change-transform justify-center xl:justify-center mt-6 xl:mt-0"
-              >
-                <div className="relative group mx-auto">
-                  {/* Decoración de fondo para la imagen */}
-                  <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-                  <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+        <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-center xl:text-start xl:mx-auto">
+          <p>
+            {t("about.p1")}
+            <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}
+            {t("about.p1_2")}
+          </p>
+          <div className="flex-1 gap-10 xxl:gap-5 flex flex-col xxl:flex-row will-change-transform">
+            <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
+              <p>
+                {t("about.p2")}
+                <span className="italic">{t("about.p2_highlight1")}</span>
+                {t("about.p2_2")}
+                <span className="italic">{t("about.p2_highlight2")}</span>
+                {t("about.p2_3")}
+              </p>
+              <p>
+                {t("about.p2")}
+                <span className="italic">{t("about.p2_highlight1")}</span>
+                {t("about.p2_2")}
+                <span className="italic">{t("about.p2_highlight2")}</span>
+                {t("about.p2_3")}
+              </p>
+            </div>
+            <div
+              ref={imageRef}
+              className="flex-1 gap-5 flex will-change-transform justify-center xl:justify-center mt-6 xl:mt-0"
+            >
+              <div className="relative group mx-auto">
+                {/* Decoración de fondo para la imagen */}
+                <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+                <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
 
-                  <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
-                    <img
-                      src="/naza.png"
-                      alt="Nazareno Gutierrez"
-                      className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105"
-                    />
-                  </div>
+                <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
+                  <img
+                    src="/naza.png"
+                    alt="Nazareno Gutierrez"
+                    className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105"
+                  />
+                </div>
 
-                  {/* Tag flotante */}
-                  <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-main-yellow text-main-black px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                    {t("about.tag")}
-                  </div>
+                {/* Tag flotante */}
+                <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-main-yellow text-main-black px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                  {t("about.tag")}
                 </div>
               </div>
             </div>
-
-            <p className="mt-12">
-              {t("about.p3")}
-              <span className="text-main-yellow font-normal">{t("about.p3_highlight")}</span>
-              {t("about.p3_2")}
-            </p>
           </div>
 
-          <div className="pt-4 xl:text-center">
-            <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
-              {t("about.btn_cv")}
-            </div>
+          <p className="mt-12">
+            {t("about.p3")}
+            <span className="text-main-yellow font-normal">{t("about.p3_highlight")}</span>
+            {t("about.p3_2")}
+          </p>
+        </div>
+
+        <div className="pt-4 xl:text-center">
+          <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
+            {t("about.btn_cv")}
           </div>
         </div>
       </div>
