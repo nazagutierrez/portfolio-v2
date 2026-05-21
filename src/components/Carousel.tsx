@@ -4,46 +4,11 @@ import { FreeMode, Pagination, A11y } from 'swiper/modules';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { createPortal } from 'react-dom';
 import gsap from 'gsap';
+import type { MediaItem } from '@/constants/media';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-
-type MediaItem = {
-  id: number;
-  type: 'image' | 'video';
-  src: string;
-  thumbnail?: string;
-};
-
-const media: MediaItem[] = [
-  {
-    id: 1,
-    type: 'image',
-    src: '/a1.jpg',
-  },
-  {
-    id: 2,
-    type: 'image',
-    src: '/a1.jpg',
-  },
-  {
-    id: 3,
-    type: 'image',
-    src: '/a1.jpg',
-  },
-  {
-    id: 4,
-    type: 'video',
-    src: '/v1.mp4',
-    thumbnail: '/a1.jpg',
-  },
-  {
-    id: 5,
-    type: 'image',
-    src: '/a2.jpg',
-  },
-];
 
 
 type ViewerProps = {
@@ -117,28 +82,61 @@ function MediaViewer({ item, onClose }: ViewerProps) {
       <div
         ref={contentRef}
         onClick={e => e.stopPropagation()}
+        className="flex flex-col items-center justify-center relative"
       >
-        {item.type === 'image' ? (
-          <img
-            src={item.src}
-            alt=""
-            className="max-w-[90vw] max-h-[90vh] object-contain"
-          />
-        ) : (
-          <video
-            src={item.src}
-            controls
-            autoPlay
-            className="max-w-[90vw] max-h-[90vh]"
-          />
-        )}
+        <div className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-center justify-center max-w-[90vw] max-h-[90vh] backdrop-blur-sm">
+          <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')] pointer-events-none z-0"></div>
+          {item.type === 'image' ? (
+            <img
+              src={item.src}
+              alt=""
+              className="relative z-10 max-w-[90vw] max-h-[75vh] object-contain"
+            />
+          ) : (
+            <video
+              src={item.src}
+              controls
+              autoPlay
+              className="relative z-10 max-w-[90vw] max-h-[75vh]"
+            />
+          )}
+          
+          {(item.description || item.technologies) && (
+            <div className="relative w-full bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] p-6 flex flex-col gap-3 border-t border-white/10 shrink-0 overflow-hidden">
+              <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')] pointer-events-none z-0"></div>
+              {item.description && (
+                <p className="relative z-10 text-white/80 text-sm md:text-base leading-relaxed max-w-3xl">
+                  {item.description}
+                </p>
+              )}
+              {item.technologies && item.technologies.length > 0 && (
+                <div className="relative z-10 flex flex-wrap items-center gap-4 mt-2">
+                  {item.technologies.map((tech, idx) => {
+                    const Icon = tech.icon;
+                    return (
+                      <div key={idx} className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors duration-300">
+                        <Icon className="w-5 h-5" />
+                        <span className="text-xs font-medium tracking-wide uppercase">{tech.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>,
     document.body
   );
 }
 
-export function Carousel() {
+type CarouselProps = {
+  title?: string;
+  media: MediaItem[];
+};
+
+export function Carousel({ title, media }: CarouselProps) {
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
   const paginationRef = useRef<HTMLDivElement>(null);
 
@@ -154,6 +152,11 @@ export function Carousel() {
 
   return (
     <div className='relative text-main-white'>
+      {title && (
+        <p className="self-start mb-2 text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium border-l border-white/20 pl-3">
+          {title}
+        </p>
+      )}
       <div
         ref={paginationRef}
         className="swiper-pagination absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"

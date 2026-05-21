@@ -1,5 +1,8 @@
 import BlurText from "@/components/BlurText";
 import { Carousel } from "@/components/Carousel";
+import LogoLoop from "@/components/LogoLoop";
+import { logos } from "@/constants/logos";
+import { raveDatesMedia, dymoMedia, freelanceMedia } from "@/constants/media";
 import { useTranslation } from "react-i18next";
 
 const HighlightedWork = () => {
@@ -26,16 +29,27 @@ const HighlightedWork = () => {
 
       <div className="flex flex-col gap-y-10 sm:gap-y-16">
         <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
-          <img src="/logo-piso-fuerte.png" alt="piso fuerte" className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain" />
-          <Carousel />
+          <img src="/logo-rave-dates.svg" alt="Rave Dates" className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
+          <Carousel title="Rave Dates" media={raveDatesMedia} />
         </div>
         <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
-          <img src="/logo-piso-fuerte.png" alt="piso fuerte" className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain" />
-          <Carousel />
+          <img src="/dymo-logo-small.png" alt="TPEOficial" className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
+          <Carousel title="Dymo" media={dymoMedia} />
         </div>
         <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
-          <img src="/logo-piso-fuerte.png" alt="piso fuerte" className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain" />
-          <Carousel />
+          <LogoLoop
+            className="h-8 sm:h-20! mr-5 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"
+            logos={[ 
+              ...logos,
+              { src: "/logo-piso-fuerte-small.png", alt: "Piso Fuerte" }
+            ]}
+            speed={40}
+            direction="up"
+            logoHeight={80}
+            gap={5}
+            hoverSpeed={0}
+          />
+          <Carousel title="Freelance Projects" media={freelanceMedia} />
         </div>
       </div>
     </section>

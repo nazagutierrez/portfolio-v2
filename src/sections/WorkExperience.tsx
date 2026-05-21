@@ -4,10 +4,11 @@ import BlurText from "@/components/BlurText";
 import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 import { useTranslation } from "react-i18next";
+import { logos } from "@/constants/logos";
 
 const WorkExperience = () => {
   const { t } = useTranslation();
-  
+
   const experiences = [
     {
       title: "Piso Fuerte",
@@ -19,16 +20,16 @@ const WorkExperience = () => {
       year: "2025",
     },
     {
-      title: "Zergex",
+      title: "Rave Dates",
       role: "Frontend Developer",
-      logo: "/zergex-logo-small.png",
+      logo: "/logo-rave-dates.svg",
       href: "https://ravedates.proxising.com",
       logoLoop: false,
       description: t("work.exp2_desc"),
       year: "2024",
     },
     {
-      title: "TPEOficial",
+      title: "Dymo",
       role: "Frontend Developer",
       logo: "/dymo-logo-small.png",
       href: "https://dymo.tpeoficial.com",
@@ -39,12 +40,7 @@ const WorkExperience = () => {
     {
       title: "Freelance",
       role: "Frontend Developer",
-      logo: [
-        { src: "/logo-rave-dates.png", alt: "Cookta", href: "https://company2.com" },
-        { src: "/nordicaps-logo.png", alt: "Mens House Barber", href: "https://company3.com" },
-        { src: "/logo-cookta.png", alt: "Rave Dates", href: "https://company3.com" },
-        { src: "/logo-menshousebarber.webp", alt: "Rave Dates", href: "https://company3.com" },
-      ],
+      logo: logos,
       logoLoop: true,
       description: t("work.exp4_desc"),
       year: "2022",
@@ -120,19 +116,17 @@ const WorkExperience = () => {
             <span className="absolute -left-[16px] sm:-left-[20px] top-3 w-2 h-2 rounded-full bg-main-yellow" />
 
             <div className="flex flex-col">
-              <div className="text-xl sm:text-2xl italic flex items-top">
+              <div className="text-xl sm:text-2xl italic flex items-center">
                 {
                   exp.logoLoop ? 
                   <LogoLoop
-                  className="h-8 sm:h-10! me-2"
+                  className="h-8 sm:h-10! me-2 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"
                     logos={exp.logo as LogoItem[]}
                     speed={30}
-                    fadeOutColor="none"
                     direction="up"
                     logoHeight={20}
                     gap={5}
                     hoverSpeed={0}
-                    fadeOut
                   />
                   :
                   <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="logo" className="w-8 h-8 sm:w-10 sm:h-10 p-1 sm:p-2 pt-0 object-contain" />
