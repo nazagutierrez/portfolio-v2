@@ -13,10 +13,10 @@ const resources = {
         "btn_cv": "Ver CV"
       },
       "nav": {
-        "home": "INICIO",
-        "work": "TRABAJO",
-        "about": "SOBRE MI",
-        "contact": "CONTACTO"
+        "home": "Inicio",
+        "work": "Trabajo",
+        "about": "Sobre mi",
+        "contact": "Contacto"
       },
       "work": {
         "title": "Experiencia",
@@ -52,6 +52,10 @@ const resources = {
         "subtitle2": "Estoy a un mensaje de distancia.",
         "btn_cv": "Ver CV",
         "footer": "Hecho con 💛"
+      },
+      "testimonials": {
+        "title": "Testimonios",
+        "description": "Lo que dicen mis colegas y clientes."
       }
     }
   },
@@ -65,10 +69,10 @@ const resources = {
         "btn_cv": "View CV"
       },
       "nav": {
-        "home": "HOME",
-        "work": "WORK",
-        "about": "ABOUT",
-        "contact": "CONTACT"
+        "home": "Home",
+        "work": "Work",
+        "about": "About",
+        "contact": "Contact"
       },
       "work": {
         "title": "Experience",
@@ -104,6 +108,10 @@ const resources = {
         "subtitle2": "I'm just a message away.",
         "btn_cv": "View CV",
         "footer": "Made with 💛"
+      },
+      "testimonials": {
+        "title": "Testimonials",
+        "description": "What my colleagues and clients say about me."
       }
     }
   }

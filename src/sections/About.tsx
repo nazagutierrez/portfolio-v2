@@ -49,7 +49,7 @@ const About = () => {
     <section
       id="About"
       ref={sectionRef}
-      className="min-h-screen flex items-center mb-2 p-6 sm:p-10 md:p-20 relative bg-linear-0 from-[#2b2401] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden z-90"
+      className="min-h-screen flex items-center mb-2 p-6 sm:p-10 md:p-20 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
     >
       {/* Fondo con Silk */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>

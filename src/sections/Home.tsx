@@ -1,6 +1,7 @@
 import Silk from "@/components/Silk";
 import WorkExperience from "./WorkExperience";
 import About from "./About";
+import Testimonials from "./Testimonials";
 
 import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -284,6 +285,7 @@ const Home = () => {
               <WorkExperience />
               <HighlightedWork />
               <About />
+              <Testimonials />
             </div>
           </div>
         </div>
