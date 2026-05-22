@@ -134,9 +134,10 @@ function MediaViewer({ item, onClose }: ViewerProps) {
 type CarouselProps = {
   title?: string;
   media: MediaItem[];
+  borderColor?: string;
 };
 
-export function Carousel({ title, media }: CarouselProps) {
+export function Carousel({ title, media, borderColor }: CarouselProps) {
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
   const paginationRef = useRef<HTMLDivElement>(null);
 
@@ -153,7 +154,7 @@ export function Carousel({ title, media }: CarouselProps) {
   return (
     <div className='relative text-main-white'>
       {title && (
-        <p className="self-start mb-2 text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium border-l border-white/20 pl-3">
+        <p className="self-start mb-2 text-[10px] uppercase tracking-[0.2em] text-white/40 font-medium border-l pl-3" style={borderColor ? { borderColor } : undefined}>
           {title}
         </p>
       )}

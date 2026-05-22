@@ -30,11 +30,11 @@ const HighlightedWork = () => {
       <div className="flex flex-col gap-y-10 sm:gap-y-16">
         <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
           <img src="/logo-rave-dates.svg" alt="Rave Dates" className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
-          <Carousel title="Rave Dates" media={raveDatesMedia} />
+          <Carousel title="Rave Dates" media={raveDatesMedia} borderColor="#9f3838" />
         </div>
         <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
           <img src="/dymo-logo-small.png" alt="TPEOficial" className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
-          <Carousel title="Dymo" media={dymoMedia} />
+          <Carousel title="Dymo" media={dymoMedia} borderColor="#827f9b" />
         </div>
         <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
           <LogoLoop
@@ -49,7 +49,7 @@ const HighlightedWork = () => {
             gap={5}
             hoverSpeed={0}
           />
-          <Carousel title="Freelance Projects" media={freelanceMedia} />
+          <Carousel title="Freelance Projects" media={freelanceMedia} borderColor="#a5913b" />
         </div>
       </div>
     </section>
