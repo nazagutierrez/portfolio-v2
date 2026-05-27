@@ -34,27 +34,9 @@ const scrollToSection = (
 };
 
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const toggleLanguage = () => {
-    const isEs = i18n.language === "es";
-    let newPath = location.pathname;
-
-    if (isEs) {
-      // Estamos en español (ej. /, /about), vamos a inglés (/en, /en/about)
-      newPath = `/en${newPath === '/' ? '' : newPath}`;
-    } else {
-      // Estamos en inglés (ej. /en, /en/about), vamos a español (/, /about)
-      newPath = newPath.replace(/^\/en/, '') || '/';
-    }
-
-    navigate(newPath);
-  };
+  const { t } = useTranslation();
 
   return (
     <nav className="fixed top-5 right-1/2 translate-x-1/2 text-main-white z-90">
@@ -71,7 +53,7 @@ const Navbar = () => {
         opacity={0.33}
         mixBlendMode="screen"
       >
-        <ul className="flex gap-x-3 xs:px-2">
+        <ul className="flex gap-x-1 xs:gap-x-3 xs:px-2">
           <button
             className="cursor-pointer hover:text-main-yellow transition-all p-2"
             onClick={(e) => scrollToSection(e, "#Home")}
@@ -95,15 +77,6 @@ const Navbar = () => {
             onClick={(e) => scrollToSection(e, "#Contact")}
           >
             {t("nav.contact", "Contact")}
-          </button>
-          
-          <div className="w-px bg-main-white/20 my-2 mx-1"></div>
-          
-          <button
-            onClick={toggleLanguage}
-            className="cursor-pointer font-bold hover:text-main-yellow transition-all p-2 uppercase"
-          >
-            {i18n.language}
           </button>
         </ul>
       </GlassSurface>

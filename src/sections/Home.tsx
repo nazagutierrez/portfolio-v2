@@ -5,6 +5,7 @@ import Testimonials from "./Testimonials";
 
 import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlurText from "@/components/BlurText";
@@ -17,7 +18,9 @@ import ResumeSvg from "@/assets/svg/ResumeSvg";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
@@ -157,6 +160,19 @@ const Home = () => {
     return () => mm.revert();
   }, []);
 
+  const toggleLanguage = () => {
+    const isEs = i18n.language === "es";
+    let newPath = location.pathname;
+
+    if (isEs) {
+      newPath = `/en${newPath === '/' ? '' : newPath}`;
+    } else {
+      newPath = newPath.replace(/^\/en/, '') || '/';
+    }
+
+    navigate(newPath);
+  };
+
   const SIZE = 1000;
 
   const options = [
@@ -175,6 +191,11 @@ const Home = () => {
       href: "https://api.whatsapp.com/send?phone=542364329720",
       icon: <WhatsappSvg className="w-6 h-6 sm:w-7 sm:h-7" />
     },
+    {
+      name: i18n.language.toUpperCase(),
+      onClick: toggleLanguage,
+      icon: <span className="font-bold text-sm sm:text-base uppercase">{i18n.language}</span>
+    }
   ];
 
   return (
@@ -255,22 +276,41 @@ const Home = () => {
                 </div>
 
                 <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 xl:mt-10 xxl:mt-20 shrink-0">
-                  {options.map(({ name, href, icon }, index) => (
-                    <a
-                      href={href}
-                      key={index}
-                      target="_blank"
-                      className="contact-item border-fade flex items-center justify-center px-4 py-3 w-14 sm:w-40 sm:px-5 text-center h-full rounded-xl bg-main-black text-main-white text-sm sm:text-lg font-thin hover:border-main-yellow/50 transition-colors"
-                      title={name}
-                    >
-                      <span className="sm:hidden flex items-center justify-center w-full h-full">
-                        {icon}
-                      </span>
-                      <span className="hidden sm:inline">
-                        {name}
-                      </span>
-                    </a>
-                  ))}
+                  {options.map(({ name, href, icon, onClick }, index) => {
+                    const isLink = !!href;
+                    const commonClasses = "contact-item border-fade flex items-center justify-center px-4 py-3 w-14 sm:w-40 sm:px-5 text-center h-full rounded-xl bg-main-black text-main-white text-sm sm:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer";
+                    
+                    return isLink ? (
+                      <a
+                        href={href}
+                        key={index}
+                        target="_blank"
+                        className={commonClasses}
+                        title={name}
+                      >
+                        <span className="sm:hidden flex items-center justify-center w-full h-full">
+                          {icon}
+                        </span>
+                        <span className="hidden sm:inline">
+                          {name}
+                        </span>
+                      </a>
+                    ) : (
+                      <button
+                        onClick={onClick}
+                        key={index}
+                        className={commonClasses}
+                        title={name}
+                      >
+                        <span className="sm:hidden flex items-center justify-center w-full h-full">
+                          {icon}
+                        </span>
+                        <span className="hidden sm:inline">
+                          {name}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

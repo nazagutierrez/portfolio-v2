@@ -135,9 +135,10 @@ type CarouselProps = {
   title?: string;
   media: MediaItem[];
   borderColor?: string;
+  logo?: string;
 };
 
-export function Carousel({ title, media, borderColor }: CarouselProps) {
+export function Carousel({ title, media, borderColor, logo }: CarouselProps) {
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
   const paginationRef = useRef<HTMLDivElement>(null);
 
@@ -154,13 +155,14 @@ export function Carousel({ title, media, borderColor }: CarouselProps) {
   return (
     <div className='relative text-main-white'>
       {title && (
-        <p className="self-start mb-2 text-[10px] uppercase tracking-[0.2em] text-white/40 font-medium border-l pl-3" style={borderColor ? { borderColor } : undefined}>
+        <p className="flex xxl:pl-3 pl-0 gap-x-2 items-center mb-2 text-[10px] uppercase tracking-[0.2em] text-white/40 font-medium border-l" style={borderColor ? { borderColor } : undefined}>
+          <img src={logo} alt="Logo" className="block xxl:hidden pl-2 w-6 h-6 object-contain" />
           {title}
         </p>
       )}
       <div
         ref={paginationRef}
-        className="swiper-pagination absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"
+        className="swiper-pagination xl:absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"
       />
       <Swiper
         pagination={{
