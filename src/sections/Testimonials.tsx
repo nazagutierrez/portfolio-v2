@@ -18,18 +18,18 @@ const testimonials = [
     image: "https://i.pravatar.cc/150?u=1"
   },
   {
-    name: "Jane Smith",
-    position: "Product Manager",
-    text: "Trabajar con Nazareno fue una experiencia fantástica. Su comunicación es clara, entrega en tiempo y forma, y siempre aporta ideas de gran valor para mejorar la experiencia del usuario.",
+    name: "Agustin Millan",
+    position: "Backend Developer",
+    text: "Trabajar con Nazareno fue un placer. Es un desarrollador Frontend con gran nivel técnico, proactivo y orientado al trabajo en equipo. Siempre propone mejoras, anticipa problemas y aporta soluciones de forma constante. Su disposición para colaborar, revisar código y ayudar al equipo lo convierten en un profesional muy valioso y altamente recomendable.",
     linkedin: "https://linkedin.com/",
-    image: "https://i.pravatar.cc/150?u=2"
+    image: "/backend-dev.png"
   },
   {
-    name: "Carlos Rodríguez",
-    position: "CTO",
-    text: "He colaborado con Nazareno en varios proyectos críticos y siempre ha demostrado un nivel técnico sobresaliente. Su conocimiento de Next.js y Tailwind es de lo mejor que he visto.",
+    name: "Javier Romero González",
+    position: "Founder & CEO of Dymo",
+    text: "Tuve el placer de trabajar con Nazareno en el rediseño y desarrollo de nuestro Help Center. Demostró gran capacidad para entender necesidades, crear una experiencia intuitiva y ejecutar un desarrollo sólido y eficiente. Su enfoque proactivo, atención al detalle y compromiso con la calidad hicieron que el proyecto superara nuestras expectativas. Recomiendo a Nazareno sin reservas.",
     linkedin: "https://linkedin.com/",
-    image: "https://i.pravatar.cc/150?u=3"
+    image: "/dymo-ceo.png"
   }
 ];
 
@@ -109,7 +109,7 @@ const Testimonials = () => {
             className="w-full pb-12"
           >
             {testimonials.map((testimonial, idx) => (
-              <SwiperSlide key={idx} className="h-auto p-1">
+              <SwiperSlide key={idx} className="h-auto p-1 pb-12">
                 <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
                   <div className="mb-8">
                     <svg className="w-10 h-10 text-main-yellow/50 mb-6" fill="currentColor" viewBox="0 0 24 24">
