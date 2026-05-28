@@ -2,12 +2,15 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
+import LogoLoop from "@/components/LogoLoop";
+import { skillLogos } from "@/constants/skillLogos";
 
 const About = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const logoLoopRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,6 +78,19 @@ const About = () => {
         delay: 0.2,
         ease: "power2.out",
       });
+
+      // Animación para el LogoLoop
+      gsap.from(logoLoopRef.current, {
+        scrollTrigger: {
+          trigger: logoLoopRef.current,
+          start: "top 95%",
+        },
+        opacity: 0,
+        y: 20,
+        filter: "blur(8px)",
+        duration: 1,
+        ease: "power2.out",
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -84,14 +100,14 @@ const About = () => {
     <section
       id="About"
       ref={sectionRef}
-      className="min-h-screen flex items-center mb-2 p-6 sm:p-10 md:p-20 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
+      className="min-h-screen flex items-center justify-center mb-2 p-6 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
     >
       {/* Fondo con Silk */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
       {/* Lado Izquierdo: Texto */}
-      <div ref={contentRef} className="flex-1 space-y-6 flex flex-col items-center sm:space-y-8">
-        <h2 className="text-5xl md:text-8xl italic font-light leading-tight text-center w-fit mx-auto">
+      <div ref={contentRef} className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
+        <h2 className="text-5xl md:text-8xl italic font-light leading-tight text-center w-fit">
           <BlurText
             text={t("about.title")}
             delay={50}
@@ -100,7 +116,7 @@ const About = () => {
           />
         </h2>
 
-        <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-center xl:text-start xl:mx-auto">
+        <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-center xl:text-start">
           <p>
             {t("about.p1")}
             <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}
@@ -125,9 +141,9 @@ const About = () => {
             </div>
             <div
               ref={imageRef}
-              className="flex-1 gap-5 flex will-change-transform justify-center xl:justify-center mt-6 xl:mt-0"
+              className="flex-1 gap-5 flex will-change-transform justify-center items-center mt-6 xl:mt-0"
             >
-              <div className="relative group mx-auto">
+              <div className="relative group">
                 {/* Decoración de fondo para la imagen */}
                 <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
                 <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
@@ -153,6 +169,20 @@ const About = () => {
             <span className="text-main-yellow font-normal">{t("about.p3_highlight")}</span>
             {t("about.p3_2")}
           </p>
+        </div>
+
+        <div 
+          ref={logoLoopRef} 
+          className="w-full max-w-2xl xl:max-w-3xl mb-8 opacity-80"
+        >
+          <LogoLoop 
+            className="[mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] pt-10"
+            logos={skillLogos} 
+            speed={40} 
+            gap={48} 
+            logoHeight={32} 
+            pauseOnHover={false}
+          />
         </div>
 
         <div className="about-cta pt-4 xl:text-center">

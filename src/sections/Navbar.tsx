@@ -107,7 +107,7 @@ const Navbar = () => {
               {t("nav.home", "Inicio")}
             </button>
             <button
-              className="cursor-pointer hover:text-main-yellow transition-all p-2"
+              className={`block xl:hidden cursor-pointer hover:text-main-yellow transition-all p-2`}
               onClick={(e) => scrollToSection(e, "#Work")}
             >
               {t("nav.work", "Trabajo")}
