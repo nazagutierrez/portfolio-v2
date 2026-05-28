@@ -3,7 +3,6 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import Home from "./sections/Home";
 import LanguageWrapper from "./components/LanguageWrapper";
 
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -63,7 +62,7 @@ useEffect(() => {
 
       ScrollTrigger.create({
         trigger: document.body,
-        start: "bottom 110%", // Se activa un poco antes de llegar al final absoluto
+        start: "bottom 130%", // Se activa un poco antes de llegar al final absoluto
         onEnter: () => gsap.to(iconContainerRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" }),
         onLeaveBack: () => gsap.to(iconContainerRef.current, { opacity: 1, duration: 0.3, ease: "power2.in" }),
       });

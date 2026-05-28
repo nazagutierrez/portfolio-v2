@@ -120,15 +120,15 @@ const Navbar = () => {
             </button>
             <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
-              onClick={(e) => scrollToSection(e, "#Testimonials")}
-            >
-              {t("nav.testimonials", "Testimonios")}
-            </button>
-            <button
-              className="cursor-pointer hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#About")}
             >
               {t("nav.about", "Bio")}
+            </button>
+            <button
+              className="cursor-pointer hover:text-main-yellow transition-all p-2"
+              onClick={(e) => scrollToSection(e, "#Testimonials")}
+            >
+              {t("nav.testimonials", "Testimonios")}
             </button>
             <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
