@@ -53,8 +53,7 @@ const resources = {
         "p3": "Con años de experiencia en el ecosistema de ",
         "p3_highlight": "React",
         "p3_2": ", me especializo en construir interfaces dinámicas y animaciones fluidas.",
-        "tag": "Frontend Dev",
-        "btn_cv": "Descargar CV"
+        "tag": "Frontend Dev"
       },
       "contact": {
         "title": "Hablemos",
@@ -119,8 +118,7 @@ const resources = {
         "p3": "With years of experience in the ",
         "p3_highlight": "React",
         "p3_2": " ecosystem, I specialize in building dynamic interfaces and fluid animations.",
-        "tag": "Frontend Dev",
-        "btn_cv": "Download CV"
+        "tag": "Frontend Dev"
       },
       "contact": {
         "title": "Let's talk",

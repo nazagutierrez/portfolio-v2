@@ -185,11 +185,7 @@ const About = () => {
           />
         </div>
 
-        <div className="about-cta pt-4 xl:text-center">
-          <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
-            {t("about.btn_cv")}
-          </div>
-        </div>
+
       </div>
     </section>
   );

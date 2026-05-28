@@ -5,6 +5,7 @@ import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { logos } from "@/constants/logos";
+import { ExternalLink } from "lucide-react";
 
 const WorkExperience = () => {
   const { t } = useTranslation();
@@ -147,11 +148,12 @@ const WorkExperience = () => {
                 
                 <h3>{exp.title}</h3>
               </div>
-              <span className="text-xs sm:text-sm text-main-white/60 mb-2">
+              <span className="text-xs flex gap-x-1 sm:text-sm text-main-white/60 mb-2">
                 {exp.role} · {exp.year} {" "}
                 <span className={exp.logoLoop ? "hidden" : ""}>· </span>
-                <a href={exp.href} className="underline hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
-                    {exp.href} 
+                <a href={exp.href} className="underline w-fit hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
+                  <span className="flex sm:hidden gap-x-1 "><ExternalLink size={12} /> Link</span>
+                  <h3 className="hidden sm:block">{exp.href}</h3> 
                 </a>
               </span>
               <p className="text-sm sm:text-base text-main-white/90 max-w-[600px]">
