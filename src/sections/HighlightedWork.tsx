@@ -28,15 +28,15 @@ const HighlightedWork = () => {
       </p>
 
       <div className="flex flex-col gap-y-10 sm:gap-y-16">
-        <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
+        <div className="px-4 sm:px-10 xl:px-0 flex relative w-full justify-center items-center">
           <img src="/logo-rave-dates.svg" alt="Rave Dates" className="xxl:block hidden w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
           <Carousel logo="/logo-rave-dates.svg" title="Rave Dates" media={raveDatesMedia} borderColor="#9f3838" />
         </div>
-        <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
+        <div className="px-4 sm:px-10 xl:px-0 flex relative w-full justify-center items-center">
           <img src="/dymo-logo-small.png" alt="TPEOficial" className="xxl:block hidden w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
           <Carousel logo="/dymo-logo-small.png" title="Dymo" media={dymoMedia} borderColor="#827f9b" />
         </div>
-        <div className="ps-4 sm:ps-10 xl:ps-0 flex relative w-full justify-center items-center">
+        <div className="px-4 sm:px-10 xl:px-0 flex relative w-full justify-center items-center">
           <LogoLoop
             className="xxl:block! hidden! h-8 sm:h-20! mr-5 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"
             logos={[ 

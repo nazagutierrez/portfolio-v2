@@ -153,7 +153,7 @@ export function Carousel({ title, media, borderColor, logo }: CarouselProps) {
   }, [activeItem]);
 
   return (
-    <div className='relative text-main-white'>
+    <div className='relative text-main-white w-full md:w-160 max-w-full mx-auto md:mx-0'>
       {title && (
         <p className="flex xxl:pl-3 pl-0 gap-x-2 items-center mb-2 text-[10px] uppercase tracking-[0.2em] text-white/40 font-medium border-l" style={borderColor ? { borderColor } : undefined}>
           <img src={logo} alt="Logo" className="block xxl:hidden pl-2 w-6 h-6 object-contain" />
@@ -197,7 +197,7 @@ export function Carousel({ title, media, borderColor, logo }: CarouselProps) {
           }
         }}
         modules={[FreeMode, Pagination, A11y]}
-        className="h-40 w-160 m-0! rounded-lg"
+        className="h-60 xs:h-75 sm:h-52 md:h-40 w-full m-0! rounded-lg"
       >
         {media.map(item => (
           <SwiperSlide key={item.id}>
