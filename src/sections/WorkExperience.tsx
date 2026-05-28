@@ -60,28 +60,41 @@ const WorkExperience = () => {
           filter: "blur(14px)",
         },
         {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
           opacity: 1,
           filter: "blur(0px)",
-          delay: 0.7,
+          delay: 0.2,
           duration: 1,
           ease: "power2.out",
         }
-);
+      );
 
       gsap.from(lineRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
         height:0,
-        delay: 0.9,
+        delay: 0.4,
         duration: 2,
         ease: "power2.out",
-      })
+      });
 
       gsap.from(".work-item", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
         opacity: 0,
         y: 40,
+        filter: "blur(10px)",
         duration: 0.6,
-        delay: 1.7,
+        delay: 0.6,
         ease: "power2.out",
-        stagger: 0.4,
+        stagger: 0.3,
       });
     }, sectionRef);
 
@@ -93,7 +106,7 @@ const WorkExperience = () => {
       {/* Fondo */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
       
-      <h2 className="text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
+      <h2 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText
           text={t("work.title")}
           delay={50}

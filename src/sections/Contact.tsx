@@ -62,13 +62,42 @@ const Contact = ({
         {
         opacity: 0,
         y: 20,
+        filter: "blur(8px)",
       },
       {
         opacity: 1,
         y: 0,
+        filter: "blur(0px)",
         stagger: 0.1,
         duration: 0.8,
         delay: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      });
+
+      // Animación para el email
+      gsap.from(".contact-email", {
+        opacity: 0,
+        y: 20,
+        filter: "blur(8px)",
+        duration: 1,
+        delay: 0.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      });
+
+      // Animación para el footer
+      gsap.from(".contact-footer", {
+        opacity: 0,
+        filter: "blur(6px)",
+        duration: 1.2,
+        delay: 1.2,
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -127,7 +156,7 @@ const Contact = ({
           href="mailto:nazarenojunin@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-lg sm:text-2xl will-change-transform md:text-4xl text-main-yellow font-light duration-300 mb-8 sm:mb-12 border-b border-main-yellow/20 pb-2 hover:border-main-yellow/100 break-all sm:break-normal px-2"
+          className="contact-email inline-block text-lg sm:text-2xl will-change-transform md:text-4xl text-main-yellow font-light transition-colors duration-300 mb-8 sm:mb-12 border-b border-main-yellow/20 pb-2 hover:border-main-yellow/100 break-all sm:break-normal px-2"
         >
           nazarenojunin@gmail.com
         </a>
@@ -140,7 +169,7 @@ const Contact = ({
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-social-btn group relative w-14 h-14 flex items-center justify-center rounded-full bg-main-white/10 border border-main-white/20 transition-all duration-500 hover:border-main-yellow/50 hover:bg-main-yellow/10"
+              className="contact-social-btn group relative w-14 h-14 flex items-center justify-center rounded-full bg-main-white/10 border border-main-white/20 transition-colors duration-500 hover:border-main-yellow/50 hover:bg-main-yellow/10"
               title={social.name}
             >
               <div className="relative z-10 text-main-white will-change-transform group-hover:scale-110 transition-all duration-300">
@@ -152,7 +181,7 @@ const Contact = ({
         </div>
 
         {/* Footer simple */}
-        <div className="text-main-white/30 font-light text-sm tracking-widest uppercase">
+        <div className="contact-footer text-main-white/30 font-light text-sm tracking-widest uppercase">
           © {new Date().getFullYear()} · {t("contact.footer")}
         </div>
       </div>

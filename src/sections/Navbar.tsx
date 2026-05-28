@@ -37,7 +37,6 @@ import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const { t } = useTranslation();
-
   return (
     <nav className="fixed top-5 right-1/2 translate-x-1/2 text-main-white z-90">
       <GlassSurface

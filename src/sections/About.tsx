@@ -13,22 +13,30 @@ const About = () => {
     const ctx = gsap.context(() => {
       // Animación para el contenido de texto
       gsap.from(contentRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
         opacity: 0,
         x: -50,
         filter: "blur(10px)",
         duration: 1.2,
-        delay: 0.5,
+        delay: 0.2,
         ease: "power3.out",
       });
 
       // Animación para la imagen
       gsap.from(imageRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
         opacity: 0,
         x: 50,
         scale: 0.9,
         filter: "blur(10px)",
         duration: 1.2,
-        delay: 0.8,
+        delay: 0.5,
         ease: "power3.out",
       });
 
@@ -39,6 +47,33 @@ const About = () => {
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
+      });
+
+      // Animación para el último párrafo
+      gsap.from(".about-last-text", {
+        scrollTrigger: {
+          trigger: ".about-last-text",
+          start: "top 90%",
+        },
+        opacity: 0,
+        y: 30,
+        filter: "blur(8px)",
+        duration: 1,
+        ease: "power2.out",
+      });
+
+      // Animación para el botón CTA
+      gsap.from(".about-cta", {
+        scrollTrigger: {
+          trigger: ".about-cta",
+          start: "top 95%",
+        },
+        opacity: 0,
+        y: 20,
+        filter: "blur(6px)",
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power2.out",
       });
     }, sectionRef);
 
@@ -113,14 +148,14 @@ const About = () => {
             </div>
           </div>
 
-          <p className="mt-12">
+          <p className="about-last-text mt-12">
             {t("about.p3")}
             <span className="text-main-yellow font-normal">{t("about.p3_highlight")}</span>
             {t("about.p3_2")}
           </p>
         </div>
 
-        <div className="pt-4 xl:text-center">
+        <div className="about-cta pt-4 xl:text-center">
           <div className="inline-block px-6 py-3 border border-main-yellow/30 rounded-full text-main-yellow hover:bg-main-yellow hover:text-main-black transition-colors duration-300 cursor-pointer">
             {t("about.btn_cv")}
           </div>

@@ -1,10 +1,10 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Play, Pause } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -37,6 +37,28 @@ const Testimonials = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const swiperContainerRef = useRef<HTMLDivElement>(null);
+
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const toggleAutoplay = () => {
+    if (swiperInstance && swiperInstance.autoplay) {
+      if (isPlaying) {
+        if (typeof swiperInstance.autoplay.pause === 'function') {
+          swiperInstance.autoplay.pause();
+        } else {
+          swiperInstance.autoplay.stop();
+        }
+      } else {
+        if (typeof swiperInstance.autoplay.resume === 'function') {
+          swiperInstance.autoplay.resume();
+        } else {
+          swiperInstance.autoplay.start();
+        }
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   const onAutoplayTimeLeft = (s: any, time: number, progress: number) => {
     if (swiperContainerRef.current) {
@@ -80,10 +102,11 @@ const Testimonials = () => {
       <div className="absolute inset-0 opacity-20 bg-[url('/noise.png')] pointer-events-none"></div>
 
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
-        <h2 className="testimonial-header text-5xl md:text-7xl italic font-light leading-tight text-center mb-4">
+        <h2 className="testimonial-header text-4xl xs:text-5xl md:text-7xl italic font-light leading-tight text-center mb-4">
           <BlurText
             text={t("testimonials.title")}
             delay={50}
+            className="flex-nowrap! "
             animateBy="letters"
             direction="bottom"
           />
@@ -94,6 +117,7 @@ const Testimonials = () => {
 
         <div className="swiper-container w-full" ref={swiperContainerRef}>
           <Swiper
+            onSwiper={setSwiperInstance}
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
             slidesPerView={1}
@@ -101,6 +125,10 @@ const Testimonials = () => {
               delay: 4000,
               disableOnInteraction: false,
             }}
+            onAutoplayStart={() => setIsPlaying(true)}
+            onAutoplayStop={() => setIsPlaying(false)}
+            onAutoplayPause={() => setIsPlaying(false)}
+            onAutoplayResume={() => setIsPlaying(true)}
             onAutoplayTimeLeft={onAutoplayTimeLeft}
             pagination={{
               clickable: true,
@@ -110,18 +138,28 @@ const Testimonials = () => {
           >
             {testimonials.map((testimonial, idx) => (
               <SwiperSlide key={idx} className="h-auto p-1 pb-12">
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
+                <div className="bg-white/5 border border-white/10 rounded-3xl px-8 py-10 md:px-12 md:py-10 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
                   <div className="mb-8">
-                    <svg className="w-10 h-10 text-main-yellow/50 mb-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
+                    <div className="flex justify-between items-start mb-6">
+                      <svg className="w-10 h-10 text-main-yellow/50 self-center" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
+                      <button
+                        onClick={toggleAutoplay}
+                        className="w-12 h-12 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-main-yellow/70 hover:bg-white/10 hover:text-main-yellow transition-colors duration-300"
+                        aria-label={isPlaying ? "Pause autoplay" : "Play autoplay"}
+                      >
+                        {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-1" />}
+                      </button>
+                    </div>
                     <p className="text-lg md:text-2xl font-light leading-relaxed text-main-white/90 italic">
                       "{testimonial.text}"
                     </p>
                   </div>
                   
                   <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-4">
-                    <div className="flex items-center gap-4">
+                    {/* Left: User Info */}
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
                       {/* Image with Progress Circle */}
                       <div className="relative w-14 h-14 shrink-0 flex items-center justify-center">
                         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -142,20 +180,29 @@ const Testimonials = () => {
                           className="w-11 h-11 object-cover rounded-full" 
                         />
                       </div>
-                      <div>
-                        <h4 className="text-xl font-medium text-main-white">{testimonial.name}</h4>
-                        <p className="text-sm text-main-white/50 mt-1">{testimonial.position}</p>
-                      </div>
+                      <a 
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="min-w-0 pr-2 group block cursor-pointer"
+                      >
+                        <h4 className="text-xl font-medium text-main-white group-hover:text-main-yellow transition-colors duration-300 truncate">{testimonial.name}</h4>
+                        <p className="text-sm text-main-white/50 group-hover:text-main-yellow/70 transition-colors duration-300 mt-1 truncate">{testimonial.position}</p>
+                      </a>
                     </div>
-                    <a 
-                      href={testimonial.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 shrink-0 rounded-full bg-[#0A66C2]/10 flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors duration-300"
-                      aria-label="LinkedIn Profile"
-                    >
-                      <Linkedin size={20} />
-                    </a>
+
+                    {/* Right: LinkedIn */}
+                    <div className="hidden md:flex shrink-0">
+                      <a 
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 shrink-0 rounded-full bg-[#0A66C2]/10 flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors duration-300"
+                        aria-label="LinkedIn Profile"
+                      >
+                        <Linkedin size={20} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

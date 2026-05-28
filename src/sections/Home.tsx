@@ -24,6 +24,7 @@ const Home = () => {
   
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+  const text2Ref = useRef<HTMLHeadingElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -120,39 +121,51 @@ const Home = () => {
             .call(() => ScrollTrigger.refresh());
         }
 
-        // Content Animations (Synced)
-        mainTl
-          .from(
-            subtitleRef.current,
-            {
-              opacity: 0,
-              filter: "blur(14px)",
-              duration: 1,
-              ease: "power2.out",
-            },
-            isDesktop ? "-=1" : 0.7,
-          )
-          .from(
-            textRef.current,
-            {
-              opacity: 0,
-              filter: "blur(14px)",
-              duration: 1,
-              ease: "power2.out",
-            },
-            "-=0.8",
-          )
-          .from(
-            ".contact-item",
-            {
-              opacity: 0,
-              x: -80,
-              duration: 0.6,
-              ease: "power2.out",
-              stagger: 0.2,
-            },
-            "-=1",
-          );
+        // Content Animations (only on mobile, desktop has the sliding intro)
+        if (!isDesktop) {
+          mainTl
+            .from(
+              subtitleRef.current,
+              {
+                opacity: 0,
+                filter: "blur(14px)",
+                duration: 1,
+                ease: "power2.out",
+              },
+              0.7,
+            )
+            .from(
+              textRef.current,
+              {
+                opacity: 0,
+                filter: "blur(14px)",
+                duration: 1,
+                ease: "power2.out",
+              },
+              "-=0.8",
+            )
+            .from(
+              text2Ref.current,
+              {
+                opacity: 0,
+                filter: "blur(14px)",
+                duration: 1,
+                ease: "power2.out",
+              },
+              "-=0.8",
+            )
+            .from(
+              ".contact-item",
+              {
+                opacity: 0,
+                x: -80,
+                duration: 0.6,
+                ease: "power2.out",
+                stagger: 0.2,
+              },
+              "-=1",
+            );
+        }
       },
       sectionRef,
     );
@@ -226,7 +239,7 @@ const Home = () => {
               onWheel={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
               onTouchMove={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
             >
-              <div className="m-auto flex flex-col items-center justify-center gap-y-10 xl:gap-y-10 w-full h-full xl:h-auto py-5 xl:min-h-max">
+              <div className="m-auto flex flex-col items-center justify-center gap-y-[clamp(1rem,4vh,2.5rem)] w-full h-full xl:h-auto py-5 xl:min-h-max">
                 
                 <div className="flex flex-col gap-y-5">
                   <h1 className="mx-auto italic text-[3rem] xs:text-[3.5rem] sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
@@ -269,48 +282,53 @@ const Home = () => {
                     {t("home.description_1")}
                   </p>
                   <p
+                    ref={text2Ref}
                     className="xl:mt-8 xs:block hidden text-sm sm:text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
                   >
                     {t("home.description_2")}
                   </p>
-                </div>
 
-                <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 xl:mt-10 xxl:mt-20 shrink-0">
-                  {options.map(({ name, href, icon, onClick }, index) => {
-                    const isLink = !!href;
-                    const commonClasses = "contact-item border-fade flex items-center justify-center px-4 py-3 w-14 sm:w-40 sm:px-5 text-center h-full rounded-xl bg-main-black text-main-white text-sm sm:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer";
-                    
-                    return isLink ? (
-                      <a
-                        href={href}
-                        key={index}
-                        target="_blank"
-                        className={commonClasses}
-                        title={name}
-                      >
-                        <span className="sm:hidden flex items-center justify-center w-full h-full">
-                          {icon}
-                        </span>
-                        <span className="hidden sm:inline">
-                          {name}
-                        </span>
-                      </a>
-                    ) : (
-                      <button
-                        onClick={onClick}
-                        key={index}
-                        className={commonClasses}
-                        title={name}
-                      >
-                        <span className="sm:hidden flex items-center justify-center w-full h-full">
-                          {icon}
-                        </span>
-                        <span className="hidden sm:inline">
-                          {name}
-                        </span>
-                      </button>
-                    );
-                  })}
+                  <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 mt-10 xxl:mt-20 shrink-0">
+                    {options.map(({ name, href, icon, onClick }, index) => {
+                      const isLink = !!href;
+                      const isLangBtn = index === options.length - 1;
+                      
+                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer ${
+                        isLangBtn ? "sm:fixed sm:bottom-6 sm:left-6 sm:z-50 w-12! h-12! sm:p-0" : ""
+                      }`;
+                      
+                      return isLink ? (
+                        <a
+                          href={href}
+                          key={index}
+                          target="_blank"
+                          className={commonClasses}
+                          title={name}
+                        >
+                          <span className="sm:hidden flex items-center justify-center w-full h-full">
+                            {icon}
+                          </span>
+                          <span className="hidden sm:inline">
+                            {name}
+                          </span>
+                        </a>
+                      ) : (
+                        <button
+                          onClick={onClick}
+                          key={index}
+                          className={commonClasses}
+                          title={name}
+                        >
+                          <span className={`flex items-center justify-center w-full h-full ${isLangBtn ? "" : "sm:hidden"}`}>
+                            {icon}
+                          </span>
+                          <span className={`hidden ${isLangBtn ? "" : "sm:inline"}`}>
+                            {name}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
