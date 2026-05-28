@@ -51,7 +51,7 @@ const HighlightedWork = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="Work" className="min-h-screen bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden py-12 sm:py-20 relative">
+    <section ref={sectionRef} id="Showcase" className="min-h-screen bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden py-12 sm:py-20 relative">
       {/* Fondo */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 

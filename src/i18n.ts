@@ -15,8 +15,18 @@ const resources = {
       "nav": {
         "home": "Inicio",
         "work": "Trabajo",
-        "about": "Sobre mi",
+        "showcase": "Showcase",
+        "testimonials": "Testimonios",
+        "about": "Bio",
         "contact": "Contacto"
+      },
+      "nav-mobile": {
+        "home": "INICIO",
+        "work": "EXPERIENCIA",
+        "showcase": "SHOWCASE",
+        "testimonials": "TESTIMONIOS",
+        "about": "SOBRE MI",
+        "contact": "CONTACTO"
       },
       "work": {
         "title": "Experiencia",
@@ -71,8 +81,18 @@ const resources = {
       "nav": {
         "home": "Home",
         "work": "Work",
+        "showcase": "Showcase",
+        "testimonials": "Testimonials",
         "about": "About",
         "contact": "Contact"
+      },
+      "nav-mobile": {
+        "home": "HOME",
+        "work": "WORK",
+        "showcase": "SHOWCASE",
+        "testimonials": "TESTIMONIALS",
+        "about": "ABOUT",
+        "contact": "CONTACT"
       },
       "work": {
         "title": "Experience",

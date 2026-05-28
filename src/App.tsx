@@ -42,7 +42,8 @@ useEffect(() => {
   };
 }, []);
 
-  const iconRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<SVGSVGElement>(null);
+  const iconContainerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -59,7 +60,14 @@ useEffect(() => {
           ease: "power2.in",
         })
         .to({}, { duration: 0.3 }); // Pausa al final
-    }, iconRef);
+
+      ScrollTrigger.create({
+        trigger: document.body,
+        start: "bottom 110%", // Se activa un poco antes de llegar al final absoluto
+        onEnter: () => gsap.to(iconContainerRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" }),
+        onLeaveBack: () => gsap.to(iconContainerRef.current, { opacity: 1, duration: 0.3, ease: "power2.in" }),
+      });
+    });
 
     return () => ctx.revert();
   }, []);
@@ -72,10 +80,10 @@ useEffect(() => {
       {/* Navbar */}
       <Navbar />
       <div
-        ref={iconRef}
-        className="fixed bottom-10 right-10 -translate-x-1/2 z-50 pointer-events-none"
+        ref={iconContainerRef}
+        className="fixed bottom-10 right-10 -translate-x-1/2 z-50 pointer-events-none transition-opacity duration-300"
       >
-        <HandScrollSvg className="w-11 h-11 text-main-white/70 rotate-320" />
+        <HandScrollSvg ref={iconRef} className="w-11 h-11 text-main-white/70 rotate-320" />
       </div>
 
       <div id="smooth-wrapper">

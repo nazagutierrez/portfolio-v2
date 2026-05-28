@@ -1,6 +1,9 @@
-const HandScrollSvg = ({ className }: { className?: string }) => {
+import { forwardRef } from "react";
+
+const HandScrollSvg = forwardRef<SVGSVGElement, { className?: string }>(({ className }, ref) => {
   return (
     <svg
+      ref={ref}
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
@@ -16,6 +19,6 @@ const HandScrollSvg = ({ className }: { className?: string }) => {
       />
     </svg>
   );
-};
+});
 
 export default HandScrollSvg;
