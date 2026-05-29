@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
@@ -11,6 +11,16 @@ const About = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const logoLoopRef = useRef<HTMLDivElement>(null);
+  const [logoGap, setLogoGap] = useState(48);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setLogoGap(window.innerWidth < 640 ? 20 : 48);
+    };
+    handleResize(); // set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -100,14 +110,14 @@ const About = () => {
     <section
       id="About"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center mb-2 p-6 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
+      className="min-h-screen flex items-center justify-center mb-2 px-6 py-16 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
     >
       {/* Fondo con Silk */}
       <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
 
       {/* Lado Izquierdo: Texto */}
       <div ref={contentRef} className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
-        <h2 className="text-5xl md:text-8xl italic font-light leading-tight text-center w-fit">
+        <h2 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl italic font-light leading-tight text-center w-fit">
           <BlurText
             text={t("about.title")}
             delay={50}
@@ -122,7 +132,7 @@ const About = () => {
             <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}
             {t("about.p1_2")}
           </p>
-          <div className="flex-1 gap-10 xxl:gap-5 flex flex-col xxl:flex-row will-change-transform">
+          <div className="flex-1 gap-5 xl:gap-10 xxl:gap-5 flex flex-col xxl:flex-row will-change-transform">
             <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
               <p>
                 {t("about.p2")}
@@ -141,7 +151,7 @@ const About = () => {
             </div>
             <div
               ref={imageRef}
-              className="flex-1 gap-5 flex will-change-transform justify-center items-center mt-6 xl:mt-0"
+              className="flex-1 flex will-change-transform justify-center items-center mt-6 xl:mt-0"
             >
               <div className="relative group">
                 {/* Decoración de fondo para la imagen */}
@@ -179,7 +189,7 @@ const About = () => {
             className="[mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] pt-10"
             logos={skillLogos} 
             speed={40} 
-            gap={48} 
+            gap={logoGap} 
             logoHeight={32} 
             pauseOnHover={false}
           />

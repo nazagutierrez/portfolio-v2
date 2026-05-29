@@ -97,7 +97,7 @@ const Testimonials = () => {
     <section
       id="Testimonials"
       ref={sectionRef}
-      className="min-h-[100vh] flex flex-col bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] justify-center mb-2 p-6 sm:p-10 md:p-20 relative bg-main-black rounded-[28px] overflow-hidden z-90"
+      className="min-h-[100vh] flex flex-col bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] justify-center mb-2 px-3 py-16 sm:px-10 sm:py-16 md:px-20 md:py-20 relative bg-main-black rounded-[28px] overflow-hidden z-90"
     >
       <div className="absolute inset-0 opacity-20 bg-[url('/noise.png')] pointer-events-none"></div>
 
@@ -137,10 +137,10 @@ const Testimonials = () => {
             className="w-full pb-12"
           >
             {testimonials.map((testimonial, idx) => (
-              <SwiperSlide key={idx} className="h-auto p-1 pb-12">
-                <div className="bg-white/5 border border-white/10 rounded-3xl px-8 py-10 md:px-12 md:py-10 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
-                  <div className="mb-8">
-                    <div className="flex justify-between items-start mb-6">
+              <SwiperSlide key={idx} className="h-auto pb-12">
+                <div className="bg-white/5 border border-white/10 rounded-3xl px-3 sm:px-8 py-6 md:px-12 md:py-10 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
+                  <div className="mb-3 sm:mb-8">
+                    <div className="flex justify-between items-start mb-3 sm:mb-6 px-4 sm:px-0">
                       <svg className="w-10 h-10 text-main-yellow/50 self-center" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
@@ -152,16 +152,16 @@ const Testimonials = () => {
                         {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-1" />}
                       </button>
                     </div>
-                    <p className="text-lg md:text-2xl font-light leading-relaxed text-main-white/90 italic">
+                    <p className="text-base text-pretty xs:text-lg text-center sm:text-start md:text-2xl font-light leading-relaxed text-main-white/90 italic">
                       "{testimonial.text}"
                     </p>
                   </div>
                   
                   <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-4">
                     {/* Left: User Info */}
-                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                    <div className="flex items-center justify-center sm:justify-start gap-4 flex-1 min-w-0">
                       {/* Image with Progress Circle */}
-                      <div className="relative w-14 h-14 shrink-0 flex items-center justify-center">
+                      <div className="relative w-10 xs:w-14 h-10 xs:h-14 shrink-0 flex items-center justify-center">
                         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
                           <circle cx="50" cy="50" r="46" stroke="rgba(255,255,255,0.1)" strokeWidth="4" fill="none" />
                           <circle 
@@ -177,7 +177,7 @@ const Testimonials = () => {
                         <img 
                           src={testimonial.image} 
                           alt={testimonial.name} 
-                          className="w-11 h-11 object-cover rounded-full" 
+                          className="w-8 xs:w-11 h-8 xs:h-11 object-cover rounded-full" 
                         />
                       </div>
                       <a 
@@ -186,7 +186,7 @@ const Testimonials = () => {
                         rel="noopener noreferrer"
                         className="min-w-0 pr-2 group block cursor-pointer"
                       >
-                        <h4 className="text-xl font-medium text-main-white group-hover:text-main-yellow transition-colors duration-300 truncate">{testimonial.name}</h4>
+                        <h4 className="xs:text-lg sm:text-xl font-medium text-main-white group-hover:text-main-yellow transition-colors duration-300 truncate">{testimonial.name}</h4>
                         <p className="text-sm text-main-white/50 group-hover:text-main-yellow/70 transition-colors duration-300 mt-1 truncate">{testimonial.position}</p>
                       </a>
                     </div>

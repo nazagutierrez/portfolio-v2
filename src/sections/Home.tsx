@@ -336,7 +336,7 @@ const Home = () => {
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="xl:w-1/2 w-full z-40 min-h-screen m-2 pr-0.5">
+        <div ref={rightRef} className="xl:w-1/2 w-full z-40 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
             <div className="relative w-full text-main-white space-y-2.5 bg-main-black">

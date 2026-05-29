@@ -66,10 +66,6 @@ export const skillLogos: LogoItem[] = [
     title: "Firebase",
   },
   {
-    node: <WithTooltip title="Figma"><SiFigma style={iconStyle("#F24E1E")} /></WithTooltip>,
-    title: "Figma",
-  },
-  {
     node: <WithTooltip title="Vite"><SiVite style={iconStyle("#646CFF")} /></WithTooltip>,
     title: "Vite",
   },
