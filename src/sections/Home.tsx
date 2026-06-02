@@ -14,6 +14,8 @@ import HighlightedWork from "./HighlightedWork";
 import Contact from "./Contact";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
+import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -213,6 +215,8 @@ const Home = () => {
 
   return (
     <>
+      <SEOHead lang={i18n.language} />
+      <JsonLd lang={i18n.language} />
       <section
         id="Home"
         ref={sectionRef}

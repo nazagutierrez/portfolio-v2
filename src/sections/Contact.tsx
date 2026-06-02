@@ -137,14 +137,14 @@ const Contact = ({
       {/* Contenido Centrado */}
       <div ref={containerRef} className="relative z-10 p-3 xs:p-6 sm:p-10 md:p-20 flex flex-col justify-center items-center h-full text-main-white text-center">
         
-        <h1 className="text-6xl sm:text-8xl md:text-9xl italic font-light mb-4 sm:mb-6 tracking-tight">
+        <h2 className="text-6xl sm:text-8xl md:text-9xl italic font-light mb-4 sm:mb-6 tracking-tight">
           <BlurText
             text={t("contact.title")}
             delay={50}
             animateBy="letters"
             direction="bottom"
           />
-        </h1>
+        </h2>
 
         <p className="text-lg sm:text-xl md:text-2xl font-extralight text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
           {t("contact.subtitle1")} <br />

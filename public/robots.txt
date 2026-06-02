@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nazarenogutierrez.com.ar/sitemap.xml
