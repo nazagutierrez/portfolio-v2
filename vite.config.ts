@@ -18,4 +18,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ['three', '@react-three/fiber'],
+          gsap: ['gsap']
+        }
+      }
+    }
+  }
 })
