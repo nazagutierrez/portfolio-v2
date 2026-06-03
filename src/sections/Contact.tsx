@@ -23,22 +23,22 @@ const Contact = ({
     {
       name: "LinkedIn",
       href: "https://linkedin.com/in/nazarenogutierrez1",
-      icon: <LinkedinSvg className="w-7 h-7" />,
+      icon: <LinkedinSvg className="w-5 h-5 sm:w-7 sm:h-7" />,
     },
     {
       name: "GitHub",
       href: "https://github.com/nazagutierrez",
-      icon: <GithubSvg className="w-7 h-7" />,
+      icon: <GithubSvg className="w-5 h-5 sm:w-7 sm:h-7" />,
     },
     {
       name: "WhatsApp",
       href: "https://api.whatsapp.com/send?phone=542364329720",
-      icon: <WhatsappSvg className="w-8 h-8" />,
+      icon: <WhatsappSvg className="w-6 h-6 sm:w-8 sm:h-8" />,
     },
     {
       name: t("contact.btn_cv"),
       href: "https://docs.google.com/document/d/1EqLsHFxXghg_7N9ZkMPCujrz_Su4o-KTL7avZmoiBys/edit?usp=sharing",
-      icon: <ResumeSvg className="w-6.5 h-6.5" />,
+      icon: <ResumeSvg className="w-5 h-5 sm:w-6.5 sm:h-6.5" />,
     },
   ];
 
@@ -169,7 +169,7 @@ const Contact = ({
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-social-btn group relative w-14 h-14 flex items-center justify-center rounded-full bg-main-white/10 border border-main-white/20 transition-colors duration-500 hover:border-main-yellow/50 hover:bg-main-yellow/10"
+              className="contact-social-btn group relative w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-main-white/10 border border-main-white/20 transition-colors duration-500 hover:border-main-yellow/50 hover:bg-main-yellow/10"
               title={social.name}
             >
               <div className="relative z-10 text-main-white will-change-transform group-hover:scale-110 transition-all duration-300">

@@ -17,9 +17,9 @@ const SEOHead = ({ lang }: SEOHeadProps) => {
       <link rel="canonical" href={canonical} />
 
       {/* Hreflang tags (for i18n SEO) */}
-      <link rel="alternate" hreflang="es" href={`${baseUrl}/`} />
-      <link rel="alternate" hreflang="en" href={`${baseUrl}/en`} />
-      <link rel="alternate" hreflang="x-default" href={`${baseUrl}/`} />
+      <link rel="alternate" hrefLang="es" href={`${baseUrl}/`} />
+      <link rel="alternate" hrefLang="en" href={`${baseUrl}/en`} />
+      <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/`} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

@@ -1,8 +1,4 @@
 import Silk from "@/components/Silk";
-import WorkExperience from "./WorkExperience";
-import About from "./About";
-import Testimonials from "./Testimonials";
-
 import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -10,12 +6,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
-import HighlightedWork from "./HighlightedWork";
-import Contact from "./Contact";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
+
+import WorkExperience from "./WorkExperience";
+import About from "./About";
+import Testimonials from "./Testimonials";
+import HighlightedWork from "./HighlightedWork";
+import Contact from "./Contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -343,7 +343,7 @@ const Home = () => {
         <div ref={rightRef} className="xl:w-1/2 w-full z-40 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
-            <div className="relative w-full text-main-white space-y-2.5 bg-main-black">
+            <div className="relative w-full text-main-white space-y-3 sm:space-y-4.5 bg-main-black">
               <WorkExperience />
               <HighlightedWork />
               <About />

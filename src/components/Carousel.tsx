@@ -23,7 +23,7 @@ function MediaViewer({ item, onClose }: ViewerProps) {
   const closeWithAnimation = () => {
     gsap.to(contentRef.current, {
       opacity: 0,
-      scale: 0.95,
+      y: 20,
       duration: 0.2,
       onComplete: onClose,
     });
@@ -56,8 +56,8 @@ function MediaViewer({ item, onClose }: ViewerProps) {
       { opacity: 1, duration: 0.25, ease: 'power1.out' }
     ).fromTo(
       contentRef.current,
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' },
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' },
       '-=0.15'
     );
 
@@ -84,8 +84,8 @@ function MediaViewer({ item, onClose }: ViewerProps) {
         onClick={e => e.stopPropagation()}
         className="flex flex-col items-center justify-center relative"
       >
-        <div className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-center justify-center max-w-[90vw] max-h-[90vh] backdrop-blur-sm">
-          <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')] pointer-events-none z-0"></div>
+        <div className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-center justify-center max-w-[90vw] max-h-[100vh] backdrop-blur-sm">
+          <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')] pointer-events-none z-0"></div>
           {item.type === 'image' ? (
             <img
               src={item.src}
@@ -102,17 +102,17 @@ function MediaViewer({ item, onClose }: ViewerProps) {
           )}
           
           {(item.description || item.technologies) && (
-            <div className="relative w-full bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] p-6 flex flex-col gap-3 border-t border-white/10 shrink-0 overflow-hidden">
-              <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')] pointer-events-none z-0"></div>
+            <div className="relative w-full bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] p-6 flex flex-col gap-y-4 border-t border-white/10 shrink-0 overflow-hidden">
+              <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')] pointer-events-none z-0"></div>
               {item.description && (
                 <p className="relative z-10 text-white/80 text-sm md:text-base leading-relaxed max-w-3xl">
                   {item.description}
                 </p>
               )}
               {item.technologies && item.technologies.length > 0 && (
-                <div className="relative z-10 flex flex-wrap items-center gap-4 mt-2">
+                <div className="relative z-10 flex flex-wrap items-center gap-4">
                   {item.technologies.map((tech, idx) => {
-                    const Icon = tech.icon;
+                    const Icon = tech.icon as any;
                     return (
                       <div key={idx} className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors duration-300">
                         <Icon className="w-5 h-5" />
