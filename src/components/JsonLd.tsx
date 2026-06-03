@@ -13,7 +13,7 @@ const JsonLd = ({ lang }: JsonLdProps) => {
     "@type": "Person",
     "name": "Nazareno Gutierrez",
     "url": baseUrl,
-    "image": `${baseUrl}/naza.png`,
+    "image": `${baseUrl}/naza.webp`,
     "sameAs": [
       "https://linkedin.com/in/nazarenogutierrez1",
       "https://github.com/nazagutierrez"

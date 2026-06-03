@@ -22,14 +22,14 @@ const testimonials = [
     position: "Backend Developer",
     text: "Trabajar con Nazareno fue un placer. Es un desarrollador Frontend con gran nivel técnico, proactivo y orientado al trabajo en equipo. Siempre propone mejoras, anticipa problemas y aporta soluciones de forma constante. Su disposición para colaborar, revisar código y ayudar al equipo lo convierten en un profesional muy valioso y altamente recomendable.",
     linkedin: "https://linkedin.com/",
-    image: "/backend-dev.png"
+    image: "/backend-dev.webp"
   },
   {
     name: "Javier Romero González",
     position: "Founder & CEO of Dymo",
     text: "Tuve el placer de trabajar con Nazareno en el rediseño y desarrollo de nuestro Help Center. Demostró gran capacidad para entender necesidades, crear una experiencia intuitiva y ejecutar un desarrollo sólido y eficiente. Su enfoque proactivo, atención al detalle y compromiso con la calidad hicieron que el proyecto superara nuestras expectativas. Recomiendo a Nazareno sin reservas.",
     linkedin: "https://linkedin.com/",
-    image: "/dymo-ceo.png"
+    image: "/dymo-ceo.webp"
   }
 ];
 
@@ -60,7 +60,7 @@ const Testimonials = () => {
     }
   };
 
-  const onAutoplayTimeLeft = (s: any, time: number, progress: number) => {
+  const onAutoplayTimeLeft = (_s: any, _time: number, progress: number) => {
     if (swiperContainerRef.current) {
       swiperContainerRef.current.style.setProperty("--slide-progress", progress.toString());
     }
@@ -99,7 +99,7 @@ const Testimonials = () => {
       ref={sectionRef}
       className="min-h-[100vh] flex flex-col bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] justify-center mb-2 px-3 py-16 sm:px-10 sm:py-16 md:px-20 md:py-20 relative bg-main-black rounded-[28px] overflow-hidden z-90"
     >
-      <div className="absolute inset-0 opacity-20 bg-[url('/noise.png')] pointer-events-none"></div>
+      <div className="absolute inset-0 opacity-20 bg-[url('/noise.webp')] pointer-events-none"></div>
 
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
         <h2 className="testimonial-header text-4xl xs:text-5xl md:text-7xl italic font-light leading-tight text-center mb-4">
@@ -219,11 +219,11 @@ const Testimonials = () => {
         }
         
         .swiper-slide .progress-circle {
-          stroke-dashoffset: 289;
+          stroke-dashoffset: 289px;
         }
         
         .swiper-slide-active .progress-circle {
-          stroke-dashoffset: calc(289 * var(--slide-progress, 1));
+          stroke-dashoffset: calc(289px * var(--slide-progress, 1));
         }
       `}</style>
     </section>

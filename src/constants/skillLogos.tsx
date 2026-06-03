@@ -8,7 +8,6 @@ import {
   SiNodedotjs,
   SiGit,
   SiFirebase,
-  SiFigma,
   SiVite,
   SiGithub,
   SiCss3,

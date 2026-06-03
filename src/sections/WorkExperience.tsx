@@ -14,8 +14,8 @@ const WorkExperience = () => {
     {
       title: "Piso Fuerte",
       role: "Frontend Developer",
-      logo: "/logo-piso-fuerte-small.png",
-      href: "https://pisofuerte.com.ar",
+      logo: "/logo-piso-fuerte-small.webp",
+      href: "www.pisofuerte.com.ar",
       logoLoop: false,
       description: t("work.exp1_desc"),
       year: "2025",
@@ -24,7 +24,7 @@ const WorkExperience = () => {
       title: "Rave Dates",
       role: "Frontend Developer",
       logo: "/logo-rave-dates.svg",
-      href: "https://ravedates.proxising.com",
+      href: "ravedates.proxising.com",
       logoLoop: false,
       description: t("work.exp2_desc"),
       year: "2024",
@@ -32,8 +32,8 @@ const WorkExperience = () => {
     {
       title: "Dymo",
       role: "Frontend Developer",
-      logo: "/dymo-logo-small.png",
-      href: "https://dymo.tpeoficial.com",
+      logo: "/dymo-logo-small.webp",
+      href: "dymo.tpeoficial.com",
       logoLoop: false,
       description: t("work.exp3_desc"),
       year: "2023",
@@ -105,7 +105,7 @@ const WorkExperience = () => {
   return (
     <section id="Work" ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden px-6 py-16 sm:px-10 md:px-20 md:py-20 pt-24 md:pt-32 relative">
       {/* Fondo */}
-      <div className="absolute inset-0 opacity-30 bg-[url('/noise.png')]"></div>
+      <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')]"></div>
       
       <h2 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText
@@ -151,8 +151,8 @@ const WorkExperience = () => {
               <span className="text-xs flex gap-x-1 sm:text-sm text-main-white/60 mb-2">
                 {exp.role} · {exp.year} {" "}
                 <span className={exp.logoLoop ? "hidden" : ""}>· </span>
-                <a href={exp.href} className="underline w-fit hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
-                  <span className="flex sm:hidden gap-x-1 "><ExternalLink size={12} /> Link</span>
+                <a href={`https://${exp.href}`} className="underline w-fit hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
+                  <span className="flex sm:hidden gap-x-1 items-center"><ExternalLink size={12} /> Link</span>
                   <h3 className="hidden sm:block">{exp.href}</h3> 
                 </a>
               </span>
