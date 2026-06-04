@@ -9,29 +9,9 @@ import { Linkedin, Play, Pause } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const testimonials = [
-  {
-    name: "John Doe",
-    position: "Senior Frontend Developer",
-    text: "Nazareno es un excelente profesional. Siempre dispuesto a ayudar y con una gran capacidad para resolver problemas complejos en React. Su sentido del diseño y la estética eleva cualquier proyecto.",
-    linkedin: "https://linkedin.com/",
-    image: "https://i.pravatar.cc/150?u=1"
-  },
-  {
-    name: "Agustin Millan",
-    position: "Backend Developer",
-    text: "Trabajar con Nazareno fue un placer. Es un desarrollador Frontend con gran nivel técnico, proactivo y orientado al trabajo en equipo. Siempre propone mejoras, anticipa problemas y aporta soluciones de forma constante. Su disposición para colaborar, revisar código y ayudar al equipo lo convierten en un profesional muy valioso y altamente recomendable.",
-    linkedin: "https://linkedin.com/",
-    image: "/backend-dev.webp"
-  },
-  {
-    name: "Javier Romero González",
-    position: "Founder & CEO of Dymo",
-    text: "Tuve el placer de trabajar con Nazareno en el rediseño y desarrollo de nuestro Help Center. Demostró gran capacidad para entender necesidades, crear una experiencia intuitiva y ejecutar un desarrollo sólido y eficiente. Su enfoque proactivo, atención al detalle y compromiso con la calidad hicieron que el proyecto superara nuestras expectativas. Recomiendo a Nazareno sin reservas.",
-    linkedin: "https://linkedin.com/",
-    image: "/dymo-ceo.webp"
-  }
-];
+import backendDevImg from "@/assets/people/backend-dev.webp";
+import dymoCeoImg from "@/assets/people/dymo-ceo.webp";
+import noiseImg from "@/assets/noise.webp";
 
 const Testimonials = () => {
   const { t } = useTranslation();
@@ -40,6 +20,30 @@ const Testimonials = () => {
 
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+
+  const testimonials = [
+    {
+      name: "John Doe",
+      position: t("testimonials.john_position"),
+      text: t("testimonials.john_text"),
+      linkedin: "https://linkedin.com/",
+      image: "https://i.pravatar.cc/150?u=1"
+    },
+    {
+      name: "Agustin Millan",
+      position: t("testimonials.agustin_position"),
+      text: t("testimonials.agustin_text"),
+      linkedin: "https://linkedin.com/",
+      image: backendDevImg
+    },
+    {
+      name: "Javier Romero González",
+      position: t("testimonials.javier_position"),
+      text: t("testimonials.javier_text"),
+      linkedin: "https://linkedin.com/",
+      image: dymoCeoImg
+    }
+  ];
 
   const toggleAutoplay = () => {
     if (swiperInstance && swiperInstance.autoplay) {
@@ -99,7 +103,7 @@ const Testimonials = () => {
       ref={sectionRef}
       className="min-h-[100vh] flex flex-col bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] justify-center mb-2 px-3 py-16 sm:px-10 sm:py-16 md:px-20 md:py-20 relative bg-main-black rounded-[28px] overflow-hidden z-90"
     >
-      <div className="absolute inset-0 opacity-20 bg-[url('/noise.webp')] pointer-events-none"></div>
+      <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: `url(${noiseImg})` }}></div>
 
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
         <h2 className="testimonial-header text-4xl xs:text-5xl md:text-7xl italic font-light leading-tight text-center mb-4">

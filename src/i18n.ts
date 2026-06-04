@@ -64,7 +64,13 @@ const resources = {
       },
       "testimonials": {
         "title": "Testimonios",
-        "description": "Lo que dicen mis colegas y clientes."
+        "description": "Lo que dicen mis colegas y clientes.",
+        "john_position": "Senior Frontend Developer",
+        "john_text": "Nazareno es un excelente profesional. Siempre dispuesto a ayudar y con una gran capacidad para resolver problemas complejos en React. Su sentido del diseño y la estética eleva cualquier proyecto.",
+        "agustin_position": "Backend Developer",
+        "agustin_text": "Trabajar con Nazareno fue un placer. Es un desarrollador Frontend con gran nivel técnico, proactivo y orientado al trabajo en equipo. Siempre propone mejoras, anticipa problemas y aporta soluciones de forma constante. Su disposición para colaborar, revisar código y ayudar al equipo lo convierten en un profesional muy valioso y altamente recomendable.",
+        "javier_position": "Founder & CEO of Dymo",
+        "javier_text": "Tuve el placer de trabajar con Nazareno en el rediseño y desarrollo de nuestro Help Center. Demostró gran capacidad para entender necesidades, crear una experiencia intuitiva y ejecutar un desarrollo sólido y eficiente. Su enfoque proactivo, atención al detalle y compromiso con la calidad hicieron que el proyecto superara nuestras expectativas. Recomiendo a Nazareno sin reservas."
       }
     }
   },
@@ -129,7 +135,13 @@ const resources = {
       },
       "testimonials": {
         "title": "Testimonials",
-        "description": "What my colleagues and clients say about me."
+        "description": "What my colleagues and clients say about me.",
+        "john_position": "Senior Frontend Developer",
+        "john_text": "Nazareno is an excellent professional. Always willing to help and with a great capacity to solve complex problems in React. His sense of design and aesthetics elevates any project.",
+        "agustin_position": "Backend Developer",
+        "agustin_text": "Working with Nazareno was a pleasure. He is a Frontend developer with a high technical level, proactive and team-oriented. He always proposes improvements, anticipates problems and constantly provides solutions. His willingness to collaborate, review code and help the team make him a very valuable and highly recommended professional.",
+        "javier_position": "Founder & CEO of Dymo",
+        "javier_text": "I had the pleasure of working with Nazareno on the redesign and development of our Help Center. He showed great ability to understand needs, create an intuitive experience and execute a solid and efficient development. His proactive approach, attention to detail and commitment to quality made the project exceed our expectations. I unreservedly recommend Nazareno."
       }
     }
   }
