@@ -140,17 +140,10 @@ const About = () => {
             <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
               <p>
                 {t("about.p2")}
-                <span className="italic">{t("about.p2_highlight1")}</span>
-                {t("about.p2_2")}
-                <span className="italic">{t("about.p2_highlight2")}</span>
-                {t("about.p2_3")}
               </p>
               <p>
-                {t("about.p2")}
-                <span className="italic">{t("about.p2_highlight1")}</span>
                 {t("about.p2_2")}
-                <span className="italic">{t("about.p2_highlight2")}</span>
-                {t("about.p2_3")}
+                <span className="text-main-yellow font-normal"> {t("about.p2_tech")}</span>
               </p>
             </div>
             <div
@@ -182,8 +175,10 @@ const About = () => {
 
           <p className="about-last-text mt-12">
             {t("about.p3")}
-            <span className="text-main-yellow font-normal">{t("about.p3_highlight")}</span>
+            <span className="text-main-yellow font-normal"> {t("about.p3_highlight")} </span>
             {t("about.p3_2")}
+            <span className="text-main-yellow font-normal"> {t("about.p3_highlight_2")}.</span>
+
           </p>
         </div>
 

@@ -6,10 +6,10 @@ const resources = {
   es: {
     translation: {
       "home": {
-        "title": "Frontend Developer SSR",
-        "description_1": "Buscás un desarrollador Semi-Senior experto en React, Next.js y Typescript, con buen trabajo en equipo, buen ojo para el diseño y muchas ganas de trabajar? ¡Hablemos!",
-        "description_2": "Mas de 3 años de experiencia trabajando en equipos multidisciplinarios",
-        "btn_mail": "Enviar mail",
+        "title": "Frontend Engineer",
+        "description_1": "Con más de 3 años de experiencia construyendo productos web para startups y empresas con React, Next.js y TypeScript.",
+        "description_2": "Experiencia desarrollando aplicaciones escalables, optimizando la experiencia de usuario y colaborando en equipos multidisciplinarios.",
+        "btn_mail": "Contactar",
         "btn_cv": "Ver CV"
       },
       "nav": {
@@ -30,35 +30,34 @@ const resources = {
       },
       "work": {
         "title": "Experiencia",
-        "description": "Experiencia profesional y proyectos donde construí interfaces modernas, funcionales y estéticas.",
-        "exp1_desc": "Desarrollo de interfaces modernas con React y TailwindCSS, foco en performance y UX.",
-        "exp2_desc": "Construcción de vistas complejas, animaciones y componentes reutilizables en React.",
-        "exp3_desc": "Trabajo en productos SaaS, emails, herramientas con IA y colaboración directa con diseño y comunicación.",
-        "exp4_desc": "Desarrollo de soluciones a medida con React, Next.js y Firebase para distintos clientes."
+        "description": "Experiencia profesional desarrollando productos web utilizados por usuarios reales, con foco en escalabilidad, rendimiento y experiencia de usuario.",
+        "exp1_desc": "Plataforma de eventos con autenticación, control de roles, pagos e integración de APIs complejas.",
+        "exp2_desc": "Desarrollo de interfaces avanzadas, animaciones y componentes reutilizables en React.",
+        "exp3_desc": "Contribución en productos SaaS, herramientas con IA y experiencias de soporte al cliente.",
+        "exp4_desc": "Soluciones personalizadas para pequeñas empresas, incluyendo reservas online y e-commerce."
       },
       "highlighted_work": {
-        "title": "Trabajo destacado",
-        "description": "Explora algunos de los proyectos más relevantes donde he aplicado mis habilidades técnicas y de diseño."
+        "title": "Proyectos destacados",
+        "description": "Una selección de proyectos donde combiné desarrollo frontend, diseño y objetivos de negocio para crear experiencias digitales de alto impacto."
       },
       "about": {
         "title": "Sobre mí",
-        "p1": "Soy un desarrollador ",
-        "p1_highlight": "Frontend SSR",
-        "p1_2": " apasionado por crear experiencias digitales que no solo funcionen a la perfección, sino que también cautiven visualmente.",
-        "p2": "Mi enfoque se centra en la intersección del diseño y la ingeniería. Creo firmemente que la ",
-        "p2_highlight1": "performance",
-        "p2_2": " y la ",
-        "p2_highlight2": "estética",
-        "p2_3": " deben ir de la mano para lograr productos excepcionales.",
-        "p3": "Con años de experiencia en el ecosistema de ",
-        "p3_highlight": "React",
-        "p3_2": ", me especializo en construir interfaces dinámicas y animaciones fluidas.",
-        "tag": "Frontend Dev"
+        "p1": "Soy un ",
+        "p1_highlight": "Frontend Engineer",
+        "p1_2": " con más de 3 años de experiencia desarrollando productos web para startups y empresas.",
+        "p2": "Durante los últimos 3 años trabajé desarrollando productos web para startups y empresas, participando en proyectos utilizados por usuarios reales y colaborando con equipos multidisciplinarios en distintas etapas del desarrollo.",
+        "p2_2": "Mi experiencia incluye plataformas de eventos, productos SaaS, sistemas de reservas y e-commerce utilizando tecnologías como ",
+        "p2_tech": "React, Next.js y TypeScript.",
+        "p3": "Actualmente busco seguir creciendo mientras ayudo a construir productos que las",
+        "p3_highlight": "personas",
+        "p3_2": "realmente",
+        "p3_highlight_2": "disfruten",
+        "tag": "Frontend Engineer"
       },
       "contact": {
         "title": "Hablemos",
-        "subtitle1": "¿Tienes un proyecto en mente o solo quieres saludar?",
-        "subtitle2": "Estoy a un mensaje de distancia.",
+        "subtitle1": "¿Tienes una oportunidad laboral o un proyecto en mente?",
+        "subtitle2": "Me encantaría saber más.",
         "btn_cv": "Ver CV",
         "footer": "Hecho con 💛"
       },
@@ -77,10 +76,10 @@ const resources = {
   en: {
     translation: {
       "home": {
-        "title": "Frontend Developer SSR",
-        "description_1": "Looking for a Semi-Senior developer expert in React, Next.js and Typescript, with good teamwork, a keen eye for design and eager to work? Let's talk!",
-        "description_2": "More than 3 years of experience working in multidisciplinary teams",
-        "btn_mail": "Send mail",
+        "title": "Frontend Engineer",
+        "description_1": "With 3+ years of experience building web products for startups and businesses using React, Next.js, and TypeScript.",
+        "description_2": "Experienced in developing scalable applications, improving user experiences, and collaborating within multidisciplinary teams.",
+        "btn_mail": "Contact",
         "btn_cv": "View CV"
       },
       "nav": {
@@ -101,36 +100,35 @@ const resources = {
       },
       "work": {
         "title": "Experience",
-        "description": "Professional experience and projects where I built modern, functional, and aesthetic interfaces.",
-        "exp1_desc": "Development of modern interfaces with React and TailwindCSS, focusing on performance and UX.",
-        "exp2_desc": "Construction of complex views, animations, and reusable components in React.",
-        "exp3_desc": "Work on SaaS products, emails, AI tools, and direct collaboration with design and communication teams.",
-        "exp4_desc": "Development of custom solutions with React, Next.js, and Firebase for various clients."
+        "description": "Professional experience building web products used by real users, focused on scalability, performance, and user experience.",
+        "exp1_desc": "Event platform with authentication, role-based access, payments, and complex API integrations.",
+        "exp2_desc": "Development of advanced interfaces, animations, and reusable React components.",
+        "exp3_desc": "Contributions to SaaS products, AI-powered tools, and customer support experiences.",
+        "exp4_desc": "Custom solutions for small businesses, including online booking systems and e-commerce platforms."
       },
       "highlighted_work": {
-        "title": "Highlighted Work",
-        "description": "Explore some of the most relevant projects where I've applied my technical and design skills."
+        "title": "Featured Projects",
+        "description": "A selection of projects where I combined frontend development, design, and business goals to create impactful digital experiences."
       },
       "about": {
-        "title": "About me",
-        "p1": "I am a ",
-        "p1_highlight": "Frontend SSR",
-        "p1_2": " developer passionate about creating digital experiences that not only work flawlessly but also captivate visually.",
-        "p2": "My approach focuses on the intersection of design and engineering. I firmly believe that ",
-        "p2_highlight1": "performance",
-        "p2_2": " and ",
-        "p2_highlight2": "aesthetics",
-        "p2_3": " must go hand in hand to achieve exceptional products.",
-        "p3": "With years of experience in the ",
-        "p3_highlight": "React",
-        "p3_2": " ecosystem, I specialize in building dynamic interfaces and fluid animations.",
-        "tag": "Frontend Dev"
+        "title": "About Me",
+        "p1": "I'm a ",
+        "p1_highlight": "Frontend Engineer",
+        "p1_2": " with 3+ years of experience building web products for startups and businesses.",
+        "p2": "Over the past 3 years, I’ve been building web products for startups and businesses, contributing to projects used by real users and collaborating with multidisciplinary teams across different stages of development.",
+        "p2_2": "My experience includes event platforms, SaaS products, booking systems, and e-commerce applications, using technologies such as ",
+        "p2_tech": "React, Next.js and TypeScript.",
+        "p3": "I’m currently looking to continue growing as a developer while helping build products that ",
+        "p3_highlight": "people",
+        "p3_2": "really",
+        "p3_highlight_2": "enjoy",
+        "tag": "Frontend Engineer"
       },
       "contact": {
-        "title": "Let's talk",
-        "subtitle1": "Do you have a project in mind or just want to say hi?",
-        "subtitle2": "I'm just a message away.",
-        "btn_cv": "View CV",
+        "title": "Let's Talk",
+        "subtitle1": "Do you have a job opportunity or a project in mind?",
+        "subtitle2": "I'd love to hear about it.",
+        "btn_cv": "View Resume",
         "footer": "Made with 💛"
       },
       "testimonials": {
