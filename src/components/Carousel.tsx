@@ -10,8 +10,10 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
+import noiseImg from "@/assets/noise.webp";
 
-import { ExternalLink } from 'lucide-react';
+
+import { ExternalLink, Loader2 } from 'lucide-react';
 
 type ViewerProps = {
   item: MediaItem;
@@ -22,6 +24,7 @@ type ViewerProps = {
 function MediaViewer({ item, onClose, href }: ViewerProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const closeWithAnimation = () => {
     gsap.to(contentRef.current, {
@@ -90,11 +93,15 @@ function MediaViewer({ item, onClose, href }: ViewerProps) {
         <div className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-center justify-center max-w-[90vw] max-h-[100vh] backdrop-blur-sm">
           <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')] pointer-events-none z-0"></div>
           {item.type === 'image' ? (
-            <img
-              src={item.src}
-              alt=""
-              className="relative z-10 max-w-[90vw] max-h-[75vh] object-contain"
-            />
+            <>
+              {!isImageLoaded && <Loader2 className="absolute w-8 h-8 text-white/50 animate-spin z-20" />}
+              <img
+                src={item.src}
+                alt=""
+                onLoad={() => setIsImageLoaded(true)}
+                className={`relative z-10 max-w-[90vw] max-h-[75vh] object-contain transition-opacity duration-300 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              />
+            </>
           ) : (
             <video
               src={item.src}
@@ -106,7 +113,7 @@ function MediaViewer({ item, onClose, href }: ViewerProps) {
           
           {(item.description || item.technologies || href) && (
             <div className="relative w-full bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] p-6 flex flex-col gap-y-4 border-t border-white/10 shrink-0 overflow-hidden">
-              <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')] pointer-events-none z-0"></div>
+              <div className="absolute inset-0 opacity-30 pointer-events-none z-0" style={{ backgroundImage: `url(${noiseImg})` }}></div>
               {item.description && (
                 <p className="relative z-10 text-white/80 text-sm md:text-base leading-relaxed max-w-3xl">
                   {item.description}
@@ -153,6 +160,25 @@ type CarouselProps = {
   logo?: string;
   href?: string;
 };
+
+function SlideImage({ src, alt, className }: { src: string, alt: string, className: string }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  return (
+    <>
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-lg z-0">
+          <Loader2 className="w-6 h-6 text-white/50 animate-spin" />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setIsLoaded(true)}
+        className={`${className} transition-opacity duration-300 relative z-10 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      />
+    </>
+  );
+}
 
 export function Carousel({ title, media, borderColor, logo, href }: CarouselProps) {
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
@@ -222,14 +248,14 @@ export function Carousel({ title, media, borderColor, logo, href }: CarouselProp
               className="w-full h-full relative cursor-zoom-in"
             >
               {item.type === 'image' ? (
-                <img
+                <SlideImage
                   src={item.src}
                   alt=""
                   className="w-full h-full object-cover rounded-lg"
                 />
               ) : (
                 <div className="relative w-full h-full">
-                  <img
+                  <SlideImage
                     src={item.thumbnail}
                     alt=""
                     className="w-full h-full object-cover rounded-lg"

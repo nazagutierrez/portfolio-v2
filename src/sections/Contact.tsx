@@ -9,13 +9,8 @@ import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import { useTranslation } from "react-i18next";
 
-const Contact = ({
-  size,
-}: {
-  size?: number;
-}) => {
+const Contact = () => {
   const { t } = useTranslation();
-  const SIZE = size || 1000;
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -114,11 +109,10 @@ const Contact = ({
       {/* Fondo con Silk */}
       <div
         className="absolute inset-0"
-        style={{ clipPath: "url(#clip-bottom)" }}
+        style={{ clipPath: "inset(clamp(10px, 1.5vw, 16px) round 28px)" }}
       >
         <div
           className="absolute inset-0 text-[#423c11]"
-          style={{ clipPath: "url(#clip-bottom)" }}
         >
           <SilkReveal>
             {(onReady: () => void) => (
@@ -185,25 +179,6 @@ const Contact = ({
           © {new Date().getFullYear()} · {t("contact.footer")}
         </div>
       </div>
-
-      {/* Frame SVG */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox={`0 0 ${SIZE} ${SIZE}`}
-      >
-        <defs>
-          <clipPath id="clip-bottom" clipPathUnits="objectBoundingBox">
-            <rect
-              x={0.005}
-              y={0.01}
-              width={0.99}
-              height={0.98}
-              rx={0.02}
-              ry={0.03}
-            />
-          </clipPath>
-        </defs>
-      </svg>
     </div>
   );
 };

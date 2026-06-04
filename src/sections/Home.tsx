@@ -60,9 +60,9 @@ const Home = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         id: "contact-reveal",
-        trigger: rightRef.current,
-        start: "bottom bottom",
-        end: "+=101%",
+        trigger: "#Contact",
+        start: "top bottom",
+        end: "bottom bottom",
         scrub: true,
         pin: false,
         anticipatePin: 1,
@@ -187,8 +187,6 @@ const Home = () => {
 
     navigate(newPath);
   };
-
-  const SIZE = 1000;
 
   const options = [
     { 
@@ -361,7 +359,7 @@ const Home = () => {
         className="h-screen relative w-full overflow-hidden z-0"
       >
         <div ref={bottomRef} className="h-full w-full">
-          <Contact size={SIZE} />
+          <Contact />
         </div>
       </div>
     </>

@@ -4,6 +4,9 @@ import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
 import LogoLoop from "@/components/LogoLoop";
 import { skillLogos } from "@/constants/skillLogos";
+import { Loader2 } from "lucide-react";
+import nazaImg from "@/assets/people/naza.webp";
+import noiseImg from "@/assets/noise.webp";
 
 const About = () => {
   const { t } = useTranslation();
@@ -12,6 +15,7 @@ const About = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const logoLoopRef = useRef<HTMLDivElement>(null);
   const [logoGap, setLogoGap] = useState(48);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -113,7 +117,7 @@ const About = () => {
       className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
     >
       {/* Fondo con Silk */}
-      <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')]"></div>
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
 
       {/* Lado Izquierdo: Texto */}
       <div ref={contentRef} className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
@@ -158,11 +162,13 @@ const About = () => {
                 <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
                 <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
 
-                <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
+                <div className="relative flex items-center justify-center w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
+                  {!isImageLoaded && <Loader2 className="absolute w-8 h-8 text-main-yellow animate-spin z-10" />}
                   <img
-                    src="/naza.webp"
+                    src={nazaImg}
                     alt="Nazareno Gutierrez"
-                    className="w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105"
+                    onLoad={() => setIsImageLoaded(true)}
+                    className={`w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                   />
                 </div>
 
