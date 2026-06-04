@@ -11,12 +11,15 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 
+import { ExternalLink } from 'lucide-react';
+
 type ViewerProps = {
   item: MediaItem;
   onClose: () => void;
+  href?: string;
 };
 
-function MediaViewer({ item, onClose }: ViewerProps) {
+function MediaViewer({ item, onClose, href }: ViewerProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -101,7 +104,7 @@ function MediaViewer({ item, onClose }: ViewerProps) {
             />
           )}
           
-          {(item.description || item.technologies) && (
+          {(item.description || item.technologies || href) && (
             <div className="relative w-full bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] p-6 flex flex-col gap-y-4 border-t border-white/10 shrink-0 overflow-hidden">
               <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')] pointer-events-none z-0"></div>
               {item.description && (
@@ -122,6 +125,18 @@ function MediaViewer({ item, onClose }: ViewerProps) {
                   })}
                 </div>
               )}
+              {href && (
+                <a
+                  href={`https://${href}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="relative z-10 flex items-center gap-2 text-xs font-medium tracking-wide uppercase text-white/50 hover:text-white transition-colors duration-300 w-fit border-t border-white/10 pt-4 mt-0"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {href}
+                </a>
+              )}
             </div>
           )}
         </div>
@@ -136,9 +151,10 @@ type CarouselProps = {
   media: MediaItem[];
   borderColor?: string;
   logo?: string;
+  href?: string;
 };
 
-export function Carousel({ title, media, borderColor, logo }: CarouselProps) {
+export function Carousel({ title, media, borderColor, logo, href }: CarouselProps) {
   const [activeItem, setActiveItem] = useState<MediaItem | null>(null);
   const paginationRef = useRef<HTMLDivElement>(null);
 
@@ -230,7 +246,7 @@ export function Carousel({ title, media, borderColor, logo }: CarouselProps) {
       </Swiper>
 
       {activeItem && (
-        <MediaViewer item={activeItem} onClose={() => setActiveItem(null)} />
+        <MediaViewer item={activeItem} onClose={() => setActiveItem(null)} href={href} />
       )}
     </div>
   );

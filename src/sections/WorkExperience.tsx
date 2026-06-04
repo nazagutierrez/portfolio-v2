@@ -78,10 +78,11 @@ const WorkExperience = () => {
           trigger: sectionRef.current,
           start: "top 80%",
         },
-        height:0,
+        height: 0,
         delay: 0.4,
         duration: 2,
         ease: "power2.out",
+        clearProps: "height",
       });
 
       gsap.from(".work-item", {
@@ -134,7 +135,7 @@ const WorkExperience = () => {
                 {
                   exp.logoLoop ? 
                   <LogoLoop
-                  className="h-8 sm:h-10! me-2 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"
+                    className="h-8 sm:h-10! me-2 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"
                     logos={exp.logo as LogoItem[]}
                     speed={30}
                     direction="up"

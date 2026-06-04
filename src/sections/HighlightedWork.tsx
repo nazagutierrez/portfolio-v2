@@ -72,11 +72,11 @@ const HighlightedWork = () => {
       <div className="flex flex-col gap-y-10 sm:gap-y-16">
         <div className="highlighted-item px-4 sm:px-10 xl:px-0 flex relative w-full justify-center items-center">
           <img src="/logo-rave-dates.svg" alt="Rave Dates" className="xxl:block hidden w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
-          <Carousel logo="/logo-rave-dates.svg" title="Rave Dates" media={raveDatesMedia} borderColor="#9f3838" />
+          <Carousel logo="/logo-rave-dates.svg" title="Rave Dates" media={raveDatesMedia} borderColor="#9f3838" href="ravedates.proxising.com" />
         </div>
         <div className="highlighted-item px-4 sm:px-10 xl:px-0 flex relative w-full justify-center items-center">
           <img src="/dymo-logo-small.webp" alt="TPEOficial" className="xxl:block hidden w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain mr-5" />
-          <Carousel logo="/dymo-logo-small.webp" title="Dymo" media={dymoMedia} borderColor="#827f9b" />
+          <Carousel logo="/dymo-logo-small.webp" title="Dymo" media={dymoMedia} borderColor="#827f9b" href="dymo.tpeoficial.com" />
         </div>
         <div className="highlighted-item px-4 sm:px-10 xl:px-0 flex relative w-full justify-center items-center">
           <LogoLoop
@@ -91,7 +91,7 @@ const HighlightedWork = () => {
             gap={5}
             hoverSpeed={0}
           />
-          <Carousel logo="/logo-piso-fuerte-small.webp" title="Freelance Projects" media={freelanceMedia} borderColor="#a5913b" />
+          <Carousel logo="/logo-piso-fuerte-small.webp" title="Freelance Projects" media={freelanceMedia} borderColor="#a5913b" href="www.pisofuerte.com.ar" />
         </div>
       </div>
     </section>
