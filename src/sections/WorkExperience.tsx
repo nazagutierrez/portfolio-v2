@@ -6,6 +6,10 @@ import type { LogoItem } from "@/components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { logos } from "@/constants/logos";
 import { ExternalLink } from "lucide-react";
+import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp";
+import logoRaveDates from "@/assets/logos/logo-rave-dates.svg";
+import logoDymo from "@/assets/logos/dymo-logo-small.webp";
+import noiseImg from "@/assets/noise.webp";
 
 const WorkExperience = () => {
   const { t } = useTranslation();
@@ -14,7 +18,7 @@ const WorkExperience = () => {
     {
       title: "Piso Fuerte",
       role: "Frontend Developer",
-      logo: "/logo-piso-fuerte-small.webp",
+      logo: logoPisoFuerte,
       href: "www.pisofuerte.com.ar",
       logoLoop: false,
       description: t("work.exp1_desc"),
@@ -23,7 +27,7 @@ const WorkExperience = () => {
     {
       title: "Rave Dates",
       role: "Frontend Developer",
-      logo: "/logo-rave-dates.svg",
+      logo: logoRaveDates,
       href: "ravedates.proxising.com",
       logoLoop: false,
       description: t("work.exp2_desc"),
@@ -32,7 +36,7 @@ const WorkExperience = () => {
     {
       title: "Dymo",
       role: "Frontend Developer",
-      logo: "/dymo-logo-small.webp",
+      logo: logoDymo,
       href: "dymo.tpeoficial.com",
       logoLoop: false,
       description: t("work.exp3_desc"),
@@ -106,7 +110,7 @@ const WorkExperience = () => {
   return (
     <section id="Work" ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden px-6 py-16 sm:px-10 md:px-20 md:py-20 pt-24 md:pt-32 relative">
       {/* Fondo */}
-      <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp')]"></div>
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
       
       <h2 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText

@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useSEO } from '../hooks/useSEO';
+import nazaImg from '@/assets/people/naza.webp';
 
 type JsonLdProps = {
   lang: string;
@@ -13,7 +14,7 @@ const JsonLd = ({ lang }: JsonLdProps) => {
     "@type": "Person",
     "name": "Nazareno Gutierrez",
     "url": baseUrl,
-    "image": `${baseUrl}/naza.webp`,
+    "image": `${baseUrl}${nazaImg}`,
     "sameAs": [
       "https://linkedin.com/in/nazarenogutierrez1",
       "https://github.com/nazagutierrez"

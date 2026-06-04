@@ -1,5 +1,19 @@
 import { SiReact, SiTypescript, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 
+import ravedates1 from '@/assets/work-examples/ravedates-1.webp';
+import ravedates2 from '@/assets/work-examples/ravedates-2.webp';
+import ravedates3 from '@/assets/work-examples/ravedates-3.webp';
+
+import dymo1 from '@/assets/work-examples/dymo-1.webp';
+import dymo2 from '@/assets/work-examples/dymo-2.webp';
+import dymo3 from '@/assets/work-examples/dymo-3.webp';
+
+import freelance1 from '@/assets/work-examples/freelance-1.webp';
+import freelance2 from '@/assets/work-examples/freelance-2.webp';
+import freelance3 from '@/assets/work-examples/freelance-3.webp';
+import freelance4 from '@/assets/work-examples/freelance-4.webp';
+
+
 export type Technology = {
   name: string;
   icon: React.ElementType;
@@ -18,7 +32,7 @@ export const raveDatesMedia: MediaItem[] = [
   {
     id: 1,
     type: 'image',
-    src: '/ravedates-1.webp',
+    src: ravedates1,
     description: 'Plataforma de comercio electrónico con carrito y pasarela de pagos integrada. Diseñada para ofrecer una experiencia de usuario fluida y rápida.',
     technologies: [
       { name: 'React', icon: SiReact },
@@ -29,7 +43,7 @@ export const raveDatesMedia: MediaItem[] = [
   {
     id: 2,
     type: 'image',
-    src: '/ravedates-2.webp',
+    src: ravedates2,
     description: 'Plataforma de comercio electrónico con carrito y pasarela de pagos integrada. Diseñada para ofrecer una experiencia de usuario fluida y rápida.',
     technologies: [
       { name: 'React', icon: SiReact },
@@ -40,7 +54,7 @@ export const raveDatesMedia: MediaItem[] = [
   {
     id: 3,
     type: 'image',
-    src: '/ravedates-3.webp',
+    src: ravedates3,
     description: 'Plataforma de comercio electrónico con carrito y pasarela de pagos integrada. Diseñada para ofrecer una experiencia de usuario fluida y rápida.',
     technologies: [
       { name: 'React', icon: SiReact },
@@ -66,7 +80,7 @@ export const dymoMedia: MediaItem[] = [
   {
     id: 1,
     type: 'image',
-    src: '/dymo-1.webp',
+    src: dymo1,
     description: 'Plataforma de comercio electrónico con carrito y pasarela de pagos integrada. Diseñada para ofrecer una experiencia de usuario fluida y rápida.',
     technologies: [
       { name: 'React', icon: SiReact },
@@ -77,7 +91,7 @@ export const dymoMedia: MediaItem[] = [
   {
     id: 2,
     type: 'image',
-    src: '/dymo-2.webp',
+    src: dymo2,
     description: 'Plataforma de comercio electrónico con carrito y pasarela de pagos integrada. Diseñada para ofrecer una experiencia de usuario fluida y rápida.',
     technologies: [
       { name: 'React', icon: SiReact },
@@ -88,7 +102,7 @@ export const dymoMedia: MediaItem[] = [
   {
     id: 3,
     type: 'image',
-    src: '/dymo-3.webp',
+    src: dymo3,
     description: 'Plataforma de comercio electrónico con carrito y pasarela de pagos integrada. Diseñada para ofrecer una experiencia de usuario fluida y rápida.',
     technologies: [
       { name: 'React', icon: SiReact },
@@ -102,7 +116,7 @@ export const freelanceMedia: MediaItem[] = [
   {
     id: 1,
     type: 'image',
-    src: '/freelance-1.webp',
+    src: freelance1,
     description: 'Landing page para un evento de tecnología, con un diseño moderno, animaciones atractivas y formulario de registro.',
     technologies: [
       { name: 'Next.js', icon: SiNextdotjs },
@@ -112,7 +126,7 @@ export const freelanceMedia: MediaItem[] = [
   {
     id: 2,
     type: 'image',
-    src: '/freelance-2.webp',
+    src: freelance2,
     description: 'Landing page para un evento de tecnología, con un diseño moderno, animaciones atractivas y formulario de registro.',
     technologies: [
       { name: 'Next.js', icon: SiNextdotjs },
@@ -122,7 +136,7 @@ export const freelanceMedia: MediaItem[] = [
   {
     id: 3,
     type: 'image',
-    src: '/freelance-3.webp',
+    src: freelance3,
     description: 'Landing page para un evento de tecnología, con un diseño moderno, animaciones atractivas y formulario de registro.',
     technologies: [
       { name: 'Next.js', icon: SiNextdotjs },
@@ -132,7 +146,7 @@ export const freelanceMedia: MediaItem[] = [
   {
     id: 4,
     type: 'image',
-    src: '/freelance-4.webp',
+    src: freelance4,
     description: 'Landing page para un evento de tecnología, con un diseño moderno, animaciones atractivas y formulario de registro.',
     technologies: [
       { name: 'Next.js', icon: SiNextdotjs },
