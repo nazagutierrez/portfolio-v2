@@ -140,7 +140,7 @@ const Contact = () => {
           />
         </h2>
 
-        <p className="text-lg sm:text-xl md:text-2xl font-extralight text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
+        <p className="text-lg sm:text-xl md:text-2xl font-light text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
           {t("contact.subtitle1")} <br />
           {t("contact.subtitle2")}
         </p>

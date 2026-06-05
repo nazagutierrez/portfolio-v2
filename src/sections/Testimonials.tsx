@@ -141,7 +141,7 @@ const Testimonials = () => {
             className="w-full pb-12"
           >
             {testimonials.map((testimonial, idx) => (
-              <SwiperSlide key={idx} className="h-auto pb-12">
+              <SwiperSlide key={idx} className="h-auto pb-12 px-0.5">
                 <div className="bg-white/5 border border-white/10 rounded-3xl px-3 sm:px-8 py-6 md:px-12 md:py-10 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
                   <div className="mb-3 sm:mb-8">
                     <div className="flex justify-between items-start mb-3 sm:mb-6 px-4 sm:px-0">

@@ -121,7 +121,7 @@ const WorkExperience = () => {
         />
       </h2>
 
-      <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto">
+      <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto will-change-[filter]">
         {t("work.description")}
       </p>
 

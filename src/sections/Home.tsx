@@ -18,6 +18,7 @@ import HighlightedWork from "./HighlightedWork";
 import Contact from "./Contact";
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -221,7 +222,7 @@ const Home = () => {
         className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="min-h-[100svh] xl:min-h-0 xl:h-screen w-full xl:w-1/2 overflow-hidden z-20 p-2">
+        <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 overflow-hidden z-20 p-2">
           <div className="relative w-full h-full rounded-[28px] overflow-hidden">
             {/* Fondo */}
             <div className="absolute inset-0">
@@ -250,7 +251,7 @@ const Home = () => {
                       delay={50}
                       animateBy="letters"
                       direction="bottom"
-                      className="w-[540px] xxl:w-[630px] justify-center xl:block hidden"
+                      className="w-135 xxl:w-157.5 justify-center xl:block hidden"
                     />
                     <BlurText
                       text="Nazareno Gutierrez"
@@ -264,13 +265,13 @@ const Home = () => {
                       delay={50}
                       animateBy="words"
                       direction="bottom"
-                      className="ms-4 mx-auto w-[245px] xs:w-[283px] block sm:hidden"
+                      className="ms-4 mx-auto w-61.25 xs:w-70.75 block sm:hidden"
                     />
                   </h1>
 
                   <h2
                     ref={subtitleRef}
-                    className="text-xl sm:text-[2rem] font-thin xl:mb-8 italic shrink-0"
+                    className="text-xl sm:text-[2rem] font-light xl:mb-8 italic shrink-0 will-change-[filter]"
                   >
                     {t("home.title")}
                   </h2>
@@ -279,13 +280,13 @@ const Home = () => {
                 <div>
                   <p
                     ref={textRef}
-                    className="mb-3 text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
+                    className="mb-3 text-base xl:text-xl font-light sm:font-thin max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_1")}
                   </p>
                   <p
                     ref={text2Ref}
-                    className="xl:mt-8 xs:block hidden text-sm sm:text-base xl:text-xl font-thin max-w-[600px] lg:max-w-[650px] text-pretty px-6 sm:px-10 shrink-0"
+                    className="xl:mt-8 sm:block hidden text-sm sm:text-base xl:text-xl font-light sm:font-thin max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_2")}
                   </p>
@@ -356,7 +357,7 @@ const Home = () => {
       {/* ===== BOTTOM ===== */}
       <div
         id="Contact"
-        className="h-screen relative w-full overflow-hidden z-0"
+        className="h-dvh relative w-full overflow-hidden z-0"
       >
         <div ref={bottomRef} className="h-full w-full">
           <Contact />

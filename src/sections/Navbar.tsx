@@ -25,7 +25,7 @@ const scrollToSection = (
   const target = smoother.offset(element, "top 1%");
 
   scrollTween = gsap.to(window, {
-    scrollTo: { y: target, autoKill: true },
+    scrollTo: { y: target, autoKill: false },
     duration: 2,
     ease: "power2.out",
     overwrite: true,
@@ -78,8 +78,11 @@ const Navbar = () => {
   }, [isOpen]);
 
   const handleMobileClick = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    e.preventDefault();
     setIsOpen(false);
-    scrollToSection(e, id);
+    setTimeout(() => {
+      scrollToSection(e, id);
+    }, 100);
   };
 
   return (
@@ -161,9 +164,9 @@ const Navbar = () => {
             aria-label="Toggle Menu"
           >
              <div className="flex flex-col justify-center items-center gap-[5px] w-6 h-6">
-               <span className={`block w-6 h-[2px] bg-main-white transition-transform duration-300 origin-center ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`}></span>
-               <span className={`block w-6 h-[2px] bg-main-white transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`}></span>
-               <span className={`block w-6 h-[2px] bg-main-white transition-transform duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}></span>
+               <span className={`block w-6 h-[2px] bg-main-white transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`}></span>
+               <span className={`block w-6 h-[2px] bg-main-white transition-all duration-300 origin-center ${isOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"}`}></span>
+               <span className={`block w-6 h-[2px] bg-main-white transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}></span>
              </div>
           </button>
         </GlassSurface>

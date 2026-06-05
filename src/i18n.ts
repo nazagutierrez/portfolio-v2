@@ -15,7 +15,7 @@ const resources = {
       "nav": {
         "home": "Inicio",
         "work": "Trabajo",
-        "showcase": "Showcase",
+        "showcase": "Galería",
         "testimonials": "Testimonios",
         "about": "Bio",
         "contact": "Contacto"
@@ -23,7 +23,7 @@ const resources = {
       "nav-mobile": {
         "home": "INICIO",
         "work": "EXPERIENCIA",
-        "showcase": "SHOWCASE",
+        "showcase": "GALERÍA",
         "testimonials": "TESTIMONIOS",
         "about": "SOBRE MI",
         "contact": "CONTACTO"
@@ -37,7 +37,7 @@ const resources = {
         "exp4_desc": "Soluciones personalizadas para pequeñas empresas, incluyendo reservas online y e-commerce."
       },
       "highlighted_work": {
-        "title": "Proyectos destacados",
+        "title": "Galería",
         "description": "Una selección de proyectos donde combiné desarrollo frontend, diseño y objetivos de negocio para crear experiencias digitales de alto impacto."
       },
       "about": {
@@ -85,7 +85,7 @@ const resources = {
       "nav": {
         "home": "Home",
         "work": "Work",
-        "showcase": "Showcase",
+        "showcase": "Gallery",
         "testimonials": "Testimonials",
         "about": "About",
         "contact": "Contact"
@@ -93,7 +93,7 @@ const resources = {
       "nav-mobile": {
         "home": "HOME",
         "work": "WORK",
-        "showcase": "SHOWCASE",
+        "showcase": "GALLERY",
         "testimonials": "TESTIMONIALS",
         "about": "ABOUT",
         "contact": "CONTACT"
@@ -107,7 +107,7 @@ const resources = {
         "exp4_desc": "Custom solutions for small businesses, including online booking systems and e-commerce platforms."
       },
       "highlighted_work": {
-        "title": "Featured Projects",
+        "title": "Gallery",
         "description": "A selection of projects where I combined frontend development, design, and business goals to create impactful digital experiences."
       },
       "about": {
