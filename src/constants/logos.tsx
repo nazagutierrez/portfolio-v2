@@ -5,8 +5,8 @@ import cooktaLogo from "@/assets/logos/logo-cookta.webp";
 import menshousebarberLogo from "@/assets/logos/logo-menshousebarber.webp";
 
 export const logos: LogoItem[] = [
-  { src: zergexLogo, alt: "Cookta", href: "https://company2.com" },
-  { src: nordicapsLogo, alt: "Mens House Barber", href: "https://company3.com" },
-  { src: cooktaLogo, alt: "Rave Dates", href: "https://company3.com" },
-  { src: menshousebarberLogo, alt: "Rave Dates", href: "https://company3.com" },
+  { src: zergexLogo, alt: "Cookta" },
+  { src: nordicapsLogo, alt: "Mens House Barber" },
+  { src: cooktaLogo, alt: "Rave Dates" },
+  { src: menshousebarberLogo, alt: "Rave Dates" },
 ]

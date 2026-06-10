@@ -145,7 +145,7 @@ const WorkExperience = () => {
                     direction="up"
                     logoHeight={20}
                     gap={5}
-                    hoverSpeed={0}
+                    pauseOnHover={false}
                   />
                   :
                   <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="logo" className="w-8 h-8 sm:w-10 sm:h-10 p-1 sm:p-2 pt-0 object-contain" />

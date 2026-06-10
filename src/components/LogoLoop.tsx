@@ -3,14 +3,12 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 export type LogoItem =
   | {
       node: React.ReactNode;
-      href?: string;
       title?: string;
       ariaLabel?: string;
     }
   | {
       src: string;
       alt?: string;
-      href?: string;
       title?: string;
       srcSet?: string;
       sizes?: string;
@@ -29,7 +27,6 @@ export interface LogoLoopProps {
   hoverSpeed?: number;
   fadeOut?: boolean;
   fadeOutColor?: string;
-  scaleOnHover?: boolean;
   renderItem?: (item: LogoItem, key: React.Key) => React.ReactNode;
   ariaLabel?: string;
   className?: string;
@@ -206,7 +203,6 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     hoverSpeed,
     fadeOut = false,
     fadeOutColor,
-    scaleOnHover = false,
     renderItem,
     ariaLabel = 'Partner logos',
     className,
@@ -286,10 +282,9 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           '[--logoloop-logoHeight:28px]',
           '[--logoloop-fadeColorAuto:#ffffff]',
           'dark:[--logoloop-fadeColorAuto:#0b0b0b]',
-          scaleOnHover && 'py-[calc(var(--logoloop-logoHeight)*0.1)]',
           className
         ),
-      [isVertical, scaleOnHover, className]
+      [isVertical, className]
     );
 
     const handleMouseEnter = useCallback(() => {
@@ -306,8 +301,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             <li
               className={cx(
                 'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]',
-                isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]',
-                scaleOnHover && 'overflow-visible group/item'
+                isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]'
               )}
               key={key}
               role="listitem"
@@ -323,11 +317,9 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           <span
             className={cx(
               'inline-flex items-center',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              'motion-reduce:transition-none'
             )}
-            aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
+            aria-hidden={!(item as any).ariaLabel}
           >
             {(item as any).node}
           </span>
@@ -337,9 +329,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
               '[-webkit-user-drag:none] pointer-events-none',
               '[image-rendering:-webkit-optimize-contrast]',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              'motion-reduce:transition-none'
             )}
             src={(item as any).src}
             srcSet={(item as any).srcSet}
@@ -354,44 +344,20 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           />
         );
 
-        const itemAriaLabel = isNodeItem
-          ? ((item as any).ariaLabel ?? (item as any).title)
-          : ((item as any).alt ?? (item as any).title);
-
-        const inner = (item as any).href ? (
-          <a
-            className={cx(
-              'inline-flex items-center no-underline rounded',
-              'transition-opacity duration-200 ease-linear',
-              'hover:opacity-80',
-              'focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2'
-            )}
-            href={(item as any).href}
-            aria-label={itemAriaLabel || 'logo link'}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            {content}
-          </a>
-        ) : (
-          content
-        );
-
         return (
           <li
             className={cx(
               'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]',
-              isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]',
-              scaleOnHover && 'overflow-visible group/item'
+              isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]'
             )}
             key={key}
             role="listitem"
           >
-            {inner}
+            {content}
           </li>
         );
       },
-      [isVertical, scaleOnHover, renderItem]
+      [isVertical, renderItem]
     );
 
     const logoLists = useMemo(

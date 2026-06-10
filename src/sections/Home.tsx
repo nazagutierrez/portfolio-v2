@@ -245,7 +245,7 @@ const Home = () => {
               <div className="m-auto flex flex-col items-center justify-center gap-y-[clamp(1rem,4vh,2.5rem)] w-full h-full xl:h-auto py-5 xl:min-h-max">
                 
                 <div className="flex flex-col gap-y-5">
-                  <h1 className="mx-auto italic text-[3rem] xs:text-[3.5rem] sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
+                  <h1 className="mx-auto italic text-[3.2rem] xs:text-[4.3rem] sm:text-[5rem] 2sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
                     <BlurText
                       text="NazarenoGutierrez"
                       delay={50}
@@ -258,20 +258,20 @@ const Home = () => {
                       delay={50}
                       animateBy="letters"
                       direction="bottom"
-                      className="justify-center hidden sm:block xl:hidden "
+                      className="justify-center hidden 2sm:block xl:hidden "
                     />
                     <BlurText
                       text="Nazareno Gutierrez"
                       delay={50}
                       animateBy="words"
                       direction="bottom"
-                      className="ms-4 mx-auto w-61.25 xs:w-70.75 block sm:hidden"
+                      className="ms-4 mx-auto w-64 xs:w-85 sm:w-100 block 2sm:hidden"
                     />
                   </h1>
 
                   <h2
                     ref={subtitleRef}
-                    className="text-xl sm:text-[2rem] font-light xl:mb-8 italic shrink-0 will-change-[filter]"
+                    className="text-xl xs:text-2xl 2sm:text-[2rem] font-light xl:mb-8 italic shrink-0 will-change-[filter]"
                   >
                     {t("home.title")}
                   </h2>
@@ -280,13 +280,13 @@ const Home = () => {
                 <div>
                   <p
                     ref={textRef}
-                    className="mb-3 text-base xl:text-xl font-light sm:font-thin max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="mb-3 text-base xl:text-xl font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_1")}
                   </p>
                   <p
                     ref={text2Ref}
-                    className="xl:mt-8 sm:block hidden text-sm sm:text-base xl:text-xl font-light sm:font-thin max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="xl:mt-8 sm:block hidden text-sm sm:text-base xl:text-xl font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_2")}
                   </p>
@@ -296,7 +296,7 @@ const Home = () => {
                       const isLink = !!href;
                       const isLangBtn = index === options.length - 1;
                       
-                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer ${
+                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-30 lg:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-base lg:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer ${
                         isLangBtn ? "sm:fixed sm:bottom-6 sm:left-6 sm:z-50 w-12! h-12! sm:p-0" : ""
                       }`;
                       

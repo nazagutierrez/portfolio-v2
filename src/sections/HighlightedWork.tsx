@@ -109,7 +109,7 @@ const HighlightedWork = () => {
             direction="up"
             logoHeight={80}
             gap={5}
-            hoverSpeed={0}
+            pauseOnHover={false}
           />
           <Carousel logo={logoPisoFuerte} title="Freelance Projects" media={freelanceMedia} borderColor="#a5913b" href="www.pisofuerte.com.ar" />
         </div>
