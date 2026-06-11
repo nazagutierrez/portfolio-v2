@@ -45,7 +45,6 @@ const Home = () => {
 
       pin: leftRef.current,
       pinSpacing: false,
-      anticipatePin: 1,
       invalidateOnRefresh: true,
     });
 
@@ -118,10 +117,12 @@ const Home = () => {
               delay: 0.5,
               ease: "power4.inOut",
             })
-            .set([leftRef.current, rightRef.current], {
-              clearProps: "zIndex,xPercent",
+            .set(leftRef.current, {
+              clearProps: "zIndex",
             })
-            .call(() => ScrollTrigger.refresh());
+            .set(rightRef.current, {
+              clearProps: "zIndex,xPercent",
+            });
         }
 
         // Content Animations (only on mobile, desktop has the sliding intro)
@@ -245,14 +246,23 @@ const Home = () => {
               <div className="m-auto flex flex-col items-center justify-center gap-y-[clamp(1rem,4vh,2.5rem)] w-full h-full xl:h-auto py-5 xl:min-h-max">
                 
                 <div className="flex flex-col gap-y-5">
-                  <h1 className="mx-auto italic text-[3.2rem] xs:text-[4.3rem] sm:text-[5rem] 2sm:text-[4rem] lg:text-[6rem] xxl:text-[7.5rem] leading-tight xl:leading-30 shrink-0">
-                    <BlurText
-                      text="NazarenoGutierrez"
-                      delay={50}
-                      animateBy="letters"
-                      direction="bottom"
-                      className="w-135 xxl:w-157.5 justify-center xl:block hidden"
-                    />
+                  <h1 className="mx-auto italic text-[3.2rem] xs:text-[4.3rem] sm:text-[5rem] 2sm:text-[5rem] xl:text-[clamp(3.5rem,9vh,6rem)] xxl:text-[clamp(4.5rem,11vh,7.5rem)] leading-tight shrink-0">
+                    <div className="hidden xl:flex flex-col items-center justify-center w-full">
+                      <BlurText
+                        text="Nazareno"
+                        delay={50}
+                        animateBy="letters"
+                        direction="bottom"
+                        className="justify-center"
+                      />
+                      <BlurText
+                        text="Gutierrez"
+                        delay={50}
+                        animateBy="letters"
+                        direction="bottom"
+                        className="justify-center"
+                      />
+                    </div>
                     <BlurText
                       text="Nazareno Gutierrez"
                       delay={50}
@@ -271,7 +281,7 @@ const Home = () => {
 
                   <h2
                     ref={subtitleRef}
-                    className="text-xl xs:text-2xl 2sm:text-[2rem] font-light xl:mb-8 italic shrink-0 will-change-[filter]"
+                    className="text-xl xs:text-2xl 2sm:text-[2rem] xl:text-[clamp(1.25rem,3.5vh,2rem)] font-light xl:mb-[clamp(1rem,3vh,2rem)] italic shrink-0 will-change-[filter]"
                   >
                     {t("home.title")}
                   </h2>
@@ -280,18 +290,18 @@ const Home = () => {
                 <div>
                   <p
                     ref={textRef}
-                    className="mb-3 text-base xl:text-xl font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="mb-3 text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_1")}
                   </p>
                   <p
                     ref={text2Ref}
-                    className="xl:mt-8 sm:block hidden text-sm sm:text-base xl:text-xl font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="xl:mt-[clamp(1rem,3vh,2rem)] sm:block hidden text-sm sm:text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_2")}
                   </p>
 
-                  <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 mt-10 xxl:mt-20 shrink-0">
+                  <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 mt-10 xl:mt-[clamp(1.5rem,5vh,5rem)] shrink-0">
                     {options.map(({ name, href, icon, onClick }, index) => {
                       const isLink = !!href;
                       const isLangBtn = index === options.length - 1;
