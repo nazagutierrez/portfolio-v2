@@ -240,7 +240,7 @@ export function Carousel({ title, media, borderColor, logo, href }: CarouselProp
           clickable: true,
           renderBullet: (_index, className) => {
             return `
-              <button class="${className} custom-bullet">
+              <button class="${className} custom-bullet" aria-label="Go to slide ${_index + 1}">
                 <span></span>
               </button>
             `;
@@ -275,6 +275,7 @@ export function Carousel({ title, media, borderColor, logo, href }: CarouselProp
             <button
               onClick={() => setActiveItemIndex(index)}
               className="w-full h-full relative cursor-zoom-in"
+              aria-label="View media full screen"
             >
               {item.type === 'image' ? (
                 <SlideImage

@@ -1,4 +1,4 @@
-import { SiReact, SiTypescript, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
+import { SiReact, SiTypescript, SiTailwindcss, SiNextdotjs } from '@/components/BrandLogos';
 
 import ravedates1 from '@/assets/work-examples/ravedates-1.webp';
 import ravedates2 from '@/assets/work-examples/ravedates-2.webp';

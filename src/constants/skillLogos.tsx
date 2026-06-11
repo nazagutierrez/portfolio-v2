@@ -13,7 +13,7 @@ import {
   SiCss3,
   SiHtml5,
   SiFramer,
-} from "react-icons/si";
+} from "@/components/BrandLogos";
 
 const iconStyle = (color: string) => ({
   fontSize: "inherit",

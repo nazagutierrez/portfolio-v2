@@ -160,6 +160,9 @@ const About = () => {
                   <img
                     src={nazaImg}
                     alt="Nazareno Gutierrez"
+                    loading="lazy"
+                    width={320}
+                    height={480}
                     onLoad={() => setIsImageLoaded(true)}
                     className={`w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                   />
