@@ -120,7 +120,7 @@ const About = () => {
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
 
       {/* Lado Izquierdo: Texto */}
-      <div ref={contentRef} className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
+      <div  className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
         <h2 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl italic font-light leading-tight text-center w-fit">
           <BlurText
             text={t("about.title")}
@@ -130,7 +130,7 @@ const About = () => {
           />
         </h2>
 
-        <div className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-center xl:text-start">
+        <div ref={contentRef} className="space-y-6 text-base sm:text-lg md:text-xl text-main-white/90 font-light leading-relaxed max-w-2xl text-center xl:text-start">
           <p>
             {t("about.p1")}
             <span className="text-main-yellow font-normal">{t("about.p1_highlight")}</span>{" "}

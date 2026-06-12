@@ -80,7 +80,7 @@ const HighlightedWork = () => {
         className="justify-self-center justify-center"
           text={t("highlighted_work.title")}
           delay={50}
-          animateBy="words"
+          animateBy="letters"
           direction="bottom"
         />
       </h2>

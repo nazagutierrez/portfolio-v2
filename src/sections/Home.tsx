@@ -257,7 +257,7 @@ const Home = () => {
               onWheel={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
               onTouchMove={(e) => { if(window.innerWidth >= 1280) e.stopPropagation() }}
             >
-              <div className="m-auto flex flex-col items-center justify-center gap-y-[clamp(1rem,4vh,2.5rem)] w-full h-full xl:h-auto py-5 xl:min-h-max">
+              <div className="m-auto flex flex-col items-center justify-center gap-y-[clamp(1rem,4vh,2.5rem)] w-full h-full xl:h-auto pb-3 xl:min-h-max">
                 
                 <div className="flex flex-col gap-y-5">
                   <h1 className="mx-auto italic text-[3.2rem] xs:text-[4.3rem] sm:text-[5rem] 2sm:text-[5rem] xl:text-[clamp(3.5rem,9vh,6rem)] xxl:text-[clamp(4.5rem,11vh,7.5rem)] leading-tight shrink-0">
@@ -295,7 +295,7 @@ const Home = () => {
 
                   <h2
                     ref={subtitleRef}
-                    className="text-xl xs:text-2xl 2sm:text-[2rem] xl:text-[clamp(1.25rem,3.5vh,2rem)] font-light xl:mb-[clamp(1rem,3vh,2rem)] italic shrink-0 will-change-[filter]"
+                    className="text-xl xs:text-2xl 2sm:text-[2rem] xl:text-[clamp(1.25rem,3.5vh,2rem)] font-light xl:mb-[clamp(1rem,2vh,1rem)] italic shrink-0 will-change-[filter]"
                   >
                     {t("home.title")}
                   </h2>
@@ -304,13 +304,13 @@ const Home = () => {
                 <div>
                   <p
                     ref={textRef}
-                    className="mb-3 text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="mb-3 text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_1")}
                   </p>
                   <p
                     ref={text2Ref}
-                    className="xl:mt-[clamp(1rem,3vh,2rem)] sm:block hidden text-sm sm:text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-162.5 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="xl:mt-[clamp(1rem,3vh,2rem)] sm:block hidden text-sm sm:text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
                   >
                     {t("home.description_2")}
                   </p>
