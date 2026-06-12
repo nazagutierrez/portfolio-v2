@@ -9,26 +9,46 @@
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0d0d0d" />
     
-    <!-- Preconnect & Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <!-- Preload Fonts -->
+    <link rel="preload" href="/fonts/zalando/ZalandoSansSemiExpanded-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/zalando/ZalandoSansSemiExpanded-Italic-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Inline font-face para evitar FOUT antes de que cargue el CSS de Vite -->
+    <style>
+      @font-face {
+        font-family: 'Zalando Sans SemiExpanded';
+        src: url('/fonts/zalando/ZalandoSansSemiExpanded-VariableFont_wght.woff2') format('truetype');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Zalando Sans SemiExpanded';
+        src: url('/fonts/zalando/ZalandoSansSemiExpanded-Italic-VariableFont_wght.woff2') format('truetype');
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+      }
+      *, *::before, *::after {
+        font-family: 'Zalando Sans SemiExpanded', sans-serif;
+      }
+    </style>
     
     <!-- Preload LCP Image -->
     <link rel="preload" as="image" href="/naza.webp" />
 
     <!-- Static SEO / Social Fallbacks -->
     <meta property="og:site_name" content="Nazareno Gutierrez Portfolio" />
-    <meta property="og:image" content="https://nazarenogutierrez.com.ar/og-image-nazareno.png" />
+    <meta property="og:image" content="https://nazarenogutierrez.com.ar/og-image-nazareno.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://nazarenogutierrez.com.ar/og-image-nazareno.png" />
+    <meta name="twitter:image" content="https://nazarenogutierrez.com.ar/og-image-nazareno.jpg" />
     
     <!-- SEO: Hreflang Tags estáticos (fallback) -->
     <link rel="alternate" hreflang="es" href="https://nazarenogutierrez.com.ar/" />
     <link rel="alternate" hreflang="en" href="https://nazarenogutierrez.com.ar/en" />
     <link rel="alternate" hreflang="x-default" href="https://nazarenogutierrez.com.ar/" />
     
-    <title>Nazareno Gutierrez – Frontend Developer SSR</title>
+    <title>Nazareno Gutierrez - Frontend Engineer</title>
   </head>
   <body>
     <div id="root"></div>

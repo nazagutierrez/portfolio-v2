@@ -22,8 +22,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          three: ['three', '@react-three/fiber'],
-          gsap: ['gsap']
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['react-router-dom'],
+          'vendor-i18n': ['i18next', 'react-i18next'],
+          'vendor-gsap': ['gsap'],
+          'vendor-three': ['three', '@react-three/fiber'],
         }
       }
     }

@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo, useRef, useLayoutEffect, useState } from 'react';
+import React, { forwardRef, useMemo, useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import type { RootState } from '@react-three/fiber';
 import { Color, Mesh, ShaderMaterial } from 'three';
@@ -94,7 +94,7 @@ const SilkPlane = forwardRef<Mesh, SilkPlaneProps & { onReady?: () => void }>(
     const { viewport } = useThree();
     const readyRef = useRef(false);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
       const mesh = ref as React.MutableRefObject<Mesh | null>;
       if (mesh.current) {
         mesh.current.scale.set(viewport.width, viewport.height, 1);
@@ -166,9 +166,10 @@ const Silk: React.FC<SilkProps> = ({
   );
 
   return (
-    <Canvas   dpr={[1, 2]}
+    <Canvas   dpr={[1, 1.5]}
   frameloop="always"
-  gl={{ alpha: false }}
+  resize={{ scroll: false }}
+  gl={{ alpha: false, antialias: false, powerPreference: "high-performance" }}
   onCreated={({ gl }) => {
     gl.setClearColor('#000000', 1);
   }}

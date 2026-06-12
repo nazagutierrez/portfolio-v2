@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
 :root {
   --main-black: #0c0c0c;
   --main-white: #e9e9d5;

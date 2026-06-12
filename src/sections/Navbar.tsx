@@ -103,42 +103,54 @@ const Navbar = () => {
           mixBlendMode="screen"
         >
           <ul className="flex gap-x-3 px-2">
-            <button
+            <li>
+              <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#Home")}
             >
               {t("nav.home", "Inicio")}
             </button>
-            <button
+            </li>
+            <li>
+              <button
               className={`block xl:hidden cursor-pointer hover:text-main-yellow transition-all p-2`}
               onClick={(e) => scrollToSection(e, "#Work")}
             >
               {t("nav.work", "Trabajo")}
             </button>
-            <button
+            </li>
+            <li>
+              <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#Showcase")}
             >
               {t("nav.showcase", "Showcase")}
             </button>
-            <button
+            </li>
+            <li>
+              <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#About")}
             >
               {t("nav.about", "Bio")}
             </button>
-            <button
+            </li>
+            <li>
+              <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#Testimonials")}
             >
               {t("nav.testimonials", "Testimonios")}
             </button>
-            <button
+            </li>
+            <li>
+              <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#Contact")}
             >
               {t("nav.contact", "Contacto")}
             </button>
+            </li>
           </ul>
         </GlassSurface>
       </nav>

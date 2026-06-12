@@ -5,11 +5,11 @@ import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { logos } from "@/constants/logos";
-import { ExternalLink } from "lucide-react";
 import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp";
-import logoRaveDates from "@/assets/logos/logo-rave-dates.svg";
+import logoRaveDates from "@/assets/logos/logo-rave-dates.webp";
 import logoDymo from "@/assets/logos/dymo-logo-small.webp";
 import noiseImg from "@/assets/noise.webp";
+import ExternalLinkSvg from "@/assets/svg/ExternalLinkSvg";
 
 const WorkExperience = () => {
   const { t } = useTranslation();
@@ -148,7 +148,7 @@ const WorkExperience = () => {
                     pauseOnHover={false}
                   />
                   :
-                  <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="logo" className="w-8 h-8 sm:w-10 sm:h-10 p-1 sm:p-2 pt-0 object-contain" />
+                  <img src={typeof exp.logo === "string" ? exp.logo : ""} alt="logo" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 p-1 sm:p-2 pt-0 object-contain" />
                 }
                 
                 <h3>{exp.title}</h3>
@@ -156,8 +156,8 @@ const WorkExperience = () => {
               <span className="text-xs flex gap-x-1 sm:text-sm text-main-white/60 mb-2">
                 {exp.role} · {exp.year} {" "}
                 <span className={exp.logoLoop ? "hidden" : ""}>· </span>
-                <a href={`https://${exp.href}`} className="underline w-fit hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
-                  <span className="flex sm:hidden gap-x-1 items-center"><ExternalLink size={12} /> Link</span>
+                <a href={`https://${exp.href}`} aria-label={`Visitar sitio web de ${exp.title}`} className="underline w-fit hover:decoration-white/70 break-all sm:break-normal" target="_blank" rel="noopener noreferrer">
+                  <span className="flex sm:hidden gap-x-1 items-center"><ExternalLinkSvg className="w-4 h-4" /> Link</span>
                   <h3 className="hidden sm:block">{exp.href}</h3> 
                 </a>
               </span>

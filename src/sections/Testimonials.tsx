@@ -4,7 +4,6 @@ import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import { Linkedin, Play, Pause } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,6 +11,9 @@ import "swiper/css/pagination";
 import backendDevImg from "@/assets/people/backend-dev.webp";
 import dymoCeoImg from "@/assets/people/dymo-ceo.webp";
 import noiseImg from "@/assets/noise.webp";
+import PauseSvg from "@/assets/svg/PauseSvg";
+import PlaySvg from "@/assets/svg/PlaySvg";
+import LinkedinSvg from "@/assets/svg/LinkedinSvg";
 
 const Testimonials = () => {
   const { t } = useTranslation();
@@ -153,7 +155,7 @@ const Testimonials = () => {
                         className="w-12 h-12 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-main-yellow/70 hover:bg-white/10 hover:text-main-yellow transition-colors duration-300"
                         aria-label={isPlaying ? "Pause autoplay" : "Play autoplay"}
                       >
-                        {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-1" />}
+                        {isPlaying ? <PauseSvg className="size-5" /> : <PlaySvg className="ml-1 size-5" />}
                       </button>
                     </div>
                     <p className="text-base text-pretty xs:text-lg text-center sm:text-start md:text-2xl font-light leading-relaxed text-main-white/90 italic">
@@ -193,7 +195,7 @@ const Testimonials = () => {
                         rel="noopener noreferrer"
                         className="min-w-0 pr-2 group block cursor-pointer"
                       >
-                        <h4 className="xs:text-lg sm:text-xl font-medium text-main-white group-hover:text-main-yellow transition-colors duration-300 truncate">{testimonial.name}</h4>
+                        <h3 className="xs:text-lg sm:text-xl font-medium text-main-white group-hover:text-main-yellow transition-colors duration-300 truncate">{testimonial.name}</h3>
                         <p className="text-sm text-main-white/50 group-hover:text-main-yellow/70 transition-colors duration-300 mt-1 truncate">{testimonial.position}</p>
                       </a>
                     </div>
@@ -207,7 +209,7 @@ const Testimonials = () => {
                         className="w-12 h-12 shrink-0 rounded-full bg-[#0A66C2]/10 flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors duration-300"
                         aria-label="LinkedIn Profile"
                       >
-                        <Linkedin size={20} />
+                        <LinkedinSvg className="size-5" />
                       </a>
                     </div>
                   </div>

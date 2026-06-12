@@ -22,7 +22,7 @@ export const useSEO = ({ lang }: SEOProps) => {
     const canonical = url;
     
     // Imagen OG
-    const ogImage = `${baseUrl}/og-image-nazareno.png`;
+    const ogImage = `${baseUrl}/og-image-nazareno.jpg`;
 
     return {
       title,

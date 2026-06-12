@@ -4,9 +4,9 @@ import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
 import LogoLoop from "@/components/LogoLoop";
 import { skillLogos } from "@/constants/skillLogos";
-import { Loader2 } from "lucide-react";
 import nazaImg from "@/assets/people/naza.webp";
 import noiseImg from "@/assets/noise.webp";
+import LoaderSvg from "@/assets/svg/LoaderSvg";
 
 const About = () => {
   const { t } = useTranslation();
@@ -156,7 +156,7 @@ const About = () => {
                 <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
 
                 <div className="relative flex items-center justify-center w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
-                  {!isImageLoaded && <Loader2 className="absolute w-8 h-8 text-main-yellow animate-spin z-10" />}
+                  {!isImageLoaded && <LoaderSvg className="absolute w-8 h-8 text-main-yellow animate-spin z-10" />}
                   <img
                     src={nazaImg}
                     alt="Nazareno Gutierrez"

@@ -1,4 +1,5 @@
-import Silk from "@/components/Silk";
+import { lazy, Suspense } from "react";
+const Silk = lazy(() => import("@/components/Silk"));
 import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -48,7 +49,18 @@ const Home = () => {
       invalidateOnRefresh: true,
     });
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+    // Observador de cambios de tamaño para recalcular ScrollTrigger cuando carguen imágenes
+    const observer = new ResizeObserver(() => {
+      ScrollTrigger.refresh();
+    });
+    
+    // Observamos el body entero para detectar cualquier cambio de altura (imágenes, lazy load, etc)
+    observer.observe(document.body);
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      observer.disconnect();
+    };
   }, []);
 
   useLayoutEffect(() => {
@@ -231,7 +243,9 @@ const Home = () => {
                 {(onReady: () => void) => (
                   <>
                     <SilkFallback />
-                    <Silk color="#8b7732" onReady={onReady} />
+                    <Suspense fallback={null}>
+                      <Silk color="#8b7732" onReady={onReady} />
+                    </Suspense>
                   </>
                 )}
               </SilkReveal>

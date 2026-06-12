@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { Loader2 } from "lucide-react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import { Carousel } from "@/components/Carousel";
@@ -8,16 +7,17 @@ import { logos } from "@/constants/logos";
 import { raveDatesMedia, dymoMedia, freelanceMedia } from "@/constants/media";
 import { useTranslation } from "react-i18next";
 import { ScrollTrigger } from "gsap/all";
-import logoRaveDates from "@/assets/logos/logo-rave-dates.svg";
+import logoRaveDates from "@/assets/logos/logo-rave-dates.webp";
 import logoDymo from "@/assets/logos/dymo-logo-small.webp";
 import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp";
 import noiseImg from "@/assets/noise.webp";
+import LoaderSvg from "@/assets/svg/LoaderSvg";
 
 function HighlightedImage({ src, alt, className }: { src: string, alt: string, className: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
-      {!isLoaded && <Loader2 className="absolute w-6 h-6 text-white/50 animate-spin z-10" />}
+      {!isLoaded && <LoaderSvg className="absolute w-6 h-6 text-white/50 animate-spin z-10" />}
       <img
         src={src}
         alt={alt}

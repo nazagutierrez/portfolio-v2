@@ -2,7 +2,8 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
-import Silk from "@/components/Silk";
+import { lazy, Suspense } from "react";
+const Silk = lazy(() => import("@/components/Silk"));
 import GithubSvg from "@/assets/svg/GithubSvg";
 import LinkedinSvg from "@/assets/svg/LinkedinSvg";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
@@ -116,13 +117,12 @@ const Contact = () => {
         >
           <SilkReveal>
             {(onReady: () => void) => (
-              <>
-                <SilkFallback />
-                <Silk 
-                  color="#423c11" // Color oscuro para coherencia con About
-                  onReady={onReady} 
-                />
-              </>
+                <Suspense fallback={<SilkFallback />}>
+                  <Silk 
+                    color="#423c11" // Color oscuro para coherencia con About
+                    onReady={onReady} 
+                  />
+                </Suspense>
             )}
           </SilkReveal>
         </div>

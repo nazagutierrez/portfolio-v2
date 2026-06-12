@@ -15,7 +15,8 @@ import 'swiper/css/navigation';
 import noiseImg from "@/assets/noise.webp";
 
 
-import { ExternalLink, Loader2 } from 'lucide-react';
+import LoaderSvg from '@/assets/svg/LoaderSvg';
+import ExternalLinkSvg from '@/assets/svg/ExternalLinkSvg';
 
 type ViewerProps = {
   media: MediaItem[];
@@ -157,7 +158,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                         onClick={e => e.stopPropagation()}
                         className="relative z-10 flex items-center gap-2 text-xs font-medium tracking-wide uppercase text-white/50 hover:text-white transition-colors duration-300 w-fit border-t border-white/10 pt-4 mt-0"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
+                        <ExternalLinkSvg className="w-3.5 h-3.5" />
                         {href}
                       </a>
                     )}
@@ -187,7 +188,7 @@ function SlideImage({ src, alt, className, blurBg }: { src: string, alt: string,
     <>
       {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-lg z-0">
-          <Loader2 className="w-6 h-6 text-white/50 animate-spin" />
+          <LoaderSvg className="w-6 h-6 text-white/50 animate-spin" />
         </div>
       )}
       {blurBg && isLoaded && (
