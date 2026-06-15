@@ -110,7 +110,7 @@ const Contact = () => {
       {/* Fondo con Silk */}
       <div
         className="absolute inset-0"
-        style={{ clipPath: "inset(clamp(10px, 1.5vw, 16px) round 28px)" }}
+        style={{ clipPath: "inset(clamp(10px, 1.5vw, 6px) round 28px)" }}
       >
         <div
           className="absolute inset-0 text-[#423c11]"
@@ -140,7 +140,7 @@ const Contact = () => {
           />
         </h2>
 
-        <p className="text-lg sm:text-xl md:text-2xl font-light text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
+        <p className="text-lg sm:text-xl md:text-[1.375rem] font-light text-main-white/70 max-w-2xl mb-8 sm:mb-12 leading-relaxed px-4">
           {t("contact.subtitle1")} <br />
           {t("contact.subtitle2")}
         </p>

@@ -13,6 +13,7 @@ type BlurTextProps = {
   animationTo?: Array<Record<string, string | number>>;
   onAnimationComplete?: () => void;
   stepDuration?: number;
+  startDelay?: number;
 };
 
 const BlurText: React.FC<BlurTextProps> = ({
@@ -27,6 +28,7 @@ const BlurText: React.FC<BlurTextProps> = ({
   animationTo,
   onAnimationComplete,
   stepDuration = 1,
+  startDelay = 0,
 }) => {
   const elements = animateBy === 'words' ? text.split(' ') : text.split('');
   const containerRef = useRef<HTMLParagraphElement>(null);
@@ -69,7 +71,7 @@ const BlurText: React.FC<BlurTextProps> = ({
             keyframes: toSnapshots,
             duration: totalDuration,
             ease: 'power4.out',
-            delay: (index * delay) / 1000,
+            delay: (startDelay / 1000) + (index * delay) / 1000,
             onComplete: index === spans.length - 1 ? onAnimationComplete : undefined,
           });
         });
@@ -83,6 +85,7 @@ const BlurText: React.FC<BlurTextProps> = ({
     fromSnapshot,
     toSnapshots,
     delay,
+    startDelay,
     stepDuration,
     threshold,
     rootMargin,

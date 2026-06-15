@@ -56,7 +56,11 @@ const WorkExperience = () => {
   const descriptionRef = useRef<HTMLHeadingElement>(null);
   const lineRef = useRef<HTMLSpanElement>(null);
 
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1280;
+
   useLayoutEffect(() => {
+    const baseDelay = isDesktop ? 1.7 : 0;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         descriptionRef.current,
@@ -71,7 +75,7 @@ const WorkExperience = () => {
           },
           opacity: 1,
           filter: "blur(0px)",
-          delay: 0.2,
+          delay: baseDelay + 0.2,
           duration: 1,
           ease: "power2.out",
         }
@@ -83,7 +87,7 @@ const WorkExperience = () => {
           start: "top 80%",
         },
         height: 0,
-        delay: 0.4,
+        delay: baseDelay + 0.4,
         duration: 2,
         ease: "power2.out",
         clearProps: "height",
@@ -98,14 +102,14 @@ const WorkExperience = () => {
         y: 40,
         filter: "blur(10px)",
         duration: 0.6,
-        delay: 0.6,
+        delay: baseDelay + 0.6,
         ease: "power2.out",
         stagger: 0.3,
       });
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isDesktop]);
 
   return (
     <section id="Work" ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden px-6 py-16 sm:px-10 md:px-20 md:py-20 pt-24 md:pt-32 relative">
@@ -116,6 +120,7 @@ const WorkExperience = () => {
         <BlurText
           text={t("work.title")}
           delay={50}
+          startDelay={isDesktop ? 1600 : 0}
           animateBy="letters"
           direction="bottom"
         />

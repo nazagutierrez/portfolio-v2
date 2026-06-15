@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { createPortal } from "react-dom";
 const Silk = lazy(() => import("@/components/Silk"));
 import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -31,6 +32,8 @@ const Home = () => {
   const text2Ref = useRef<HTMLHeadingElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
+  const leftAnimRef = useRef<HTMLDivElement>(null);
+  const ghostRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -115,25 +118,29 @@ const Home = () => {
 
         if (isDesktop) {
           // Intro Layout Animation (Desktop)
-          // Usamos xPercent para el solapamiento sin romper el flujo de Tailwind
-          gsap.set(leftRef.current, { zIndex: 30 });
-          gsap.set(rightRef.current, {
-            xPercent: -99,
-            zIndex: 20,
+          // Usamos xPercent en el contenedor interno para no romper el pin de ScrollTrigger
+          gsap.set(leftAnimRef.current, {
+            xPercent: 102, // Usamos 100 para que deslice desde exactamente su ancho completo
           });
 
           mainTl
-            .to(rightRef.current, {
+            .to(leftAnimRef.current, {
               xPercent: 0,
               duration: 2.2,
               delay: 0.5,
               ease: "power4.inOut",
             })
-            .set(leftRef.current, {
-              clearProps: "zIndex",
-            })
-            .set(rightRef.current, {
-              clearProps: "zIndex,xPercent",
+            .to(
+              ghostRef.current,
+              {
+                opacity: 0,
+                duration: 0.4,
+                ease: "power2.in",
+              },
+              "-=0.5",
+            )
+            .set(leftAnimRef.current, {
+              clearProps: "xPercent",
             });
         }
 
@@ -235,8 +242,16 @@ const Home = () => {
         className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 overflow-hidden z-20 p-2">
-          <div className="relative w-full h-full rounded-[28px] overflow-hidden">
+        <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-40 p-2">
+          {/* Ghost placeholder: visible solo en xl mientras dura la animación de intro */}
+          <div
+            className="hidden shadow-[inset_0_0_30px_rgba(255,255,255,0.05)] xl:block absolute inset-2 rounded-[28px] pointer-events-none"
+            ref={ghostRef}
+            style={{
+              border: "1.5px solid rgba(255,255,255,0.1)",
+            }}
+          />
+          <div ref={leftAnimRef} className="relative w-full h-full rounded-[28px] overflow-hidden ">
             {/* Fondo */}
             <div className="absolute inset-0">
               <SilkReveal>
@@ -262,20 +277,8 @@ const Home = () => {
                 <div className="flex flex-col gap-y-5">
                   <h1 className="mx-auto italic text-[3.2rem] xs:text-[4.3rem] sm:text-[5rem] 2sm:text-[5rem] xl:text-[clamp(3.5rem,9vh,6rem)] xxl:text-[clamp(4.5rem,11vh,7.5rem)] leading-tight shrink-0">
                     <div className="hidden xl:flex flex-col items-center justify-center w-full">
-                      <BlurText
-                        text="Nazareno"
-                        delay={50}
-                        animateBy="letters"
-                        direction="bottom"
-                        className="justify-center"
-                      />
-                      <BlurText
-                        text="Gutierrez"
-                        delay={50}
-                        animateBy="letters"
-                        direction="bottom"
-                        className="justify-center"
-                      />
+                      <p className="justify-center flex flex-wrap">Nazareno</p>
+                      <p className="justify-center flex flex-wrap">Gutierrez</p>
                     </div>
                     <BlurText
                       text="Nazareno Gutierrez"
@@ -320,9 +323,23 @@ const Home = () => {
                       const isLink = !!href;
                       const isLangBtn = index === options.length - 1;
                       
-                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-30 lg:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-base lg:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer ${
-                        isLangBtn ? "sm:fixed sm:bottom-6 sm:left-6 sm:z-50 w-12! h-12! sm:p-0" : ""
-                      }`;
+                      // El botón de idioma en desktop se renderiza via portal (fuera de este árbol DOM)
+                      // para evitar el salto causado por position:fixed + transform del ancestro.
+                      // En mobile sigue apareciendo inline.
+                      if (isLangBtn) {
+                        return (
+                          <button
+                            key={index}
+                            onClick={onClick}
+                            className="contact-item border-fade sm:hidden flex items-center justify-center w-12 h-12 rounded-xl bg-main-black text-main-white text-sm font-thin hover:border-main-yellow/50 transition-colors cursor-pointer"
+                            title={name}
+                          >
+                            {icon}
+                          </button>
+                        );
+                      }
+                      
+                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-30 lg:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-base lg:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer`;
                       
                       return isLink ? (
                         <a
@@ -363,7 +380,7 @@ const Home = () => {
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="xl:w-1/2 w-full z-40 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
+        <div ref={rightRef} className="xl:w-1/2 w-full z-20 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
           <div className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
             <div className="relative w-full text-main-white space-y-3 sm:space-y-4.5 bg-main-black">
@@ -387,6 +404,24 @@ const Home = () => {
           <Contact />
         </div>
       </div>
+      {/* Botón de idioma desktop via Portal: el nodo DOM queda en document.body,
+          completamente fuera del árbol con transforms, por lo que position:fixed
+          siempre es relativo al viewport sin importar las animaciones. */}
+      {createPortal(
+        (() => {
+          const langOption = options[options.length - 1];
+          return (
+            <button
+              onClick={langOption.onClick}
+              className="border-fade contact-item hidden sm:flex fixed bottom-6 left-6 z-[9999] items-center justify-center w-12 h-12 rounded-xl bg-main-black text-main-white text-sm font-thin hover:border-main-yellow/50 transition-colors cursor-pointer"
+              title={langOption.name}
+            >
+              {langOption.icon}
+            </button>
+          );
+        })(),
+        document.body,
+      )}
     </>
   );
 };
