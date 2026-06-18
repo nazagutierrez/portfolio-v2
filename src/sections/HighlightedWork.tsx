@@ -28,12 +28,17 @@ function HighlightedImage({ src, alt, className }: { src: string, alt: string, c
   );
 }
 
-const HighlightedWork = () => {
+const HighlightedWork = ({ introFinished }: { introFinished: boolean }) => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      if (!introFinished) {
+        gsap.set([".highlighted-desc", ".highlighted-item"], { opacity: 0 });
+        return;
+      }
+
       gsap.from(".highlighted-desc", {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -68,7 +73,7 @@ const HighlightedWork = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [introFinished]);
 
   return (
     <section ref={sectionRef} id="Showcase" className="min-h-screen bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden py-16 sm:pt-20 sm:pb-28 relative">
@@ -80,6 +85,8 @@ const HighlightedWork = () => {
         className="justify-self-center justify-center"
           text={t("highlighted_work.title")}
           delay={50}
+          animate={introFinished}
+          startDelay={200}
           animateBy="letters"
           direction="bottom"
         />

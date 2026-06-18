@@ -14,6 +14,7 @@ type BlurTextProps = {
   onAnimationComplete?: () => void;
   stepDuration?: number;
   startDelay?: number;
+  animate?: boolean;
 };
 
 const BlurText: React.FC<BlurTextProps> = ({
@@ -29,6 +30,7 @@ const BlurText: React.FC<BlurTextProps> = ({
   onAnimationComplete,
   stepDuration = 1,
   startDelay = 0,
+  animate = true,
 }) => {
   const elements = animateBy === 'words' ? text.split(' ') : text.split('');
   const containerRef = useRef<HTMLParagraphElement>(null);
@@ -58,6 +60,8 @@ const BlurText: React.FC<BlurTextProps> = ({
 
     // Set initial state for all spans
     gsap.set(spans, fromSnapshot);
+
+    if (!animate) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -90,6 +94,7 @@ const BlurText: React.FC<BlurTextProps> = ({
     threshold,
     rootMargin,
     onAnimationComplete,
+    animate,
   ]);
 
   return (

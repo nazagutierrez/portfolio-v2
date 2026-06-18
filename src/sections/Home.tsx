@@ -1,7 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useLayoutEffect, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 const Silk = lazy(() => import("@/components/Silk"));
-import { useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
@@ -27,6 +26,16 @@ const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
+  const [introFinished, setIntroFinished] = useState(() => !!(window as any).__INTRO_PLAYED__);
+
+  useEffect(() => {
+    if (!introFinished) {
+      const handleIntro = () => setIntroFinished(true);
+      window.addEventListener("introComplete", handleIntro, { once: true });
+      return () => window.removeEventListener("introComplete", handleIntro);
+    }
+  }, [introFinished]);
+
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const text2Ref = useRef<HTMLHeadingElement>(null);
@@ -158,7 +167,7 @@ const Home = () => {
                 duration: 1,
                 ease: "power2.out",
               },
-              0.7,
+              0.2,
             )
             .from(
               textRef.current,
@@ -285,6 +294,8 @@ const Home = () => {
                       animateBy="letters"
                       direction="bottom"
                       className="justify-center hidden 2sm:block xl:hidden "
+                      animate={introFinished}
+                      startDelay={200}
                     />
                     <BlurText
                       text="Nazareno Gutierrez"
@@ -292,6 +303,8 @@ const Home = () => {
                       animateBy="words"
                       direction="bottom"
                       className="ms-4 mx-auto w-64 xs:w-85 sm:w-100 block 2sm:hidden"
+                      animate={introFinished}
+                      startDelay={200}
                     />
                   </h1>
 
@@ -383,8 +396,8 @@ const Home = () => {
           <div ref={rightAnimRef} className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
             <div className="relative w-full text-main-white space-y-3 sm:space-y-4.5 bg-main-black">
-              <WorkExperience />
-              <HighlightedWork />
+              <WorkExperience introFinished={introFinished} />
+              <HighlightedWork introFinished={introFinished} />
               <About />
               <Testimonials />
             </div>

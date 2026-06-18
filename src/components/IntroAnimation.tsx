@@ -60,8 +60,8 @@ export default function IntroAnimation() {
       },
     });
 
-    tl.to(nMask, { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" })
-      .to(gMask, { strokeDashoffset: 0, duration: 1.5, ease: "power2.out" }, "-=0.15")
+    tl.to(nMask, { strokeDashoffset: 0, duration: 1.2, ease: "power2.in" })
+      .to(gMask, { strokeDashoffset: 0, duration: 1.5, ease: "power2.out" })
       // Destello justo al terminar de escribirse la G
       .to(sparkle, {
         opacity: 1,
@@ -76,7 +76,7 @@ export default function IntroAnimation() {
         rotation: 180,
         duration: 0.3,
         ease: "power2.in"
-      }, "+=0.1")
+      }, "-=0.15")
       .to(containerRef.current, {
         yPercent: 100,
         duration: 1,
