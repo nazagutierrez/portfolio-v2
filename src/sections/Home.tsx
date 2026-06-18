@@ -33,8 +33,8 @@ const Home = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const leftAnimRef = useRef<HTMLDivElement>(null);
-  const ghostRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
+  const rightAnimRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -114,33 +114,36 @@ const Home = () => {
         const { isDesktop } = context.conditions as { isDesktop: boolean };
         const mainTl = gsap.timeline({
           defaults: { ease: "power4.inOut" },
+          paused: true,
         });
+
+        const playIntro = () => mainTl.play();
+        if ((window as any).__INTRO_PLAYED__) {
+          playIntro();
+        } else {
+          window.addEventListener("introComplete", playIntro, { once: true });
+        }
 
         if (isDesktop) {
           // Intro Layout Animation (Desktop)
-          // Usamos xPercent en el contenedor interno para no romper el pin de ScrollTrigger
           gsap.set(leftAnimRef.current, {
-            xPercent: 102, // Usamos 100 para que deslice desde exactamente su ancho completo
+            xPercent: -3,
+            opacity: 0,
+          });
+          gsap.set(rightAnimRef.current, {
+            xPercent: 3,
+            opacity: 0,
           });
 
           mainTl
-            .to(leftAnimRef.current, {
+            .to([leftAnimRef.current, rightAnimRef.current], {
               xPercent: 0,
-              duration: 2.2,
-              delay: 0.5,
-              ease: "power4.inOut",
+              opacity: 1,
+              duration: 2,
+              ease: "power3.out",
             })
-            .to(
-              ghostRef.current,
-              {
-                opacity: 0,
-                duration: 0.4,
-                ease: "power2.in",
-              },
-              "-=0.5",
-            )
-            .set(leftAnimRef.current, {
-              clearProps: "xPercent",
+            .set([leftAnimRef.current, rightAnimRef.current], {
+              clearProps: "xPercent,opacity",
             });
         }
 
@@ -189,6 +192,10 @@ const Home = () => {
               "-=1",
             );
         }
+
+        return () => {
+          window.removeEventListener("introComplete", playIntro);
+        };
       },
       sectionRef,
     );
@@ -243,14 +250,6 @@ const Home = () => {
       >
         {/* ===== LEFT ===== */}
         <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-40 p-2">
-          {/* Ghost placeholder: visible solo en xl mientras dura la animación de intro */}
-          <div
-            className="hidden shadow-[inset_0_0_30px_rgba(255,255,255,0.05)] xl:block absolute inset-2 rounded-[28px] pointer-events-none"
-            ref={ghostRef}
-            style={{
-              border: "1.5px solid rgba(255,255,255,0.1)",
-            }}
-          />
           <div ref={leftAnimRef} className="relative w-full h-full rounded-[28px] overflow-hidden ">
             {/* Fondo */}
             <div className="absolute inset-0">
@@ -381,7 +380,7 @@ const Home = () => {
 
         {/* ===== RIGHT ===== */}
         <div ref={rightRef} className="xl:w-1/2 w-full z-20 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
-          <div className="relative bg-main-black rounded-[28px] overflow-hidden">
+          <div ref={rightAnimRef} className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
             <div className="relative w-full text-main-white space-y-3 sm:space-y-4.5 bg-main-black">
               <WorkExperience />

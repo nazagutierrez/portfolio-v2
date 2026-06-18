@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import Home from "./sections/Home";
 import LanguageWrapper from "./components/LanguageWrapper";
+import IntroAnimation from "./components/IntroAnimation";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -74,6 +75,7 @@ useEffect(() => {
 
   return (
     <Router>
+      <IntroAnimation />
       {/* ⚠️ Cursor SIEMPRE fuera del wrapper */}
       {/* <CustomCursor /> */}
       {/* Navbar */}
