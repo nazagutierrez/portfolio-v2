@@ -144,7 +144,7 @@ export default function IntroAnimation() {
                 ref={gMaskRef}
                 d={G_MASK_D}
                 stroke="white"
-                strokeWidth="9"
+                strokeWidth="8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 fill="none"
