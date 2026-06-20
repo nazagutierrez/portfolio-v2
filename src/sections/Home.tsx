@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import BlurText from "@/components/BlurText";
 import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
@@ -44,7 +45,6 @@ const Home = () => {
   const leftAnimRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const rightAnimRef = useRef<HTMLDivElement>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !leftRef.current || !rightRef.current) return;
@@ -61,53 +61,49 @@ const Home = () => {
       invalidateOnRefresh: true,
     });
 
-    // Observador de cambios de tamaño para recalcular ScrollTrigger cuando carguen imágenes
+    // Smart ResizeObserver: refresca ScrollTrigger cuando el layout cambia (ej: cargan imágenes),
+    // pero SOLO si el usuario no está scrolleando rápido, para evitar cortar el momentum en iOS.
+    let debounceTimer: ReturnType<typeof setTimeout>;
+    let scrollCheckTimer: ReturnType<typeof setTimeout>;
+    let lastBodyHeight = document.body.scrollHeight;
+    const THRESHOLD = 50;
+
+    const doRefresh = () => {
+      const smoother = ScrollSmoother.get();
+      // Si está scrolleando, reintentar en 200ms
+      if (smoother && Math.abs(smoother.velocity()) > 10) {
+        clearTimeout(scrollCheckTimer);
+        scrollCheckTimer = setTimeout(doRefresh, 200);
+      } else {
+        ScrollTrigger.refresh();
+      }
+    };
+
     const observer = new ResizeObserver(() => {
-      ScrollTrigger.refresh();
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const newHeight = document.body.scrollHeight;
+        if (Math.abs(newHeight - lastBodyHeight) > THRESHOLD) {
+          lastBodyHeight = newHeight;
+          doRefresh();
+        }
+      }, 300);
     });
     
-    // Observamos el body entero para detectar cualquier cambio de altura (imágenes, lazy load, etc)
     observer.observe(document.body);
 
+    const handleRefresh = () => doRefresh();
+    window.addEventListener("load", handleRefresh);
+    if (document.fonts) {
+      document.fonts.ready.then(handleRefresh);
+    }
+
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      clearTimeout(debounceTimer);
+      clearTimeout(scrollCheckTimer);
+      window.removeEventListener("load", handleRefresh);
       observer.disconnect();
-    };
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!rightRef.current || !bottomRef.current) return;
-    gsap.set(bottomRef.current, {
-      yPercent: -100,
-    });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        id: "contact-reveal",
-        trigger: "#Contact",
-        start: "top bottom",
-        end: "bottom bottom",
-        scrub: true,
-        pin: false,
-        anticipatePin: 1,
-      },
-    });
-
-    tl.to(bottomRef.current, {
-      yPercent: 0,
-      ease: "none",
-    });
-
-    tl.fromTo(
-      bottomRef.current,
-      { filter: "blur(12px)" },
-      { filter: "blur(0px)" },
-      0,
-    );
-
-    return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -258,7 +254,7 @@ const Home = () => {
         className="relative bg-main-black z-20 flex flex-col xl:flex-row"
       >
         {/* ===== LEFT ===== */}
-        <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-40 p-2">
+        <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-10 xl:z-40 p-2">
           <div ref={leftAnimRef} className="relative w-full h-full rounded-[28px] overflow-hidden ">
             {/* Fondo */}
             <div className="absolute inset-0">
@@ -283,7 +279,7 @@ const Home = () => {
               <div className="m-auto flex flex-col items-center justify-center gap-y-[clamp(1rem,4vh,2.5rem)] w-full h-full xl:h-auto pb-3 xl:min-h-max">
                 
                 <div className="flex flex-col gap-y-5">
-                  <h1 className="mx-auto italic text-[3.2rem] xs:text-[4.3rem] sm:text-[5rem] 2sm:text-[5rem] xl:text-[clamp(3.5rem,9vh,6rem)] xxl:text-[clamp(4.5rem,11vh,7.5rem)] leading-tight shrink-0">
+                  <h1 className="mx-auto italic text-[3.2rem] xs:text-[4rem] sm:text-[5rem] 2sm:text-[5rem] xl:text-[clamp(3.5rem,9vh,6rem)] xxl:text-[clamp(4.5rem,11vh,7.5rem)] leading-tight shrink-0">
                     <div className="hidden xl:flex flex-col items-center justify-center w-full">
                       <p className="justify-center flex flex-wrap">Nazareno</p>
                       <p className="justify-center flex flex-wrap">Gutierrez</p>
@@ -302,7 +298,7 @@ const Home = () => {
                       delay={50}
                       animateBy="words"
                       direction="bottom"
-                      className="ms-4 mx-auto w-64 xs:w-85 sm:w-100 block 2sm:hidden"
+                      className="ms-4 mx-auto w-64 xs:w-78 sm:w-100 block 2sm:hidden"
                       animate={introFinished}
                       startDelay={200}
                     />
@@ -392,7 +388,7 @@ const Home = () => {
         </div>
 
         {/* ===== RIGHT ===== */}
-        <div ref={rightRef} className="xl:w-1/2 w-full z-20 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
+        <div ref={rightRef} className="xl:w-1/2 w-full z-30 xl:z-20 min-h-screen px-2 xl:px-0 xl:m-2 xl:pr-0.5">
           <div ref={rightAnimRef} className="relative bg-main-black rounded-[28px] overflow-hidden">
             {/* Contenido */}
             <div className="relative w-full text-main-white space-y-3 sm:space-y-4.5 bg-main-black">
@@ -407,15 +403,19 @@ const Home = () => {
         <div className="xl:h-screen"></div>
       </section>
 
-      {/* ===== BOTTOM ===== */}
+      {/* ===== BOTTOM SPACER ===== */}
       <div
         id="Contact"
-        className="h-dvh relative w-full overflow-hidden z-0"
-      >
-        <div ref={bottomRef} className="h-full w-full">
+        className="h-screen relative w-full pointer-events-none z-0"
+      ></div>
+
+      {/* ===== FIXED CONTACT (Revealed from behind) ===== */}
+      {createPortal(
+        <div className="fixed bottom-0 left-0 w-full h-dvh z-[-1] pointer-events-auto">
           <Contact />
-        </div>
-      </div>
+        </div>,
+        document.body
+      )}
       {/* Botón de idioma desktop via Portal: el nodo DOM queda en document.body,
           completamente fuera del árbol con transforms, por lo que position:fixed
           siempre es relativo al viewport sin importar las animaciones. */}

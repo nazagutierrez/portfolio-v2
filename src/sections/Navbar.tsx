@@ -22,7 +22,12 @@ const scrollToSection = (
   // matar animación anterior
   scrollTween?.kill();
 
-  const target = smoother.offset(element, "top 1%");
+  // Para Contact (última sección con reveal animation), scrollear al final
+  // de la página, ya que smoother.offset calcula mal por el yPercent transform.
+  const target =
+    element === "#Contact"
+      ? document.documentElement.scrollHeight
+      : smoother.offset(element, "top 1%");
 
   scrollTween = gsap.to(window, {
     scrollTo: { y: target, autoKill: false },

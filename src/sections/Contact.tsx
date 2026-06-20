@@ -9,6 +9,7 @@ import LinkedinSvg from "@/assets/svg/LinkedinSvg";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import { useTranslation } from "react-i18next";
+import HeartSvg from "@/assets/svg/HeartSvg";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -50,29 +51,31 @@ const Contact = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
-        }
+        },
       });
 
       // Animación escalonada para los links y botones sociales
-      gsap.fromTo(".contact-social-btn, .contact-link", 
+      gsap.fromTo(
+        ".contact-social-btn, .contact-link",
         {
-        opacity: 0,
-        y: 20,
-        filter: "blur(8px)",
-      },
-      {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        stagger: 0.1,
-        duration: 0.8,
-        delay: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        }
-      });
+          opacity: 0,
+          y: 20,
+          filter: "blur(8px)",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          stagger: 0.1,
+          duration: 0.8,
+          delay: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        },
+      );
 
       // Animación para el email
       gsap.from(".contact-email", {
@@ -85,7 +88,7 @@ const Contact = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
-        }
+        },
       });
 
       // Animación para el footer
@@ -98,7 +101,7 @@ const Contact = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
-        }
+        },
       });
     }, sectionRef);
 
@@ -112,25 +115,25 @@ const Contact = () => {
         className="absolute inset-0"
         style={{ clipPath: "inset(clamp(10px, 1.5vw, 6px) round 28px)" }}
       >
-        <div
-          className="absolute inset-0 text-[#423c11]"
-        >
+        <div className="absolute inset-0 text-[#423c11]">
           <SilkReveal>
             {(onReady: () => void) => (
-                <Suspense fallback={<SilkFallback />}>
-                  <Silk 
-                    color="#423c11" // Color oscuro para coherencia con About
-                    onReady={onReady} 
-                  />
-                </Suspense>
+              <Suspense fallback={<SilkFallback />}>
+                <Silk
+                  color="#423c11" // Color oscuro para coherencia con About
+                  onReady={onReady}
+                />
+              </Suspense>
             )}
           </SilkReveal>
         </div>
       </div>
 
       {/* Contenido Centrado */}
-      <div ref={containerRef} className="relative z-10 p-3 xs:p-6 sm:p-10 md:p-20 flex flex-col justify-center items-center h-full text-main-white text-center">
-        
+      <div
+        ref={containerRef}
+        className="relative z-10 p-3 xs:p-6 sm:p-10 md:p-20 flex flex-col justify-center items-center h-full text-main-white text-center"
+      >
         <h2 className="text-6xl sm:text-8xl md:text-9xl italic font-light mb-4 sm:mb-6 tracking-tight">
           <BlurText
             text={t("contact.title")}
@@ -146,7 +149,7 @@ const Contact = () => {
         </p>
 
         {/* Email Principal */}
-        <a 
+        <a
           href="mailto:nazarenojunin@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
@@ -175,8 +178,9 @@ const Contact = () => {
         </div>
 
         {/* Footer simple */}
-        <div className="contact-footer text-main-white/30 font-light text-sm tracking-widest uppercase">
+        <div className="contact-footer text-main-white/50 font-light text-sm tracking-widest uppercase flex items-center gap-2">
           © {new Date().getFullYear()} · {t("contact.footer")}
+          <HeartSvg className="w-4 h-4 text-main-yellow animate-pulse" />
         </div>
       </div>
     </div>

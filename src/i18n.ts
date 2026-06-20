@@ -59,7 +59,7 @@ const resources = {
         "subtitle1": "¿Tienes una oportunidad laboral o un proyecto en mente?",
         "subtitle2": "Me encantaría saber más.",
         "btn_cv": "Ver CV",
-        "footer": "Hecho con 💛"
+        "footer": "Hecho con"
       },
       "testimonials": {
         "title": "Testimonios",
