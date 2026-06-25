@@ -137,7 +137,7 @@ const About = () => {
             {t("about.p1_2")}
           </p>
           <div className="flex-1 gap-5 xl:gap-10 xxl:gap-5 flex flex-col xxl:flex-row will-change-transform">
-            <div className="flex gap-y-4 sm:gap-y-2 justify-center flex-col">
+            <div className="flex gap-y-4 sm:gap-y-6 justify-center flex-col">
               <p>
                 {t("about.p2")}
               </p>

@@ -172,7 +172,7 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
                   <h3 className="hidden sm:block">{exp.href}</h3> 
                 </a>
               </span>
-              <p className="text-sm sm:text-base text-main-white/90 max-w-[600px]">
+              <p className="text-sm sm:text-base text-main-white/90 max-w-[700px]">
                 {exp.description}
               </p>
             </div>

@@ -251,7 +251,7 @@ const Home = () => {
       <section
         id="Home"
         ref={sectionRef}
-        className="relative bg-main-black z-20 flex flex-col xl:flex-row"
+        className="relative bg-main-black z-20 flex flex-col xl:flex-row pointer-events-auto"
       >
         {/* ===== LEFT ===== */}
         <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-10 xl:z-40 p-2">
@@ -406,12 +406,12 @@ const Home = () => {
       {/* ===== BOTTOM SPACER ===== */}
       <div
         id="Contact"
-        className="h-screen relative w-full pointer-events-none z-0"
+        className="h-screen relative w-full pointer-events-none"
       ></div>
 
       {/* ===== FIXED CONTACT (Revealed from behind) ===== */}
       {createPortal(
-        <div className="fixed bottom-0 left-0 w-full h-dvh z-[-1] pointer-events-auto">
+        <div className="fixed bottom-0 left-0 w-full h-dvh z-0 pointer-events-auto">
           <Contact />
         </div>,
         document.body

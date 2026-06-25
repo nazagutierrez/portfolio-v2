@@ -35,6 +35,18 @@ html {
   background-color: var(--main-black);
 }
 
+#root {
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+#root > * {
+  pointer-events: auto;
+}
+#smooth-wrapper {
+  pointer-events: none !important;
+}
+
 body::-webkit-scrollbar {
   width: 4px;
 }

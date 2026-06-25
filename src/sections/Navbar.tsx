@@ -107,7 +107,7 @@ const Navbar = () => {
           opacity={0.33}
           mixBlendMode="screen"
         >
-          <ul className="flex gap-x-3 px-2">
+          <ul className="flex gap-x-2 px-2">
             <li>
               <button
               className="cursor-pointer hover:text-main-yellow transition-all p-2"
@@ -116,9 +116,9 @@ const Navbar = () => {
               {t("nav.home", "Inicio")}
             </button>
             </li>
-            <li>
+            <li className={`block xl:hidden`}>
               <button
-              className={`block xl:hidden cursor-pointer hover:text-main-yellow transition-all p-2`}
+              className={`cursor-pointer hover:text-main-yellow transition-all p-2`}
               onClick={(e) => scrollToSection(e, "#Work")}
             >
               {t("nav.work", "Trabajo")}
