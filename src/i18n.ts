@@ -8,7 +8,7 @@ const resources = {
       "home": {
         "title": "Frontend Engineer",
         "description_1": "Con más de 3 años de experiencia construyendo productos web para startups y empresas con React, Next.js y TypeScript.",
-        "description_2": "Experiencia desarrollando aplicaciones escalables, optimizando la experiencia de usuario y colaborando en equipos multidisciplinarios.",
+        "description_2": "Transformando ideas en productos digitales intuitivos, escalables y de alto rendimiento",
         "btn_mail": "Contactar",
         "btn_cv": "Ver CV"
       },
@@ -30,22 +30,22 @@ const resources = {
       },
       "work": {
         "title": "Experiencia",
-        "description": "Experiencia profesional desarrollando productos web utilizados por usuarios reales, con foco en escalabilidad, rendimiento y experiencia de usuario.",
-        "exp1_desc": "Plataforma de eventos con autenticación, control de roles, pagos e integración de APIs complejas.",
-        "exp2_desc": "Desarrollo de interfaces avanzadas, animaciones y componentes reutilizables en React.",
+        "description": "Experiencia profesional desarrollando aplicaciones web enfocadas en rendimiento, estética y experiencia de usuario, participando en productos utilizados por cientos de usuarios.",
+        "exp1_desc": "Desarrollo de una landing page corporativa para una empresa de construcción, enfocada en rendimiento, diseño responsive y una experiencia de usuario clara y profesional.",
+        "exp2_desc": "Desarrollo frontend de una plataforma de venta y reserva de tickets utilizando Next.js, colaborando con un equipo multidisciplinario en funcionalidades complejas y experiencias escalables para los usuarios.",
         "exp3_desc": "Contribución en productos SaaS, herramientas con IA y experiencias de soporte al cliente.",
-        "exp4_desc": "Soluciones personalizadas para pequeñas empresas, incluyendo reservas online y e-commerce."
+        "exp4_desc": "Desarrollo de sitios web y aplicaciones a medida para empresas y emprendedores, transformando requerimientos de negocio en soluciones web modernas y optimizadas."
       },
       "highlighted_work": {
         "title": "Galería",
-        "description": "Una selección de proyectos donde combiné desarrollo frontend, diseño y objetivos de negocio para crear experiencias digitales de alto impacto."
+        "description": "Una muestra de proyectos reales en los que contribuí al desarrollo de productos web, desde landing pages hasta aplicaciones con lógica de negocio compleja."
       },
       "about": {
         "title": "Sobre mí",
         "p1": "Soy un ",
         "p1_highlight": "Frontend Engineer",
         "p1_2": " con más de 3 años de experiencia desarrollando productos web para startups y empresas.",
-        "p2": "Durante los últimos 3 años trabajé desarrollando productos web para startups y empresas, participando en proyectos utilizados por usuarios reales y colaborando con equipos multidisciplinarios en distintas etapas del desarrollo.",
+        "p2": "Durante este tiempo participé en el desarrollo de aplicaciones y plataformas digitales, colaborando con equipos multidisciplinarios y contribuyendo en distintas etapas del ciclo de desarrollo.",
         "p2_2": "Mi experiencia incluye plataformas de eventos, productos SaaS, sistemas de reservas y e-commerce utilizando tecnologías como ",
         "p2_tech": "React, Next.js y TypeScript.",
         "p3": "Actualmente busco seguir creciendo mientras ayudo a construir productos que las",
