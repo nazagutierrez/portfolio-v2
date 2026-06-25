@@ -17,6 +17,7 @@ import noiseImg from "@/assets/noise.webp";
 
 import LoaderSvg from '@/assets/svg/LoaderSvg';
 import ExternalLinkSvg from '@/assets/svg/ExternalLinkSvg';
+import PlaySvg from '@/assets/svg/PlaySvg';
 
 type ViewerProps = {
   media: MediaItem[];
@@ -293,7 +294,7 @@ export function Carousel({ title, media, borderColor, logo, href }: CarouselProp
                   />
                   {/* play icon */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    ▶️
+                    <PlaySvg />
                   </div>
                 </div>
               )}

@@ -120,7 +120,7 @@ const Contact = () => {
             {(onReady: () => void) => (
               <Suspense fallback={<SilkFallback />}>
                 <Silk
-                  color="#423c11" // Color oscuro para coherencia con About
+                  color="#494312" // Color oscuro para coherencia con About
                   onReady={onReady}
                 />
               </Suspense>
