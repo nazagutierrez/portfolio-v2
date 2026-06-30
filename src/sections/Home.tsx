@@ -1,4 +1,5 @@
 import { useLayoutEffect, useEffect, useRef, useState } from "react";
+import { useVideoLoader } from "@/hooks/useVideoLoader";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -17,7 +18,9 @@ import Testimonials from "./Testimonials";
 import HighlightedWork from "./HighlightedWork";
 import Contact from "./Contact";
 
-import heroBg from "@/assets/home-bg-4mb.mp4";
+import posterHome from "@/assets/poster-home.webp";
+
+const heroBg = "/home-bg.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -28,6 +31,9 @@ const Home = () => {
   const location = useLocation();
   
   const [introFinished, setIntroFinished] = useState(() => !!(window as any).__INTRO_PLAYED__);
+
+  // Video optimisation: preload only metadata, fade-in on canplay
+  const { videoRef: heroBgRef, videoStyle: heroBgStyle } = useVideoLoader(heroBg, { lazy: false });
 
   useEffect(() => {
     if (!introFinished) {
@@ -257,14 +263,17 @@ const Home = () => {
         <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-10 xl:z-40 p-2">
           <div ref={leftAnimRef} className="relative w-full h-full rounded-[28px] overflow-hidden ">
             {/* Fondo */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0" style={heroBgStyle}>
               <video
+                ref={heroBgRef}
                 src={heroBg}
+                poster={posterHome}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute opacity-80 inset-0 w-full h-full object-cover"
+                preload="metadata"
+                className="absolute opacity-70 sm:opacity-50 xl:opacity-80 inset-0 w-full h-full object-cover"
               />
             </div>
 

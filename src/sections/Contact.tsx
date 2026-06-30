@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import { useVideoLoader } from "@/hooks/useVideoLoader";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
 import GithubSvg from "@/assets/svg/GithubSvg";
@@ -7,12 +8,20 @@ import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import { useTranslation } from "react-i18next";
 import HeartSvg from "@/assets/svg/HeartSvg";
-import contactBg from "@/assets/bg-contact-2-4mb.mp4";
+import posterContact from "@/assets/poster-contact.webp";
+
+const contactBg = "/contact-bg.mp4";
 
 const Contact = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Video optimisation: lazy load + fade-in on canplay
+  const { videoRef: contactBgRef, videoStyle: contactBgStyle } = useVideoLoader(contactBg, {
+    lazy: true,
+    rootMargin: "300px",
+  });
 
   const socialLinks = [
     {
@@ -115,12 +124,15 @@ const Contact = () => {
       >
         <div className="absolute inset-0">
           <video
-            src={contactBg}
+            ref={contactBgRef}
+            poster={posterContact}
             autoPlay
             loop
             muted
             playsInline
-            className="absolute opacity-50 inset-0 w-full h-full object-cover"
+            preload="none"
+            className="absolute opacity-50! inset-0 w-full h-full object-cover"
+            style={contactBgStyle}
           />
         </div>
       </div>
