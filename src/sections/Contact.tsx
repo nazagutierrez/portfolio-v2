@@ -1,15 +1,13 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
-import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
-import { lazy, Suspense } from "react";
-const Silk = lazy(() => import("@/components/Silk"));
 import GithubSvg from "@/assets/svg/GithubSvg";
 import LinkedinSvg from "@/assets/svg/LinkedinSvg";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import { useTranslation } from "react-i18next";
 import HeartSvg from "@/assets/svg/HeartSvg";
+import contactBg from "@/assets/bg-contact-2-4mb.mp4";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -115,17 +113,15 @@ const Contact = () => {
         className="absolute inset-0"
         style={{ clipPath: "inset(clamp(10px, 1.5vw, 6px) round 28px)" }}
       >
-        <div className="absolute inset-0 text-[#423c11]">
-          <SilkReveal>
-            {(onReady: () => void) => (
-              <Suspense fallback={<SilkFallback />}>
-                <Silk
-                  color="#494312" // Color oscuro para coherencia con About
-                  onReady={onReady}
-                />
-              </Suspense>
-            )}
-          </SilkReveal>
+        <div className="absolute inset-0">
+          <video
+            src={contactBg}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute opacity-50 inset-0 w-full h-full object-cover"
+          />
         </div>
       </div>
 

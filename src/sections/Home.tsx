@@ -1,13 +1,11 @@
-import { lazy, Suspense, useLayoutEffect, useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-const Silk = lazy(() => import("@/components/Silk"));
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import BlurText from "@/components/BlurText";
-import { SilkFallback, SilkReveal } from "@/components/SilkReveal";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import SEOHead from "@/components/SEOHead";
@@ -18,6 +16,8 @@ import About from "./About";
 import Testimonials from "./Testimonials";
 import HighlightedWork from "./HighlightedWork";
 import Contact from "./Contact";
+
+import heroBg from "@/assets/home-bg-4mb.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -71,7 +71,7 @@ const Home = () => {
     const doRefresh = () => {
       const smoother = ScrollSmoother.get();
       // Si está scrolleando, reintentar en 200ms
-      if (smoother && Math.abs(smoother.velocity()) > 10) {
+      if (smoother && Math.abs((smoother as any).velocity()) > 10) {
         clearTimeout(scrollCheckTimer);
         scrollCheckTimer = setTimeout(doRefresh, 200);
       } else {
@@ -258,16 +258,14 @@ const Home = () => {
           <div ref={leftAnimRef} className="relative w-full h-full rounded-[28px] overflow-hidden ">
             {/* Fondo */}
             <div className="absolute inset-0">
-              <SilkReveal>
-                {(onReady: () => void) => (
-                  <>
-                    <SilkFallback />
-                    <Suspense fallback={null}>
-                      <Silk color="#8b7732" onReady={onReady} />
-                    </Suspense>
-                  </>
-                )}
-              </SilkReveal>
+              <video
+                src={heroBg}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute opacity-80 inset-0 w-full h-full object-cover"
+              />
             </div>
 
             {/* Contenido */}
