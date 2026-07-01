@@ -1,6 +1,7 @@
 ---
 import '../index.css';
 import '../i18n';
+import Chatbot from '../components/Chatbot';
 
 
 interface Props {
@@ -105,5 +106,6 @@ const ogImage = `${baseUrl}/naza.webp`;
 		<div id="root">
 			<slot />
 		</div>
+		<Chatbot client:load />
 	</body>
 </html>

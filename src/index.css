@@ -127,4 +127,11 @@ body {
   margin-top: -2.5rem !important;
   padding: 1rem !important;
   box-sizing: content-box !important;
+
+  @media (max-width: 640px) {
+    width: 1rem !important;
+    height: 2rem !important;
+    margin-top: -1.5rem !important;
+    padding: 0.5rem !important;
+  }
 }

@@ -181,7 +181,9 @@ const About = () => {
             <span className="text-main-yellow font-normal"> {t("about.p3_highlight")} </span>
             {t("about.p3_2")}
             <span className="text-main-yellow font-normal"> {t("about.p3_highlight_2")}.</span>
-
+          </p>
+          <p className="about-last-text mt-6 text-sm text-main-yellow italic">
+              {t("about.p4")}
           </p>
         </div>
 

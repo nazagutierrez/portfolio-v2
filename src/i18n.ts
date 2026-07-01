@@ -8,7 +8,8 @@ const resources = {
       "home": {
         "title": "Frontend Engineer",
         "description_1": "Con más de 3 años de experiencia construyendo productos web para startups y empresas con React, Next.js y TypeScript.",
-        "description_2": "Transformando ideas en productos digitales intuitivos, escalables y de alto rendimiento",
+        "description_2": "Transformando ideas en productos digitales intuitivos, escalables y de alto rendimiento.",
+        "chat_mention": "Tenés dudas? Preguntale a mi Asistente con IA en la esquina inferior derecha.",
         "btn_mail": "Contactar",
         "btn_cv": "Ver CV"
       },
@@ -52,6 +53,7 @@ const resources = {
         "p3_highlight": "personas",
         "p3_2": "realmente",
         "p3_highlight_2": "disfruten",
+        "p4": "PD: Construí el Asistente IA de este portafolio desde cero usando la API de Gemini. ¡Probalo en la esquina inferior derecha!",
         "tag": "Frontend Engineer"
       },
       "contact": {
@@ -60,6 +62,20 @@ const resources = {
         "subtitle2": "Me encantaría saber más.",
         "btn_cv": "Ver CV",
         "footer": "Hecho con"
+      },
+      "chatbot": {
+        "welcome": "¡Hola! Soy el asistente IA de Nazareno ¿Tenés alguna pregunta sobre su experiencia, proyectos o disponibilidad?",
+        "suggested_1": "Resumí su perfil",
+        "suggested_2": "¿Con qué tecnologías trabaja?",
+        "suggested_3": "¿Está disponible para trabajar?",
+        "title": "Asistente IA",
+        "online": "En línea",
+        "placeholder": "Escribí tu pregunta...",
+        "footer": "Creado desde 0 por Nazareno",
+        "err_limit": "Alcanzaste el límite de mensajes por hora. Por favor, volvé en unos minutos. ⏳",
+        "err_bad": "La solicitud no es válida. Por favor, recargá la página e intentá de nuevo.",
+        "err_server": "El servidor tuvo un problema. Por favor, intentá de nuevo en unos instantes. 🛠️",
+        "err_unknown": "Ocurrió un error inesperado. Por favor, intentá de nuevo. 🙏"
       },
       "testimonials": {
         "title": "Testimonios",
@@ -79,6 +95,7 @@ const resources = {
         "title": "Frontend Engineer",
         "description_1": "With 3+ years of experience building web products for startups and businesses using React, Next.js, and TypeScript.",
         "description_2": "Experienced in developing scalable applications, improving user experiences, and collaborating within multidisciplinary teams.",
+        "chat_mention": "Got questions? Ask my AI Assistant in the bottom-right corner.",
         "btn_mail": "Contact",
         "btn_cv": "View CV"
       },
@@ -122,6 +139,7 @@ const resources = {
         "p3_highlight": "people",
         "p3_2": "really",
         "p3_highlight_2": "enjoy",
+        "p4": "P.S. I built this portfolio's AI Assistant from scratch with the Gemini API. Try it out in the bottom-right corner!",
         "tag": "Frontend Engineer"
       },
       "contact": {
@@ -130,6 +148,20 @@ const resources = {
         "subtitle2": "I'd love to hear about it.",
         "btn_cv": "View Resume",
         "footer": "Made with 💛"
+      },
+      "chatbot": {
+        "welcome": "Hi! I'm Nazareno's AI assistant. Do you have any questions about his experience, projects, or availability?",
+        "suggested_1": "Summarize his profile",
+        "suggested_2": "What tech stack does he use?",
+        "suggested_3": "Is he available for work?",
+        "title": "AI Assistant",
+        "online": "Online",
+        "placeholder": "Type your question...",
+        "footer": "Built from scratch by Nazareno",
+        "err_limit": "You've reached the hourly message limit. Please try again in a few minutes. ⏳",
+        "err_bad": "Invalid request. Please refresh the page and try again.",
+        "err_server": "The server encountered a problem. Please try again in a moment. 🛠️",
+        "err_unknown": "An unexpected error occurred. Please try again. 🙏"
       },
       "testimonials": {
         "title": "Testimonials",

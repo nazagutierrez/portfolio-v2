@@ -362,6 +362,11 @@ const Home = () => {
                   >
                     {t("home.description_2")}
                   </p>
+                  <p
+                    className="mt-4 xl:mt-6 text italic text-yellow-200 font-light mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0"
+                  >
+                    {t("home.chat_mention")}
+                  </p>
 
                   <div className="w-full flex justify-center items-center gap-x-3 sm:gap-x-5 mt-10 xl:mt-[clamp(1.5rem,5vh,5rem)] shrink-0">
                     {options.map(({ name, href, icon, onClick }, index) => {

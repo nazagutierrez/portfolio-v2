@@ -53,6 +53,15 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  // Bloquear scroll del body
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
+
   const closeWithAnimation = () => {
     gsap.to(contentRef.current, {
       opacity: 0,
@@ -65,6 +74,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
       opacity: 0,
       duration: 0.2,
     });
+    
   };
 
   // Dispatch custom event to pause background videos
@@ -132,6 +142,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
         <Swiper
           initialSlide={initialSlideIndex}
           navigation={true}
+          nested={true}
           modules={[Navigation, A11y]}
           className="w-full h-full [--swiper-navigation-color:#fff] [--swiper-navigation-size:2rem] [--swiper-navigation-sides-offset:1rem] md:[--swiper-navigation-sides-offset:3rem]"
         >
@@ -144,16 +155,16 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                 >
                   <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp?url')] pointer-events-none z-0"></div>
                   {item.type === 'image' ? (
-                    <div className="relative w-full flex items-center justify-center shrink min-h-0 overflow-hidden">
+                    <div className="relative w-full flex items-center justify-center shrink min-h-[35vh] max-h-[70vh] sm:h-[75vh] overflow-hidden">
                       <SlideImage
                         src={item.src}
                         alt=""
                         blurBg={isActive}
-                        className="relative z-10 w-full max-w-full max-h-[70vh] sm:max-h-[75vh] object-contain"
+                        className="relative z-10 w-full max-w-full max-h-full object-contain"
                       />
                     </div>
                   ) : (
-                    <div className="relative w-full flex items-center justify-center shrink min-h-0 overflow-hidden">
+                    <div className="relative w-full flex items-center justify-center shrink min-h-[35vh] max-h-[70vh] sm:h-[75vh] overflow-hidden">
                       <SlideVideo src={item.src} isActive={isActive} />
                     </div>
                   )}
@@ -217,7 +228,7 @@ function SlideImage({ src, alt, className, blurBg }: { src: string, alt: string,
   return (
     <>
       {!isLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-lg z-0">
+        <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-lg z-[-1]">
           <LoaderSvg className="w-6 h-6 text-white/50 animate-spin" />
         </div>
       )}
@@ -242,6 +253,16 @@ function SlideImage({ src, alt, className, blurBg }: { src: string, alt: string,
 
 export function Carousel({ title, media, borderColor, logo, href }: CarouselProps) {
   const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
+  const parentSwiperRef = useRef<any>(null);
+
+  // Disable outer swiper when modal is open
+  useEffect(() => {
+    if (activeItemIndex !== null) {
+      parentSwiperRef.current?.disable();
+    } else {
+      parentSwiperRef.current?.enable();
+    }
+  }, [activeItemIndex]);
   const paginationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -267,6 +288,7 @@ export function Carousel({ title, media, borderColor, logo, href }: CarouselProp
         className="swiper-pagination xl:absolute -bottom-13! h-10 left-0 w-full flex justify-center z-10"
       />
       <Swiper
+        onSwiper={(swiper) => (parentSwiperRef.current = swiper)}
         pagination={{
           clickable: true,
           renderBullet: (_index, className) => {
