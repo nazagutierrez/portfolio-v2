@@ -4,8 +4,8 @@ import BlurText from "@/components/BlurText";
 import { useTranslation } from "react-i18next";
 import LogoLoop from "@/components/LogoLoop";
 import { skillLogos } from "@/constants/skillLogos";
-import nazaImg from "@/assets/people/naza.webp";
-import noiseImg from "@/assets/noise.webp";
+import nazaImg from "@/assets/people/naza.webp?url";
+import noiseImg from "@/assets/noise.webp?url";
 import LoaderSvg from "@/assets/svg/LoaderSvg";
 
 const About = () => {

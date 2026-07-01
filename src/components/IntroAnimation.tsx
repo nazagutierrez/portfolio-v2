@@ -25,6 +25,7 @@ export default function IntroAnimation() {
   const nMaskRef = useRef<SVGPathElement>(null);
   const gMaskRef = useRef<SVGPathElement>(null);
   const sparkleRef = useRef<SVGPathElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     if (!nMaskRef.current || !gMaskRef.current || !sparkleRef.current || !containerRef.current) return;
@@ -49,6 +50,9 @@ export default function IntroAnimation() {
     // Así, la punta redondeada arranca bien lejos y no se asoma.
     gsap.set(nMask, { strokeDasharray: `${nLen} ${nLen + 40}`, strokeDashoffset: -(nLen + 20) });
     gsap.set(gMask, { strokeDasharray: `${gLen} ${gLen + 40}`, strokeDashoffset: -(gLen + 20) });
+    
+    // Reveal the SVG now that the masks are correctly positioned
+    if (svgRef.current) gsap.set(svgRef.current, { opacity: 1 });
     
     // Configuramos el destello con centro dinámico
     gsap.set(sparkle, { opacity: 0, scale: 0, rotation: 0, transformOrigin: "50% 50%" });
@@ -106,11 +110,12 @@ export default function IntroAnimation() {
         La G baja hasta Y=211 (171 de alto + 40 de offset en Y).
       */}
       <svg
+        ref={svgRef}
         viewBox="0 0 230 215"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-56 h-auto"
-        style={{ overflow: 'visible' }}
+        style={{ overflow: 'visible', opacity: 0 }}
       >
         {/* ── Letra "n" ──────────────────────────────────────────────────── */}
         <svg x="0" y="40" width="114" height="90" viewBox="0 0 114 90">
@@ -166,6 +171,7 @@ export default function IntroAnimation() {
           ref={sparkleRef}
           d="M 202.5 88 Q 202.5 100.8 215.3 100.8 Q 202.5 100.8 202.5 113.6 Q 202.5 100.8 189.7 100.8 Q 202.5 100.8 202.5 88 Z"
           fill="white"
+          style={{ opacity: 0 }}
         />
       </svg>
     </div>

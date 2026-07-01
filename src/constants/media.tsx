@@ -1,17 +1,17 @@
 import { SiReact, SiTypescript, SiTailwindcss, SiNextdotjs } from '@/components/BrandLogos';
 
-import ravedates1 from '@/assets/work-examples/ravedates-1.webp';
-import ravedates2 from '@/assets/work-examples/ravedates-2.webp';
-import ravedates3 from '@/assets/work-examples/ravedates-3.webp';
+import ravedates1 from '@/assets/work-examples/ravedates-1.webp?url';
+import ravedates2 from '@/assets/work-examples/ravedates-2.webp?url';
+import ravedates3 from '@/assets/work-examples/ravedates-3.webp?url';
 
-import dymo1 from '@/assets/work-examples/dymo-1.webp';
-import dymo2 from '@/assets/work-examples/dymo-2.webp';
-import dymo3 from '@/assets/work-examples/dymo-3.webp';
+import dymo1 from '@/assets/work-examples/dymo-1.webp?url';
+import dymo2 from '@/assets/work-examples/dymo-2.webp?url';
+import dymo3 from '@/assets/work-examples/dymo-3.webp?url';
 
-import freelance1 from '@/assets/work-examples/freelance-1.webp';
-import freelance2 from '@/assets/work-examples/freelance-2.webp';
-import freelance3 from '@/assets/work-examples/freelance-3.webp';
-import freelance4 from '@/assets/work-examples/freelance-4.webp';
+import freelance1 from '@/assets/work-examples/freelance-1.webp?url';
+import freelance2 from '@/assets/work-examples/freelance-2.webp?url';
+import freelance3 from '@/assets/work-examples/freelance-3.webp?url';
+import freelance4 from '@/assets/work-examples/freelance-4.webp?url';
 
 
 export type Technology = {
@@ -66,8 +66,8 @@ export const raveDatesMedia: MediaItem[] = [
   {
     id: 4,
     type: 'video',
-    src: '/v1.mp4',
-    thumbnail: '/a1.jpg',
+    src: '/videos/video-ravedates.mp4',
+    thumbnail: ravedates1,
     description: "Video demostrativo del funcionamiento de la plataforma.",
     technologies: [
       { name: 'React', icon: SiReact },
@@ -113,8 +113,8 @@ export const dymoMedia: MediaItem[] = [
   {
     id: 4,
     type: 'video',
-    src: '/v1.mp4',
-    thumbnail: '/a1.jpg',
+    src: '/videos/video-dymo.mp4',
+    thumbnail: dymo1,
     description: "Video demostrativo del funcionamiento de la plataforma.",
     technologies: [
       { name: 'React', icon: SiReact },
@@ -126,8 +126,9 @@ export const dymoMedia: MediaItem[] = [
 export const freelanceMedia: MediaItem[] = [
   {
     id: 1,
-    type: 'image',
-    src: freelance1,
+    type: 'video',
+    thumbnail: freelance1,
+    src: '/videos/video-pisofuerte.mp4',
     description: 'Desarrollo de una web corporativa enfocada en transmitir confianza, presentar servicios y facilitar el contacto con potenciales clientes.',
     technologies: [
       { name: 'Next.js', icon: SiNextdotjs },
@@ -136,8 +137,9 @@ export const freelanceMedia: MediaItem[] = [
   },
   {
     id: 2,
-    type: 'image',
-    src: freelance2,
+    type: 'video',
+    src: "/videos/video-nordicaps.mp4",
+    thumbnail: freelance2,
     description: 'Implementación de una experiencia moderna y responsive, priorizando rendimiento, diseño y presencia digital de la marca.',
     technologies: [
       { name: 'Next.js', icon: SiNextdotjs },

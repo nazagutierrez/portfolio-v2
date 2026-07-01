@@ -8,9 +8,9 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import backendDevImg from "@/assets/people/backend-dev.webp";
-import dymoCeoImg from "@/assets/people/dymo-ceo.webp";
-import noiseImg from "@/assets/noise.webp";
+import backendDevImg from "@/assets/people/backend-dev.webp?url";
+import dymoCeoImg from "@/assets/people/dymo-ceo.webp?url";
+import noiseImg from "@/assets/noise.webp?url";
 import PauseSvg from "@/assets/svg/PauseSvg";
 import PlaySvg from "@/assets/svg/PlaySvg";
 import LinkedinSvg from "@/assets/svg/LinkedinSvg";

@@ -5,10 +5,10 @@ import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 import { useTranslation } from "react-i18next";
 import { logos } from "@/constants/logos";
-import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp";
-import logoRaveDates from "@/assets/logos/logo-rave-dates.webp";
-import logoDymo from "@/assets/logos/dymo-logo-small.webp";
-import noiseImg from "@/assets/noise.webp";
+import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp?url";
+import logoRaveDates from "@/assets/logos/logo-rave-dates.webp?url";
+import logoDymo from "@/assets/logos/dymo-logo-small.webp?url";
+import noiseImg from "@/assets/noise.webp?url";
 import ExternalLinkSvg from "@/assets/svg/ExternalLinkSvg";
 
 const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {

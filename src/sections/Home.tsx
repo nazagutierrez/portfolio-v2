@@ -2,15 +2,12 @@ import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import { useVideoLoader } from "@/hooks/useVideoLoader";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import BlurText from "@/components/BlurText";
 import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
-import SEOHead from "@/components/SEOHead";
-import JsonLd from "@/components/JsonLd";
 
 import WorkExperience from "./WorkExperience";
 import About from "./About";
@@ -18,19 +15,17 @@ import Testimonials from "./Testimonials";
 import HighlightedWork from "./HighlightedWork";
 import Contact from "./Contact";
 
-import posterHome from "@/assets/poster-home.webp";
+import posterHome from "@/assets/poster-home.webp?url";
 
-const heroBg = "/home-bg.mp4";
+const heroBg = "/videos/home-bg.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 const Home = () => {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const location = useLocation();
   
-  const [introFinished, setIntroFinished] = useState(() => !!(window as any).__INTRO_PLAYED__);
+  const [introFinished, setIntroFinished] = useState(() => typeof window !== 'undefined' ? !!(window as any).__INTRO_PLAYED__ : false);
 
   // Video optimisation: preload only metadata, fade-in on canplay
   const { videoRef: heroBgRef, videoStyle: heroBgStyle } = useVideoLoader(heroBg, { lazy: false });
@@ -42,6 +37,43 @@ const Home = () => {
       return () => window.removeEventListener("introComplete", handleIntro);
     }
   }, [introFinished]);
+
+  const isViewerOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (!leftRef.current) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isViewerOpenRef.current) {
+        heroBgRef.current?.play().catch(() => {});
+      } else {
+        heroBgRef.current?.pause();
+      }
+    });
+    observer.observe(leftRef.current);
+
+    const handleMediaViewer = (e: Event) => {
+      const customEvent = e as CustomEvent<{ isOpen: boolean }>;
+      isViewerOpenRef.current = customEvent.detail.isOpen;
+      
+      if (customEvent.detail.isOpen) {
+        heroBgRef.current?.pause();
+      } else {
+        if (leftRef.current) {
+          const rect = leftRef.current.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            heroBgRef.current?.play().catch(() => {});
+          }
+        }
+      }
+    };
+    window.addEventListener('mediaViewerState', handleMediaViewer);
+    
+    return () => {
+      window.removeEventListener('mediaViewerState', handleMediaViewer);
+      observer.disconnect();
+    };
+  }, [heroBgRef]);
 
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
@@ -216,7 +248,7 @@ const Home = () => {
 
   const toggleLanguage = () => {
     const isEs = i18n.language === "es";
-    let newPath = location.pathname;
+    let newPath = window.location.pathname;
 
     if (isEs) {
       newPath = `/en${newPath === '/' ? '' : newPath}`;
@@ -224,7 +256,7 @@ const Home = () => {
       newPath = newPath.replace(/^\/en/, '') || '/';
     }
 
-    navigate(newPath);
+    window.location.href = newPath;
   };
 
   const options = [
@@ -252,8 +284,6 @@ const Home = () => {
 
   return (
     <>
-      <SEOHead lang={i18n.language} />
-      <JsonLd lang={i18n.language} />
       <section
         id="Home"
         ref={sectionRef}
@@ -417,7 +447,7 @@ const Home = () => {
       ></div>
 
       {/* ===== FIXED CONTACT (Revealed from behind) ===== */}
-      {createPortal(
+      {typeof document !== 'undefined' && createPortal(
         <div className="fixed bottom-0 left-0 w-full h-dvh z-0 pointer-events-auto">
           <Contact />
         </div>,
@@ -426,7 +456,7 @@ const Home = () => {
       {/* Botón de idioma desktop via Portal: el nodo DOM queda en document.body,
           completamente fuera del árbol con transforms, por lo que position:fixed
           siempre es relativo al viewport sin importar las animaciones. */}
-      {createPortal(
+      {typeof document !== 'undefined' && createPortal(
         (() => {
           const langOption = options[options.length - 1];
           return (

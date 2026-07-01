@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useVideoLoader } from "@/hooks/useVideoLoader";
 import gsap from "gsap";
 import BlurText from "@/components/BlurText";
@@ -8,9 +8,9 @@ import WhatsappSvg from "@/assets/svg/WhatsappSvg";
 import ResumeSvg from "@/assets/svg/ResumeSvg";
 import { useTranslation } from "react-i18next";
 import HeartSvg from "@/assets/svg/HeartSvg";
-import posterContact from "@/assets/poster-contact.webp";
+import posterContact from "@/assets/poster-contact.webp?url";
 
-const contactBg = "/contact-bg.mp4";
+const contactBg = "/videos/contact-bg.mp4";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -22,6 +22,42 @@ const Contact = () => {
     lazy: true,
     rootMargin: "300px",
   });
+
+  const isViewerOpenRef = useRef(false);
+
+  useEffect(() => {
+    const spacer = document.getElementById('Contact');
+    if (!spacer) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isViewerOpenRef.current) {
+        contactBgRef.current?.play().catch(() => {});
+      } else {
+        contactBgRef.current?.pause();
+      }
+    });
+    observer.observe(spacer);
+
+    const handleMediaViewer = (e: Event) => {
+      const customEvent = e as CustomEvent<{ isOpen: boolean }>;
+      isViewerOpenRef.current = customEvent.detail.isOpen;
+      
+      if (customEvent.detail.isOpen) {
+        contactBgRef.current?.pause();
+      } else {
+        const rect = spacer.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          contactBgRef.current?.play().catch(() => {});
+        }
+      }
+    };
+    window.addEventListener('mediaViewerState', handleMediaViewer);
+    
+    return () => {
+      window.removeEventListener('mediaViewerState', handleMediaViewer);
+      observer.disconnect();
+    };
+  }, [contactBgRef]);
 
   const socialLinks = [
     {

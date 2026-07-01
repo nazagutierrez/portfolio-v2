@@ -1,26 +1,17 @@
-import { useEffect } from "react";
-import { useParams, Outlet, Navigate } from "react-router-dom";
+import { useLayoutEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const LanguageWrapper = ({ defaultLang, children }: { defaultLang?: string, children?: React.ReactNode }) => {
-  const { lang } = useParams();
+const LanguageWrapper = ({ defaultLang, children }: { defaultLang: string, children: React.ReactNode }) => {
   const { i18n } = useTranslation();
 
-  const currentLang = lang || defaultLang;
-
-  useEffect(() => {
-    if (currentLang === "es" || currentLang === "en") {
-      i18n.changeLanguage(currentLang);
-      document.documentElement.lang = currentLang;
+  useLayoutEffect(() => {
+    if (defaultLang === "es" || defaultLang === "en") {
+      i18n.changeLanguage(defaultLang);
+      document.documentElement.lang = defaultLang;
     }
-  }, [currentLang, i18n]);
+  }, [defaultLang, i18n]);
 
-  if (currentLang !== "es" && currentLang !== "en") {
-    // Si la ruta tiene un idioma inválido, lo enviamos a la raíz (español por defecto)
-    return <Navigate to="/" replace />;
-  }
-
-  return children ? <>{children}</> : <Outlet />;
+  return <>{children}</>;
 };
 
 export default LanguageWrapper;
