@@ -8,7 +8,6 @@ import { logos } from "@/constants/logos";
 import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp?url";
 import logoRaveDates from "@/assets/logos/logo-rave-dates.webp?url";
 import logoDymo from "@/assets/logos/dymo-logo-small.webp?url";
-import noiseImg from "@/assets/noise.webp?url";
 import ExternalLinkSvg from "@/assets/svg/ExternalLinkSvg";
 
 const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
@@ -71,7 +70,6 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
         descriptionRef.current,
         {
           opacity: 0,
-          filter: "blur(14px)",
         },
         {
           scrollTrigger: {
@@ -79,7 +77,6 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
             start: "top 80%",
           },
           opacity: 1,
-          filter: "blur(0px)",
           delay: baseDelay,
           duration: 1,
           ease: "power2.out",
@@ -105,7 +102,6 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
         },
         opacity: 0,
         y: 40,
-        filter: "blur(10px)",
         duration: 0.6,
         delay: baseDelay + 0.4,
         ease: "power2.out",
@@ -118,9 +114,6 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
 
   return (
     <section id="Work" ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden px-6 py-16 sm:px-10 md:px-20 md:py-20 pt-24 md:pt-32 relative">
-      {/* Fondo */}
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
-      
       <h2 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText
           text={t("work.title")}
@@ -132,7 +125,7 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
         />
       </h2>
 
-      <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto will-change-[filter]">
+      <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto">
         {t("work.description")}
       </p>
 

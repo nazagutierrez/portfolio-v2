@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import LogoLoop from "@/components/LogoLoop";
 import { skillLogos } from "@/constants/skillLogos";
 import nazaImg from "@/assets/people/naza.webp?url";
-import noiseImg from "@/assets/noise.webp?url";
 import LoaderSvg from "@/assets/svg/LoaderSvg";
 
 const About = () => {
@@ -36,7 +35,6 @@ const About = () => {
         },
         opacity: 0,
         x: -50,
-        filter: "blur(10px)",
         duration: 1.2,
         delay: 0.2,
         ease: "power3.out",
@@ -51,7 +49,6 @@ const About = () => {
         opacity: 0,
         x: 50,
         scale: 0.9,
-        filter: "blur(10px)",
         duration: 1.2,
         delay: 0.5,
         ease: "power3.out",
@@ -74,7 +71,6 @@ const About = () => {
         },
         opacity: 0,
         y: 30,
-        filter: "blur(8px)",
         duration: 1,
         ease: "power2.out",
       });
@@ -87,7 +83,6 @@ const About = () => {
         },
         opacity: 0,
         y: 20,
-        filter: "blur(6px)",
         duration: 0.8,
         delay: 0.2,
         ease: "power2.out",
@@ -101,7 +96,6 @@ const About = () => {
         },
         opacity: 0,
         y: 20,
-        filter: "blur(8px)",
         duration: 1,
         ease: "power2.out",
       });
@@ -116,9 +110,6 @@ const About = () => {
       ref={sectionRef}
       className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
     >
-      {/* Fondo con Silk */}
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
-
       {/* Lado Izquierdo: Texto */}
       <div  className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
         <h2 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl italic font-light leading-tight text-center w-fit">

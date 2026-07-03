@@ -17,7 +17,7 @@ import Contact from "./Contact";
 
 import posterHome from "@/assets/poster-home.webp?url";
 
-const heroBg = "/videos/home-bg.mp4";
+const heroBg = "/videos/contact-bg.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -83,6 +83,7 @@ const Home = () => {
   const leftAnimRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const rightAnimRef = useRef<HTMLDivElement>(null);
+  const videoPanRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !leftRef.current || !rightRef.current) return;
@@ -197,7 +198,6 @@ const Home = () => {
               subtitleRef.current,
               {
                 opacity: 0,
-                filter: "blur(14px)",
                 duration: 1,
                 ease: "power2.out",
               },
@@ -207,7 +207,6 @@ const Home = () => {
               textRef.current,
               {
                 opacity: 0,
-                filter: "blur(14px)",
                 duration: 1,
                 ease: "power2.out",
               },
@@ -217,7 +216,6 @@ const Home = () => {
               text2Ref.current,
               {
                 opacity: 0,
-                filter: "blur(14px)",
                 duration: 1,
                 ease: "power2.out",
               },
@@ -243,7 +241,32 @@ const Home = () => {
       sectionRef,
     );
 
-    return () => mm.revert();
+    // Parallax GPU-accelerated para el video de fondo (horizontal)
+    // Animamos el wrapper (videoPanRef) en lugar del <video> para evitar
+    // que GSAP sobreescriba el transform de centrado de Tailwind.
+    const ctx = gsap.context(() => {
+      if (videoPanRef.current) {
+        gsap.fromTo(
+          videoPanRef.current,
+          { xPercent: 0 },
+          {
+            xPercent: 10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          },
+        );
+      }
+    }, sectionRef);
+
+    return () => {
+      mm.revert();
+      ctx.revert();
+    };
   }, []);
 
   const toggleLanguage = () => {
@@ -293,18 +316,26 @@ const Home = () => {
         <div ref={leftRef} className="min-h-svh xl:min-h-0 xl:h-screen w-full xl:w-1/2 z-10 xl:z-40 p-2">
           <div ref={leftAnimRef} className="relative w-full h-full rounded-[28px] overflow-hidden ">
             {/* Fondo */}
-            <div className="absolute inset-0" style={heroBgStyle}>
-              <video
-                ref={heroBgRef}
-                src={heroBg}
-                poster={posterHome}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="absolute opacity-70 sm:opacity-50 xl:opacity-80 inset-0 w-full h-full object-cover"
-              />
+            {/* El wrapper es 200% ancho centrado con left:-50% (sin transform)
+                para que GSAP pueda animar xPercent libremente sin conflicto. */}
+            <div className="absolute inset-0 overflow-hidden" style={heroBgStyle}>
+              <div
+                ref={videoPanRef}
+                className="absolute inset-y-0 h-full w-[200%]"
+                style={{ left: "-50%" }}
+              >
+                <video
+                  ref={heroBgRef}
+                  src={heroBg}
+                  poster={posterHome}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover opacity-70 sm:opacity-50 xl:opacity-80"
+                />
+              </div>
             </div>
 
             {/* Contenido */}
@@ -343,7 +374,7 @@ const Home = () => {
 
                   <h2
                     ref={subtitleRef}
-                    className="text-xl xs:text-2xl 2sm:text-[2rem] xl:text-[clamp(1.25rem,3.5vh,2rem)] font-light xl:mb-[clamp(1rem,2vh,1rem)] italic shrink-0 will-change-[filter]"
+                    className="text-xl xs:text-2xl 2sm:text-[2rem] xl:text-[clamp(1.25rem,3.5vh,2rem)] font-light xl:mb-[clamp(1rem,2vh,1rem)] italic shrink-0"
                   >
                     {t("home.title")}
                   </h2>
@@ -352,13 +383,13 @@ const Home = () => {
                 <div>
                   <p
                     ref={textRef}
-                    className="mb-3 text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="mb-3 text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-90 sm:max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0"
                   >
                     {t("home.description_1")}
                   </p>
                   <p
                     ref={text2Ref}
-                    className="xl:mt-[clamp(1rem,3vh,2rem)] sm:block hidden text-sm sm:text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0 will-change-[filter]"
+                    className="xl:mt-[clamp(1rem,3vh,2rem)] sm:block hidden text-sm sm:text-base xl:text-[clamp(1rem,2.5vh,1.25rem)] font-light sm:font-thin mx-auto max-w-120 md:max-w-150 lg:max-w-155 text-pretty px-6 sm:px-10 shrink-0"
                   >
                     {t("home.description_2")}
                   </p>

@@ -88,7 +88,6 @@ const Contact = () => {
       gsap.from(containerRef.current, {
         opacity: 0,
         y: 60,
-        filter: "blur(12px)",
         duration: 1.5,
         ease: "power4.out",
         scrollTrigger: {
@@ -103,12 +102,10 @@ const Contact = () => {
         {
           opacity: 0,
           y: 20,
-          filter: "blur(8px)",
         },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           stagger: 0.1,
           duration: 0.8,
           delay: 0.8,
@@ -124,7 +121,6 @@ const Contact = () => {
       gsap.from(".contact-email", {
         opacity: 0,
         y: 20,
-        filter: "blur(8px)",
         duration: 1,
         delay: 0.5,
         ease: "power2.out",
@@ -137,7 +133,6 @@ const Contact = () => {
       // Animación para el footer
       gsap.from(".contact-footer", {
         opacity: 0,
-        filter: "blur(6px)",
         duration: 1.2,
         delay: 1.2,
         ease: "power2.out",

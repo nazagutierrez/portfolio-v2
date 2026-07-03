@@ -66,8 +66,8 @@ const resources = {
       "chatbot": {
         "welcome": "¡Hola! Soy el asistente IA de Nazareno ¿Tenés alguna pregunta sobre su experiencia, proyectos o disponibilidad?",
         "suggested_1": "Resumí su perfil",
-        "suggested_2": "¿Con qué tecnologías trabaja?",
-        "suggested_3": "¿Está disponible para trabajar?",
+        "suggested_2": "Hablame de sus proyectos",
+        "suggested_3": "¿Cómo contacto a Nazareno?",
         "title": "Asistente IA",
         "online": "En línea",
         "placeholder": "Escribí tu pregunta...",
@@ -152,8 +152,8 @@ const resources = {
       "chatbot": {
         "welcome": "Hi! I'm Nazareno's AI assistant. Do you have any questions about his experience, projects, or availability?",
         "suggested_1": "Summarize his profile",
-        "suggested_2": "What tech stack does he use?",
-        "suggested_3": "Is he available for work?",
+        "suggested_2": "Tell me about his projects",
+        "suggested_3": "How can I contact Nazareno?",
         "title": "AI Assistant",
         "online": "Online",
         "placeholder": "Type your question...",

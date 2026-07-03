@@ -10,7 +10,6 @@ import { ScrollTrigger } from "gsap/all";
 import logoRaveDates from "@/assets/logos/logo-rave-dates.webp?url";
 import logoDymo from "@/assets/logos/dymo-logo-small.webp?url";
 import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp?url";
-import noiseImg from "@/assets/noise.webp?url";
 import LoaderSvg from "@/assets/svg/LoaderSvg";
 
 function HighlightedImage({ src, alt, className }: { src: string, alt: string, className: string }) {
@@ -45,7 +44,6 @@ const HighlightedWork = ({ introFinished }: { introFinished: boolean }) => {
           start: "top 80%",
         },
         opacity: 0,
-        filter: "blur(10px)",
         y: 20,
         duration: 1,
         ease: "power2.out",
@@ -58,11 +56,9 @@ const HighlightedWork = ({ introFinished }: { introFinished: boolean }) => {
           gsap.fromTo(batch, {
             opacity: 0,
             y: 40,
-            filter: "blur(10px)",
           }, {
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
             duration: 0.8,
             ease: "power2.out",
             stagger: 0.1,
@@ -77,9 +73,6 @@ const HighlightedWork = ({ introFinished }: { introFinished: boolean }) => {
 
   return (
     <section ref={sectionRef} id="Showcase" className="min-h-screen bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] rounded-[28px] overflow-hidden py-16 sm:pt-20 sm:pb-28 relative">
-      {/* Fondo */}
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
-
       <h2 className="px-6 sm:px-10 md:px-20 text-center text-5xl sm:text-6xl md:text-7xl italic mb-4 sm:mb-6">
         <BlurText
         className="justify-self-center justify-center"

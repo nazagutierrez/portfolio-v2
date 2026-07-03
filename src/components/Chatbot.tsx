@@ -1,6 +1,5 @@
 import BotSvg from '@/assets/svg/BotSvg';
 import SendSvg from '@/assets/svg/SendSvg';
-import SparklesSvg from '@/assets/svg/SparklesSvg';
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';interface Message {
@@ -161,11 +160,11 @@ export default function Chatbot() {
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Abrir asistente IA"
-        className={`flex items-center cursor-pointer justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full text-[#0c0c0c] transition-all duration-500 hover:scale-110 focus:outline-none bg-gradient-to-br from-[#b8a52d] via-[#d4be3e] to-[#b8a52d] shadow-[0_0_24px_rgba(184,165,45,0.4),0_4px_16px_rgba(0,0,0,0.4)] ${
+        className={`flex will-change-transform items-center cursor-pointer justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full text-[#0c0c0c] transition-all duration-500 hover:scale-110 focus:outline-none bg-gradient-to-br from-[#b8a52d] via-[#d4be3e] to-[#b8a52d] shadow-[0_0_24px_rgba(184,165,45,0.4),0_4px_16px_rgba(0,0,0,0.4)] ${
           isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'
         }`}
       >
-        <SparklesSvg />
+        <BotSvg />
       </button>
 
       {/* Chat window */}
@@ -269,12 +268,12 @@ export default function Chatbot() {
 
           {/* Suggestions */}
           {showSuggestions && !isLoading && (
-            <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex flex-col flex-wrap gap-2 mt-2">
               {SUGGESTED.map((s) => (
                 <button
                   key={s}
                   onClick={() => onSuggestionClick(s)}
-                  className="text-[12px] text-[#b8a52d] border border-[#b8a52d]/35 rounded-[20px] px-3 py-1 bg-[#b8a52d]/8 transition-all duration-200 cursor-pointer hover:bg-[#b8a52d]/18"
+                  className="text-[12px] text-[#b8a52d] w-fit border border-[#b8a52d]/35 rounded-[20px] px-3 py-1 bg-[#b8a52d]/8 transition-all duration-200 cursor-pointer hover:bg-[#b8a52d]/18"
                 >
                   {s}
                 </button>
@@ -303,7 +302,7 @@ export default function Chatbot() {
               type="submit"
               disabled={isLoading || text.trim() === ''}
               aria-label="Enviar"
-              className={`border-none rounded-[10px] p-2.5 transition-all duration-200 shrink-0 flex items-center justify-center ${
+              className={`border-none hover:opacity-85 rounded-[10px] p-2.5 transition-all duration-200 shrink-0 flex items-center justify-center ${
                 text.trim() && !isLoading
                   ? 'bg-gradient-to-br from-[#b8a52d] to-[#d4be3e] cursor-pointer text-[#0c0c0c]'
                   : 'bg-white/7 cursor-not-allowed text-white/30'

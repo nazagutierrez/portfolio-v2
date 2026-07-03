@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 // @ts-expect-error - Swiper CSS imports don't have type definitions
 import 'swiper/css/navigation';
 
-import noiseImg from "@/assets/noise.webp?url";
+import noiseImg from "@/assets/noise.png?url";
 
 
 import LoaderSvg from '@/assets/svg/LoaderSvg';
@@ -153,7 +153,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                   onClick={e => e.stopPropagation()}
                   className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-center justify-center w-full max-w-[90vw] md:max-w-4xl lg:max-w-5xl max-h-full mx-auto cursor-default"
                 >
-                  <div className="absolute inset-0 opacity-30 bg-[url('/noise.webp?url')] pointer-events-none z-0"></div>
+                  <div className="absolute inset-0 opacity-30 bg-[url('/noise.png?url')] pointer-events-none z-0"></div>
                   {item.type === 'image' ? (
                     <div className="relative w-full flex items-center justify-center shrink min-h-[35vh] max-h-[70vh] sm:h-[75vh] overflow-hidden">
                       <SlideImage
