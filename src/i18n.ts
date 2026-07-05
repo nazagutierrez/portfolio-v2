@@ -10,7 +10,7 @@ const resources = {
         "description_1": "Con más de 3 años de experiencia construyendo productos web para startups y empresas con React, Next.js y TypeScript.",
         "description_2": "Transformando ideas en productos digitales intuitivos, escalables y de alto rendimiento.",
         "chat_mention": "Tenés dudas? Preguntale a mi Asistente con IA en la esquina inferior derecha.",
-        "btn_mail": "Contactar",
+        "btn_mail": "Enviar mail",
         "btn_cv": "Ver CV"
       },
       "nav": {
@@ -96,7 +96,7 @@ const resources = {
         "description_1": "With 3+ years of experience building web products for startups and businesses using React, Next.js, and TypeScript.",
         "description_2": "Experienced in developing scalable applications, improving user experiences, and collaborating within multidisciplinary teams.",
         "chat_mention": "Got questions? Ask my AI Assistant in the bottom-right corner.",
-        "btn_mail": "Contact",
+        "btn_mail": "Send mail",
         "btn_cv": "View CV"
       },
       "nav": {

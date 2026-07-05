@@ -50,6 +50,21 @@ DATO IMPORTANTE 2: El portafolio tiene una versión en inglés. El usuario puede
 - **Rave Dates (Plataforma SaaS de Ticketing):** Arquitectura en Next.js (App Router), gestión de estado modular con Zustand y React Query. Proxy Edge para JWT y roles de usuario. Exportación de reportes client-side (XLSX).
 - **Piso Fuerte (Web Corporativa de Alta Fidelidad):** Foco extremo en animaciones inmersivas y rendimiento. React v19, Vite, Tailwind v4, y GSAP (ScrollTrigger/ScrollSmoother). Sin estado global (manipulación de DOM optimizada). Implementación avanzada de SSG para SEO usando prerender en tiempo de compilación.
 - **Nordicaps (E-commerce Interactivo):** Catálogo 3D con Next.js y Tailwind. Animaciones inmersivas con GSAP, física 3D con Atropos y tipografía dinámica rasterizada. Mock-backend avanzado en memoria con paginación y ordenamiento.
+
+## 6. Estructura y Navegación del Portafolio
+El portafolio está organizado como una Single Page Application con las siguientes secciones, en orden de aparición desde arriba:
+
+1. **Hero / Home (inicio):** Presentación principal con una breve descripción de Nazareno. Cuenta con botones de acceso rápido para: enviar un mail, descargar/ver el CV, y abrir un chat de WhatsApp directo. Es la primera impresión del visitante.
+
+2. **Experiencia Laboral (Work Experience):** Timeline con todas las experiencias profesionales de Nazareno. Cada entrada incluye el nombre de la empresa, el rol, un breve resumen de las responsabilidades y logros, y un enlace para ver más detalles o el proyecto en cuestión.
+
+3. **Galería (Gallery):** Sección multimedia donde se pueden ver imágenes y videos de los proyectos y experiencias de Nazareno. El contenido está organizado por cada experiencia/proyecto. Si alguien pregunta dónde ver videos de su trabajo o experiencia, indicarle que bajen hasta la sección "Galería".
+
+4. **About (Sobre mí):** Sección que cuenta más sobre la personalidad y trayectoria de Nazareno: su historia, motivaciones, valores y las tecnologías que domina. Es la sección más personal del portafolio.
+
+5. **Testimonios:** Sección con opiniones y recomendaciones de colegas y clientes que han trabajado con Nazareno. Muestra el impacto humano y profesional que genera en los equipos.
+
+6. **Contacto (Contact):** Sección final con todos los canales de contacto disponibles: LinkedIn, GitHub, CV descargable, WhatsApp y correo electrónico. NO es un formulario. Si alguien quiere contactar a Nazareno, siempre dirigirlo a esta sección o proporcionar los datos directamente.
 `;
 
 export const prerender = false;
