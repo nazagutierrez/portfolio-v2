@@ -26,26 +26,47 @@ type ViewerProps = {
   href?: string;
 };
 
-function SlideVideo({ src, isActive }: { src: string, isActive: boolean }) {
+function SlideVideo({ src, isActive, className = "", blurBg }: { src: string, isActive: boolean, className?: string, blurBg?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (!videoRef.current) return;
     if (isActive) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current?.play().catch(() => {});
+      bgVideoRef.current?.play().catch(() => {});
     } else {
-      videoRef.current.pause();
+      videoRef.current?.pause();
+      bgVideoRef.current?.pause();
     }
   }, [isActive]);
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      controls
-      playsInline
-      className="relative z-10 w-full max-w-full max-h-[70vh] sm:max-h-[75vh] object-contain"
-    />
+    <>
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center rounded-lg z-0">
+          <LoaderSvg className="w-6 h-6 text-white/50 animate-spin" />
+        </div>
+      )}
+      {blurBg && isLoaded && (
+        <video
+          ref={bgVideoRef}
+          src={src}
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover blur-[12px] opacity-50 scale-110 z-0 pointer-events-none"
+        />
+      )}
+      <video
+        ref={videoRef}
+        src={src}
+        controls
+        playsInline
+        onLoadedData={() => setIsLoaded(true)}
+        className={`${className} relative z-10 transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      />
+    </>
   );
 }
 
@@ -130,7 +151,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
     >
       <button
         onClick={closeWithAnimation}
-        className="absolute cursor-pointer top-6 right-6 text-white text-2xl z-99"
+        className="absolute cursor-pointer p-2 top-10 right-10 sm:top-6 sm:right-6 text-white text-2xl z-99"
       >
         ✕
       </button>
@@ -144,34 +165,40 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
           navigation={true}
           nested={true}
           modules={[Navigation, A11y]}
-          className="w-full h-full [--swiper-navigation-color:#fff] [--swiper-navigation-size:2rem] [--swiper-navigation-sides-offset:1rem] md:[--swiper-navigation-sides-offset:3rem]"
+          className="w-full h-auto [&>.swiper-wrapper]:items-stretch [--swiper-navigation-color:#fff] [--swiper-navigation-size:2rem] [--swiper-navigation-sides-offset:1rem] md:[--swiper-navigation-sides-offset:3rem]"
         >
           {media.map(item => (
-            <SwiperSlide key={item.id} className="flex content-center justify-center p-4 sm:p-8 box-border h-full">
+            <SwiperSlide key={item.id} className="!h-auto flex content-center justify-center p-4 sm:p-8 box-border">
               {({ isActive }) => (
                 <div 
                   onClick={e => e.stopPropagation()}
-                  className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-center justify-center w-full max-w-[90vw] md:max-w-4xl lg:max-w-5xl max-h-full mx-auto cursor-default"
+                  className="relative rounded-xl overflow-hidden bg-[#120d0d] shadow-2xl ring-1 ring-white/10 flex flex-col items-stretch w-full max-w-[90vw] md:max-w-4xl lg:max-w-4xl h-full max-h-[90dvh] mx-auto cursor-default"
                 >
                   <div className="absolute inset-0 opacity-30 bg-[url('/noise.png?url')] pointer-events-none z-0"></div>
                   {item.type === 'image' ? (
-                    <div className="relative w-full flex items-center justify-center shrink min-h-[35vh] max-h-[70vh] sm:h-[75vh] overflow-hidden">
+                    <div className="relative w-full aspect-video max-h-[45dvh] md:max-h-[60dvh] flex items-center justify-center overflow-hidden shrink-0 bg-black/40">
                       <SlideImage
                         src={item.src}
                         alt=""
                         blurBg={isActive}
-                        className="relative z-10 w-full max-w-full max-h-full object-contain"
+                        className="relative z-10 w-full h-full object-contain"
                       />
                     </div>
                   ) : (
-                    <div className="relative w-full flex items-center justify-center shrink min-h-[35vh] max-h-[70vh] sm:h-[75vh] overflow-hidden">
-                      <SlideVideo src={item.src} isActive={isActive} />
+                    <div className="relative w-full aspect-video max-h-[45dvh] md:max-h-[60dvh] flex items-center justify-center overflow-hidden shrink-0 bg-black/40">
+                      <SlideVideo 
+                        src={item.src} 
+                        isActive={isActive} 
+                        blurBg={isActive}
+                        className="relative z-10 w-full h-full object-contain"
+                      />
                     </div>
                   )}
                   
                   {(item.description || item.technologies || href) && (
-                    <div className="relative w-full bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] p-6 flex flex-col gap-y-4 border-t border-white/10 shrink-0 overflow-hidden">
+                    <div className="relative w-full flex-1 bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] border-t border-white/10 min-h-0 overflow-hidden flex flex-col">
                       <div className="absolute inset-0 opacity-30 pointer-events-none z-0" style={{ backgroundImage: `url(${noiseImg})` }}></div>
+                      <div className="relative z-10 p-6 flex flex-col gap-y-4 overflow-y-auto h-full [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.2)_transparent]">
                       {item.description && (
                         <p className="relative z-10 text-white/80 text-sm md:text-base leading-relaxed max-w-3xl">
                           {item.description}
@@ -202,6 +229,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                           {href}
                         </a>
                       )}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -228,7 +256,7 @@ function SlideImage({ src, alt, className, blurBg }: { src: string, alt: string,
   return (
     <>
       {!isLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-lg z-[-1]">
+        <div className="absolute inset-0 flex items-center justify-center bg-white/5 rounded-lg z-0">
           <LoaderSvg className="w-6 h-6 text-white/50 animate-spin" />
         </div>
       )}

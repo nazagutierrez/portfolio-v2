@@ -196,7 +196,7 @@ export default function Chatbot() {
           <button
             onClick={() => setIsOpen(false)}
             aria-label="Cerrar chat"
-            className="p-1 cursor-pointer rounded-lg text-[#e9e9d5]/50 hover:text-[#e9e9d5] transition-colors duration-200"
+            className="p-1 text-2xl sm:text-xl cursor-pointer rounded-lg text-[#e9e9d5]/60 hover:text-[#e9e9d5] transition-colors duration-200"
           >
             ✕
           </button>
@@ -296,7 +296,7 @@ export default function Chatbot() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={t('chatbot.placeholder')}
-              className="flex-1 bg-white/6 border border-white/10 focus:border-[#b8a52d]/50 rounded-[12px] px-3.5 py-2.5 text-[#e9e9d5] text-[13.5px] outline-none transition-colors duration-200"
+              className="flex-1 bg-white/6 border border-white/10 focus:border-[#b8a52d]/50 rounded-[12px] px-3.5 py-2.5 text-[#e9e9d5] text-base sm:text-sm outline-none transition-colors duration-200"
             />
             <button
               type="submit"
