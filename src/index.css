@@ -7,12 +7,26 @@
   --main-black: #0c0c0c;
   --main-white: #e9e9d5;
   --main-yellow: #b8a52d;
+
+  /* Gradients */
+  --gr-from-yellow:#3a3202 ;
+  --gr-from-black:#0d0d0d ;
+  --gr-via:#120d0d ;
+  --gr-to-yellow:#3a3202 ;
+  --gr-to-black:#0d0d0d ;
 }
 
 @theme {
   --color-main-black: var(--main-black);
   --color-main-white: var(--main-white);
   --color-main-yellow: var(--main-yellow);
+
+  /* Gradients */
+  --color-gr-from-yellow: var(--gr-from-yellow);
+  --color-gr-from-black: var(--gr-from-black);
+  --color-gr-via: var(--gr-via);
+  --color-gr-to-yellow: var(--gr-to-yellow);
+  --color-gr-to-black: var(--gr-to-black);
 
   --breakpoint-2sm: 56rem;
   --breakpoint-xxl: 96rem;

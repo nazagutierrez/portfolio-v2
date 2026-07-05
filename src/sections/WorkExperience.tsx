@@ -9,6 +9,7 @@ import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp?url";
 import logoRaveDates from "@/assets/logos/logo-rave-dates.webp?url";
 import logoDymo from "@/assets/logos/dymo-logo-small.webp?url";
 import ExternalLinkSvg from "@/assets/svg/ExternalLinkSvg";
+import noiseImg from "@/assets/noise.png?url";
 
 const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
   const { t } = useTranslation();
@@ -113,7 +114,9 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
   }, [introFinished, isDesktop]);
 
   return (
-    <section id="Work" ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-b-[28px] overflow-hidden px-6 py-16 sm:px-10 md:px-20 md:py-20 pt-24 md:pt-32 relative">
+    <section id="Work" ref={sectionRef} className="min-h-screen text-center bg-linear-150 from-gr-from-black via-gr-via to-gr-to-yellow rounded-b-[28px] overflow-hidden px-6 py-16 sm:px-10 md:px-20 md:py-20 pt-24 md:pt-32 relative">      
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
+
       <h2 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl mx-auto w-fit italic mb-8 sm:mb-12">
         <BlurText
           text={t("work.title")}

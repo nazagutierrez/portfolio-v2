@@ -6,6 +6,7 @@ import LogoLoop from "@/components/LogoLoop";
 import { skillLogos } from "@/constants/skillLogos";
 import nazaImg from "@/assets/people/naza.webp?url";
 import LoaderSvg from "@/assets/svg/LoaderSvg";
+import noiseImg from "@/assets/noise.png?url";
 
 const About = () => {
   const { t } = useTranslation();
@@ -108,8 +109,11 @@ const About = () => {
     <section
       id="About"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-[#0d0d0d] via-[#120d0d] to-[#3a3202] rounded-[28px] overflow-hidden z-90"
+      className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-5 sm:py-16 md:py-20 md:px-8 relative bg-linear-150 from-gr-from-black via-gr-via to-gr-to-yellow rounded-[28px] overflow-hidden z-90"
     >
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
+
+
       {/* Lado Izquierdo: Texto */}
       <div  className="w-full space-y-6 flex flex-col items-center sm:space-y-8">
         <h2 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl italic font-light leading-tight text-center w-fit">

@@ -13,6 +13,7 @@ import dymoCeoImg from "@/assets/people/dymo-ceo.webp?url";
 import PauseSvg from "@/assets/svg/PauseSvg";
 import PlaySvg from "@/assets/svg/PlaySvg";
 import LinkedinSvg from "@/assets/svg/LinkedinSvg";
+import noiseImg from "@/assets/noise.png?url";
 
 const Testimonials = () => {
   const { t } = useTranslation();
@@ -101,8 +102,10 @@ const Testimonials = () => {
     <section
       id="Testimonials"
       ref={sectionRef}
-      className="min-h-[100vh] flex flex-col bg-linear-210 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] justify-center mb-2 px-3 py-16 sm:px-10 sm:py-16 md:px-20 md:py-20 relative bg-main-black rounded-[28px] overflow-hidden z-90"
+      className="min-h-[100vh] flex flex-col bg-linear-210 from-gr-from-yellow via-gr-via to-gr-to-black justify-center mb-2 px-3 py-16 sm:px-10 sm:py-16 md:px-20 md:py-20 relative bg-main-black rounded-[28px] overflow-hidden z-90"
     >
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${noiseImg})` }}></div>
+      
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
         <h2 className="testimonial-header text-4xl xs:text-5xl md:text-7xl italic font-light leading-tight text-center mb-4">
           <BlurText

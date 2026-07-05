@@ -12,7 +12,7 @@ import ResumeSvg from "@/assets/svg/ResumeSvg";
 import WorkExperience from "./WorkExperience";
 import About from "./About";
 import Testimonials from "./Testimonials";
-import HighlightedWork from "./HighlightedWork";
+import HighlightedWork from "./Gallery";
 import Contact from "./Contact";
 
 import posterHome from "@/assets/poster-home.webp?url";
@@ -420,7 +420,7 @@ const Home = () => {
                         );
                       }
                       
-                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-30 lg:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-base lg:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer`;
+                      const commonClasses = `contact-item border-fade flex items-center justify-center w-14 h-12 sm:h-auto sm:w-32 lg:w-40 sm:py-3 sm:px-5 text-center rounded-xl bg-main-black text-main-white text-sm sm:text-base lg:text-lg font-thin hover:border-main-yellow/50 transition-colors cursor-pointer`;
                       
                       return isLink ? (
                         <a
