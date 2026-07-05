@@ -10,6 +10,9 @@ import "swiper/css/pagination";
 
 import backendDevImg from "@/assets/people/backend-dev.webp?url";
 import dymoCeoImg from "@/assets/people/dymo-ceo.webp?url";
+import javierTaboadaImg from "@/assets/people/javier-taboada.webp?url";
+import alexTaboadaImg from "@/assets/people/alex.webp?url";
+import marceloMastroianiImg from "@/assets/people/marcelo.webp?url";
 import PauseSvg from "@/assets/svg/PauseSvg";
 import PlaySvg from "@/assets/svg/PlaySvg";
 import LinkedinSvg from "@/assets/svg/LinkedinSvg";
@@ -25,26 +28,40 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "John Doe",
-      position: t("testimonials.john_position"),
-      text: t("testimonials.john_text"),
-      linkedin: "https://linkedin.com/",
-      image: "https://i.pravatar.cc/150?u=1"
+      name: "Javier Taboada",
+      position: t("testimonials.javier_taboada_position"),
+      text: t("testimonials.javier_taboada_text"),
+      linkedin: "https://www.linkedin.com/in/javier-t-88609910",
+      image: javierTaboadaImg
     },
     {
       name: "Agustin Millan",
       position: t("testimonials.agustin_position"),
       text: t("testimonials.agustin_text"),
-      linkedin: "https://linkedin.com/",
+      linkedin: "https://www.linkedin.com/in/agustin-millan-415752244",
       image: backendDevImg
+    },
+    {
+      name: "Alex Taboada",
+      position: t("testimonials.alex_position"),
+      text: t("testimonials.alex_text"),
+      linkedin: "https://www.linkedin.com/in/aalextaboada",
+      image: alexTaboadaImg
+    },
+    {
+      name: "Marcelo Mastroiani",
+      position: t("testimonials.marcelo_position"),
+      text: t("testimonials.marcelo_text"),
+      linkedin: "https://www.linkedin.com/in/marcelo-mastroiani",
+      image: marceloMastroianiImg
     },
     {
       name: "Javier Romero González",
       position: t("testimonials.javier_position"),
       text: t("testimonials.javier_text"),
-      linkedin: "https://linkedin.com/",
+      linkedin: "https://www.linkedin.com/in/fjrg2007",
       image: dymoCeoImg
-    }
+    },
   ];
 
   const toggleAutoplay = () => {
@@ -142,7 +159,7 @@ const Testimonials = () => {
             className="w-full pb-12"
           >
             {testimonials.map((testimonial, idx) => (
-              <SwiperSlide key={idx} className="h-auto pb-12 px-0.5">
+              <SwiperSlide key={idx} className="!h-auto pb-12 px-0.5">
                 <div className="bg-white/5 border border-white/10 rounded-3xl px-3 sm:px-8 py-6 md:px-12 md:py-10 h-full flex flex-col justify-between hover:border-main-yellow/30 transition-colors duration-500">
                   <div className="mb-3 sm:mb-8">
                     <div className="flex justify-between items-start mb-3 sm:mb-6 px-4 sm:px-0">
@@ -154,7 +171,7 @@ const Testimonials = () => {
                         className="w-12 h-12 shrink-0 rounded-full bg-white/5 flex items-center justify-center text-main-yellow/70 hover:bg-white/10 hover:text-main-yellow transition-colors duration-300"
                         aria-label={isPlaying ? "Pause autoplay" : "Play autoplay"}
                       >
-                        {isPlaying ? <PauseSvg className="size-5" /> : <PlaySvg className="ml-1 size-5" />}
+                        {isPlaying ? <PauseSvg className="size-5" /> : <PlaySvg className="size-5" />}
                       </button>
                     </div>
                     <p className="text-base text-pretty xs:text-lg text-center sm:text-start md:text-2xl font-light leading-relaxed text-main-white/90 italic">
@@ -224,6 +241,18 @@ const Testimonials = () => {
         }
         .swiper-pagination-bullet-active {
           background-color: #facc15;
+        }
+
+        .swiper-wrapper {
+          align-items: stretch;
+        }
+
+        .swiper-slide {
+          height: auto !important;
+        }
+
+        .swiper-slide > div {
+          height: 100%;
         }
         
         .swiper-slide .progress-circle {

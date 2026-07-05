@@ -79,13 +79,22 @@ const resources = {
       },
       "testimonials": {
         "title": "Testimonios",
-        "description": "Lo que dicen mis colegas y clientes.",
-        "john_position": "Senior Frontend Developer",
-        "john_text": "Nazareno es un excelente profesional. Siempre dispuesto a ayudar y con una gran capacidad para resolver problemas complejos en React. Su sentido del diseño y la estética eleva cualquier proyecto.",
+        "description": "Lo que dicen quienes trabajaron conmigo.",
+        
         "agustin_position": "Backend Developer",
-        "agustin_text": "Trabajar con Nazareno fue un placer. Es un desarrollador Frontend con gran nivel técnico, proactivo y orientado al trabajo en equipo. Siempre propone mejoras, anticipa problemas y aporta soluciones de forma constante. Su disposición para colaborar, revisar código y ayudar al equipo lo convierten en un profesional muy valioso y altamente recomendable.",
+        "agustin_text": "Trabajar con Nazareno fue un placer. Es un desarrollador con nivel técnico, proactivo y orientado al trabajo en equipo. Siempre propone mejoras, anticipa problemas y aporta soluciones constantemente. Su disposición para colaborar y ayudar al equipo lo convierten en un profesional muy valioso y recomendable.",
+        
         "javier_position": "Founder & CEO of Dymo",
-        "javier_text": "Tuve el placer de trabajar con Nazareno en el rediseño y desarrollo de nuestro Help Center. Demostró gran capacidad para entender necesidades, crear una experiencia intuitiva y ejecutar un desarrollo sólido y eficiente. Su enfoque proactivo, atención al detalle y compromiso con la calidad hicieron que el proyecto superara nuestras expectativas. Recomiendo a Nazareno sin reservas."
+        "javier_text": "Tuve el placer de trabajar con Nazareno en el rediseño y desarrollo de nuestro Help Center. Demostró una gran capacidad para entender nuestras necesidades, crear una experiencia intuitiva y entregar un desarrollo sólido. Su compromiso y atención al detalle superaron nuestras expectativas.",
+        
+        "alex_position": "Technical Leader",
+        "alex_text": "Fue un gusto trabajar con Nazareno. Siempre estuvo dispuesto a resolver desafíos, aportar al equipo y colaborar cuando hacía falta. Tiene un sólido nivel técnico, aprende rápido y mantiene una actitud positiva que lo convierte en un profesional altamente recomendable.",
+        
+        "marcelo_position": "Backend Developer | Co-founder Naztro",
+        "marcelo_text": "Fundar Naztro junto a Nazareno fue una gran experiencia. Siempre demostró compromiso, responsabilidad y una actitud proactiva. Además de su sólido conocimiento técnico, aporta buenas ideas, busca mejorar constantemente y genera un excelente ambiente de trabajo. Lo recomiendo totalmente.",
+        
+        "javier_taboada_position": "PM Rave Dates",
+        "javier_taboada_text": "Nazareno ha sido un colaborador excepcional: rápido, experimentado, proactivo y muy orientado al trabajo en equipo. Siempre busca soluciones, propone mejoras y aporta más allá de sus responsabilidades. Es un profesional comprometido que suma mucho valor a cualquier proyecto."
       }
     }
   },
@@ -165,13 +174,22 @@ const resources = {
       },
       "testimonials": {
         "title": "Testimonials",
-        "description": "What my colleagues and clients say about me.",
-        "john_position": "Senior Frontend Developer",
-        "john_text": "Nazareno is an excellent professional. Always willing to help and with a great capacity to solve complex problems in React. His sense of design and aesthetics elevates any project.",
+        "description": "What people I've worked with say.",
+
         "agustin_position": "Backend Developer",
-        "agustin_text": "Working with Nazareno was a pleasure. He is a Frontend developer with a high technical level, proactive and team-oriented. He always proposes improvements, anticipates problems and constantly provides solutions. His willingness to collaborate, review code and help the team make him a very valuable and highly recommended professional.",
-        "javier_position": "Founder & CEO of Dymo",
-        "javier_text": "I had the pleasure of working with Nazareno on the redesign and development of our Help Center. He showed great ability to understand needs, create an intuitive experience and execute a solid and efficient development. His proactive approach, attention to detail and commitment to quality made the project exceed our expectations. I unreservedly recommend Nazareno."
+        "agustin_text": "Working with Nazareno was a pleasure. He has strong technical skills and works exceptionally well with others. He consistently suggests improvements, solves problems before they grow, and is always willing to support the team. I highly recommend him.",
+
+        "javier_position": "Founder & CEO at Dymo",
+        "javier_text": "I had the pleasure of working with Nazareno on the redesign and development of our Help Center. He quickly understood our needs, built an intuitive user experience, and delivered high-quality work. His attention to detail and commitment exceeded our expectations.",
+
+        "alex_position": "Technical Leader",
+        "alex_text": "It was a pleasure working with Nazareno. He was always ready to solve challenges, support the team, and step in whenever needed. He has strong technical skills, learns quickly, and brings a positive attitude that makes him a great teammate.",
+
+        "marcelo_position": "Backend Developer | Co-founder of Naztro",
+        "marcelo_text": "Starting Naztro with Nazareno was a great experience. He consistently showed commitment, responsibility, and a proactive attitude. Along with his strong technical skills, he brings valuable ideas, looks for ways to improve, and creates a great environment for the team.",
+
+        "javier_taboada_position": "Project Manager at Rave Dates",
+        "javier_taboada_text": "Nazareno is an outstanding teammate: experienced, proactive, and collaborative. He always looks for solutions, suggests improvements, and contributes beyond his responsibilities. His commitment and teamwork make him someone who adds real value to any project."
       }
     }
   }
