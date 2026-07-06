@@ -18,7 +18,7 @@ const resources = {
         "work": "Trabajo",
         "showcase": "Galería",
         "testimonials": "Testimonios",
-        "about": "Bio",
+        "about": "Sobre mí",
         "contact": "Contacto"
       },
       "nav-mobile": {

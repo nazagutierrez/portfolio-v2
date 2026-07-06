@@ -13,6 +13,7 @@ import {
   SiCss3,
   SiHtml5,
   SiFramer,
+  SiAstro,
 } from "@/components/BrandLogos";
 
 const iconStyle = (color: string) => ({
@@ -83,5 +84,9 @@ export const skillLogos: LogoItem[] = [
   {
     node: <WithTooltip title="Framer Motion"><SiFramer style={iconStyle("#0055FF")} /></WithTooltip>,
     title: "Framer Motion",
+  },
+  {
+    node: <WithTooltip title="Astro"><SiAstro style={iconStyle("#ccc")} /></WithTooltip>,
+    title: "Astro",
   },
 ];

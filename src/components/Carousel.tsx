@@ -23,7 +23,7 @@ type ViewerProps = {
   media: MediaItem[];
   initialSlideIndex: number;
   onClose: () => void;
-  href?: string;
+  href?: string | string[];
 };
 
 function SlideVideo({ src, isActive, className = "", blurBg }: { src: string, isActive: boolean, className?: string, blurBg?: boolean }) {
@@ -167,7 +167,9 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
           modules={[Navigation, A11y]}
           className="w-full h-auto [&>.swiper-wrapper]:items-stretch [--swiper-navigation-color:#fff] [--swiper-navigation-size:2rem] [--swiper-navigation-sides-offset:1rem] md:[--swiper-navigation-sides-offset:3rem]"
         >
-          {media.map(item => (
+          {media.map((item, index) => {
+            const currentHref = Array.isArray(href) ? href[index] : href;
+            return (
             <SwiperSlide key={item.id} className="!h-auto flex content-center justify-center p-4 sm:p-8 box-border">
               {({ isActive }) => (
                 <div 
@@ -195,7 +197,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                     </div>
                   )}
                   
-                  {(item.description || item.technologies || href) && (
+                  {(item.description || item.technologies || currentHref) && (
                     <div className="relative w-full flex-1 bg-linear-30 from-[#3a3202] via-[#120d0d] to-[#0d0d0d] border-t border-white/10 min-h-0 overflow-hidden flex flex-col">
                       <div className="absolute inset-0 opacity-30 pointer-events-none z-0" style={{ backgroundImage: `url(${noiseImg})` }}></div>
                       <div className="relative z-10 p-6 flex flex-col gap-y-4 overflow-y-auto h-full [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.2)_transparent]">
@@ -217,16 +219,16 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                           })}
                         </div>
                       )}
-                      {href && (
+                      {currentHref && (
                         <a
-                          href={`https://${href}`}
+                          href={`https://${currentHref}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={e => e.stopPropagation()}
                           className="relative z-10 flex items-center gap-2 text-xs font-medium tracking-wide uppercase text-white/50 hover:text-white transition-colors duration-300 w-fit border-t border-white/10 pt-4 mt-0"
                         >
                           <ExternalLinkSvg className="w-3.5 h-3.5" />
-                          {href}
+                          {currentHref}
                         </a>
                       )}
                       </div>
@@ -235,7 +237,8 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                 </div>
               )}
             </SwiperSlide>
-          ))}
+            );
+          })}
         </Swiper>
       </div>
     </div>,
@@ -248,7 +251,7 @@ type CarouselProps = {
   media: MediaItem[];
   borderColor?: string;
   logo?: string;
-  href?: string;
+  href?: string | string[];
 };
 
 function SlideImage({ src, alt, className, blurBg }: { src: string, alt: string, className: string, blurBg?: boolean }) {

@@ -134,7 +134,7 @@ const Navbar = () => {
             </li>
             <li>
               <button
-              className="cursor-pointer hover:text-main-yellow transition-all p-2"
+              className="cursor-pointer whitespace-pre hover:text-main-yellow transition-all p-2"
               onClick={(e) => scrollToSection(e, "#About")}
             >
               {t("nav.about", "Bio")}
