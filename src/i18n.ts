@@ -53,8 +53,8 @@ const resources = {
         "p3_highlight": "personas",
         "p3_2": "realmente",
         "p3_highlight_2": "disfruten",
-        "p4": "PD: Construí el Asistente IA de este portafolio desde cero usando la API de Gemini. ¡Probalo en la esquina inferior derecha!",
-        "tag": "Frontend Engineer"
+        "p4": "Nota: Construí el Asistente IA de este portafolio desde cero usando la API de Gemini. ¡Probalo en la esquina inferior derecha!",
+        "tag": "Naza ama el chocolate"
       },
       "contact": {
         "title": "Hablemos",
@@ -148,8 +148,8 @@ const resources = {
         "p3_highlight": "people",
         "p3_2": "really",
         "p3_highlight_2": "enjoy",
-        "p4": "P.S. I built this portfolio's AI Assistant from scratch with the Gemini API. Try it out in the bottom-right corner!",
-        "tag": "Frontend Engineer"
+        "p4": "Note: I built this portfolio's AI Assistant from scratch with the Gemini API. Try it out in the bottom-right corner!",
+        "tag": "Naza loves chocolate"
       },
       "contact": {
         "title": "Let's Talk",

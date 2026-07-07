@@ -7,6 +7,7 @@ import { skillLogos } from "@/constants/skillLogos";
 import nazaImg from "@/assets/people/naza.webp?url";
 import LoaderSvg from "@/assets/svg/LoaderSvg";
 import noiseImg from "@/assets/noise.png?url";
+import ChocolateSvg from "@/assets/svg/ChocolateSvg";
 
 const About = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const About = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const logoLoopRef = useRef<HTMLDivElement>(null);
+  const floatTweenRef = useRef<gsap.core.Tween | null>(null);
   const [logoGap, setLogoGap] = useState(48);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -56,7 +58,7 @@ const About = () => {
       });
 
       // Efecto sutil de flotación para la imagen
-      gsap.to(imageRef.current, {
+      floatTweenRef.current = gsap.to(imageRef.current, {
         y: 15,
         duration: 3,
         repeat: -1,
@@ -145,12 +147,19 @@ const About = () => {
               ref={imageRef}
               className="flex-1 flex will-change-transform justify-center items-center mt-6 xl:mt-0"
             >
-              <div className="relative group">
+              <div
+                className="relative group"
+                onMouseEnter={() => floatTweenRef.current?.pause()}
+                onMouseLeave={() => floatTweenRef.current?.resume()}
+              >
                 {/* Decoración de fondo para la imagen */}
-                <div className="absolute -inset-2 sm:-inset-4 border border-main-yellow/30 rounded-[30px] sm:rounded-[40px] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-                <div className="absolute -inset-2 sm:-inset-4 border border-main-white/20 rounded-[30px] sm:rounded-[40px] -rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+                <ChocolateSvg className="absolute rotate-20 top-90 md:block hidden group-hover:top-50 left-14 w-6 h-6 duration-700 transition-all" />
+                <ChocolateSvg className="absolute -rotate-20 top-90 md:block hidden group-hover:top-63 left-6 w-6 h-6 duration-700 transition-all" />
 
-                <div className="relative flex items-center justify-center w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-main-white/20 bg-main-black group-hover:bg-main-yellow/60 transition-colors duration-500 shadow-2xl">
+                <ChocolateSvg className="absolute -rotate-20 top-90 md:block hidden group-hover:top-54 right-13 w-6 h-6 duration-700 transition-all" />
+                <ChocolateSvg className="absolute rotate-20 top-90 md:block hidden group-hover:top-66 right-7 w-6 h-6 duration-700 transition-all" />
+
+                <div className="relative flex items-center justify-center w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden border-2 border-main-white/20 bg-main-black group-hover:bg-main-yellow/20 transition-colors duration-500 shadow-2xl">
                   {!isImageLoaded && <LoaderSvg className="absolute w-8 h-8 text-main-yellow animate-spin z-10" />}
                   <img
                     src={nazaImg}
@@ -161,12 +170,12 @@ const About = () => {
                     onLoad={() => setIsImageLoaded(true)}
                     className={`w-full h-full object-cover hover:grayscale-0 transition-all duration-700 group-hover:scale-100 scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                   />
-                </div>
-
                 {/* Tag flotante */}
-                <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-main-yellow text-main-black px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold shadow-xl rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                <div className="absolute -bottom-10 group-hover:bottom-0 transition-all duration-300 bg-main-yellow/20 text-main-white px-4 py-2 sm:px-5 sm:py-0.5 rounded-xl sm:rounded-2xl text-xs rounded-b-none! border-2 border-b-0! border-main-yellow/30 sm:text-base shadow-xl backface-hidden transform-[translateZ(0)]">
                   {t("about.tag")}
                 </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -177,7 +186,7 @@ const About = () => {
             {t("about.p3_2")}
             <span className="text-main-yellow font-normal"> {t("about.p3_highlight_2")}.</span>
           </p>
-          <p className="about-last-text mt-6 text-sm text-main-yellow italic">
+          <p className="about-last-text mt-6 text-sm text-main-white/70 italic">
               {t("about.p4")}
           </p>
         </div>
