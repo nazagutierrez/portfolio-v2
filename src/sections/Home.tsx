@@ -118,6 +118,18 @@ const Home = () => {
       }
     };
 
+    // Refresh inmediato tras el primer paint: doble-rAF garantiza que el navegador
+    // ya calculó el layout final (fuentes, imágenes inline, etc.) antes de fijar
+    // las posiciones del pin, evitando el fondo negro en el primer load.
+    let firstPaintTimer: ReturnType<typeof setTimeout>;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        firstPaintTimer = setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 0);
+      });
+    });
+
     const observer = new ResizeObserver(() => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
@@ -140,6 +152,7 @@ const Home = () => {
     return () => {
       clearTimeout(debounceTimer);
       clearTimeout(scrollCheckTimer);
+      clearTimeout(firstPaintTimer);
       window.removeEventListener("load", handleRefresh);
       observer.disconnect();
       ScrollTrigger.getAll().forEach((t) => t.kill());
