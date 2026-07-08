@@ -114,7 +114,7 @@ const Gallery = ({ introFinished }: { introFinished: boolean }) => {
             gap={5}
             pauseOnHover={false}
           />
-          <Carousel logo={logoPisoFuerte} title="Freelance Projects" media={freelanceMedia} borderColor="#a5913b" href={["www.pisofuerte.com.ar", "https://nordicaps.vercel.app" ]} />
+          <Carousel logo={logoPisoFuerte} title="Freelance Projects" media={freelanceMedia} borderColor="#a5913b" href={["www.pisofuerte.com.ar", "nordicaps.vercel.app" ]} />
         </div>
       </div>
     </section>

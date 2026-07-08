@@ -2,6 +2,8 @@
 import '../index.css';
 import '../i18n';
 import Chatbot from '../components/Chatbot';
+import  Analytics  from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 
 interface Props {
@@ -107,5 +109,7 @@ const ogImage = `${baseUrl}/naza.webp`;
 			<slot />
 		</div>
 		<Chatbot client:load />
+		<Analytics />
+		<SpeedInsights />
 	</body>
 </html>
