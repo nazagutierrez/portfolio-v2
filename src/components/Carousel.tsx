@@ -358,7 +358,7 @@ export function Carousel({ title, media, borderColor, logo, href }: CarouselProp
           <SwiperSlide className='h-auto!' key={item.id}>
             <button
               onClick={() => setActiveItemIndex(index)}
-              className="w-full h-full relative cursor-zoom-in"
+              className="w-full aspect-video relative cursor-zoom-in"
               aria-label="View media full screen"
             >
               {item.type === 'image' ? (
