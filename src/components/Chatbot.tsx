@@ -67,9 +67,10 @@ export default function Chatbot() {
       showTimeout = setTimeout(() => {
         if (!isOpenRef.current) {
           setShowMention(true);
+          const isMobile = window.innerWidth < 640;
           hideTimeout = setTimeout(() => {
             setShowMention(false);
-          }, 8000);
+          }, isMobile ? 4000 : 8000);
         }
       }, 2500);
     };
@@ -210,7 +211,7 @@ export default function Chatbot() {
       {/* Mention Tooltip */}
       <div 
         onClick={() => setIsOpen(true)}
-        className={`absolute bottom-[70px] right-0 sm:bottom-[80px] cursor-pointer w-[250px] sm:w-[280px] bg-gradient-to-br from-[#1a1a1a]/95 to-[#121212]/95 backdrop-blur-[12px] border border-[#b8a52d]/30 text-[#e9e9d5] text-[13px] px-4 py-3.5 rounded-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_16px_rgba(184,165,45,0.15)] transition-all duration-700 origin-bottom-right ${
+        className={`absolute bottom-[65px] sm:bottom-[70px] right-0 sm:bottom-[80px] cursor-pointer w-[250px] sm:w-[280px] bg-gradient-to-br from-[#1a1a1a]/95 to-[#121212]/95 backdrop-blur-[12px] border border-[#b8a52d]/30 text-[#e9e9d5] text-[13px] px-4 py-3.5 rounded-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_16px_rgba(184,165,45,0.15)] transition-all duration-700 origin-bottom-right ${
           showMention && !isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-2 pointer-events-none'
         }`}
       >
@@ -224,7 +225,7 @@ export default function Chatbot() {
         </div>
         
         {/* Chat bubble tail */}
-        <div className="absolute -bottom-[7px] right-[21px] w-3.5 h-3.5 bg-[#121212] border-b border-r border-[#b8a52d]/30 transform rotate-45 z-0" />
+        <div className="absolute -bottom-[7px] right-[16px] sm:right-[21px] w-3.5 h-3.5 bg-[#121212] border-b border-r border-[#b8a52d]/30 transform rotate-45 z-0" />
       </div>
 
       {/* Chat window */}
