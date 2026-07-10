@@ -153,6 +153,7 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
                     speed={30}
                     direction="up"
                     logoHeight={20}
+                    width={20}
                     gap={5}
                     pauseOnHover={false}
                   />
