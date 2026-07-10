@@ -57,6 +57,8 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
   const lineRef = useRef<HTMLSpanElement>(null);
 
   const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1280;
+  const descriptionForMobile = typeof window !== 'undefined' && window.innerWidth >= 680;
+
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -129,7 +131,7 @@ const WorkExperience = ({ introFinished }: { introFinished: boolean }) => {
       </h2>
 
       <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl max-w-[700px] mb-10 sm:mb-16 text-main-white font-thin mx-auto">
-        {t("work.description")}
+        {descriptionForMobile ? t("work.description") : t("work.mobile_description")}
       </p>
 
       <div className="relative pl-8 sm:pl-10 text-start space-y-10 sm:space-y-14 max-w-4xl mx-auto">

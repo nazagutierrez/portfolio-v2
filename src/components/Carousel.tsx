@@ -4,6 +4,7 @@ import { FreeMode, Pagination, A11y, Navigation } from 'swiper/modules';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { createPortal } from 'react-dom';
 import gsap from 'gsap';
+import { useTranslation } from 'react-i18next';
 import type { MediaItem } from '@/constants/media';
 
 import 'swiper/css';
@@ -71,6 +72,7 @@ function SlideVideo({ src, isActive, className = "", blurBg }: { src: string, is
 }
 
 function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
+  const { t } = useTranslation();
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -203,7 +205,7 @@ function MediaViewer({ media, initialSlideIndex, onClose, href }: ViewerProps) {
                       <div className="relative z-10 p-6 flex flex-col gap-y-4 overflow-y-auto h-full [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.2)_transparent]">
                       {item.description && (
                         <p className="relative z-10 text-white/80 text-sm md:text-base leading-relaxed max-w-3xl">
-                          {item.description}
+                          {t(item.description)}
                         </p>
                       )}
                       {item.technologies && item.technologies.length > 0 && (

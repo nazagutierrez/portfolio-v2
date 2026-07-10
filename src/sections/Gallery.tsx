@@ -13,6 +13,9 @@ import logoPisoFuerte from "@/assets/logos/logo-piso-fuerte-small.webp?url";
 import LoaderSvg from "@/assets/svg/LoaderSvg";
 import noiseImg from "@/assets/noise.png?url";
 
+const descriptionForMobile = typeof window !== 'undefined' && window.innerWidth >= 680;
+
+
 function HighlightedImage({ src, alt, className }: { src: string, alt: string, className: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
@@ -89,7 +92,7 @@ const Gallery = ({ introFinished }: { introFinished: boolean }) => {
       </h2>
 
       <p className="highlighted-desc px-6 sm:px-10 md:px-20 text-base sm:text-lg md:text-xl max-w-[900px] mb-10 sm:mb-16 text-main-white font-thin text-center mx-auto">
-        {t("highlighted_work.description")}
+        {descriptionForMobile ? t("highlighted_work.description") : t("highlighted_work.mobile_description")}
       </p>
 
       <div className="flex flex-col gap-y-10 sm:gap-y-16">

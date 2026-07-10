@@ -9,7 +9,7 @@ const resources = {
         "title": "Frontend Engineer",
         "description_1": "Con más de 3 años de experiencia construyendo productos web para startups y empresas con React, Next.js y TypeScript.",
         "description_2": "Transformando ideas en productos digitales intuitivos, escalables y de alto rendimiento.",
-        "chat_mention": "Tenés dudas? Preguntale a mi Asistente con IA en la esquina inferior derecha.",
+        "chat_mention": "Tenés dudas? Preguntale a mi Asistente con IA.",
         "btn_mail": "Enviar mail",
         "btn_cv": "Ver CV"
       },
@@ -31,15 +31,37 @@ const resources = {
       },
       "work": {
         "title": "Experiencia",
-        "description": "Experiencia profesional desarrollando aplicaciones web enfocadas en rendimiento, estética y experiencia de usuario, participando en productos utilizados por cientos de usuarios.",
-        "exp1_desc": "Desarrollo de una landing page corporativa para una empresa de construcción, enfocada en rendimiento, diseño responsive y una experiencia de usuario clara y profesional.",
-        "exp2_desc": "Desarrollo frontend de una plataforma de venta y reserva de tickets utilizando Next.js, colaborando con un equipo multidisciplinario en funcionalidades complejas y experiencias escalables para los usuarios.",
+        "description": "Experiencia profesional desarrollando aplicaciones web enfocadas en rendimiento, diseño y experiencia de usuario, participando en productos utilizados por cientos de usuarios.",
+        "mobile_description": "Desarrollo de aplicaciones web enfocadas en rendimiento, diseño y experiencia de usuario.",
+        "exp1_desc": "Desarrollo de una landing page corporativa para una empresa de construcción, enfocada en rendimiento, diseño responsive y una experiencia profesional.",
+        "exp2_desc": "Desarrollo frontend de una plataforma de venta y reserva de tickets con Next.js, colaborando con un equipo multidisciplinario en funcionalidades y experiencias escalables.",
         "exp3_desc": "Contribución en productos SaaS, herramientas con IA y experiencias de soporte al cliente.",
-        "exp4_desc": "Desarrollo de sitios web y aplicaciones a medida para empresas y emprendedores, transformando requerimientos de negocio en soluciones web modernas y optimizadas."
+        "exp4_desc": "Desarrollo de sitios web y aplicaciones a medida para empresas y emprendedores, creando soluciones web modernas, optimizadas y centradas en el usuario."
       },
       "highlighted_work": {
         "title": "Galería",
-        "description": "Una muestra de proyectos reales en los que contribuí al desarrollo de productos web, desde landing pages hasta aplicaciones con lógica de negocio compleja."
+        "description": "Una muestra de proyectos reales en los que contribuí al desarrollo de productos web, desde landing pages hasta aplicaciones con lógica de negocio compleja.",
+        "mobile_description": "Proyectos reales, desde landing pages hasta aplicaciones web complejas."
+      },
+      "gallery": {
+        "ravedates": {
+          "desc1": "+20 pantallas desarrolladas. Desde flujos de compra hasta paneles de gestión y configuración de eventos.",
+          "desc2": "Aplicación construida con Next.js. Participando en el desarrollo de funcionalidades complejas y optimización de la experiencia de usuario.",
+          "desc3": "Trabajo en equipo multidisciplinario. Colaborando con diseñadores, backend developers y stakeholders durante todo el ciclo de desarrollo.",
+          "desc4": "Video demostrativo del funcionamiento de la plataforma."
+        },
+        "dymo": {
+          "desc1": "Diseñé y desarrollé desde cero un centro de ayuda web para centralizar documentación, recursos y soporte para los usuarios.",
+          "desc2": "Implementé interfaces modernas, responsive y optimizadas para mejorar la navegación y accesibilidad.",
+          "desc3": "Participé en el desarrollo y evolución de herramientas digitales, trabajando junto a equipos de producto y comunicación.",
+          "desc4": "Video demostrativo del funcionamiento de la plataforma."
+        },
+        "freelance": {
+          "desc1": "Desarrollo de una web corporativa enfocada en transmitir confianza, presentar servicios y facilitar el contacto con potenciales clientes.",
+          "desc2": "Implementación de una experiencia moderna y responsive, priorizando rendimiento, diseño y presencia digital de la marca.",
+          "desc3": "Diseño y desarrollo de una web orientada a mostrar servicios, fortalecer la identidad de marca y facilitar la captación de clientes.",
+          "desc4": "Desarrollo de una interfaz atractiva y optimizada para comunicar el producto de forma clara y maximizar la conversión de usuarios."
+        }
       },
       "about": {
         "title": "Sobre mí",
@@ -104,7 +126,7 @@ const resources = {
         "title": "Frontend Engineer",
         "description_1": "With 3+ years of experience building web products for startups and businesses using React, Next.js, and TypeScript.",
         "description_2": "Experienced in developing scalable applications, improving user experiences, and collaborating within multidisciplinary teams.",
-        "chat_mention": "Got questions? Ask my AI Assistant in the bottom-right corner.",
+        "chat_mention": "Got questions? Ask my AI Assistant.",
         "btn_mail": "Send mail",
         "btn_cv": "View CV"
       },
@@ -126,15 +148,37 @@ const resources = {
       },
       "work": {
         "title": "Experience",
-        "description": "Professional experience building web products used by real users, focused on scalability, performance, and user experience.",
-        "exp1_desc": "Event platform with authentication, role-based access, payments, and complex API integrations.",
-        "exp2_desc": "Development of advanced interfaces, animations, and reusable React components.",
-        "exp3_desc": "Contributions to SaaS products, AI-powered tools, and customer support experiences.",
-        "exp4_desc": "Custom solutions for small businesses, including online booking systems and e-commerce platforms."
+        "description": "Professional experience building web applications focused on performance, design, and user experience, contributing to products used by hundreds of users.",
+        "mobile_description": "Building web applications focused on performance, design, and user experience.",        
+        "exp1_desc": "Built a corporate landing page for a construction company, focusing on performance, responsive design, and a polished user experience.",
+        "exp2_desc": "Developed the frontend of a ticketing and booking platform with Next.js, collaborating with a multidisciplinary team on scalable features and user experiences.",
+        "exp3_desc": "Contributed to SaaS products, AI-powered tools, and customer support experiences.",
+        "exp4_desc": "Built custom websites and web applications for businesses and entrepreneurs, delivering modern, optimized, and user-focused solutions."
       },
       "highlighted_work": {
         "title": "Gallery",
-        "description": "A selection of projects where I combined frontend development, design, and business goals to create impactful digital experiences."
+        "description": "A selection of projects where I combined frontend development, design, and business goals to create impactful digital experiences.",
+        "mobile_description": "Real-world projects, from landing pages to complex web applications."
+      },
+      "gallery": {
+        "ravedates": {
+          "desc1": "Developed over 20 screens, from ticket purchasing flows to event management and configuration dashboards.",
+          "desc2": "Built with Next.js. Participated in the development of complex features and user experience optimization.",
+          "desc3": "Worked in a multidisciplinary team, collaborating with designers, backend developers, and stakeholders throughout the development lifecycle.",
+          "desc4": "Video demonstration of the platform in action."
+        },
+        "dymo": {
+          "desc1": "Designed and developed a web help center from scratch to centralize documentation, resources, and support for users.",
+          "desc2": "Implemented modern, responsive, and optimized interfaces to improve navigation and accessibility.",
+          "desc3": "Participated in the development and evolution of digital tools, working alongside product and communication teams.",
+          "desc4": "Video demonstration of the platform in action."
+        },
+        "freelance": {
+          "desc1": "Development of a corporate website focused on building trust, presenting services, and facilitating contact with potential clients.",
+          "desc2": "Implemented a modern and responsive experience, prioritizing performance, design, and digital brand presence.",
+          "desc3": "Design and development of a website aimed at showcasing services, strengthening brand identity, and facilitating customer acquisition.",
+          "desc4": "Developed an attractive and optimized interface to clearly communicate the product and maximize user conversion."
+        }
       },
       "about": {
         "title": "About Me",
@@ -156,7 +200,7 @@ const resources = {
         "subtitle1": "Do you have a job opportunity or a project in mind?",
         "subtitle2": "I'd love to hear about it.",
         "btn_cv": "View Resume",
-        "footer": "Made with 💛"
+        "footer": "Made with"
       },
       "chatbot": {
         "welcome": "Hi! I'm Nazareno's AI assistant. Do you have any questions about his experience, projects, or availability?",

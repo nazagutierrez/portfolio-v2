@@ -36,6 +36,9 @@ export default function Chatbot() {
   // Abort ongoing fetch when the component unmounts or a new message is sent
   const abortRef = useRef<AbortController | null>(null);
 
+  const [showMention, setShowMention] = useState(false);
+  const isOpenRef = useRef(isOpen);
+
   // Update welcome message if language changes or if i18n is not ready on first render
   useEffect(() => {
     setMessages((prev) => {
@@ -48,6 +51,43 @@ export default function Chatbot() {
       return prev;
     });
   }, [t]);
+
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+    if (isOpen) {
+      setShowMention(false);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    let showTimeout: ReturnType<typeof setTimeout>;
+    let hideTimeout: ReturnType<typeof setTimeout>;
+
+    const handleIntro = () => {
+      showTimeout = setTimeout(() => {
+        if (!isOpenRef.current) {
+          setShowMention(true);
+          hideTimeout = setTimeout(() => {
+            setShowMention(false);
+          }, 8000);
+        }
+      }, 2500);
+    };
+
+    if (typeof window !== 'undefined') {
+      if ((window as any).__INTRO_PLAYED__) {
+        handleIntro();
+      } else {
+        window.addEventListener("introComplete", handleIntro, { once: true });
+      }
+    }
+    
+    return () => {
+      window.removeEventListener("introComplete", handleIntro);
+      clearTimeout(showTimeout);
+      clearTimeout(hideTimeout);
+    };
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -166,6 +206,26 @@ export default function Chatbot() {
       >
         <BotSvg />
       </button>
+
+      {/* Mention Tooltip */}
+      <div 
+        onClick={() => setIsOpen(true)}
+        className={`absolute bottom-[70px] right-0 sm:bottom-[80px] cursor-pointer w-[250px] sm:w-[280px] bg-gradient-to-br from-[#1a1a1a]/95 to-[#121212]/95 backdrop-blur-[12px] border border-[#b8a52d]/30 text-[#e9e9d5] text-[13px] px-4 py-3.5 rounded-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_16px_rgba(184,165,45,0.15)] transition-all duration-700 origin-bottom-right ${
+          showMention && !isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-2 pointer-events-none'
+        }`}
+      >
+        <div className="flex gap-3.5 items-start relative z-10">
+          <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-gradient-to-br from-[#b8a52d] to-[#d4be3e] shadow-[0_0_12px_rgba(184,165,45,0.4)] text-[#0c0c0c]">
+            <BotSvg className="w-4" />
+          </div>
+          <p className="leading-[1.4] font-medium text-[#e9e9d5]/90">
+            {t('home.chat_mention')}
+          </p>
+        </div>
+        
+        {/* Chat bubble tail */}
+        <div className="absolute -bottom-[7px] right-[21px] w-3.5 h-3.5 bg-[#121212] border-b border-r border-[#b8a52d]/30 transform rotate-45 z-0" />
+      </div>
 
       {/* Chat window */}
       <div
