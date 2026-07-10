@@ -111,7 +111,7 @@ export default function IntroAnimation() {
       */}
       <svg
         ref={svgRef}
-        viewBox="0 0 230 215"
+        viewBox="0 0 210 215"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-56 h-auto"
